@@ -9,7 +9,9 @@ export default {
 </script>
 
 <template>
-  <div class="big"></div>
+  <div class="big">
+
+  </div>
 </template>
 
 <style>
