@@ -14,13 +14,13 @@ import Header from './components/Header.vue';
 
 <style scoped lang="scss">
 .header {
-  width: 100vw;
+  width: fill;
   height: 10vh;
 }
 
 .content {
-  width: 100vw;
-  height: 85vh;
+  width: fill;
+  height: 90vh;
   text-align: center;
 }
 </style>
