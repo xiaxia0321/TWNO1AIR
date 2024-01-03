@@ -30,7 +30,7 @@ export default {
     letter-spacing: 2px;
 
     .routerItem {
-        font-size: 24pt;
+        font-size: 24px;
         text-decoration: none;
     }
 
@@ -41,7 +41,7 @@ export default {
         &:hover {
             border-radius: 10px;
             background-color: rgba(129, 255, 196, 0.27);
-            font-size: 40px;
+            font-size: 30px;
             color: black;
             box-shadow: 0px 0px 30px 4px rgba(0, 0, 0, 0.2);
         }
