@@ -12,17 +12,7 @@ const router = createRouter({
       path: '/AboutView',
       name: 'AboutView',
       component: () => import('../views/AboutView.vue')
-    },
-    {
-      path:"/Submit",
-      name:"Submit",
-      component:() => import('../views/Submit.vue')
-    },
-    // {
-    //   path:"/dynamicQuestionnaireLogin",
-    //   name:"dynamicQuestionnaireLogin",
-    //   component:() => import('../views/dynamicQuestionnaireLogin.vue')
-    // },
+    }
   ]
 })
 

@@ -15,6 +15,7 @@ export default {
     <div class="headerShow">
         <RouterLink to="/" class="routerItem">Home</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
+        <RouterLink to="Login" class="routerItem">Login</RouterLink>
     </div>
 </template>
 
