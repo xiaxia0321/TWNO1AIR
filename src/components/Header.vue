@@ -13,9 +13,10 @@ export default {
 
 <template>
     <div class="headerShow">
-        <RouterLink to="/" class="routerItem">Home</RouterLink>
+        <RouterLink to="HomeView" class="routerItem">Home</RouterLink>
+        <RouterLink to="/" class="routerItem">Login</RouterLink>
+        <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
-        <RouterLink to="Login" class="routerItem">Login</RouterLink>
     </div>
 </template>
 
