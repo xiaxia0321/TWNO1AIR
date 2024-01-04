@@ -15,8 +15,8 @@ export default {
       <div class="tex"></div>
       <div class="rightbox"></div>
     </div>
-    <div class="pic" style="width: 100%; height: 40vh;"></div>
-    <div class="air" style="width: 100%; height: 45vh;">
+    <div class="pic" style="width: 100%; height: 50vh;"></div>
+    <div class="air" style="width: 100%; ">
       <p style="font-size: 35px; margin: 0;">目前最熱門的航班</p>
       <p style="margin-top: 5px;">真的ㄇ</p>
       <div class="airIn">
@@ -39,8 +39,6 @@ export default {
           <div class="img"></div>
           <div class="text"></div>
         </div>
-      </div>
-      <div class="airIn">
         <div class="block">
           <div class="img"></div>
           <div class="text"></div>
@@ -57,6 +55,7 @@ export default {
           <div class="img"></div>
           <div class="text"></div>
         </div>
+
       </div>
     </div>
     <div class="foot" style="width: 100%; height: 35vh; background-color: rgba(5, 32, 60);"></div>
@@ -84,25 +83,30 @@ export default {
 
   .air {
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .airIn {
-      width: 100%;
-      height: 30%;
+      width: 75%;
       margin-top: 1%;
       border: 1px solid red;
       display: flex;
       justify-content: space-around;
       align-items: center;
+      flex-wrap: wrap;
 
       .block {
-        width: 20%;
-        height: 100%;
+        width: 270px;
+        height: 13vh;
         border: 1px solid purple;
         display: flex;
+        margin-bottom: 20px;
 
 
         .img {
-          width: 35%;
+          width: 7vw;
           height: 100%;
           background-color: rgba(0, 255, 255, 0.271);
         }
