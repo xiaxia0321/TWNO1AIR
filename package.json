@@ -11,7 +11,11 @@
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
     "scss": "^0.2.4",
+<<<<<<< HEAD
     "vue": "^3.3.4",
+=======
+    "vue": "^3.4.3",
+>>>>>>> origin/xiaxia
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
