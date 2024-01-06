@@ -13,10 +13,11 @@ export default {
 
 <template>
     <div class="headerShow">
-        <RouterLink to="HomeView" class="routerItem">Home</RouterLink>
+        <RouterLink to="HomeView" class="routerItem">主頁</RouterLink>
         <RouterLink to="/" class="routerItem">Login</RouterLink>
         <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
+        <RouterLink to="Browse" class="routerItem">按下搜尋後ㄉ瀏覽</RouterLink>
     </div>
 </template>
 

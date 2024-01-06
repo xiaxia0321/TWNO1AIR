@@ -22,6 +22,11 @@ const router = createRouter({
       path:"/HomeView",
       name:"HomeView",
       component:() => import('../views/HomeView.vue')
+    },
+    {
+      path:"/Browse",
+      name:"Browse",
+      component:() => import('../views/Browse.vue')
     }
     // {
     //   path:"/dynamicQuestionnaireBack",
