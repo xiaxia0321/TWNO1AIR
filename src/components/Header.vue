@@ -18,6 +18,7 @@ export default {
         <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
         <RouterLink to="Browse" class="routerItem">按下搜尋後ㄉ瀏覽</RouterLink>
+        <RouterLink to="A321neo" class="routerItem">A321neo機型座位</RouterLink>
     </div>
 </template>
 
@@ -26,13 +27,11 @@ export default {
 .headerShow {
     width: 100%;
     height: 100%;
-    background-color: pink;
+    background-color: #161A30;
     display: flex;
     justify-content: center;
     align-content: center;
-    letter-spacing: 2px;
-
-    .routerItem {
+    .routerItem { //文字大小
         font-size: 24px;
         text-decoration: none;
     }

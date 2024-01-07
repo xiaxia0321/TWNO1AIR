@@ -27,6 +27,11 @@ const router = createRouter({
       path:"/Browse",
       name:"Browse",
       component:() => import('../views/Browse.vue')
+    },
+    {
+      path:"/A321neo",
+      name:"A321neo",
+      component:() => import('../views/A321neo.vue')
     }
     // {
     //   path:"/dynamicQuestionnaireBack",

@@ -32,7 +32,7 @@ export default {
 </div>
   <!-- ======================================================================= -->
 
-  <h1>樂狗航空帶你輕鬆旅行</h1>
+  <h1>旅程由樂狗航空帶你輕鬆旅行</h1>
 <div class="row">
 
   <div class="card" style="width: 18rem;">
@@ -98,11 +98,17 @@ export default {
 </div>
 
   </div> <!-- ======================================================================= -->
-
+<div class="bottom">
+<div class="b1"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
+<div class="b2"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
+<div class="b3"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
+<div class="b4"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
+</div>
 
 </template>
 
 <style scoped lang="scss">
+
 .big{
   width: 100vw;
   height: 200vh;
@@ -131,9 +137,35 @@ export default {
     h5{
       color: white;
     }
-     
-    
+  }
+}
 
+.bottom{
+  width: 100vw;
+  height: 60vh;
+  background-color: #B6BBC4;
+  display: flex;
+  padding: 30px;
+  // justify-content: space-around;
+  // justify-content: center;
+p{
+  margin: 30px 0;
+}
+  .b1{
+    width: 25%;
+    height: 100%;
+  }
+  .b2{
+    width: 25%;
+    height: 100%;
+  }
+  .b3{
+    width: 25%;
+    height: 100%;
+  }
+  .b4{
+    width: 25%;
+    height: 100%;
   }
 }
 </style>
