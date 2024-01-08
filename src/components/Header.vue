@@ -18,6 +18,9 @@ export default {
         <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
         <RouterLink to="Browse" class="routerItem">按下搜尋後ㄉ瀏覽</RouterLink>
+        <RouterLink to="AircraftType" class="routerItem">機型介紹</RouterLink>
+        <RouterLink to="A330" class="routerItem">A330機型介紹</RouterLink>
+        <RouterLink to="A350" class="routerItem">A350機型介紹</RouterLink>
         <RouterLink to="A321neo" class="routerItem">A321neo機型座位</RouterLink>
     </div>
 </template>

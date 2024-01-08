@@ -334,18 +334,8 @@ export default {
       <label aria-label="33-K"><input type="checkbox" value="33-K"></label>
       <label aria-label="unavailable"><input type="checkbox"></label>
     </li>
-   
   </ol>
 </fieldset>
-
-<br>
-
-<ul class="ui-color-key">
-  <li style="--ui-color-key:var(--ColorSuccess)">Selected</li>
-  <li style="--ui-color-key:var(--ColorError)">Sold</li>
-  <li style="--ui-color-key:var(--GrayCanvas)">Available</li>
-  <li style="--ui-color-key:var(--ButtonBorder)">Unavailable</li>
-</ul>
 </template>
 
 <style scoped lang="scss">
@@ -372,27 +362,28 @@ legend {
 }
 
 .ui-cinema {
-  all: unset;
-  direction: ltr;
+  all: unset; //清除 .ui-cinema 元素上之前設定的所有樣式，使其返回到瀏覽器的默認樣式。
+  direction: ltr; //確保文字的排列方向是從左到右。
 
   input {
     $_bdc: color-mix(in srgb, var(--ui-cinema-seat-bg, $GrayCanvas), #000 30%);
-    aspect-ratio: 1 / .9;
+    // aspect-ratio: 1 / .9; //設定了 <input> 元素的寬高比例。
     background-color: var(--ui-cinema-seat-bg, $GrayCanvas);
     border-color: $_bdc;
-    border-radius: .5em .5em .15em .15em;
-    border-style: solid;
+    border-radius: .5em .5em .15em .15em; //座位圓角修飾
+    border-style: solid; //設定 <input> 元素的邊框樣式為實線，並調整邊框寬度。
     border-width: 0 0 .25em 0;
 
     &:checked {
-      --ui-cinema-seat-bg: $ColorSuccess;
-      --AccentColor: var(--ui-cinema-seat-bg);
+      --ui-cinema-seat-bg: $ColorSuccess; //如果 <input> 元素被選中，則改變 --ui-cinema-seat-bg 變數的值為 $ColorSuccess
+      --AccentColor: var(--ui-cinema-seat-bg); //，同時改變 --AccentColor 變數的值為 --ui-cinema-seat-bg 的值，並保留原始邊框顏色
       border-color: $_bdc;
     }
-    &:disabled {
-      --ui-cinema-seat-bg: $ColorError;
+    &:disabled { //禁用座位
+      --ui-cinema-seat-bg: $ColorError; //<input> 元素被禁用，則改變 --ui-cinema-seat-bg 變數的值為 $ColorError。
+      background-color: $ColorError;
     }
-    &:is([value=""], :not([value])) {
+    &:is([value=""], :not([value])) { //如果 <input> 元素的值為空或未定義，則設定透明度為 0，並禁用指標事件。
       opacity: 0;
       pointer-events: none;
     }
@@ -414,54 +405,24 @@ legend {
 
   li {
     align-items: center;
-    counter-increment: row;
-    display: grid;
-    gap: 1ch;
-    grid-auto-flow: column;
+    // counter-increment: row; //使用計數器，每次遇到 <li> 元素時，增加計數器的值。這在下面的 &::before 和 &::after 中用來顯示行號。
+    display: grid; //將<li>元素設置為網格布局
+    gap: 0.5ch; //座位間隔
+    grid-auto-flow: column;   //指定網格的自動流動方向為列（從左到右）
 
     &::before,
     &::after {
-      content: counter(row);
-      font-size: small;
-      padding-inline: 1ch;
+      // content: counter(row); //計數器
+      // font-size: small;
+      // padding-inline: 1ch;
     }
   }
 
   ol {
-    counter-reset: row;
-    display: grid;
+    // counter-reset: row; //重置計數器，確保每個有序列表開始時計數器的值為 0。
+    display: grid; //將有序列表設置為一個網格容器，以便使用網格佈局。
     gap: 1ch;
     padding: 0;
-  }
-}
-
-.ui-color-key {
-  all: unset;
-  background-color: $GrayCanvas;
-  border-radius: var(--ui-color-key-bdrs, 5ch);
-  color: CanvasText;
-  display: grid;
-  gap: 2ch;
-  grid-auto-flow: column;
-  padding: 1ch 2ch;
-  width: fit-content;
-
-  li {
-    display: grid;
-    font-size: smaller;
-    gap: 1ch;
-    grid-auto-flow: column;
-    align-items: center;
-
-    &::before {
-      aspect-ratio: 1 / 1;
-      background-color: var(--ui-color-key, $ButtonBorder);
-      border: 1px solid color-mix(in srgb, var(--ui-color-key), #000 15%);
-      border-radius: 50%;
-      content: "";
-      display: block;
-      width: 1em;
-    }
-  }
+ }
 }
 </style>
