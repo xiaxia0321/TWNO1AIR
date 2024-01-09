@@ -461,27 +461,8 @@ export default {
         </div>
         <div class="in" v-if="city">
             <div class="red">
-                <h2><b>您的紅利</b></h2><br>
+                <h2>您的紅利</h2><br>
                 <div class="num">{{ bonus }}</div>
-            </div>
-            <div class="ben">
-                <span>您可以選擇的優惠</span><br>
-                <button type="button" class="bonus">
-                    <img src="./圖片/cooking_cloche_domecover_close.png" class="icon">
-                    免費餐點
-                </button>
-                <button type="button" class="bonus">
-                    <img src="./圖片/car_taxi_wagon.png" class="icon">
-                    機場接送
-                </button>
-                <button type="button" class="bonus">
-                    <img src="./圖片/bg_lounge_night.png" class="icon">
-                    VIP候機室
-                </button>
-                <button type="button" class="bonus">
-                    <img src="./圖片/yuubin_takuhaiin_box.png" class="icon">
-                    額外行李
-                </button>
             </div>
         </div>
         <div class="in" v-if="shirase">
@@ -637,69 +618,8 @@ tr {
     margin-left: 400px;
     padding: 50px;
     color: brown;
-    text-shadow: 0.1em 0.1em 0.2em yellow
 }
-
-.num {
+.num{
     font-size: 100px;
-}
-
-.ben {
-    margin-top: 100px;
-    width: 1100px;
-    height: 100px;
-    border-radius: 10px;
-    background-color: rgb(240, 236, 229);
-}
-
-.bonus {
-    width: 200px;
-    height: 50px;
-    margin: 10px;
-    border: 0px;
-    background-color: rgb(240, 236, 229);
-}
-
-.icon {
-    height: 50px;
-}
-
-.list {
-    background-color: rgb(240, 236, 229);
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    display: inline-block;
-}
-
-li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-    justify-content: space-between;
-}
-
-input[type="checkbox"] {
-    margin-right: 5px;
-    /* 可根据需要调整复选框与文本之间的间距 */
-}
-
-.forget {
-    height: 50px;
-}
-
-.result {
-    display: flex;
-    text-align: center;
-    width: 1100px;
-
-    .checked {
-        border-right: 5px;
-    }
 }
 </style>
