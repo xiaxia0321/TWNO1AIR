@@ -127,8 +127,7 @@ export default {
       <!-- ======================= -->
     </div>
     <div class="air" style="width: 100%; ">
-      <p style="font-size: 35px; margin: 0;">目前最熱門的航班</p>
-      <p style="margin-top: 5px;">真的ㄇ</p>
+      <p style="font-size: 3.1rem; margin: 2% 0 1% 0; font-weight: 900;">探索景點</p>
       <div class="airIn">
         <div class="block">
           <div class="img"
@@ -203,11 +202,48 @@ export default {
             <span>燒</span>
           </div>
         </div>
-
       </div>
     </div>
-    <div class="foot" style="width: 100%; height: 35vh; background-color: rgba(5, 32, 60);">
+    <div class="foot">
+      <div class="footBlock">
+        <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+            style="padding-left: 10px;">瞭解樂狗</span></h2>
+        <ul>
+          <li><a href="">認識樂狗</a></li>
+          <li><a href="">團隊成員</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入{{ 斗內我 }}團隊</a></li>
+        </ul>
+      </div>
+      <div class="footBlock">
+        <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+            style="padding-left: 10px;">接觸樂狗</span></h2>
+        <ul>
+          <li><a href="">認識樂狗</a></li>
+          <li><a href="">團隊成員</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入{{ 斗內我 }}團隊</a></li>
+        </ul>
+      </div>
+      <div class="footBlock">
+        <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+            style="padding-left: 10px;">加入樂狗</span></h2>
+        <ul>
+          <li><a href="">認識樂狗</a></li>
+          <li><a href="">團隊成員</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入樂狗團隊</a></li>
+          <li><a href="">加入{{ '-樂狗-' }}團隊</a></li>
+        </ul>
+      </div>
 
+      <div class="under">
+        <a href=""><i class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
+        <a href=""><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
+        <a href=""><i class="fa-brands fa-square-youtube ii" style="color: #161a30;"></i></a>
+      </div>
     </div>
   </div>
 </template>
@@ -418,27 +454,29 @@ export default {
   }
 
   .air {
-    border: 1px solid black;
+    background-color: #0F2D3C;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: white;
 
     .airIn {
-      width: 75%;
-      margin-top: 1%;
-      border: 1px solid red;
+      width: 80%;
+      margin: 2% 0 3% 0;
       display: flex;
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
 
+
       .block {
-        width: 270px;
-        height: 13vh;
-        border: 1px solid purple;
+        width: 280px;
+        height: 14vh;
+        // border: 1px solid rgb(231, 0, 231);
+        box-shadow: 1.2px 2px 3px 1px #000000;
         display: flex;
-        margin-bottom: 20px;
+        margin: 0 0% 5% 0;
 
 
         .img {
@@ -449,20 +487,82 @@ export default {
         }
 
         .text {
-          width: 65%;
+          width: 55%;
           height: 100%;
           text-align: left;
           margin-left: 10px;
 
           p {
-            font-size: 30px;
-            margin: 5px 0 10px 0;
+            font-size: 1.5rem;
+            margin: 12px 0 5px 0;
+            font-weight: 600;
+          }
+
+          span {
+            font-size: 0.9rem;
           }
         }
 
       }
     }
 
-    .foot {}
+  }
+
+  .foot {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-color: #5e5045;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px 50px 120px 50px;
+
+    .footBlock {
+      width: 26%;
+      height: 100%;
+      // border: 1px solid black;
+      color: white;
+
+      ul {
+        list-style-type: none;
+        li {
+          transition: .5s;
+          text-align: left;
+          padding-left: 20px;
+          margin: 20px 0 20px 0;
+          font-size: 1.3rem;
+
+          &:hover {
+            // width: 70%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-left: 25px solid rgb(22, 26, 48);
+          }
+          
+          a {
+            text-decoration: none;
+            color: white;
+          }
+        }
+      }
+    }
+
+    .under {
+      position: absolute;
+      bottom: 0;
+      background-color: #4a3f37;
+      width: 100%;
+      height: 20%;
+      display: flex;
+      align-items: center;
+
+      .ii{
+        margin-left: 15px;
+        font-size: 50px;
+        width: 50px;
+        height: 50px;
+      }
+    }
   }
 }</style>
