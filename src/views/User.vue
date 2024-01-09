@@ -433,7 +433,9 @@ export default {
             </table>
         </div>
         <div class="in" v-if="city">
-            <div class="red"></div>
+            <div class="red">
+                <p>您的紅利</p>
+            </div>
         </div>
         <div class="in" v-if="shirase">
             <p>旅遊通知</p>
