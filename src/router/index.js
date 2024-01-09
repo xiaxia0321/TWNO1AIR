@@ -52,6 +52,11 @@ const router = createRouter({
       path: "/A321neo",
       name: "A321neo",
       component: () => import('../views/A321neo.vue')
+    },
+    {
+      path:"/LocationHakodate",
+      name:"LocationHakodate",
+      component:() => import('../views/LocationHakodate.vue')
     }
     // {
     //   path:"/dynamicQuestionnaireBack",
