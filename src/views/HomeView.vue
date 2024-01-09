@@ -231,11 +231,11 @@ export default {
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
             style="padding-left: 10px;">加入樂狗</span></h2>
         <ul>
-          <li><a href="">認識樂狗</a></li>
-          <li><a href="">團隊成員</a></li>
-          <li><a href="">加入團隊</a></li>
-          <li><a href="">加入樂狗團隊</a></li>
-          <li><a href="">加入{{ '-樂狗-' }}團隊</a></li>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入{{ '樂狗' }}團隊</a></li>
         </ul>
       </div>
 
@@ -370,20 +370,23 @@ export default {
         padding-inline: 5px;
         border-width: 2px;
         border-style: outset;
+        padding: 5px 0.1rem 5px 0.1rem;
 
         .lab {
-          padding: 0.2rem;
-
-
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
           .placeIn {
             span {
-              line-height: 1.25rem;
+              line-height: 1.2rem;
               font-weight: 700;
             }
 
             .input {
               width: 90%;
-              height: 1.25rem;
+              height: 1.3rem;
               padding: 0 1rem 0 0;
               font-size: 1.3rem;
               border: none;
@@ -477,6 +480,12 @@ export default {
         box-shadow: 1.2px 2px 3px 1px #000000;
         display: flex;
         margin: 0 0% 5% 0;
+        &:hover {
+            // width: 70%;
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 2px 1px 2px black;
+            transition: .5s;
+          }
 
 
         .img {
@@ -528,16 +537,27 @@ export default {
       ul {
         list-style-type: none;
         li {
-          transition: .5s;
           text-align: left;
+          height: 3rem;
           padding-left: 20px;
-          margin: 20px 0 20px 0;
+          display: flex;
+          justify-content: left;
+          margin: 0 0 5px;
+          align-items: center;
           font-size: 1.3rem;
-
+          transition: .5s;
+          
           &:hover {
             // width: 70%;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-left: 25px solid rgb(22, 26, 48);
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left: 20px solid rgba(22, 26, 48, 0.533);
+            box-shadow: 2px 1px 2px black;
+            transition: .5s;
+          }
+          &:active{
+            background-color: #372f2a66;
+            border-left: 12px solid rgb(22, 26, 48);
+            transition: .4s;
           }
           
           a {
