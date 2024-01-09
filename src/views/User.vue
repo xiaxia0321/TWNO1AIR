@@ -434,7 +434,7 @@ export default {
         </div>
         <div class="in" v-if="city">
             <div class="red">
-                <p>您的紅利</p>
+                <p>您的紅利：</p>
             </div>
         </div>
         <div class="in" v-if="shirase">
