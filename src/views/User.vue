@@ -434,7 +434,8 @@ export default {
         </div>
         <div class="in" v-if="city">
             <div class="red">
-                <p>您的紅利：</p>
+                <h2>您的紅利</h2><br>
+                <div class="num">{{ bonus }}</div>
             </div>
         </div>
         <div class="in" v-if="shirase">
@@ -572,6 +573,10 @@ tr{
     background-color:coral;
     border-radius: 50%;
     margin-left: 400px;
-
+    padding: 50px;
+    color: brown;
+}
+.num{
+    font-size: 100px;
 }
 </style>
