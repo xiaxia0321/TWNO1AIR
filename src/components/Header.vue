@@ -13,10 +13,15 @@ export default {
 
 <template>
     <div class="headerShow">
-        <RouterLink to="HomeView" class="routerItem">Home</RouterLink>
+        <RouterLink to="HomeView" class="routerItem">主頁</RouterLink>
         <RouterLink to="/" class="routerItem">Login</RouterLink>
         <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
+        <RouterLink to="Browse" class="routerItem">按下搜尋後ㄉ瀏覽</RouterLink>
+        <RouterLink to="AircraftType" class="routerItem">機型介紹</RouterLink>
+        <RouterLink to="A330" class="routerItem">A330機型介紹</RouterLink>
+        <RouterLink to="A350" class="routerItem">A350機型介紹</RouterLink>
+        <RouterLink to="A321neo" class="routerItem">A321neo機型座位</RouterLink>
     </div>
 </template>
 
@@ -25,13 +30,11 @@ export default {
 .headerShow {
     width: 100%;
     height: 100%;
-    background-color: pink;
+    background-color: #161A30;
     display: flex;
     justify-content: center;
     align-content: center;
-    letter-spacing: 2px;
-
-    .routerItem {
+    .routerItem { //文字大小
         font-size: 24px;
         text-decoration: none;
     }

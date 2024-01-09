@@ -68,7 +68,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 .loginArea {
     width: 100vw;
     height: 100vh;

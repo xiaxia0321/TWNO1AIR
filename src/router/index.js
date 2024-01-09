@@ -14,19 +14,44 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path:"/Submit",
-      name:"Submit",
-      component:() => import('../views/Submit.vue')
+      path: "/Submit",
+      name: "Submit",
+      component: () => import('../views/Submit.vue')
     },
     {
-      path:"/HomeView",
-      name:"HomeView",
-      component:() => import('../views/HomeView.vue')
+      path: "/HomeView",
+      name: "HomeView",
+      component: () => import('../views/HomeView.vue')
     },
     {
-      path:"/Search",
-      name:"Search",
-      component:() => import('../views/Search.vue')
+      path: "/Search",
+      name: "Search",
+      component: () => import('../views/Search.vue')
+    },
+    {
+      path: "/Browse",
+      name: "Browse",
+      component: () => import('../views/Browse.vue')
+    },
+    {
+      path: "/AircraftType",
+      name: "AircraftType",
+      component: () => import('../views/AircraftType.vue')
+    },
+    {
+      path: "/A330",
+      name: "A330",
+      component: () => import('../views/A330.vue')
+    },
+    {
+      path: "/A350",
+      name: "A350",
+      component: () => import('../views/A350.vue')
+    },
+    {
+      path: "/A321neo",
+      name: "A321neo",
+      component: () => import('../views/A321neo.vue')
     }
     // {
     //   path:"/dynamicQuestionnaireBack",
