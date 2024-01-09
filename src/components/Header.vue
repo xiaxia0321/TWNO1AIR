@@ -47,7 +47,7 @@ export default {
                             <div class="seat">
                                 <br>
                                 <h5>預選座位</h5>
-                                <img src="../../public/sabrina/機艙座位.jpeg" alt="">
+                                <img src="/sabrina/機艙座位.jpeg" alt="">
                             </div>
                         </div>
                     </li>
@@ -79,23 +79,12 @@ export default {
         <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
         <RouterLink to="LocationHakodate" class="routerItem">LocationHakodate</RouterLink> -->
->>>>>>> origin/甜菜香如
     </div>
 </template>
 
 
 <style scoped lang="scss">
 .headerShow {
-<<<<<<< HEAD
-    width: 100%;
-    height: 100%;
-    background-color: #161A30;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    .routerItem { //文字大小
-        font-size: 24px;
-=======
     width: 100vw;
     height: 30vh;
     background-color: rgb(49, 48, 77);
@@ -198,7 +187,6 @@ export default {
         color: #333;
         display: block;
         padding: 0 30px;
->>>>>>> origin/甜菜香如
         text-decoration: none;
         line-height: 40px;
     }

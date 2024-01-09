@@ -410,7 +410,9 @@ legend {
     gap: 0.5ch; //座位間隔
     grid-auto-flow: column;   //指定網格的自動流動方向為列（從左到右）
 
-    &::before,
+    &::before{
+      
+    }
     &::after {
       // content: counter(row); //計數器
       // font-size: small;
