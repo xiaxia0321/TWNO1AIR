@@ -17,6 +17,7 @@ export default {
         <RouterLink to="/" class="routerItem">Login</RouterLink>
         <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
         <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
+        <RouterLink to="User" class="routerItem">User</RouterLink>
     </div>
 </template>
 
