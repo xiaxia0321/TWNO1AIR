@@ -62,9 +62,11 @@ export default {
                     <li>
                         <div class="prepare">
                             <div class="checkIn">
+                                <br>
                                 <h5>網路報到</h5>
-                                <p>線上報到</p>
-                                <p>報到方式說明</p>
+                                <button>線上報到</button>
+                                <br>
+                                <button>報到方式說明</button>
                             </div>
                         </div>
                     </li>
@@ -72,6 +74,19 @@ export default {
             </li>
             <li>
                 <a href="#" style="color: white;font-size: 16pt;">樂狗會員</a>
+                <ul>
+                    <li>
+                        <div class="happyDogMember">
+                            <div class="member">
+                                <br>
+                                <h5>樂狗會員</h5>
+                                <button>會員登入</button>
+                                <br>
+                                <button>加入會員</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </li>
         </ul>
         <!-- <RouterLink to="HomeView" class="routerItem">Home</RouterLink>
@@ -114,14 +129,17 @@ export default {
             left: -120px;
             border-radius: 20px;
             text-align: center;
-            h5{
+
+            h5 {
                 color: rgb(118, 69, 59);
             }
-            button{
+
+            button {
                 box-shadow: none;
                 border: 0px;
                 font-size: 12pt;
             }
+
             .booking {
                 width: 15vw;
                 height: 40vh;
@@ -130,31 +148,65 @@ export default {
             .hot {
                 width: 15vw;
                 height: 40vh;
-                border-left:2px solid rgb(118, 69, 59);
-                border-right:2px solid rgb(118, 69, 59);
+                border-left: 2px solid rgb(118, 69, 59);
+                border-right: 2px solid rgb(118, 69, 59);
             }
+
             .seat {
                 width: 30vw;
                 height: 40vh;
-                img{
+
+                img {
                     width: 300px;
                     height: 200px;
                     border-radius: 10px;
                 }
             }
         }
-        .prepare{
+
+        .prepare {
             width: 20vw;
             height: 30vh;
-            display: flex;
             background-color: rgb(240, 240, 240);
             position: absolute;
             left: -70px;
             border-radius: 20px;
             text-align: center;
-            .checkIn{
+
+            h5 {
+                color: rgb(118, 69, 59);
+            }
+
+            .checkIn {
                 width: 20vw;
                 height: 30vh;
+            }
+
+            button {
+                box-shadow: none;
+                border: 0px;
+                font-size: 12pt;
+            }
+        }
+        .happyDogMember{
+            width: 20vw;
+            height: 30vh;
+            background-color: rgb(240, 240, 240);
+            position: absolute;
+            left: -70px;
+            border-radius: 20px;
+            text-align: center;
+            h5 {
+                color: rgb(118, 69, 59);
+            }
+            .member{
+                width: 20vw;
+                height: 30vh;
+            }
+            button {
+                box-shadow: none;
+                border: 0px;
+                font-size: 12pt;
             }
         }
     }
