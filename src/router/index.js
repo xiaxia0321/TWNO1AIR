@@ -57,7 +57,12 @@ const router = createRouter({
       path:"/LocationHakodate",
       name:"LocationHakodate",
       component:() => import('../views/LocationHakodate.vue')
-    }
+    },
+    {
+      path:"/User",
+      name:"User",
+      component:() => import('../views/User.vue')
+    },
     // {
     //   path:"/dynamicQuestionnaireBack",
     //   name:"dynamicQuestionnaireBack",
