@@ -240,6 +240,163 @@ export default {
 
   .header {
     background-color: rgba(5, 32, 60);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .top {
+      width: 90%;
+      height: 15%;
+      // background-color: rgb(196, 46, 136);
+      margin-top: 10px;
+      margin-bottom: 40px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      color: rgb(240, 236, 229);
+      font-size: 3vw;
+
+      .logo {
+        background-image: url(/01.png);
+        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 5%;
+        // background-color: black;
+      }
+
+      .user {
+        width: 18%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        //   button {
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     border-radius: 0.5rem;
+        //     padding: 0;
+        //     border: none;
+        //     background: none;
+
+        // }
+      }
+    }
+
+    .title {
+      width: 80%;
+      height: 20%;
+      margin-bottom: 10px;
+      text-align: left;
+
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+
+      div {
+        margin-left: 6px;
+      }
+
+      .place {
+        width: 18%;
+        height: 90%;
+        background-color: whitesmoke;
+        display: inline-block;
+        text-align: left;
+        align-items: flex-start;
+        cursor: default;
+        box-sizing: border-box;
+        padding-block: 1px;
+        padding-inline: 5px;
+        border-width: 2px;
+        border-style: outset;
+
+        .lab {
+          padding: 0.2rem;
+
+
+          .placeIn {
+            span {
+              line-height: 1.25rem;
+              font-weight: 700;
+            }
+
+            .input {
+              width: 90%;
+              height: 1.25rem;
+              padding: 0 1rem 0 0;
+              font-size: 1.3rem;
+              border: none;
+              outline: none !important;
+              outline-offset: unset !important;
+              background-color: initial;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+          }
+
+        }
+      }
+
+      .program {
+        width: 18%;
+        height: 90%;
+
+        button {
+          width: 100%;
+          height: 100%;
+          background-color: whitesmoke;
+          padding: 0;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          padding: 0 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: start;
+
+          span {}
+
+          .span1 {
+            color: #626971;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            line-height: 1.25rem;
+            font-weight: 700;
+          }
+
+          .span2 {
+            font-size: 1.3rem;
+            color: gray;
+          }
+        }
+      }
+
+      .gogo {
+        width: 7%;
+        height: 90%;
+        background-color: #0062e3;
+        margin-left: 20px;
+        border-radius: 20%;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+
   }
 
   .pic {
