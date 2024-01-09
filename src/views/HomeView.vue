@@ -4,6 +4,12 @@ export default {
     return {
     }
   },
+  methods: {
+    login() {
+      this.$router.push('/')
+    },
+
+  },
 
 }
 </script>
@@ -15,9 +21,9 @@ export default {
         <div class="logo"></div>
         <span>HappyDog</span>
         <div class="user">
-            <i class="fa-solid fa-earth-americas ii"></i>
-            <i class="fa-solid fa-heart ii"></i>
-          <img src="/marine.jpeg" class="ii" alt="" style="width: 20%;height: 100%;">
+          <i class="fa-solid fa-earth-americas ii"></i>
+          <i class="fa-solid fa-heart ii"></i>
+          <img src="/marine.jpeg" class="ii" alt="" style="width: 20%;height: 100%;" @click="login">
           <i class="fa-solid fa-bars ii"></i>
         </div>
       </div>
@@ -151,7 +157,9 @@ export default {
 
       </div>
     </div>
-    <div class="foot" style="width: 100%; height: 35vh; background-color: rgba(5, 32, 60);"></div>
+    <div class="foot" style="width: 100%; height: 35vh; background-color: rgba(5, 32, 60);">
+
+    </div>
   </div>
 </template>
 
@@ -201,7 +209,7 @@ export default {
         right: 0;
         display: flex;
         align-items: center;
-        justify-content:space-between;
+        justify-content: space-between;
         flex-direction: row;
         //   button {
         //     display: flex;
@@ -211,7 +219,7 @@ export default {
         //     padding: 0;
         //     border: none;
         //     background: none;
-            
+
         // }
       }
     }
@@ -377,7 +385,9 @@ export default {
       }
     }
 
-    .foot {}
+    .foot {
+      
+    }
   }
 }
 </style>

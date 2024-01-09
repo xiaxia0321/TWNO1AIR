@@ -8,6 +8,9 @@ export default {
         }
     },
     methods: {
+        login(){
+            this.$router.push('/')
+        },
         toLogin() {
             this.$router.push('/Submit')
         },
@@ -59,6 +62,7 @@ export default {
                 <input type="text" placeholder="請再次輸入密碼" id="inputRepeatPassword">
                 <br><br><br><br><br>
                 <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
+                <button class="buttonSubmit" @click="login()" style="margin-left: 10rem;">返回</button>
             </div>
         </div>
     </div>
@@ -89,6 +93,13 @@ export default {
 
             .buttonForgotPassword {
                 margin-right: 20px;
+            }
+            .buttonSubmit{
+                background-color: none;
+                border-radius: 15px;
+                width: 5rem;
+                height: 2rem;
+                font-size: 1.3rem;
             }
         }
     }
