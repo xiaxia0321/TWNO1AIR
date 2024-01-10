@@ -1,14 +1,21 @@
 <script>
+import { mapState, mapActions } from 'pinia'
+import date from '../stores/date'
 export default {
   data() {
     return {
+
     }
   },
   methods: {
+    ...mapActions(date,['setDate']),
     login() {
       this.$router.push('/')
     },
 
+  },
+  computed: {
+    ...mapState(date,["datew"])
   },
 
 }
@@ -550,7 +557,7 @@ export default {
           &:hover {
             // width: 70%;
             background-color: rgba(255, 255, 255, 0.15);
-            border-left: 20px solid rgba(22, 26, 48, 0.533);
+            border-left: 10px solid rgba(22, 26, 48, 0.533);
             box-shadow: 2px 1px 2px black;
             transition: .5s;
           }
