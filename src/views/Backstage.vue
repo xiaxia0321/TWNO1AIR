@@ -23,9 +23,10 @@ export default {
       </div>
       <div class="menu">
         <ul>
-          <li><RouterLink to="/RouterFam/BackMembership" class="routerItem">會員管理</RouterLink></li>
-          <li><RouterLink to="/RouterFam/BackPlane" class="routerItem">航班管理</RouterLink></li>
-          <li><RouterLink to="/RouterFam/BackOrder" class="routerItem">查看訂單</RouterLink></li>
+          <li><RouterLink to="/Backstage/BackHome" class="routerItem">首頁</RouterLink></li>
+          <li><RouterLink to="/Backstage/BackMembership" class="routerItem">會員管理</RouterLink></li>
+          <li><RouterLink to="/Backstage/BackPlane" class="routerItem">航班管理</RouterLink></li>
+          <li><RouterLink to="/Backstage/BackOrder" class="routerItem">查看訂單</RouterLink></li>
         </ul>
       </div>
     </div>
@@ -38,6 +39,7 @@ export default {
 
 <style lang="scss">
 .body {
+  position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
@@ -45,6 +47,7 @@ export default {
   justify-content: center;
   box-sizing: border-box;
   flex-direction: row;
+  z-index: 999;
 
   .left {
     width: 18%;
@@ -76,9 +79,14 @@ export default {
       ul{
         list-style-type: none;
         text-align: center;
+        padding: 0;
         li{
+          transition: 0.5s;
           font-size: 1.4rem;
           margin-bottom: 1rem;
+          &:hover{
+            background-color: rgba(255, 255, 255, 0.277);
+          }
           a{
             text-decoration: none;
             color: white;

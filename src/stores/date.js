@@ -24,9 +24,10 @@ export default defineStore("counter", {
                 day = "0" + ddd.getDate();
             }
             
-            this.datew = ddd.getFullTear()+"-"+ month+"-"+day;
-            this.datew = datew.toString();
-            $("#bt").val(datew);
+            this.datew = ddd.getFullYear()+"-"+ month+"-"+day;
+            this.vva = this.datew.toString();
+            $("#bt").val(this.vva);
+            
         }
     }
 }

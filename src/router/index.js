@@ -114,10 +114,14 @@ const router = createRouter({
       component: () => import('../views/Backstage.vue'),
       children:[
         {
-          path:'BackMembership',
-          component:()=>import('../components/BackMembership.vue'),
+          path:'BackHome',
+          component:()=>import('../components/BackHome.vue'),
           //alias預設成首頁
           alias:"",
+        },
+        {
+          path:'BackMembership',
+          component:()=>import('../components/BackMembership.vue'),
         },
         {
           path:'BackPlane',
