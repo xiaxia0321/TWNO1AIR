@@ -10,8 +10,12 @@ export default {
   methods: {
     ...mapActions(date,['setDate']),
     login() {
-      this.$router.push('/')
-    },
+            if (this.account == "A01" && this.pwd == "aaa" ) {
+                this.$router.push('/Backstage')
+            }else{
+              this.$router.push('/')
+            }
+        }
 
   },
   computed: {
@@ -220,7 +224,7 @@ export default {
           <li><a href="">團隊成員</a></li>
           <li><a href="">加入團隊</a></li>
           <li><a href="">加入團隊</a></li>
-          <li><a href="">加入{{ 斗內我 }}團隊</a></li>
+          <li><a href="">加入團隊</a></li>
         </ul>
       </div>
       <div class="footBlock">
@@ -231,7 +235,7 @@ export default {
           <li><a href="">團隊成員</a></li>
           <li><a href="">加入團隊</a></li>
           <li><a href="">加入團隊</a></li>
-          <li><a href="">加入{{ 斗內我 }}團隊</a></li>
+          <li><a href="">加入團隊</a></li>
         </ul>
       </div>
       <div class="footBlock">

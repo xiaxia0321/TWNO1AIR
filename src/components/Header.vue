@@ -5,6 +5,8 @@ export default {
         return {
         }
     },
+    methods: {
+    },
     components: {
         RouterLink,
     },
@@ -100,7 +102,7 @@ export default {
 
 <style scoped lang="scss">
 .headerShow {
-    width: 100vw;
+    width: 99vw;
     height: 30vh;
     background-color: rgb(49, 48, 77);
     box-sizing: border-box;
@@ -281,7 +283,7 @@ export default {
 
     ul.drop-down-menu ul {
         /*隱藏次選單*/
-        left: 99999px;
+        left: 1;
         opacity: 0;
         -webkit-transition: opacity 0.3s;
         transition: opacity 0.3s;

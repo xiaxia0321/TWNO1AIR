@@ -9,9 +9,9 @@ const router = createRouter({
       component: () => import('../views/Login.vue')
     },
     {
-      path: '/AboutView',
-      name: 'AboutView',
-      component: () => import('../views/AboutView.vue')
+      path: '/Backstage',
+      name: 'Backstage',
+      component: () => import('../views/Backstage.vue')
     },
     {
       path: "/Submit",
@@ -63,6 +63,28 @@ const router = createRouter({
       name:"User",
       component:() => import('../views/User.vue')
     },
+    {
+      path: '/Backstage',
+      name: 'Backstage',
+      component: () => import('../views/Backstage.vue'),
+      children:[
+        {
+          path:'BackMembership',
+          component:()=>import('../components/BackMembership.vue'),
+          //alias預設成首頁
+          alias:"",
+        },
+        {
+          path:'BackPlane',
+          component:()=>import('../components/BackPlane.vue'),
+        },
+        {
+          path:'BackOrder',
+          component:()=>import('../components/BackOrder.vue'),
+          alias:"",
+        }
+      ]
+    },
     // {
     //   path:"/dynamicQuestionnaireBack",
     //   name:"dynamicQuestionnaireBack",
@@ -83,6 +105,12 @@ const router = createRouter({
     //   name:"dynamicQuestionnaireLogin",
     //   component:() => import('../views/dynamicQuestionnaireLogin.vue')
     // },
+    {
+      //要加在最後一個
+      path:"/:pathMatch(.*)*",
+      name:"NotFound",
+      component:()=>import('../views/NotFound.vue')
+    }
   ]
 })
 
