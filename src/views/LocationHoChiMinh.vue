@@ -10,13 +10,14 @@ export default {
     <div class="search">
         <div class="searchFor">
             <br>
-            <h1>搭乘樂狗航空從台北飛往函館 ，自 TWD19,488* 起！</h1>
+            <h1>搭乘樂狗航空從台北飛往胡志明市 ，自 TWD9,979* 起！</h1>
             <br><br>
             <select>
                 <option value="">單程</option>
                 <option value="">來回</option>
             </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i class="fa-solid fa-right-left"></i>
+            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
+                class="fa-solid fa-right-left"></i>
             <i class="fa-solid fa-location-dot"></i>
             <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
             <input type="date" placeholder="出發" class="goTime">　
@@ -26,25 +27,25 @@ export default {
     </div>
     <div class="content">
         <div class="ticket">
-            <span class="top">去程：臺北-函館</span>
+            <span class="top">去程：臺北-胡志明市</span>
             <div class="go">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
-                <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　TPE　　　　　　　　　　　　　　　　　　　HKD</h3>
+                <p>　　JX870　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時40分鐘</p>
+                <p>　　2024年3月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年3月2日</p>
+                <h3>　10:20　　　　　　　　　　　　　　　　　　13:00</h3>
+                <h3>　TPE　　　　　　　　　　　　　　　　　　　SGN</h3>
                 <div class="goBtn">
                     <button type="button">訂購</button>
                 </div>
             </div>
             <br>
-            <span class="bottom">回程：函館-臺北</span>
+            <span class="bottom">回程：胡志明市-臺北</span>
             <div class="back">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
-                <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　HKD　　　　　　　　　　　　　　　　　　　TPE</h3>
+                <p>　　JX871　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時25分鐘</p>
+                <p>　　2024年3月6日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年3月6日</p>
+                <h3>　16:25　　　　　　　　　　　　　　　　　　20:50</h3>
+                <h3>　SGN　　　　　　　　　　　　　　　　　　　TPE</h3>
                 <div class="backBtn">
                     <button type="button">訂購</button>
                 </div>
@@ -65,11 +66,9 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/函館.jpeg" alt="">
-            <br>
-            <h4>函館，令人心動不已的城市街景、自然風光與特色景點</h4>
-            <p>同時擁有人文薈萃的街道景觀與雄奇靈秀的自然風光，便是函館的最大特色。搭乘有軌電車遊覽函館45分鐘，觸目所及皆是最吸引您的魅力景點。在此，您可自由自在輕鬆漫遊，隨意參訪一處歷史古跡，或是享受溫泉樂趣，眺望壯闊美景…。從市區搭乘JR列車約30分鐘，抵達大沼國定公園，感受雄偉大自然的輕柔包圍。</p>
-            <p>不管春、夏、秋、冬，函館總是準備各種特色慶典活動等候您前往：春天櫻花盛開，櫻花樹下落英繽紛，充滿浪漫情懷；夏天是煙火大會及遊行活動，函館最大型的熱鬧祭典接力登場；時至秋日，楓葉轉紅，請細細品味；入冬後，皚皚白雪覆蓋大地，搭配聖誕節慶及燈光饗宴鮮豔奪目，美不勝收。請盡情享受函館隨四季更迭的不同風貌。</p>
+            <img src="../../public/sabrina/胡志明市.jpeg" alt="">
+            <h4>胡志明市，東方小巴黎</h4>
+            <p>東方小巴黎-胡志明市在十八世紀時在法國人經營殖民下，生活習慣深受影響，市容更是十足的法國風味。西貢是法國在越南最早的殖民地，處處可見法式基礎建築架構融入當地文化色彩，更因歷經戰事、革新運動等重大變化，今天的胡志明市除了接受外來文化薰陶之外 仍保有自我風格強烈的民族情懷。法國人在這裡用心經營，建造了無數美麗的法式藝術建築，也把法國式的生活習慣和情趣烙印在西貢的舉手投足之間，至今南越人仍然習慣稱它為西貢。</p>
         </div>
     </div>
     <div class="footer">
@@ -82,12 +81,10 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/函館.jpeg");
+    background-image: url("../../public/sabrina/胡志明市.jpeg");
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
-    // opacity: 0.8;
-
+    background-size: 2000px;
     .searchFor {
         width: 70vw;
         height: 30vh;
@@ -95,7 +92,8 @@ export default {
         opacity: 0.8;
         margin: 0 auto;
         margin-top: 30px;
-        h1{
+
+        h1 {
             color: white;
         }
 
@@ -129,12 +127,14 @@ export default {
 
 .content {
     width: 100vw;
-    height: 210vh;
+    height: 200vh;
+    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
+        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -155,7 +155,7 @@ export default {
             .goBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: 20%;
+                bottom: 18%;
 
                 button {
                     width: 100px;
@@ -181,10 +181,12 @@ export default {
             border-radius: 10px;
             margin-left: 220px;
             text-align: left;
+
             .backBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: -8%;
+                bottom: -15%;
+
                 button {
                     width: 100px;
                     height: 40px;
@@ -208,25 +210,29 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
+        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
-        img{
+
+        img {
             width: 800px;
             height: 500px;
         }
-        p{
+
+        p {
             color: white;
             text-align: left;
         }
-        h4{
+
+        h4 {
             color: white;
         }
-        }
+    }
 }
 
 .footer {
     width: 100vw;
     height: 30vh;
+    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
-}
-</style>
+}</style>

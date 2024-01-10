@@ -59,6 +59,51 @@ const router = createRouter({
       component:() => import('../views/LocationHakodate.vue')
     },
     {
+      path:"/LocationLA",
+      name:"LocationLA",
+      component:() => import('../views/LocationLA.vue')
+    },
+    {
+      path:"/LocationSFO",
+      name:"LocationSFO",
+      component:() => import('../views/LocationSFO.vue')
+    },
+    {
+      path:"/LocationTokyo",
+      name:"LocationTokyo",
+      component:() => import('../views/LocationTokyo.vue')
+    },
+    {
+      path:"/LocationKyoto",
+      name:"LocationKyoto",
+      component:() => import('../views/LocationKyoto.vue')
+    },
+    {
+      path:"/LocationOkinawa",
+      name:"LocationOkinawa",
+      component:() => import('../views/LocationOkinawa.vue')
+    },
+    {
+      path:"/LocationHoChiMinh",
+      name:"LocationHoChiMinh",
+      component:() => import('../views/LocationHoChiMinh.vue')
+    },
+    {
+      path:"/LocationBangkok",
+      name:"LocationBangkok",
+      component:() => import('../views/LocationBangkok.vue')
+    },
+    {
+      path:"/LocationSingapore",
+      name:"LocationSingapore",
+      component:() => import('../views/LocationSingapore.vue')
+    },
+    {
+      path:"/LocationMacao",
+      name:"LocationMacao",
+      component:() => import('../views/LocationMacao.vue')
+    },
+    {
       path:"/User",
       name:"User",
       component:() => import('../views/User.vue')
