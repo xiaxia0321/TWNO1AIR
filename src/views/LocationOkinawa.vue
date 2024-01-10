@@ -10,13 +10,14 @@ export default {
     <div class="search">
         <div class="searchFor">
             <br>
-            <h1>搭乘樂狗航空從台北飛往函館 ，自 TWD19,488* 起！</h1>
+            <h1>搭乘樂狗航空從台北飛往沖繩 ，自 TWD9,979* 起！</h1>
             <br><br>
             <select>
                 <option value="">單程</option>
                 <option value="">來回</option>
             </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i class="fa-solid fa-right-left"></i>
+            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
+                class="fa-solid fa-right-left"></i>
             <i class="fa-solid fa-location-dot"></i>
             <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
             <input type="date" placeholder="出發" class="goTime">　
@@ -26,25 +27,25 @@ export default {
     </div>
     <div class="content">
         <div class="ticket">
-            <span class="top">去程：臺北-函館</span>
+            <span class="top">去程：臺北-沖繩</span>
             <div class="go">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
-                <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　TPE　　　　　　　　　　　　　　　　　　　HKD</h3>
+                <p>　　JX870　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　1小時25分鐘</p>
+                <p>　　2024年1月25日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年1月25日</p>
+                <h3>　12:00　　　　　　　　　　　　　　　　　　14:25</h3>
+                <h3>　TPE　　　　　　　　　　　　　　　　　　　OKA</h3>
                 <div class="goBtn">
                     <button type="button">訂購</button>
                 </div>
             </div>
             <br>
-            <span class="bottom">回程：函館-臺北</span>
+            <span class="bottom">回程：沖繩-臺北</span>
             <div class="back">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
-                <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　HKD　　　　　　　　　　　　　　　　　　　TPE</h3>
+                <p>　　JX871　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　1小時45分鐘</p>
+                <p>　　2024年1月31日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年1月31日</p>
+                <h3>　15:35　　　　　　　　　　　　　　　　　　16:20</h3>
+                <h3>　OKA　　　　　　　　　　　　　　　　　　　TPE</h3>
                 <div class="backBtn">
                     <button type="button">訂購</button>
                 </div>
@@ -65,11 +66,9 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/函館.jpeg" alt="">
-            <br>
-            <h4>函館，令人心動不已的城市街景、自然風光與特色景點</h4>
-            <p>同時擁有人文薈萃的街道景觀與雄奇靈秀的自然風光，便是函館的最大特色。搭乘有軌電車遊覽函館45分鐘，觸目所及皆是最吸引您的魅力景點。在此，您可自由自在輕鬆漫遊，隨意參訪一處歷史古跡，或是享受溫泉樂趣，眺望壯闊美景…。從市區搭乘JR列車約30分鐘，抵達大沼國定公園，感受雄偉大自然的輕柔包圍。</p>
-            <p>不管春、夏、秋、冬，函館總是準備各種特色慶典活動等候您前往：春天櫻花盛開，櫻花樹下落英繽紛，充滿浪漫情懷；夏天是煙火大會及遊行活動，函館最大型的熱鬧祭典接力登場；時至秋日，楓葉轉紅，請細細品味；入冬後，皚皚白雪覆蓋大地，搭配聖誕節慶及燈光饗宴鮮豔奪目，美不勝收。請盡情享受函館隨四季更迭的不同風貌。</p>
+            <img src="../../public/sabrina/沖繩1.jpeg" alt="">
+            <h4>沖繩，原始的海灘、繽紛的珊瑚礁、亞熱帶叢林</h4>
+            <p>探索獨特的島國文化，沐浴在亞熱帶的溫暖陽光中，踏著綿延細膩的白沙，穿越美麗壯觀的紅樹林，尋覓琉球歷史遺留的足跡。沖繩縣位於日本最南端，是一個由島嶼組成的島鏈，歷史上曾是一個獨立的王國，擁有獨特的亞熱帶氣候，也是空手道的發源地。探索歷代琉球國王曾居住過的宮殿遺跡和修復城堡，參觀美麗的海灘和海岸線，欣賞令人歎為觀止的珊瑚叢和海底生物。來這裡賞鯨、賽龍舟、觀賞稀有動植物、體驗海島風情，讓您忘記時間。</p>
         </div>
     </div>
     <div class="footer">
@@ -82,12 +81,10 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/函館.jpeg");
+    background-image: url("../../public/sabrina/沖繩1.jpeg");
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
-    // opacity: 0.8;
-
+    background-size: 2000px;
     .searchFor {
         width: 70vw;
         height: 30vh;
@@ -95,7 +92,8 @@ export default {
         opacity: 0.8;
         margin: 0 auto;
         margin-top: 30px;
-        h1{
+
+        h1 {
             color: white;
         }
 
@@ -129,12 +127,14 @@ export default {
 
 .content {
     width: 100vw;
-    height: 210vh;
+    height: 200vh;
+    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
+        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -155,7 +155,7 @@ export default {
             .goBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: 20%;
+                bottom: 18%;
 
                 button {
                     width: 100px;
@@ -181,10 +181,12 @@ export default {
             border-radius: 10px;
             margin-left: 220px;
             text-align: left;
+
             .backBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: -8%;
+                bottom: -15%;
+
                 button {
                     width: 100px;
                     height: 40px;
@@ -208,25 +210,29 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
+        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
-        img{
+
+        img {
             width: 800px;
             height: 500px;
         }
-        p{
+
+        p {
             color: white;
             text-align: left;
         }
-        h4{
+
+        h4 {
             color: white;
         }
-        }
+    }
 }
 
 .footer {
     width: 100vw;
     height: 30vh;
+    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
-}
-</style>
+}</style>

@@ -10,13 +10,14 @@ export default {
     <div class="search">
         <div class="searchFor">
             <br>
-            <h1>搭乘樂狗航空從台北飛往函館 ，自 TWD19,488* 起！</h1>
+            <h1>搭乘樂狗航空從台北飛往洛杉磯 ，自 TWD29,962* 起！</h1>
             <br><br>
             <select>
                 <option value="">單程</option>
                 <option value="">來回</option>
             </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i class="fa-solid fa-right-left"></i>
+            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
+                class="fa-solid fa-right-left"></i>
             <i class="fa-solid fa-location-dot"></i>
             <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
             <input type="date" placeholder="出發" class="goTime">　
@@ -26,25 +27,25 @@ export default {
     </div>
     <div class="content">
         <div class="ticket">
-            <span class="top">去程：臺北-函館</span>
+            <span class="top">去程：臺北-洛杉磯</span>
             <div class="go">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
+                <p>　　JX002　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　11小時50分鐘</p>
                 <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　TPE　　　　　　　　　　　　　　　　　　　HKD</h3>
+                <h3>　23:40　　　　　　　　　　　　　　　　　　20:30</h3>
+                <h3>　TPE　　　　　　　　　　　　　　　　　　　LAX</h3>
                 <div class="goBtn">
                     <button type="button">訂購</button>
                 </div>
             </div>
             <br>
-            <span class="bottom">回程：函館-臺北</span>
+            <span class="bottom">回程：洛杉磯-臺北</span>
             <div class="back">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
+                <p>　　JX001　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　13小時30分鐘</p>
                 <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　HKD　　　　　　　　　　　　　　　　　　　TPE</h3>
+                <h3>　00:50　　　　　　　　　　　　　　　　　　05:40</h3>
+                <h3>　LAX　　　　　　　　　　　　　　　　　　　TPE</h3>
                 <div class="backBtn">
                     <button type="button">訂購</button>
                 </div>
@@ -65,11 +66,13 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/函館.jpeg" alt="">
-            <br>
-            <h4>函館，令人心動不已的城市街景、自然風光與特色景點</h4>
-            <p>同時擁有人文薈萃的街道景觀與雄奇靈秀的自然風光，便是函館的最大特色。搭乘有軌電車遊覽函館45分鐘，觸目所及皆是最吸引您的魅力景點。在此，您可自由自在輕鬆漫遊，隨意參訪一處歷史古跡，或是享受溫泉樂趣，眺望壯闊美景…。從市區搭乘JR列車約30分鐘，抵達大沼國定公園，感受雄偉大自然的輕柔包圍。</p>
-            <p>不管春、夏、秋、冬，函館總是準備各種特色慶典活動等候您前往：春天櫻花盛開，櫻花樹下落英繽紛，充滿浪漫情懷；夏天是煙火大會及遊行活動，函館最大型的熱鬧祭典接力登場；時至秋日，楓葉轉紅，請細細品味；入冬後，皚皚白雪覆蓋大地，搭配聖誕節慶及燈光饗宴鮮豔奪目，美不勝收。請盡情享受函館隨四季更迭的不同風貌。</p>
+            <img src="../../public/sabrina/洛杉磯.jpeg" alt="">
+            <h4>洛杉磯，好萊塢浮華世界、衝浪者天堂與文化地標</h4>
+            <p>從星光大道 (Walk of Fame) 與 TCL 中國戲院 (TCL Chinese Theatre) 等充滿故事的好萊塢傳奇景點開始，悠然自得地漫步在暱稱為大道街區 (The Strip) 的日落大道
+                (Sunset Boulevard) 上，欣賞鮮明的招牌，享受餐廳與知名夜店之樂。
+                音樂愛好者在 L.A. 市區一定如魚得水。洛城綜合大樓 (Live Complex) 是葛萊美獎博物館 (Grammy Museum)
+                的所在地，這裡的展品與紀念物讓人深刻瞭解洛杉磯在流行音樂中的突出地位。家族旅行當然不能錯過好萊塢環球影城 (Universal Studios Hollywood)
+                和主題公園的刺激設施，除了親臨「星際大戰之地」(Star Wars Land) 等電影景點，還能參加著名的幕後巡禮。</p>
         </div>
     </div>
     <div class="footer">
@@ -82,11 +85,9 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/函館.jpeg");
+    background-image: url("../../public/sabrina/洛杉磯.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    // opacity: 0.8;
 
     .searchFor {
         width: 70vw;
@@ -95,7 +96,8 @@ export default {
         opacity: 0.8;
         margin: 0 auto;
         margin-top: 30px;
-        h1{
+
+        h1 {
             color: white;
         }
 
@@ -129,12 +131,14 @@ export default {
 
 .content {
     width: 100vw;
-    height: 210vh;
+    height: 200vh;
+    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
+        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -155,7 +159,7 @@ export default {
             .goBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: 20%;
+                bottom: 18%;
 
                 button {
                     width: 100px;
@@ -181,10 +185,12 @@ export default {
             border-radius: 10px;
             margin-left: 220px;
             text-align: left;
+
             .backBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: -8%;
+                bottom: -15%;
+
                 button {
                     width: 100px;
                     height: 40px;
@@ -208,25 +214,29 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
+        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
-        img{
+
+        img {
             width: 800px;
             height: 500px;
         }
-        p{
+
+        p {
             color: white;
             text-align: left;
         }
-        h4{
+
+        h4 {
             color: white;
         }
-        }
+    }
 }
 
 .footer {
     width: 100vw;
     height: 30vh;
+    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
-}
-</style>
+}</style>

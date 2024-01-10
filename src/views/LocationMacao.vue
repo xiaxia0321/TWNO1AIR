@@ -10,13 +10,14 @@ export default {
     <div class="search">
         <div class="searchFor">
             <br>
-            <h1>搭乘樂狗航空從台北飛往函館 ，自 TWD19,488* 起！</h1>
+            <h1>搭乘樂狗航空從台北飛往澳門 ，自 TWD6,160* 起！</h1>
             <br><br>
             <select>
                 <option value="">單程</option>
                 <option value="">來回</option>
             </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i class="fa-solid fa-right-left"></i>
+            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
+                class="fa-solid fa-right-left"></i>
             <i class="fa-solid fa-location-dot"></i>
             <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
             <input type="date" placeholder="出發" class="goTime">　
@@ -26,25 +27,25 @@ export default {
     </div>
     <div class="content">
         <div class="ticket">
-            <span class="top">去程：臺北-函館</span>
+            <span class="top">去程：臺北-澳門</span>
             <div class="go">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
-                <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　TPE　　　　　　　　　　　　　　　　　　　HKD</h3>
+                <p>　　JX201　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　1小時55分鐘</p>
+                <p>　　2024年3月12日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年3月12日</p>
+                <h3>　09:00　　　　　　　　　　　　　　　　　　10:55</h3>
+                <h3>　TPE　　　　　　　　　　　　　　　　　　　MFM</h3>
                 <div class="goBtn">
                     <button type="button">訂購</button>
                 </div>
             </div>
             <br>
-            <span class="bottom">回程：函館-臺北</span>
+            <span class="bottom">回程：澳門-臺北</span>
             <div class="back">
                 <p>　　經濟艙</p>
-                <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
-                <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
-                <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
-                <h3>　HKD　　　　　　　　　　　　　　　　　　　TPE</h3>
+                <p>　　JX206　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　1小時40分鐘</p>
+                <p>　　2024年2月19日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月19日</p>
+                <h3>　20:40　　　　　　　　　　　　　　　　　　22:20</h3>
+                <h3>　MFM　　　　　　　　　　　　　　　　　　　TPE</h3>
                 <div class="backBtn">
                     <button type="button">訂購</button>
                 </div>
@@ -65,11 +66,9 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/函館.jpeg" alt="">
-            <br>
-            <h4>函館，令人心動不已的城市街景、自然風光與特色景點</h4>
-            <p>同時擁有人文薈萃的街道景觀與雄奇靈秀的自然風光，便是函館的最大特色。搭乘有軌電車遊覽函館45分鐘，觸目所及皆是最吸引您的魅力景點。在此，您可自由自在輕鬆漫遊，隨意參訪一處歷史古跡，或是享受溫泉樂趣，眺望壯闊美景…。從市區搭乘JR列車約30分鐘，抵達大沼國定公園，感受雄偉大自然的輕柔包圍。</p>
-            <p>不管春、夏、秋、冬，函館總是準備各種特色慶典活動等候您前往：春天櫻花盛開，櫻花樹下落英繽紛，充滿浪漫情懷；夏天是煙火大會及遊行活動，函館最大型的熱鬧祭典接力登場；時至秋日，楓葉轉紅，請細細品味；入冬後，皚皚白雪覆蓋大地，搭配聖誕節慶及燈光饗宴鮮豔奪目，美不勝收。請盡情享受函館隨四季更迭的不同風貌。</p>
+            <img src="../../public/sabrina/澳門.jpeg" alt="">
+            <h4>澳門，超乎想像之旅</h4>
+            <p>澳門充滿了無限的驚喜，市容金碧輝煌，隱含著無限的魅力。雖然這個城市小巧，卻融合了多種多樣的體驗，融合了中國傳統和葡萄牙文化的影響，吸引著遊客的目光。現代建築與歷史悠久的地標交相輝映，繁華的街道生機勃勃。 澳門是世界旅遊和休閒的中心，任何遊覽行程都可以輕鬆融合美食、體育賽事、藝術節、創意活動等等。澳門各方面都引人的魅力，是一個令人嚮往的旅遊勝地，喜愛探索的人們可以發現它真正的魅力所在。</p>
         </div>
     </div>
     <div class="footer">
@@ -82,12 +81,10 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/函館.jpeg");
+    background-image: url("../../public/sabrina/澳門.jpeg");
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
-    // opacity: 0.8;
-
+    background-size: 1600px;
     .searchFor {
         width: 70vw;
         height: 30vh;
@@ -95,7 +92,8 @@ export default {
         opacity: 0.8;
         margin: 0 auto;
         margin-top: 30px;
-        h1{
+
+        h1 {
             color: white;
         }
 
@@ -129,12 +127,14 @@ export default {
 
 .content {
     width: 100vw;
-    height: 210vh;
+    height: 200vh;
+    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
+        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -155,7 +155,7 @@ export default {
             .goBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: 20%;
+                bottom: 18%;
 
                 button {
                     width: 100px;
@@ -181,10 +181,12 @@ export default {
             border-radius: 10px;
             margin-left: 220px;
             text-align: left;
+
             .backBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: -8%;
+                bottom: -15%;
+
                 button {
                     width: 100px;
                     height: 40px;
@@ -208,25 +210,29 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
+        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
-        img{
+
+        img {
             width: 800px;
             height: 500px;
         }
-        p{
+
+        p {
             color: white;
             text-align: left;
         }
-        h4{
+
+        h4 {
             color: white;
         }
-        }
+    }
 }
 
 .footer {
     width: 100vw;
     height: 30vh;
+    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
-}
-</style>
+}</style>

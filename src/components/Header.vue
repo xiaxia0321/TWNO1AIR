@@ -10,6 +10,29 @@ export default {
     components: {
         RouterLink,
     },
+    methods: {
+        join() {
+            this.$router.push('/Submit')
+        },
+        login() {
+            this.$router.push('/')
+        },
+        goTokyo(){
+            this.$router.push('/LocationTokyo')
+        },
+        goKyoto(){
+            this.$router.push('/LocationKyoto')
+        },
+        goSingapore(){
+            this.$router.push('/LocationSingapore')
+        },
+        goBangkok(){
+            this.$router.push('/LocationBangkok')
+        },
+        goSFO(){
+            this.$router.push('/LocationSFO')
+        }
+    }
 }
 </script>
 
@@ -36,15 +59,15 @@ export default {
                             <div class="hot">
                                 <br>
                                 <h5>熱門航點</h5>
-                                <button>前往東京</button>
+                                <button @click="goTokyo()">前往東京</button>
                                 <br>
-                                <button>前往大阪</button>
+                                <button @click="goKyoto()">前往大阪</button>
                                 <br>
-                                <button>前往新加坡</button>
+                                <button @click="goSingapore()">前往新加坡</button>
                                 <br>
-                                <button>前往曼谷</button>
+                                <button @click="goBangkok()">前往曼谷</button>
                                 <br>
-                                <button>前往舊金山</button>
+                                <button @click="goSFO()">前往舊金山</button>
                             </div>
                             <div class="seat">
                                 <br>
@@ -82,9 +105,9 @@ export default {
                             <div class="member">
                                 <br>
                                 <h5>樂狗會員</h5>
-                                <button>會員登入</button>
+                                <button @click="this.login()">會員登入</button>
                                 <br>
-                                <button>加入會員</button>
+                                <button @click="this.join()">加入會員</button>
                             </div>
                         </div>
                     </li>
@@ -190,7 +213,8 @@ export default {
                 font-size: 12pt;
             }
         }
-        .happyDogMember{
+
+        .happyDogMember {
             width: 20vw;
             height: 30vh;
             background-color: rgb(240, 240, 240);
@@ -198,13 +222,16 @@ export default {
             left: -70px;
             border-radius: 20px;
             text-align: center;
+
             h5 {
                 color: rgb(118, 69, 59);
             }
-            .member{
+
+            .member {
                 width: 20vw;
                 height: 30vh;
             }
+
             button {
                 box-shadow: none;
                 border: 0px;
@@ -283,10 +310,10 @@ export default {
 
     ul.drop-down-menu ul {
         /*隱藏次選單*/
-        left: 1;
+        left: 2000px;
         opacity: 0;
         -webkit-transition: opacity 0.3s;
-        transition: opacity 0.3s;
+        transition: opacity 1s;
     }
 
     ul.drop-down-menu li:hover>ul {
@@ -298,15 +325,15 @@ export default {
         border-right: 5px;
     }
 
-    ul.drop-down-menu li:hover>ul ul {
-        /* 滑鼠滑入之後、次選單之後的選單依舊隱藏*/
-        left: 99999px;
-    }
+    // ul.drop-down-menu li:hover>ul ul {
+    //     /* 滑鼠滑入之後、次選單之後的選單依舊隱藏*/
+    //     left: 99999px;
+    // }
 
-    ul.drop-down-menu ul li:hover>ul {
-        /* 第二層之後的選單展開位置*/
-        left: 90%;
-    }
+    // ul.drop-down-menu ul li:hover>ul {
+    //     /* 第二層之後的選單展開位置*/
+    //     left: 90%;
+    // }
 
     // .routerItem {
     //     font-size: 24px;
@@ -330,5 +357,4 @@ export default {
     //         background-color: rgba(0, 0, 0, 0.344);
     //     }
     // }
-}
-</style>
+}</style>
