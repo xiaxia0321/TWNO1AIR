@@ -66,7 +66,7 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/舊金山.jpeg" alt="">
+            <img src="/sabrina/舊金山.jpeg" alt="">
             <h4>舊金山，反主流文化與高科技的交會之所</h4>
             <p>在古裡古怪的舊金山，喚霧大賽可能與交響樂、歌劇、芭蕾舞季的開幕盛會一樣吸引人。從聯合廣場 (Union Square) 到北灘 (North Beach) 到日本城
                 (Japantown)，隨處都是獨具魅力的街區。這座城市之所以長成今日的模樣，多虧了 1960 年代後期裡垮掉的一代 (Beat Generation) 作者 - 愛之夏 (Summer of Love)
@@ -85,7 +85,7 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/舊金山.jpeg");
+    background-image: url("/sabrina/舊金山.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
 

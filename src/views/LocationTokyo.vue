@@ -66,7 +66,7 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/東京.webp" alt="">
+            <img src="/sabrina/東京.webp" alt="">
             <h4>東京，繁華絢麗的東洋之城</h4>
             <p>東京有充滿未來感的摩天大樓、無與倫比的美食和狂野的夜生活，堪稱是座充滿刺激的城市。這座城市以創新而著稱，而城市裡的古老佛教寺廟、傳統茶館和寧靜的花園則可以讓人度過寧靜逍遙的時光，並宣示城市悠久的歷史。前往東京歷史悠久的淺草一日遊，參觀知名的淺草寺，然後沿著隅田川漫步 (春天的時候這裡有櫻花盛開)。或者也可以去築地場外市場享用吃壽司早餐，狹窄的走道兩側有許多餐廳可供選擇 (由於此處大多數的餐廳會在中午時歇業，因此建議提早抵達)。如果喜歡熱鬧，也想要體驗 Cosplay 的文化，那就去原宿，或去秋葉原選購電玩和動漫。夜間可以沿著橫丁 (巷弄的意思) 探索，沿途都可以找到氣氛悠閒的居酒屋和小酒吧。當然這裡還有更多精彩的體驗等您探索，請參考以下更多推薦。</p>
         </div>
@@ -81,7 +81,7 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/東京.webp");
+    background-image: url("/sabrina/東京.webp");
     background-repeat: no-repeat;
     background-position: center;
 

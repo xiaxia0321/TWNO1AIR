@@ -81,7 +81,7 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/胡志明市.jpeg");
+    background-image: url("/sabrina/胡志明市.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 2000px;

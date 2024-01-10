@@ -66,7 +66,7 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/澳門.jpeg" alt="">
+            <img src="/sabrina/澳門.jpeg" alt="">
             <h4>澳門，超乎想像之旅</h4>
             <p>澳門充滿了無限的驚喜，市容金碧輝煌，隱含著無限的魅力。雖然這個城市小巧，卻融合了多種多樣的體驗，融合了中國傳統和葡萄牙文化的影響，吸引著遊客的目光。現代建築與歷史悠久的地標交相輝映，繁華的街道生機勃勃。 澳門是世界旅遊和休閒的中心，任何遊覽行程都可以輕鬆融合美食、體育賽事、藝術節、創意活動等等。澳門各方面都引人的魅力，是一個令人嚮往的旅遊勝地，喜愛探索的人們可以發現它真正的魅力所在。</p>
         </div>
@@ -81,7 +81,7 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/澳門.jpeg");
+    background-image: url("/sabrina/澳門.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1600px;

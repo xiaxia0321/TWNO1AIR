@@ -66,7 +66,7 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/新加坡.jpeg" alt="">
+            <img src="/sabrina/新加坡.jpeg" alt="">
             <h4>新加坡，魅力獅城</h4>
             <p>於1819年由英國人開拓發展的新加坡在獨立後已成為世上其中一個富裕的國家，港口吞吐量位處世界前列。新加坡的食物使人稱奇，您可以在當地熙攘的小販中心和全日開放的咖啡店中品嚐亞洲各地的廉價美食。新加坡是一個繁榮的現代化都市，高樓星羅棋布，地鐵四通八達，中國、馬來、印度文化共冶一爐。這個花園城市擁有熱帶氣候、美食豐富、購物方便，夜生活多姿多彩，值得您去遊覽；您也可以從這裡出發，繼續到東南亞其他地方出遊。</p>
         </div>
@@ -81,7 +81,7 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/新加坡.jpeg");
+    background-image: url("/sabrina/新加坡.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1600px;

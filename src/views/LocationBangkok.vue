@@ -66,7 +66,7 @@ export default {
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/曼谷.webp" alt="">
+            <img src="/sabrina/曼谷.webp" alt="">
             <h4>曼谷，同時兼具古老氣息和現代風情的東方大城</h4>
             <p>這個同時兼具古老氣息和現代風情的東方大城，是個處處充滿著讚歎與美麗的地方。這個城市是於1782年由卻克里(Chakri)王朝的帝王所建，面積為1,568平方公里，現為首都，也是政治、商業與文化中心。不僅在地理上位居輻轃點，更是旅遊觀光的重要據點。曼谷目前人口約700萬人，湄南河貫穿整個曼谷市，為曼谷市帶來了繁榮與商機，曼谷也因此贏得了『東方威尼斯』的美名。</p>
         </div>
@@ -81,7 +81,7 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/曼谷.webp");
+    background-image: url("/sabrina/曼谷.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1600px;
