@@ -3,11 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
-      name: 'Login',
-      component: () => import('../views/Login.vue')
-    },
+    // {
+    //   path: '/',
+    //   name: 'Login',
+    //   component: () => import('../views/Login.vue')
+    // },
     {
       path: '/AboutView',
       name: 'AboutView',
@@ -19,7 +19,7 @@ const router = createRouter({
       component: () => import('../views/Submit.vue')
     },
     {
-      path: "/HomeView",
+      path: "/",
       name: "HomeView",
       component: () => import('../views/HomeView.vue')
     },
@@ -34,9 +34,9 @@ const router = createRouter({
       component: () => import('../views/Browse.vue')
     },
     {
-      path: "/AircraftType",
-      name: "AircraftType",
-      component: () => import('../views/AircraftType.vue')
+      path: "/A321",
+      name: "A321",
+      component: () => import('../views/A321.vue')
     },
     {
       path: "/A330",
@@ -49,9 +49,29 @@ const router = createRouter({
       component: () => import('../views/A350.vue')
     },
     {
-      path: "/A321neo",
-      name: "A321neo",
-      component: () => import('../views/A321neo.vue')
+      path: "/DepartureLocationTime",
+      name: "DepartureLocationTime",
+      component: () => import('../views/DepartureLocationTime.vue')
+    },
+    {
+      path: "/ArrivalLocationTime",
+      name: "ArrivalLocationTime",
+      component: () => import('../views/ArrivalLocationTime.vue')
+    },
+    {
+      path: "/AirTimeSearch",
+      name: "AirTimeSearch",
+      component: () => import('../views/AirTimeSearch.vue')
+    },
+    {
+      path: "/AirTime",
+      name: "AirTime",
+      component: () => import('../views/AirTime.vue')
+    },
+    {
+      path: "/A321Seat",
+      name: "A321Seat",
+      component: () => import('../views/A321Seat.vue')
     },
     {
       path:"/LocationHakodate",
