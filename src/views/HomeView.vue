@@ -1,15 +1,35 @@
 <script>
+import { mapState, mapActions } from 'pinia'
+import date from '../stores/date'
+import counter from '../stores/counter'
 export default {
   data() {
     return {
+      // 定義變數，表示今天的日期，格式為 "YYYY-MM-DD"
+      today: new Date().toISOString().split('T')[0],
+      // 使用 v-model 綁定選擇的日期
+      selectedDate: '',
+      tomorrowDate: '',
+      minDate: '',
     }
   },
   methods: {
+    ...mapActions(counter,['goBangkok','goHome','goKyoto','goLogin','goSFO','goSingapore','goSubmit','goTokyo']),
     login() {
-      this.$router.push('/')
+      if (this.account == "A01" && this.pwd == "aaa") {
+        this.$router.push('/Backstage')
+      } else {
+        this.$router.push('/')
+      }
     },
-
+    updateMinDate() {
+      const selected = new Date(this.selectedDate);
+      selected.setDate(selected.getDate() + 1);
+      this.minDate = selected.toISOString().split('T')[0];
+    },
   },
+  created() {
+  }
 
 }
 </script>
@@ -18,7 +38,7 @@ export default {
   <div class="big">
     <div class="header" style="width: 100%;height: 40vh;">
       <div class="top">
-        <div class="logo"></div>
+        <!-- <div class="logo"></div> -->
         <span>HappyDog</span>
         <div class="user">
           <i class="fa-solid fa-earth-americas ii"></i>
@@ -57,18 +77,21 @@ export default {
         <div class="program" name="出發">
           <button type="button">
             <span class="span1">出發</span>
-            <span class="span2">新增日期</span>
+            <input type="date" name="" v-model="selectedDate" :min="this.today" @change="updateMinDate" class="span2">
+            <!-- <span class="span2">新增日期</span> -->
           </button>
         </div>
         <div class="program" name="回程">
           <button type="button">
             <span class="span1">回程</span>
-            <span class="span2">新增日期</span>
+            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" class="span2">
+            <!-- <span class="span2">新增日期</span> -->
           </button>
         </div>
         <div class="program" name="旅客與艙等">
           <button type="button" style="border-radius:0 15px 15px 0;">
             <span class="span1">旅客與艙等</span>
+
             <span style="font-size: 1.3rem;">1成人,經濟艙</span>
           </button>
         </div>
@@ -127,8 +150,7 @@ export default {
       <!-- ======================= -->
     </div>
     <div class="air" style="width: 100%; ">
-      <p style="font-size: 35px; margin: 0;">目前最熱門的航班</p>
-      <p style="margin-top: 5px;">真的ㄇ</p>
+      <p style="font-size: 3.1rem; margin: 2% 0 1% 0; font-weight: 900;">探索景點</p>
       <div class="airIn">
         <div class="block">
           <div class="img"
@@ -139,7 +161,7 @@ export default {
             <span>該吃飯了</span>
           </div>
         </div>
-        <div class="block">
+        <div class="block" @click="goTokyo">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/m/f1eb4ce78a9bca3/original/Tokyo.jpg?crop=100px:100px&quality=90);">
           </div>
@@ -167,7 +189,7 @@ export default {
             </span>
           </div>
         </div>
-        <div class="block">
+        <div class="block" @click="goBangkok">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/76322ef5ee6ebe445aa45448c323959b/thailand-bangkok-6238.jpg?crop=100px:100px&quality=90);">
           </div>
@@ -203,11 +225,48 @@ export default {
             <span>燒</span>
           </div>
         </div>
-
       </div>
     </div>
-    <div class="foot" style="width: 100%; height: 35vh; background-color: rgba(5, 32, 60);">
+    <div class="foot">
+      <div class="footBlock">
+        <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+            style="padding-left: 10px;">瞭解樂狗</span></h2>
+        <ul>
+          <li><a href="">認識樂狗</a></li>
+          <li><a href="">團隊成員</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入團隊</a></li>
+        </ul>
+      </div>
+      <div class="footBlock">
+        <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+            style="padding-left: 10px;">接觸樂狗</span></h2>
+        <ul>
+          <li><a href="">認識樂狗</a></li>
+          <li><a href="">團隊成員</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入團隊</a></li>
+          <li><a href="">加入團隊</a></li>
+        </ul>
+      </div>
+      <div class="footBlock">
+        <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+            style="padding-left: 10px;">加入樂狗</span></h2>
+        <ul>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入我們</a></li>
+          <li><a href="">加入{{ '樂狗' }}團隊</a></li>
+        </ul>
+      </div>
 
+      <div class="under">
+        <a href=""><i class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
+        <a href=""><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
+        <a href=""><i class="fa-brands fa-square-youtube ii" style="color: #161a30;"></i></a>
+      </div>
     </div>
   </div>
 </template>
@@ -334,20 +393,24 @@ export default {
         padding-inline: 5px;
         border-width: 2px;
         border-style: outset;
+        padding: 5px 0.1rem 5px 0.1rem;
 
         .lab {
-          padding: 0.2rem;
-
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
 
           .placeIn {
             span {
-              line-height: 1.25rem;
+              line-height: 1.2rem;
               font-weight: 700;
             }
 
             .input {
               width: 90%;
-              height: 1.25rem;
+              height: 1.3rem;
               padding: 0 1rem 0 0;
               font-size: 1.3rem;
               border: none;
@@ -418,27 +481,37 @@ export default {
   }
 
   .air {
-    border: 1px solid black;
+    background-color: #0F2D3C;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: white;
 
     .airIn {
-      width: 75%;
-      margin-top: 1%;
-      border: 1px solid red;
+      width: 80%;
+      margin: 2% 0 3% 0;
       display: flex;
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
 
+
       .block {
-        width: 270px;
-        height: 13vh;
-        border: 1px solid purple;
+        width: 280px;
+        height: 14vh;
+        // border: 1px solid rgb(231, 0, 231);
+        box-shadow: 1.2px 2px 3px 1px #000000;
         display: flex;
-        margin-bottom: 20px;
+        margin: 0 0% 5% 0;
+        border-radius: 10px;
+
+        &:hover {
+          // width: 70%;
+          background-color: rgba(255, 255, 255, 0.15);
+          box-shadow: 2px 1px 2px black;
+          transition: .5s;
+        }
 
 
         .img {
@@ -446,23 +519,100 @@ export default {
           height: 100%;
           background-color: rgba(0, 255, 255, 0.271);
           background-size: cover;
+          border-radius: 10px 0 0 10px;
         }
 
         .text {
-          width: 65%;
+          width: 55%;
           height: 100%;
           text-align: left;
           margin-left: 10px;
 
           p {
-            font-size: 30px;
-            margin: 5px 0 10px 0;
+            font-size: 1.5rem;
+            margin: 12px 0 5px 0;
+            font-weight: 600;
+          }
+
+          span {
+            font-size: 0.9rem;
           }
         }
 
       }
     }
 
-    .foot {}
   }
-}</style>
+
+  .foot {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-color: #5e5045;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px 50px 120px 50px;
+
+    .footBlock {
+      width: 26%;
+      height: 100%;
+      // border: 1px solid black;
+      color: white;
+
+      ul {
+        list-style-type: none;
+
+        li {
+          text-align: left;
+          height: 3rem;
+          padding-left: 20px;
+          display: flex;
+          justify-content: left;
+          margin: 0 0 5px;
+          align-items: center;
+          font-size: 1.3rem;
+          transition: .5s;
+
+          &:hover {
+            // width: 70%;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left: 10px solid rgba(22, 26, 48, 0.533);
+            box-shadow: 2px 1px 2px black;
+            transition: .5s;
+          }
+
+          &:active {
+            background-color: #372f2a66;
+            border-left: 12px solid rgb(22, 26, 48);
+            transition: .4s;
+          }
+
+          a {
+            text-decoration: none;
+            color: white;
+          }
+        }
+      }
+    }
+
+    .under {
+      position: absolute;
+      bottom: 0;
+      background-color: #4a3f37;
+      width: 100%;
+      height: 20%;
+      display: flex;
+      align-items: center;
+
+      .ii {
+        margin-left: 15px;
+        font-size: 50px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}
+</style>

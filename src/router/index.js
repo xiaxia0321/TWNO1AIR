@@ -9,9 +9,9 @@ const router = createRouter({
     //   component: () => import('../views/Login.vue')
     // },
     {
-      path: '/AboutView',
-      name: 'AboutView',
-      component: () => import('../views/AboutView.vue')
+      path: '/Backstage',
+      name: 'Backstage',
+      component: () => import('../views/Backstage.vue')
     },
     {
       path: "/Submit",
@@ -79,9 +79,80 @@ const router = createRouter({
       component:() => import('../views/LocationHakodate.vue')
     },
     {
+      path:"/LocationLA",
+      name:"LocationLA",
+      component:() => import('../views/LocationLA.vue')
+    },
+    {
+      path:"/LocationSFO",
+      name:"LocationSFO",
+      component:() => import('../views/LocationSFO.vue')
+    },
+    {
+      path:"/LocationTokyo",
+      name:"LocationTokyo",
+      component:() => import('../views/LocationTokyo.vue')
+    },
+    {
+      path:"/LocationKyoto",
+      name:"LocationKyoto",
+      component:() => import('../views/LocationKyoto.vue')
+    },
+    {
+      path:"/LocationOkinawa",
+      name:"LocationOkinawa",
+      component:() => import('../views/LocationOkinawa.vue')
+    },
+    {
+      path:"/LocationHoChiMinh",
+      name:"LocationHoChiMinh",
+      component:() => import('../views/LocationHoChiMinh.vue')
+    },
+    {
+      path:"/LocationBangkok",
+      name:"LocationBangkok",
+      component:() => import('../views/LocationBangkok.vue')
+    },
+    {
+      path:"/LocationSingapore",
+      name:"LocationSingapore",
+      component:() => import('../views/LocationSingapore.vue')
+    },
+    {
+      path:"/LocationMacao",
+      name:"LocationMacao",
+      component:() => import('../views/LocationMacao.vue')
+    },
+    {
       path:"/User",
       name:"User",
       component:() => import('../views/User.vue')
+    },
+    {
+      path: '/Backstage',
+      name: 'Backstage',
+      component: () => import('../views/Backstage.vue'),
+      children:[
+        {
+          path:'BackHome',
+          component:()=>import('../components/BackHome.vue'),
+          //alias預設成首頁
+          alias:"",
+        },
+        {
+          path:'BackMembership',
+          component:()=>import('../components/BackMembership.vue'),
+        },
+        {
+          path:'BackPlane',
+          component:()=>import('../components/BackPlane.vue'),
+        },
+        {
+          path:'BackOrder',
+          component:()=>import('../components/BackOrder.vue'),
+          alias:"",
+        }
+      ]
     },
     // {
     //   path:"/dynamicQuestionnaireBack",
@@ -103,6 +174,12 @@ const router = createRouter({
     //   name:"dynamicQuestionnaireLogin",
     //   component:() => import('../views/dynamicQuestionnaireLogin.vue')
     // },
+    {
+      //要加在最後一個
+      path:"/:pathMatch(.*)*",
+      name:"NotFound",
+      component:()=>import('../views/NotFound.vue')
+    }
   ]
 })
 

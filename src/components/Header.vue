@@ -5,13 +5,36 @@ export default {
         return {
         }
     },
+    methods: {
+    },
     components: {
         RouterLink,
     },
-    methods:{
-        // Login() {
-        //     this.$router.push("/A350"); //推送至下一頁的路徑
-        // },
+    methods: {
+        home(){
+            this.$router.push('/HomeView')
+        },
+        join() {
+            this.$router.push('/Submit')
+        },
+        login() {
+            this.$router.push('/')
+        },
+        goTokyo() {
+            this.$router.push('/LocationTokyo')
+        },
+        goKyoto() {
+            this.$router.push('/LocationKyoto')
+        },
+        goSingapore() {
+            this.$router.push('/LocationSingapore')
+        },
+        goBangkok() {
+            this.$router.push('/LocationBangkok')
+        },
+        goSFO() {
+            this.$router.push('/LocationSFO')
+        },
         A321() {
             this.$router.push("/A321"); //推送至下一頁的路徑
         },
@@ -33,13 +56,14 @@ export default {
         AirTimeSearch() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
         },
-
     }
+  
 }
 </script>
 
 <template>
     <div class="headerShow">
+        <div class="happydog" style="background-image: url(/01.png);" @click="home"></div>
         <ul class="drop-down-menu">
             <li>
                 <a href="#" style="color: white;font-size: 16pt;">預訂行程</a>
@@ -61,15 +85,15 @@ export default {
                             <div class="hot">
                                 <br>
                                 <h5>熱門航點</h5>
-                                <button>前往東京</button>
+                                <button @click="goTokyo()">前往東京</button>
                                 <br>
-                                <button>前往大阪</button>
+                                <button @click="goKyoto()">前往大阪</button>
                                 <br>
-                                <button>前往新加坡</button>
+                                <button @click="goSingapore()">前往新加坡</button>
                                 <br>
-                                <button>前往曼谷</button>
+                                <button @click="goBangkok()">前往曼谷</button>
                                 <br>
-                                <button>前往舊金山</button>
+                                <button @click="goSFO()">前往舊金山</button>
                             </div>
                             <div class="seat">
                                 <br>
@@ -115,9 +139,9 @@ export default {
                             <div class="member">
                                 <br>
                                 <h5>樂狗會員</h5>
-                                <button @click="Login">會員登入</button>
+                                <button @click="this.login()" @click="Login">會員登入</button>
                                 <br>
-                                <button>加入會員</button>
+                                <button @click="this.join()">加入會員</button>
                                 <br>
                                 <br>
                                 <h5>測試</h5>
@@ -145,7 +169,8 @@ export default {
 
 <style scoped lang="scss">
 .headerShow {
-    width: 100vw;
+    position: relative;
+    width: 99vw;
     height: 30vh;
     background-color: rgb(49, 48, 77);
     box-sizing: border-box;
@@ -155,6 +180,16 @@ export default {
     // justify-content: center;
     // align-content: center;
     letter-spacing: 2px;
+
+    .happydog {
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 6%;
+        height: 35%;
+    }
 
     ul {
         /* 取消ul預設的內縮及樣式 */
@@ -233,7 +268,8 @@ export default {
                 font-size: 12pt;
             }
         }
-        .happyDogMember{
+
+        .happyDogMember {
             width: 20vw;
             height: 30vh;
             background-color: rgb(240, 240, 240);
@@ -241,13 +277,16 @@ export default {
             left: -70px;
             border-radius: 20px;
             text-align: center;
+
             h5 {
                 color: rgb(118, 69, 59);
             }
-            .member{
+
+            .member {
                 width: 20vw;
                 height: 30vh;
             }
+
             button {
                 box-shadow: none;
                 border: 0px;
@@ -329,7 +368,7 @@ export default {
         left: 2000px;
         opacity: 0;
         -webkit-transition: opacity 0.3s;
-        transition: opacity 0.3s;
+        transition: opacity 1s;
     }
 
     ul.drop-down-menu li:hover>ul {
@@ -341,15 +380,15 @@ export default {
         border-right: 5px;
     }
 
-    ul.drop-down-menu li:hover>ul ul {
-        /* 滑鼠滑入之後、次選單之後的選單依舊隱藏*/
-        left: 99999px;
-    }
+    // ul.drop-down-menu li:hover>ul ul {
+    //     /* 滑鼠滑入之後、次選單之後的選單依舊隱藏*/
+    //     left: 99999px;
+    // }
 
-    ul.drop-down-menu ul li:hover>ul {
-        /* 第二層之後的選單展開位置*/
-        left: 90%;
-    }
+    // ul.drop-down-menu ul li:hover>ul {
+    //     /* 第二層之後的選單展開位置*/
+    //     left: 90%;
+    // }
 
     // .routerItem {
     //     font-size: 24px;

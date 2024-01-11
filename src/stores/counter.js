@@ -13,6 +13,30 @@ export default defineStore("counter", {
     },
     //methods
     actions: {
+        goHome(){
+            this.$router.push('/HomeView')
+        },
+        goSubmit() {
+            this.$router.push('/Submit')
+        },
+        goLogin() {
+            this.$router.push('/')
+        },
+        goTokyo() {
+            this.$router.push('/LocationTokyo')
+        },
+        goKyoto() {
+            this.$router.push('/LocationKyoto')
+        },
+        goSingapore() {
+            this.$router.push('/LocationSingapore')
+        },
+        goBangkok() {
+            this.$router.push('/LocationBangkok')
+        },
+        goSFO() {
+            this.$router.push('/LocationSFO')
+        }
     }
 }
 )

@@ -11,7 +11,7 @@ export default {
         <div class="searchFor">
             <br>
             <h1>搭乘樂狗航空從台北飛往函館 ，自 TWD19,488* 起！</h1>
-            <br><br><br>
+            <br><br>
             <select>
                 <option value="">單程</option>
                 <option value="">來回</option>
@@ -32,6 +32,7 @@ export default {
                 <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
                 <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
                 <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
+                <h3>　TPE　　　　　　　　　　　　　　　　　　　HKD</h3>
                 <div class="goBtn">
                     <button type="button">訂購</button>
                 </div>
@@ -43,6 +44,7 @@ export default {
                 <p>　　JX860　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時30分鐘</p>
                 <p>　　2024年2月2日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月2日</p>
                 <h3>　12:30　　　　　　　　　　　　　　　　　　17:00</h3>
+                <h3>　HKD　　　　　　　　　　　　　　　　　　　TPE</h3>
                 <div class="backBtn">
                     <button type="button">訂購</button>
                 </div>
@@ -62,7 +64,9 @@ export default {
             </div>
         </div>
         <div class="attraction">
-            <img src="../../public/sabrina/函館.jpeg" alt="">
+            <br><br><br>
+            <img src="/sabrina/函館.jpeg" alt="">
+            <br>
             <h4>函館，令人心動不已的城市街景、自然風光與特色景點</h4>
             <p>同時擁有人文薈萃的街道景觀與雄奇靈秀的自然風光，便是函館的最大特色。搭乘有軌電車遊覽函館45分鐘，觸目所及皆是最吸引您的魅力景點。在此，您可自由自在輕鬆漫遊，隨意參訪一處歷史古跡，或是享受溫泉樂趣，眺望壯闊美景…。從市區搭乘JR列車約30分鐘，抵達大沼國定公園，感受雄偉大自然的輕柔包圍。</p>
             <p>不管春、夏、秋、冬，函館總是準備各種特色慶典活動等候您前往：春天櫻花盛開，櫻花樹下落英繽紛，充滿浪漫情懷；夏天是煙火大會及遊行活動，函館最大型的熱鬧祭典接力登場；時至秋日，楓葉轉紅，請細細品味；入冬後，皚皚白雪覆蓋大地，搭配聖誕節慶及燈光饗宴鮮豔奪目，美不勝收。請盡情享受函館隨四季更迭的不同風貌。</p>
@@ -78,9 +82,10 @@ export default {
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/函館1.jpeg");
+    background-image: url("../../public/sabrina/函館.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     // opacity: 0.8;
 
     .searchFor {
@@ -124,14 +129,12 @@ export default {
 
 .content {
     width: 100vw;
-    height: 200vh;
-    // border: 1px solid green;
+    height: 210vh;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
-        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -143,7 +146,7 @@ export default {
 
         .go {
             width: 70vw;
-            height: 20vh;
+            height: 25vh;
             background-color: rgb(240, 236, 229);
             border-radius: 10px;
             margin-left: 220px;
@@ -152,7 +155,7 @@ export default {
             .goBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: 250px;
+                bottom: 20%;
 
                 button {
                     width: 100px;
@@ -173,7 +176,7 @@ export default {
 
         .back {
             width: 70vw;
-            height: 20vh;
+            height: 25vh;
             background-color: rgb(240, 236, 229);
             border-radius: 10px;
             margin-left: 220px;
@@ -181,7 +184,7 @@ export default {
             .backBtn {
                 margin-left: 850px;
                 position: absolute;
-                bottom: 15px;
+                bottom: -8%;
                 button {
                     width: 100px;
                     height: 40px;
@@ -205,7 +208,6 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
-        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
         img{
@@ -225,7 +227,6 @@ export default {
 .footer {
     width: 100vw;
     height: 30vh;
-    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
 }
 </style>
