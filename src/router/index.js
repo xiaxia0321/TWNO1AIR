@@ -108,6 +108,11 @@ const router = createRouter({
       name:"User",
       component:() => import('../views/User.vue')
     },
+    {
+      path:"/CheckInIntro",
+      name:"CheckInIntro",
+      component:() => import('../views/CheckInIntro.vue')
+    },
     // {
     //   path:"/dynamicQuestionnaireBack",
     //   name:"dynamicQuestionnaireBack",

@@ -29,6 +29,9 @@ export default {
         },
         goSFO(){
             this.$router.push('/LocationSFO')
+        },
+        checkInIntro(){
+            this.$router.push('/CheckInIntro')
         }
     }
 }
@@ -89,7 +92,7 @@ export default {
                                 <h5>網路報到</h5>
                                 <button>線上報到</button>
                                 <br>
-                                <button>報到方式說明</button>
+                                <button @click="this.checkInIntro()">報到方式說明</button>
                             </div>
                         </div>
                     </li>
