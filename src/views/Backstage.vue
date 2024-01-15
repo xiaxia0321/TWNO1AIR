@@ -1,5 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
 export default {
   data() {
     return {
@@ -7,8 +9,11 @@ export default {
   },
   methods: {
   },
-  components:{
-    RouterLink,RouterView,
+  components: {
+    RouterLink, RouterView,
+  },
+  computed:{
+    ...mapState(counter, ["pp"])
   }
 
 }
@@ -23,10 +28,26 @@ export default {
       </div>
       <div class="menu">
         <ul>
-          <li><RouterLink to="/Backstage/BackHome" class="routerItem">首頁</RouterLink></li>
-          <li><RouterLink to="/Backstage/BackMembership" class="routerItem">會員管理</RouterLink></li>
-          <li><RouterLink to="/Backstage/BackPlane" class="routerItem">航班管理</RouterLink></li>
-          <li><RouterLink to="/Backstage/BackOrder" class="routerItem">查看訂單</RouterLink></li>
+          <div class="liu" @click="ppc1">
+            <RouterLink to="/Backstage/BackHome" class="routerItem">
+              <li :class="{ 'planB': this.pp == 1 }">首頁</li>
+            </RouterLink>
+          </div>
+          <div class="liu" @click="ppc2">
+            <RouterLink to="/Backstage/BackMembership" class="routerItem">
+              <li :class="{ 'planB': this.pp == 2 }">會員管理</li>
+            </RouterLink>
+          </div>
+          <div class="liu" @click="ppc3">
+            <RouterLink to="/Backstage/BackPlane" class="routerItem">
+              <li :class="{ 'planB': this.pp == 3 }">航班管理</li>
+            </RouterLink>
+          </div>
+          <div class="liu" @click="ppc4">
+            <RouterLink to="/Backstage/BackOrder" class="routerItem">
+              <li :class="{ 'planB': this.pp == 4 }">查看訂單</li>
+            </RouterLink>
+          </div>
         </ul>
       </div>
     </div>
@@ -66,7 +87,7 @@ export default {
       .img {
         width: 50px;
         height: 3rem;
-        background-image: url(/01.png);
+        background-image: url(/02B.png);
         background-size: contain;
         background-repeat: no-repeat;
       }
@@ -75,23 +96,32 @@ export default {
     .menu {
       width: 100%;
       height: 88%;
-      border: 1px solid white;
-      ul{
+      // border: 1px solid white;
+
+      ul {
         list-style-type: none;
         text-align: center;
         padding: 0;
-        li{
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
+
+        li {
           transition: 0.5s;
-          font-size: 1.4rem;
           margin-bottom: 1rem;
-          &:hover{
+          font-size: 1.4rem;
+
+          &:hover {
             background-color: rgba(255, 255, 255, 0.277);
           }
-          a{
-            text-decoration: none;
-            color: white;
-          }
         }
+
+        .planB {
+          background-color: rgba(11, 8, 43, 0.673);
+        }
+
       }
     }
   }
@@ -102,5 +132,7 @@ export default {
     background-color: white;
 
   }
+
+
 }
 </style>

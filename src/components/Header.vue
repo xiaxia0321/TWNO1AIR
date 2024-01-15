@@ -70,7 +70,7 @@ export default {
 
 <template>
     <div class="headerShow">
-        <div class="happydog" style="background-image: url(/01.png);" @click="home"></div>
+        <div class="happydog" @click="home"></div>
         <ul class="drop-down-menu">
             <li>
                 <a href="#" style="color: white;font-size: 16pt;">預訂行程</a>
@@ -186,10 +186,17 @@ export default {
         position: absolute;
         left: 50px;
         top: 20px;
+        background-image: url(/noBack.png);
         background-size: contain;
         background-repeat: no-repeat;
         width: 6%;
-        height: 35%;
+        height: 40%;
+        &:hover{
+            box-shadow: 2px 2px 5px 0 black;
+        }
+        &:active{
+            box-shadow: -1px -1px 1px 2px black;
+        }
     }
 
     ul {
