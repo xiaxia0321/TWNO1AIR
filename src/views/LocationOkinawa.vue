@@ -1,27 +1,82 @@
 <script>
-export default {
-    data() {
+import { defineComponent, ref } from 'vue'
+import { NDropdown, NButton, NDatePicker } from 'naive-ui'
+
+export default defineComponent({
+    setup() {
+        // const message = useMessage();
         return {
-        }
+            options: [
+                {
+                    label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    // disabled: true
+                },
+                {
+                    label: "舊金山, 美國, SFO, San Francisco International Airport",
+                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                },
+                {
+                    label: "函館, 日本, HKD, Hakodate Airport",
+                    key: "函館, 日本, HKD, Hakodate Airport"
+                },
+                {
+                    label: "東京, 日本, NRT, Narita Internation",
+                    key: "東京, 日本, NRT, Narita Internation"
+                },
+                {
+                    label: "大阪, 日本, KIX, Kansai International Airport",
+                    key: "大阪, 日本, KIX, Kansai International Airport"
+                },
+                {
+                    label: "沖繩, 日本, OKA, Naha Airport",
+                    key: "沖繩, 日本, OKA, Naha Airport"
+                },
+                {
+                    label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
+                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                },
+                {
+                    label: "曼谷, 泰國, BKK, 素萬那普國際機場",
+                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                },
+                {
+                    label: "新加坡, 新加坡, SIN, Changi Airport",
+                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                },
+                {
+                    label: "澳門, 澳門, MFM, Macau International Airportn",
+                    key: "澳門, 澳門, MFM, Macau International Airport"
+                },
+            ],
+            handleSelect(key) {
+            },
+            range: ref([Date.now(), Date.now()]),
+        };
     },
-}
+    components: {
+        NDropdown,
+        NButton,
+        NDatePicker,
+        ref,
+    },
+});
 </script>
 <template>
     <div class="search">
         <div class="searchFor">
             <br>
             <h1>搭乘樂狗航空從台北飛往沖繩 ，自 TWD9,979* 起！</h1>
-            <br><br>
-            <select>
-                <option value="">單程</option>
-                <option value="">來回</option>
-            </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
-                class="fa-solid fa-right-left"></i>
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
-            <input type="date" placeholder="出發" class="goTime">　
-            <input type="date" placeholder="回程" class="backTime">　
+        </div>
+        <div class="condition">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>出發地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>目的地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-date-picker v-model:value="range" type="daterange" clearable />
+            <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
             <button type="button" class="searchBtn">搜尋</button>　
         </div>
     </div>
@@ -68,7 +123,8 @@ export default {
             <br><br><br>
             <img src="../../public/sabrina/沖繩1.jpeg" alt="">
             <h4>沖繩，原始的海灘、繽紛的珊瑚礁、亞熱帶叢林</h4>
-            <p>探索獨特的島國文化，沐浴在亞熱帶的溫暖陽光中，踏著綿延細膩的白沙，穿越美麗壯觀的紅樹林，尋覓琉球歷史遺留的足跡。沖繩縣位於日本最南端，是一個由島嶼組成的島鏈，歷史上曾是一個獨立的王國，擁有獨特的亞熱帶氣候，也是空手道的發源地。探索歷代琉球國王曾居住過的宮殿遺跡和修復城堡，參觀美麗的海灘和海岸線，欣賞令人歎為觀止的珊瑚叢和海底生物。來這裡賞鯨、賽龍舟、觀賞稀有動植物、體驗海島風情，讓您忘記時間。</p>
+            <p>探索獨特的島國文化，沐浴在亞熱帶的溫暖陽光中，踏著綿延細膩的白沙，穿越美麗壯觀的紅樹林，尋覓琉球歷史遺留的足跡。沖繩縣位於日本最南端，是一個由島嶼組成的島鏈，歷史上曾是一個獨立的王國，擁有獨特的亞熱帶氣候，也是空手道的發源地。探索歷代琉球國王曾居住過的宮殿遺跡和修復城堡，參觀美麗的海灘和海岸線，欣賞令人歎為觀止的珊瑚叢和海底生物。來這裡賞鯨、賽龍舟、觀賞稀有動植物、體驗海島風情，讓您忘記時間。
+            </p>
         </div>
     </div>
     <div class="footer">
@@ -85,9 +141,10 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 2000px;
+
     .searchFor {
         width: 70vw;
-        height: 30vh;
+        height: 10vh;
         background-color: rgb(7, 102, 7);
         opacity: 0.8;
         margin: 0 auto;
@@ -96,45 +153,50 @@ export default {
         h1 {
             color: white;
         }
-
-        .departure {
-            width: 200px;
-            height: 60px;
-        }
-
-        .destination {
-            width: 200px;
-            height: 60px;
-        }
-
-        .goTime {
-            width: 110px;
-            height: 60px;
-        }
-
-        .backTime {
-            width: 110px;
-            height: 60px;
-        }
     }
 
-    .fa-location-dot {
-        position: absolute;
-        left: 200px;
-    }
+    .condition {
+        width: 70vw;
+        height: 20vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(7, 102, 7);
 
+        .n-button {
+            width: 230px;
+            height: 60px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .n-date-picker {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .searchBtn {
+            width: 120px;
+            height: 45px;
+            box-shadow: none;
+            border-radius: 10px;
+            background-color: rgb(155, 190, 200);
+            border: 0px;
+            color: black;
+            font-size: 16px;
+        }
+    }
 }
 
 .content {
     width: 100vw;
     height: 200vh;
-    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
-        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -210,7 +272,6 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
-        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
 
@@ -233,6 +294,5 @@ export default {
 .footer {
     width: 100vw;
     height: 30vh;
-    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
 }</style>

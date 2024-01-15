@@ -1,27 +1,82 @@
 <script>
-export default {
-    data() {
+import { defineComponent, ref } from 'vue'
+import { NDropdown, NButton, NDatePicker } from 'naive-ui'
+
+export default defineComponent({
+    setup() {
+        // const message = useMessage();
         return {
-        }
+            options: [
+                {
+                    label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    // disabled: true
+                },
+                {
+                    label: "舊金山, 美國, SFO, San Francisco International Airport",
+                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                },
+                {
+                    label: "函館, 日本, HKD, Hakodate Airport",
+                    key: "函館, 日本, HKD, Hakodate Airport"
+                },
+                {
+                    label: "東京, 日本, NRT, Narita Internation",
+                    key: "東京, 日本, NRT, Narita Internation"
+                },
+                {
+                    label: "大阪, 日本, KIX, Kansai International Airport",
+                    key: "大阪, 日本, KIX, Kansai International Airport"
+                },
+                {
+                    label: "沖繩, 日本, OKA, Naha Airport",
+                    key: "沖繩, 日本, OKA, Naha Airport"
+                },
+                {
+                    label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
+                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                },
+                {
+                    label: "曼谷, 泰國, BKK, 素萬那普國際機場",
+                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                },
+                {
+                    label: "新加坡, 新加坡, SIN, Changi Airport",
+                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                },
+                {
+                    label: "澳門, 澳門, MFM, Macau International Airportn",
+                    key: "澳門, 澳門, MFM, Macau International Airport"
+                },
+            ],
+            handleSelect(key) {
+            },
+            range: ref([Date.now(), Date.now()]),
+        };
     },
-}
+    components: {
+        NDropdown,
+        NButton,
+        NDatePicker,
+        ref,
+    },
+});
 </script>
 <template>
     <div class="search">
         <div class="searchFor">
             <br>
             <h1>搭乘樂狗航空從台北飛往新加坡 ，自 TWD10,078* 起！</h1>
-            <br><br>
-            <select>
-                <option value="">單程</option>
-                <option value="">來回</option>
-            </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
-                class="fa-solid fa-right-left"></i>
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
-            <input type="date" placeholder="出發" class="goTime">　
-            <input type="date" placeholder="回程" class="backTime">　
+        </div>
+        <div class="condition">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>出發地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>目的地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-date-picker v-model:value="range" type="daterange" clearable />
+            <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
             <button type="button" class="searchBtn">搜尋</button>　
         </div>
     </div>
@@ -68,7 +123,8 @@ export default {
             <br><br><br>
             <img src="../../public/sabrina/新加坡.jpeg" alt="">
             <h4>新加坡，魅力獅城</h4>
-            <p>於1819年由英國人開拓發展的新加坡在獨立後已成為世上其中一個富裕的國家，港口吞吐量位處世界前列。新加坡的食物使人稱奇，您可以在當地熙攘的小販中心和全日開放的咖啡店中品嚐亞洲各地的廉價美食。新加坡是一個繁榮的現代化都市，高樓星羅棋布，地鐵四通八達，中國、馬來、印度文化共冶一爐。這個花園城市擁有熱帶氣候、美食豐富、購物方便，夜生活多姿多彩，值得您去遊覽；您也可以從這裡出發，繼續到東南亞其他地方出遊。</p>
+            <p>於1819年由英國人開拓發展的新加坡在獨立後已成為世上其中一個富裕的國家，港口吞吐量位處世界前列。新加坡的食物使人稱奇，您可以在當地熙攘的小販中心和全日開放的咖啡店中品嚐亞洲各地的廉價美食。新加坡是一個繁榮的現代化都市，高樓星羅棋布，地鐵四通八達，中國、馬來、印度文化共冶一爐。這個花園城市擁有熱帶氣候、美食豐富、購物方便，夜生活多姿多彩，值得您去遊覽；您也可以從這裡出發，繼續到東南亞其他地方出遊。
+            </p>
         </div>
     </div>
     <div class="footer">
@@ -85,9 +141,10 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1600px;
+
     .searchFor {
         width: 70vw;
-        height: 30vh;
+        height: 10vh;
         background-color: rgb(7, 102, 7);
         opacity: 0.8;
         margin: 0 auto;
@@ -96,45 +153,50 @@ export default {
         h1 {
             color: white;
         }
-
-        .departure {
-            width: 200px;
-            height: 60px;
-        }
-
-        .destination {
-            width: 200px;
-            height: 60px;
-        }
-
-        .goTime {
-            width: 110px;
-            height: 60px;
-        }
-
-        .backTime {
-            width: 110px;
-            height: 60px;
-        }
     }
 
-    .fa-location-dot {
-        position: absolute;
-        left: 200px;
-    }
+    .condition {
+        width: 70vw;
+        height: 20vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(7, 102, 7);
 
+        .n-button {
+            width: 230px;
+            height: 60px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .n-date-picker {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .searchBtn {
+            width: 120px;
+            height: 45px;
+            box-shadow: none;
+            border-radius: 10px;
+            background-color: rgb(155, 190, 200);
+            border: 0px;
+            color: black;
+            font-size: 16px;
+        }
+    }
 }
 
 .content {
     width: 100vw;
     height: 200vh;
-    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
-        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -210,7 +272,6 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
-        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
 
@@ -233,6 +294,6 @@ export default {
 .footer {
     width: 100vw;
     height: 30vh;
-    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
-}</style>
+}
+</style>

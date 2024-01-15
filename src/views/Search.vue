@@ -13,6 +13,7 @@ export default {
 </template>
 
 <style lang="scss">
+
   .about {
     min-height: 100vh;
     display: flex;

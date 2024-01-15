@@ -1,26 +1,86 @@
 <script>
-export default {
-    data() {
+import { defineComponent, ref } from 'vue'
+import { NDropdown, NButton, NDatePicker } from 'naive-ui'
+
+export default defineComponent({
+    setup() {
+        // const message = useMessage();
         return {
-        }
+            options: [
+                {
+                    label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    // disabled: true
+                },
+                {
+                    label: "舊金山, 美國, SFO, San Francisco International Airport",
+                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                },
+                {
+                    label: "函館, 日本, HKD, Hakodate Airport",
+                    key: "函館, 日本, HKD, Hakodate Airport"
+                },
+                {
+                    label: "東京, 日本, NRT, Narita Internation",
+                    key: "東京, 日本, NRT, Narita Internation"
+                },
+                {
+                    label: "大阪, 日本, KIX, Kansai International Airport",
+                    key: "大阪, 日本, KIX, Kansai International Airport"
+                },
+                {
+                    label: "沖繩, 日本, OKA, Naha Airport",
+                    key: "沖繩, 日本, OKA, Naha Airport"
+                },
+                {
+                    label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
+                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                },
+                {
+                    label: "曼谷, 泰國, BKK, 素萬那普國際機場",
+                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                },
+                {
+                    label: "新加坡, 新加坡, SIN, Changi Airport",
+                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                },
+                {
+                    label: "澳門, 澳門, MFM, Macau International Airportn",
+                    key: "澳門, 澳門, MFM, Macau International Airport"
+                },
+            ],
+            handleSelect(key) {
+            },
+            range: ref([Date.now(), Date.now()]),
+        };
     },
-}
+    components: {
+        NDropdown,
+        NButton,
+        NDatePicker,
+        ref,
+    },
+});
 </script>
 <template>
     <div class="search">
         <div class="searchFor">
             <br>
-            <h1>搭乘樂狗航空從台北飛往函館 ，自 TWD19,488* 起！</h1>
-            <br><br>
-            <select>
+            <h1>搭乘樂狗航空從台北飛往東京 ，自 TWD13,589* 起！</h1>
+        </div>
+        <!-- <select>
                 <option value="">單程</option>
                 <option value="">來回</option>
-            </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i class="fa-solid fa-right-left"></i>
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
-            <input type="date" placeholder="出發" class="goTime">　
-            <input type="date" placeholder="回程" class="backTime">　
+            </select> -->
+        <div class="condition">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>出發地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>目的地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-date-picker v-model:value="range" type="daterange" clearable />
+            <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
             <button type="button" class="searchBtn">搜尋</button>　
         </div>
     </div>
@@ -68,8 +128,10 @@ export default {
             <img src="../../public/sabrina/函館.jpeg" alt="">
             <br>
             <h4>函館，令人心動不已的城市街景、自然風光與特色景點</h4>
-            <p>同時擁有人文薈萃的街道景觀與雄奇靈秀的自然風光，便是函館的最大特色。搭乘有軌電車遊覽函館45分鐘，觸目所及皆是最吸引您的魅力景點。在此，您可自由自在輕鬆漫遊，隨意參訪一處歷史古跡，或是享受溫泉樂趣，眺望壯闊美景…。從市區搭乘JR列車約30分鐘，抵達大沼國定公園，感受雄偉大自然的輕柔包圍。</p>
-            <p>不管春、夏、秋、冬，函館總是準備各種特色慶典活動等候您前往：春天櫻花盛開，櫻花樹下落英繽紛，充滿浪漫情懷；夏天是煙火大會及遊行活動，函館最大型的熱鬧祭典接力登場；時至秋日，楓葉轉紅，請細細品味；入冬後，皚皚白雪覆蓋大地，搭配聖誕節慶及燈光饗宴鮮豔奪目，美不勝收。請盡情享受函館隨四季更迭的不同風貌。</p>
+            <p>同時擁有人文薈萃的街道景觀與雄奇靈秀的自然風光，便是函館的最大特色。搭乘有軌電車遊覽函館45分鐘，觸目所及皆是最吸引您的魅力景點。在此，您可自由自在輕鬆漫遊，隨意參訪一處歷史古跡，或是享受溫泉樂趣，眺望壯闊美景…。從市區搭乘JR列車約30分鐘，抵達大沼國定公園，感受雄偉大自然的輕柔包圍。
+            </p>
+            <p>不管春、夏、秋、冬，函館總是準備各種特色慶典活動等候您前往：春天櫻花盛開，櫻花樹下落英繽紛，充滿浪漫情懷；夏天是煙火大會及遊行活動，函館最大型的熱鬧祭典接力登場；時至秋日，楓葉轉紅，請細細品味；入冬後，皚皚白雪覆蓋大地，搭配聖誕節慶及燈光饗宴鮮豔奪目，美不勝收。請盡情享受函館隨四季更迭的不同風貌。
+            </p>
         </div>
     </div>
     <div class="footer">
@@ -86,45 +148,52 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    // opacity: 0.8;
 
     .searchFor {
         width: 70vw;
-        height: 30vh;
+        height: 10vh;
         background-color: rgb(7, 102, 7);
         opacity: 0.8;
         margin: 0 auto;
         margin-top: 30px;
-        h1{
+
+        h1 {
             color: white;
         }
-
-        .departure {
-            width: 200px;
-            height: 60px;
-        }
-
-        .destination {
-            width: 200px;
-            height: 60px;
-        }
-
-        .goTime {
-            width: 110px;
-            height: 60px;
-        }
-
-        .backTime {
-            width: 110px;
-            height: 60px;
-        }
     }
 
-    .fa-location-dot {
-        position: absolute;
-        left: 200px;
-    }
+    .condition {
+        width: 70vw;
+        height: 20vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(7, 102, 7);
 
+        .n-button {
+            width: 230px;
+            height: 60px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .n-date-picker {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .searchBtn {
+            width: 120px;
+            height: 45px;
+            box-shadow: none;
+            border-radius: 10px;
+            background-color: rgb(155, 190, 200);
+            border: 0px;
+            color: black;
+            font-size: 16px;
+        }
+    }
 }
 
 .content {
@@ -181,10 +250,12 @@ export default {
             border-radius: 10px;
             margin-left: 220px;
             text-align: left;
+
             .backBtn {
                 margin-left: 850px;
                 position: absolute;
                 bottom: -8%;
+
                 button {
                     width: 100px;
                     height: 40px;
@@ -210,23 +281,25 @@ export default {
         height: 100vh;
         margin-top: 250px;
         margin-left: 220px;
-        img{
+
+        img {
             width: 800px;
             height: 500px;
         }
-        p{
+
+        p {
             color: white;
             text-align: left;
         }
-        h4{
+
+        h4 {
             color: white;
         }
-        }
+    }
 }
 
 .footer {
     width: 100vw;
     height: 30vh;
     background-color: rgb(49, 48, 77);
-}
-</style>
+}</style>

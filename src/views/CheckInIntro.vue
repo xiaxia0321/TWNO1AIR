@@ -178,7 +178,7 @@ export default {
     </div>
     <div class="footer"></div>
 </template>
-<style>
+<style scoped lang="scss">
 .tabs {
     display: flex;
     flex-wrap: wrap;

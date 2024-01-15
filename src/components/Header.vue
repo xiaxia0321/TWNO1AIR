@@ -32,6 +32,9 @@ export default {
         },
         checkInIntro(){
             this.$router.push('/CheckInIntro')
+        },
+        onlineCheckIn(){
+            this.$router.push('/OnlineCheckIn')
         }
     }
 }
@@ -90,7 +93,7 @@ export default {
                             <div class="checkIn">
                                 <br>
                                 <h5>網路報到</h5>
-                                <button>線上報到</button>
+                                <button @click="this.onlineCheckIn()">線上報到</button>
                                 <br>
                                 <button @click="this.checkInIntro()">報到方式說明</button>
                             </div>
