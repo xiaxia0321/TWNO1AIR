@@ -1,10 +1,13 @@
-<script>
+<script>//航班時刻搜尋頁面
 import DepartureLocationTime from "./DepartureLocationTime.vue";
 import ArrivalLocationTime from "./ArrivalLocationTime.vue";
 export default {
   data() {
     return {};
   },
+  methods: {
+
+  } ,
   components: {
     DepartureLocationTime,
     ArrivalLocationTime,
@@ -20,6 +23,7 @@ export default {
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
+  <!-- <div class="push"></div> -->
   <div class="big">
     <!-- <ArrivalLocationTime /> -->
     <div class="header">
@@ -35,12 +39,13 @@ export default {
     <div class="mid2">
       <!-- 裡面塞出發地目的地的按鈕 -->
       <div class="b1"><DepartureLocationTime /></div>
-      <div class="b2"><button><i class="fa-solid fa-right-left"></i></button></div>
+      <div class="b2"><i class="fa-solid fa-arrow-right"></i></div>
       <div class="b3"><ArrivalLocationTime /></div>
       <div class="b4">
         <input type="date" id="start" name="trip-start" max="2050-12-31" />
       </div>
     </div>
+    <div class="mid3"><button class="bu">查詢</button></div>
   </div>
   <div class="bottom">
     <h2>注意事項</h2>
@@ -53,9 +58,12 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.push{
+  height: 10vh;
+}
 .big {
   width: 100vw;
-  height: 100vh;
+  height: 75vh;
   background-color: #161a30;
   .header {
     width: 100%;
@@ -75,7 +83,7 @@ export default {
   }
   .mid2 {
     width: 95vw;
-    height: 35vh;
+    height: 15vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -99,6 +107,26 @@ export default {
         width: 15vw;
         height: 7vh;
       }
+    }
+  }
+  .mid3{
+    width: 95vw;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    background-color: #ffeeda;
+    // background-color: red;
+    .bu{
+      width: 10vw;
+    height: 6vh;
+    margin: 10px 0px 10px 960px;
+    color: white;
+    background-color: rgb(60, 60, 60);
+    font-size: 24px;
+    letter-spacing: 5px;
+    border-radius: 7px;
     }
   }
 }

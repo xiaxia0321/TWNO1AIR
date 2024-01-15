@@ -56,6 +56,7 @@ export default {
         AirTimeSearch() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
         },
+      
     }
   
 }
@@ -105,7 +106,7 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 16pt;">班機時刻</a>
+                <a href="#" style="color: white;font-size: 16pt;" @click="AirTimeSearch">班機時刻</a>
             </li>
             <li>
                 <a href="#" style="color: white;font-size: 16pt;">準備啟程</a>
@@ -139,19 +140,13 @@ export default {
                             <div class="member">
                                 <br>
                                 <h5>樂狗會員</h5>
-                                <button @click="this.login()" @click="Login">會員登入</button>
+                                <button @click="this.login()">會員登入</button>
                                 <br>
                                 <button @click="this.join()">加入會員</button>
                                 <br>
                                 <br>
                                 <h5>測試</h5>
-                                <button @click="DepartureLocationTime">開始時間</button>
-                                <br>
-                                <button @click="ArrivalLocationTime">結束時間</button>
-                                <br>
                                 <button @click="AirTime">飛機時刻</button>
-                                <br>
-                                <button @click="AirTimeSearch">飛機時刻搜尋</button>
                             </div>
                         </div>
                     </li>
@@ -170,8 +165,8 @@ export default {
 <style scoped lang="scss">
 .headerShow {
     position: relative;
-    width: 99vw;
-    height: 30vh;
+    width: 100vw;
+    height: 20vh;
     background-color: rgb(49, 48, 77);
     box-sizing: border-box;
     padding-left: 500px;

@@ -1,23 +1,44 @@
-<script>
-//目的地時刻頁面
+<script>//目的地時刻頁面
 export default {
   data() {
-    return {};
+    return {
+      selectedDeparture: "", // 新增變數，用於存儲所選擇的出發地
+      airport: "", // 機場縮寫
+    };
   },
+  methods: {
+    selectDeparture(x,y) {
+      this.airport = x;
+      this.selectedDeparture = y;
+    },
+  }
 };
 </script>
 
 <template>
-  <!-- Button trigger modal -->
+  <!-- ===============按鈕=========== -->
   <button
     type="button"
     class="btn btn-primary dd"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal1"
+    v-if="this.selectedDeparture === ''"
   >
-    目的地
+  <span style="font-size: 26px; color:#794425">目的地　</span>
+    <span style="font-size: 0.75rem; color:#08202D;">請選擇目的地</span>
   </button>
-
+<!-- ===============按鈕=========== -->
+<button
+    type="button"
+    class="btn btn-primary dd"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal1"
+    v-else
+  >
+    <span style="font-size: 2.25rem; color:#794425;">{{this.airport}}</span>
+    <span style="font-size: 0.75rem; color:#08202D;">{{this.selectedDeparture}}</span>
+  </button>
+<!-- ===============按鈕=========== -->
   <!-- Modal -->
   <div
     class="modal fade"
@@ -42,7 +63,7 @@ export default {
             <span>臺灣</span>
           </div>
           <div class="twAll">
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('TPE　','台北,臺灣')">
               <span>臺北，臺灣　　　　　　　　　　　　　　　　　　　　　　TPE</span>
               <br />
               <small class="sm">台北桃園國際機場</small>
@@ -53,7 +74,7 @@ export default {
             <span>港澳大陸地區</span>
           </div>
           <div class="maAll">
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('MFM　','澳門,澳門')">
               <span>澳門，澳門　　　　　　　　　　　　　　　　　　　　　MFM</span>
               <br />
               <small>澳門國際機場</small>
@@ -64,25 +85,25 @@ export default {
             <span>日本</span>
           </div>
           <div class="jpAll">
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('NRT　','東京,日本')">
               <span>東京，日本　　　　　　　　　　　　　　　　　　　　　　NRT</span>
               <br />
               <small>成田國際機場</small>
             </button>
             <br />
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('KIX　','大阪,日本')">
               <span>大阪，日本　　　　　　　　　　　　　　　　　　　　　　KIX</span>
               <br />
               <small>關西國際機場</small>
             </button>
             <br />
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('HKD　','函館,日本')">
               <span>函館，日本　　　　　　　　　　　　　　　　　　　　　　HKD</span>
               <br />
               <small>涵館機場</small>
             </button>
             <br />
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('OKA　','沖繩,日本')">
               <span>沖繩，日本　　　　　　　　　　　　　　　　　　　　　　OKA</span>
               <br />
               <small>那霸國際機場</small>
@@ -93,19 +114,19 @@ export default {
             <span>東南亞</span>
           </div>
           <div class="saAll">
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('BKK　','曼谷,泰國')">
               <span>曼谷，泰國　　　　　　　　　　　　　　　　　　　　　　BKK</span>
               <br />
               <small>蘇凡納布國際機場</small>
             </button>
             <br />
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('SGN　','胡志明市,越南')">
               <span>胡志明市，越南　　　　　　　　　　　　　　　　　　　　SGN</span>
               <br />
               <small>新山一國際機場</small>
             </button>
             <br />
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('SIN　','新加坡,新加坡')">
               <span>新加坡，新加坡　　　　　　　　　　　　　　　　　　　　SIN</span>
               <br />
               <small>樟宜機場</small>
@@ -116,13 +137,13 @@ export default {
             <span>北美洲</span>
           </div>
           <div class="naAll">
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('LAX　','洛杉磯,美國')">
               <span>洛杉磯，美國　　　　　　　　　　　　　　　　　　　　　LAX</span>
               <br />
               <small>洛杉磯國際機場</small>
             </button>
             <br />
-            <button class="cc">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('SFO　','舊金山,美國')">
               <span>舊金山，美國　　　　　　　　　　　　　　　　　　　　　SFO</span>
               <br />
               <small>舊金山國際機場</small>
@@ -137,10 +158,15 @@ export default {
 
 <style scoped lang="scss">
 .dd{
-  width: 10vw;
+  width: 17vw;
   height: 10vh;
   background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: black;
+  border: 0px;
+
 }
 .aa {
   //彈跳視窗高度

@@ -3,6 +3,11 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    gogo() {
+            this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
+        },
+  }
 };
 </script>
 
@@ -14,24 +19,27 @@ export default {
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
+  <!-- <div class="push"></div> -->
   <div class="big">
     <div class="header1">
-      <h2>台北 - 福岡</h2>
+      <i class="fa-solid fa-arrow-left arrow" @click="gogo"></i>
+      <h2>查詢結果</h2>
+    </div>
+    <div class="header2">
+      <h4>台北 - 福岡</h4>
       <span>以主管機關核定為主</span>
     </div>
-    <div class="header2"></div>
     <div class="mid1 mm">
       <div class="a1"></div>
       <div class="a2">
-      <div class="a21">
-        <h3>TPE</h3>
-        <span>臺灣桃園國際機場</span>
-      </div>
-      <div class="a22">
-         <h3>FUK</h3>
-        <span>福岡機場</span>
-      </div>
-        
+        <div class="a21">
+          <h3>TPE</h3>
+          <span>臺灣桃園國際機場</span>
+        </div>
+        <div class="a22">
+          <h3>FUK</h3>
+          <span>福岡機場</span>
+        </div>
       </div>
       <div class="a3 aa"><span>1月13號</span><span>周六</span></div>
       <div class="a4 aa"><span>1月14號</span><span>周日</span></div>
@@ -67,6 +75,7 @@ export default {
       <div class="b9 bb"></div>
     </div>
     <!-- <div class="mid3 mm"></div> -->
+    <button>預定行程</button>
   </div>
   <div class="bottom">
     <h2>注意事項</h2>
@@ -79,25 +88,42 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.push {
+  height: 10vh;
+}
 .big {
   width: 100vw;
-  height: 70vh;
+  height: 90vh;
   background-color: #161a30;
+  button {
+    width: 20vw;
+    height: 7vh;
+    margin: 10vh;
+    color: white;
+    background-color: rgb(60, 60, 60);
+    font-size: 24px;
+    letter-spacing: 7px;
+    border-radius: 7px;
+  }
   .header1 {
     width: 100%;
-    height: 10vh;
+    height: 15vh;
     text-align: justify;
     color: white;
-    background-color: rgb(6, 33, 33);
-    display: flex;
+    background-color: #31304d;
+    padding: 20px;
+    .arrow {
+      font-size: 24px;
+    }
   }
   .header2 {
     width: 100%;
     height: 10vh;
     text-align: justify;
     color: white;
-    background-color: aqua;
+    padding: 10px 35px 0px 35px;
     display: flex;
+    justify-content: space-between;
   }
   .mid1 {
     width: 95%;
@@ -118,7 +144,8 @@ export default {
       display: flex;
       justify-content: space-between;
       text-align: justify;
-        }
+      padding: 0px 10px 0px 0px;
+    }
     .aa {
       width: 8%;
       height: 100%;
@@ -149,7 +176,7 @@ export default {
       text-align: justify;
       flex-direction: column; //將日期都置中
       display: flex;
-      span{
+      span {
         font-size: 12px;
       }
     }
@@ -185,7 +212,7 @@ export default {
       width: 8%;
       height: 100%;
       background-color: #eedfcd;
-      color: white;
+      color: rgb(60, 60, 60);
       flex-direction: column; //將日期都置中
       display: flex;
       justify-content: center;
@@ -194,7 +221,14 @@ export default {
     .b6 {
       //當天
       background-color: #ffeeda;
+      color: rgb(60, 60, 60);
     }
+  }
+  .mid3 {
+    width: 100%;
+    height: 22vh;
+    margin: 10px auto;
+    background-color: #ffeeda;
   }
 }
 .bottom {

@@ -37,7 +37,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .body {
   position: absolute;
   width: 100%;

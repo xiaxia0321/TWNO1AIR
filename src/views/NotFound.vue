@@ -8,7 +8,7 @@ export default {
     
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
     .aa{
         font-size: 150px;
         color: rgb(147, 0, 0);
