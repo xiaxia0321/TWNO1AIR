@@ -12,13 +12,13 @@ export default {
     },
     methods: {
         home(){
-            this.$router.push('/HomeView')
+            this.$router.push('/')
         },
         join() {
             this.$router.push('/Submit')
         },
         login() {
-            this.$router.push('/')
+            this.$router.push('/Login')
         },
         goTokyo() {
             this.$router.push('/LocationTokyo')
