@@ -3,7 +3,17 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    A321() {
+      this.$router.push("/A321"); //推送至下一頁的路徑
+    },
+    A330() {
+      this.$router.push("/A330"); //推送至下一頁的路徑
+    },
+    A350() {
+      this.$router.push("/A350"); //推送至下一頁的路徑
+    },
+  },
 };
 </script>
 
@@ -13,9 +23,9 @@ export default {
     <h5>樂狗航空．空中巴士 A330neo</h5>
   </div>
   <div class="menu">
-    <h3>A321neo</h3>
-    <h3>A330neo</h3>
-    <h3>A350-900</h3>
+    <h3 @click="A321">A321neo</h3>
+    <h3 @click="A330">A330neo</h3>
+    <h3 @click="A350">A350-900</h3>
   </div>
   <div class="introduce1">
     <h5>AIRBUS A330neo</h5>

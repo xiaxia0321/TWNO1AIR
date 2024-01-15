@@ -40,8 +40,31 @@ export default {
         },
         onlineCheckIn(){
             this.$router.push('/OnlineCheckIn')
-        }
+        },
+        A321() {
+            this.$router.push("/A321"); //推送至下一頁的路徑
+        },
+        A330() {
+            this.$router.push("/A330"); //推送至下一頁的路徑
+        },
+        A350() {
+            this.$router.push("/A350"); //推送至下一頁的路徑
+        },
+        DepartureLocationTime() {
+            this.$router.push("/DepartureLocationTime"); //推送至下一頁的路徑
+        },
+        ArrivalLocationTime() {
+            this.$router.push("/ArrivalLocationTime"); //推送至下一頁的路徑
+        },
+        AirTime() {
+            this.$router.push("/AirTime"); //推送至下一頁的路徑
+        },
+        AirTimeSearch() {
+            this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
+        },
+      
     }
+  
 }
 </script>
 
@@ -89,7 +112,7 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 16pt;">班機時刻</a>
+                <a href="#" style="color: white;font-size: 16pt;" @click="AirTimeSearch">班機時刻</a>
             </li>
             <li>
                 <a href="#" style="color: white;font-size: 16pt;">準備啟程</a>
@@ -102,6 +125,14 @@ export default {
                                 <button @click="this.onlineCheckIn()">線上報到</button>
                                 <br>
                                 <button @click="this.checkInIntro()">報到方式說明</button>
+                                <br>
+                                <br>
+                                <h5>機艙配置圖</h5>
+                                <button @click="A321">A321</button>
+                                <br>
+                                <button @click="A330">A330</button>
+                                <br>
+                                <button @click="A350">A350-900</button>
                             </div>
                         </div>
                     </li>
@@ -118,6 +149,10 @@ export default {
                                 <button @click="this.login()">會員登入</button>
                                 <br>
                                 <button @click="this.join()">加入會員</button>
+                                <br>
+                                <br>
+                                <h5>測試</h5>
+                                <button @click="AirTime">飛機時刻</button>
                             </div>
                         </div>
                     </li>
@@ -212,7 +247,7 @@ export default {
 
         .prepare {
             width: 20vw;
-            height: 30vh;
+            height: 40vh;
             background-color: rgb(240, 240, 240);
             position: absolute;
             left: -70px;

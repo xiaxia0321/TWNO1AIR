@@ -3,7 +3,17 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    A321() {
+      this.$router.push("/A321"); //推送至下一頁的路徑
+    },
+    A330() {
+      this.$router.push("/A330"); //推送至下一頁的路徑
+    },
+    A350() {
+      this.$router.push("/A350"); //推送至下一頁的路徑
+    },
+  },
 };
 </script>
 
@@ -13,9 +23,9 @@ export default {
     <h5>樂狗航空．空中巴士A321neo</h5>
   </div>
   <div class="menu">
-    <h3>A321neo</h3>
-    <h3>A330neo</h3>
-    <h3>A350-900</h3>
+    <h3 @click="A321">A321neo</h3>
+    <h3 @click="A330">A330neo</h3>
+    <h3 @click="A350">A350-900</h3>
   </div>
   <div class="introduce1">
     <h5>AIRBUS A321neo</h5>
@@ -92,12 +102,12 @@ export default {
   background-color: #161a30;
   h2 {
     color: white;
-    text-align:justify;
+    text-align: justify;
     padding: 0 80px;
   }
   h5 {
     color: white;
-    text-align:justify;
+    text-align: justify;
     padding: 0 80px 0px 80px;
   }
   .img1 {
@@ -109,7 +119,7 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
-  .img2{
+  .img2 {
     width: 90vw;
     height: 50vh;
     background-image: url(https://webassets.starlux-airlines.com/zh-TW/Images/A321n_zh-01_tcm5-5052.png);
@@ -117,7 +127,7 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
-  .img3{
+  .img3 {
     width: 90vw;
     height: 60vh;
     background-image: url(https://webassets.starlux-airlines.com/zh-TW/Images/zh2_tcm5-3677.png);
@@ -126,9 +136,9 @@ export default {
     background-size: 100% 100%;
   }
   .introduce2 {
-   h2{
-    text-align: center; 
-   }
+    h2 {
+      text-align: center;
+    }
   }
 }
 </style>

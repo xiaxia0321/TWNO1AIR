@@ -12,8 +12,7 @@ export default {
     <div class="body"></div>
 </template>
 
-<style lang="scss">
-
+<style scoped lang="scss">
   .about {
     min-height: 100vh;
     display: flex;
