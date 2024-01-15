@@ -7,13 +7,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(counter,['setPP',])
+    ...mapActions(counter, ['setPP',])
   },
   components: {
   },
   mounted() {
     this.setPP(3)
-  } 
+  }
 
 }
 </script>
@@ -24,15 +24,16 @@ export default {
       <span>BackPlane</span>
     </div>
     <div class="content">
+      <div class="search"></div>
       <div class="inside">
         <table>
           <tr>
             <th class="b1 bb">/</th>
-            <th class="b2 bb">編號</th>
-            <th class="b3 bb">名稱</th>
+            <th class="no bb">編號</th>
+            <th class="name bb">名稱</th>
             <th class="b4 bb">狀態</th>
-            <th class="b5 bb">開始時間</th>
-            <th class="b6 bb">結束時間</th>
+            <th class="start bb">開始時間</th>
+            <th class="end bb">結束時間</th>
             <th class="b7 bb">結果</th>
           </tr>
           <tr>
@@ -69,6 +70,12 @@ export default {
     width: 82%;
     height: 90vh;
 
+    .search {
+      height: 20%;
+      width: 100%;
+      border: 1px solid red;
+    }
+
     .inside {
       width: 100%;
       display: flex;
@@ -82,18 +89,19 @@ export default {
       }
 
       tr {
-        .bb{
+        .bb {
           border: 1px solid black;
         }
-        .b1{
+
+        .b1 {
           width: 50px;
         }
 
-        .b2 {
+        .no {
           width: 50px;
         }
 
-        .b3 {
+        .name {
           width: 220px;
         }
 
@@ -101,11 +109,11 @@ export default {
           width: 70px;
         }
 
-        .b5 {
+        .start {
           width: 120px;
         }
 
-        .b6 {
+        .end {
           width: 120px;
         }
 
