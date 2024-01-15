@@ -122,7 +122,7 @@ export default defineComponent({
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/洛杉磯.jpeg" alt="">
+            <img src="/sabrina/洛杉磯.jpeg" alt="">
             <h4>洛杉磯，好萊塢浮華世界、衝浪者天堂與文化地標</h4>
             <p>從星光大道 (Walk of Fame) 與 TCL 中國戲院 (TCL Chinese Theatre) 等充滿故事的好萊塢傳奇景點開始，悠然自得地漫步在暱稱為大道街區 (The Strip) 的日落大道
                 (Sunset Boulevard) 上，欣賞鮮明的招牌，享受餐廳與知名夜店之樂。

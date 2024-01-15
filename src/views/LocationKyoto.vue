@@ -121,7 +121,7 @@ export default defineComponent({
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/大阪1.jpeg" alt="">
+            <img src="/sabrina/大阪1.jpeg" alt="">
             <h4>大阪，歡樂、華麗，又熱鬧有趣</h4>
             <p>雖然從東京乘坐新幹線到大阪只是很短的一段車程，但大阪卻與日本的首都有著截然不同的風情。大阪，一個民風淳樸、民眾坦率的地方。這裡夜生活豐富多彩，美食讓人流連忘返。
                 除了購物血拼和現代景點外，大阪還有歷史的一面，其中最引人注目的就是大阪城。這座城堡是進一步探尋日本歷史的理想之地，也是在風景優美的街區漫步的好地方，尤其是在 4 月賞櫻季，此時櫻花盛開，氣候宜人。</p>
@@ -137,7 +137,7 @@ export default defineComponent({
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/大阪1.jpeg");
+    background-image: url("/sabrina/大阪1.jpeg");
     background-repeat: no-repeat;
     background-position: center;
 

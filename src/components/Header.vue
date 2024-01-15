@@ -5,29 +5,34 @@ export default {
         return {
         }
     },
+    methods: {
+    },
     components: {
         RouterLink,
     },
     methods: {
+        home(){
+            this.$router.push('/HomeView')
+        },
         join() {
             this.$router.push('/Submit')
         },
         login() {
             this.$router.push('/')
         },
-        goTokyo(){
+        goTokyo() {
             this.$router.push('/LocationTokyo')
         },
-        goKyoto(){
+        goKyoto() {
             this.$router.push('/LocationKyoto')
         },
-        goSingapore(){
+        goSingapore() {
             this.$router.push('/LocationSingapore')
         },
-        goBangkok(){
+        goBangkok() {
             this.$router.push('/LocationBangkok')
         },
-        goSFO(){
+        goSFO() {
             this.$router.push('/LocationSFO')
         },
         checkInIntro(){
@@ -42,6 +47,7 @@ export default {
 
 <template>
     <div class="headerShow">
+        <div class="happydog" style="background-image: url(/01.png);" @click="home"></div>
         <ul class="drop-down-menu">
             <li>
                 <a href="#" style="color: white;font-size: 16pt;">預訂行程</a>
@@ -129,7 +135,8 @@ export default {
 
 <style scoped lang="scss">
 .headerShow {
-    width: 100vw;
+    position: relative;
+    width: 99vw;
     height: 30vh;
     background-color: rgb(49, 48, 77);
     box-sizing: border-box;
@@ -139,6 +146,16 @@ export default {
     // justify-content: center;
     // align-content: center;
     letter-spacing: 2px;
+
+    .happydog {
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 6%;
+        height: 35%;
+    }
 
     ul {
         /* 取消ul預設的內縮及樣式 */
@@ -361,4 +378,5 @@ export default {
     //         background-color: rgba(0, 0, 0, 0.344);
     //     }
     // }
-}</style>
+}
+</style>

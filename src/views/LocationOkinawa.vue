@@ -121,7 +121,7 @@ export default defineComponent({
         </div>
         <div class="attraction">
             <br><br><br>
-            <img src="../../public/sabrina/沖繩1.jpeg" alt="">
+            <img src="/sabrina/沖繩1.jpeg" alt="">
             <h4>沖繩，原始的海灘、繽紛的珊瑚礁、亞熱帶叢林</h4>
             <p>探索獨特的島國文化，沐浴在亞熱帶的溫暖陽光中，踏著綿延細膩的白沙，穿越美麗壯觀的紅樹林，尋覓琉球歷史遺留的足跡。沖繩縣位於日本最南端，是一個由島嶼組成的島鏈，歷史上曾是一個獨立的王國，擁有獨特的亞熱帶氣候，也是空手道的發源地。探索歷代琉球國王曾居住過的宮殿遺跡和修復城堡，參觀美麗的海灘和海岸線，欣賞令人歎為觀止的珊瑚叢和海底生物。來這裡賞鯨、賽龍舟、觀賞稀有動植物、體驗海島風情，讓您忘記時間。
             </p>
@@ -137,7 +137,7 @@ export default defineComponent({
     height: 40vh;
     box-sizing: border-box;
     padding-top: 10px;
-    background-image: url("../../public/sabrina/沖繩1.jpeg");
+    background-image: url("/sabrina/沖繩1.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 2000px;
