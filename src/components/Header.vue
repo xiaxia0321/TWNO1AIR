@@ -136,8 +136,8 @@ export default {
 <style scoped lang="scss">
 .headerShow {
     position: relative;
-    width: 99vw;
-    height: 30vh;
+    width: 100vw;
+    height: 20vh;
     background-color: rgb(49, 48, 77);
     box-sizing: border-box;
     padding-left: 500px;
