@@ -175,7 +175,7 @@ export default {
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://img.triplisher.com/PIC/908f/05a6/f9b1/c4c7/5283084_full.jpg" class="d-block w-100"
+            <img src="https://image.cdn-eztravel.com.tw/3sYW0R-LNq_O4QjEnyAjz97HzYw4CPMHKSmMdP8Ea9E/g:ce/aHR0cDovL3ZhY2F0aW9uLmNkbi1lenRyYXZlbC5jb20udHcvaW1nL1ZEUi9USF8xMDIzMjkxMTk2LmpwZw.jpg" class="d-block w-100"
               alt="...">
             <div class="carousel-caption d-none d-md-block wwc">
               <h1>體驗異國風情</h1>
@@ -673,7 +673,8 @@ export default {
 
         &:hover {
           box-shadow: 2px 2px 5px 0 black;
-          background-color: white;
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: .5rem;
         }
 
         &:active {
