@@ -19,7 +19,7 @@ export default {
                 nation: '',
                 phone: '',
                 email: '',
-                selectedCountry: '',
+                selectedCountry: '中華民國',
             },
             countries: [
                 { code: 'ab', name: '阿布哈茲' },
@@ -273,6 +273,15 @@ export default {
             ],
             //表格部分
             flightData: [],
+            //紅利
+            bonus: 0,
+            //清單
+            checklist: ["護照", "機票", "錢包", "衣服", "空水壺", "個人證件", "手機", "充電線", "行動電源", "耳機", "盥洗用品", "清潔用品", "鑰匙"],
+            checkedItems: [],
+            newItem: "",
+            editingItem: null,
+            editedItemValue: "",
+            editMode: false
         }
     },
     props: {
@@ -339,6 +348,24 @@ export default {
         cancelBooking(flightId) {
             this.flightData = this.flightData.filter(flight => flight.id !== flightId);
         },
+        //清單
+        addItem() {
+            if (this.newItem.trim() !== "") {
+                this.checklist.push(this.newItem);
+                this.checkedItems.push(false);
+                this.newItem = "";
+            }
+        },
+        removeItem(index) {
+            this.checklist.splice(index, 1);
+            this.checkedItems.splice(index, 1);
+        },
+        clearChecked() {
+            this.checkedItems = [];
+        },
+        toggleEditMode() {
+            this.editMode = !this.editMode;
+        }
     },
 }
 </script>
@@ -351,7 +378,7 @@ export default {
             <button type="button" class="record" @click="user('旅客資料')">旅客資料</button><br>
             <button type="button" class="record" @click="user('旅行紀錄')">機票預訂</button><br>
             <button type="button" class="record" @click="user('關注城市')">紅利優惠</button><br>
-            <button type="button" class="record" @click="user('旅遊通知')">旅遊通知</button><br>
+            <button type="button" class="record" @click="user('旅遊通知')">行李清單</button><br>
             <button type="button" class="out">登出</button>
         </div>
         <div class="in" v-if="data">
@@ -360,24 +387,24 @@ export default {
             </div>
             <div class="bottom">
                 <div class="right" v-if="question">
-                    <span>姓名</span><br>
+                    <span>姓名</span>
                     <input class="data" type="text" id="name" v-model="userInfo.name"><br>
-                    <span>生日</span><br>
+                    <span>生日</span>
                     <input class="data D" type="date" id="age" v-model="userInfo.age"><br>
-                    <span>性別</span><br>
+                    <span>性別：</span>
                     <label v-for="(option, index) in options" :key="index" class="option">
                         <input type="radio" :value="option" v-model="userInfo.selectedOption" name="gender">
                         {{ option }}
                     </label>
                     <br>
-                    <span>國家</span><br>
+                    <span>國家</span>
                     <select class="data" id="nation" v-model="userInfo.selectedCountry">
                         <option v-for="country in countries" :key="country.code" :value="country.name">{{ country.name }}
                         </option>
                     </select><br>
-                    <span>手機</span><br>
+                    <span>手機</span>
                     <input class="data" type="number" id="phone" v-model="userInfo.phone"><br>
-                    <span>信箱</span><br>
+                    <span>信箱</span>
                     <input class="data" type="email" id="email" v-model="userInfo.email"><br>
                     <button type="button" @click="confirm('確認')">確認</button>
                 </div>
@@ -434,11 +461,46 @@ export default {
         </div>
         <div class="in" v-if="city">
             <div class="red">
-                <p>您的紅利：</p>
+                <h2><b>您的紅利</b></h2><br>
+                <div class="num">{{ bonus }}</div>
+            </div>
+            <div class="ben">
+                <span>您可以選擇的優惠</span><br>
+                <button type="button" class="bonus">
+                    <img src="./圖片/cooking_cloche_domecover_close.png" class="icon">
+                    免費餐點
+                </button>
+                <button type="button" class="bonus">
+                    <img src="./圖片/car_taxi_wagon.png" class="icon">
+                    機場接送
+                </button>
+                <button type="button" class="bonus">
+                    <img src="./圖片/bg_lounge_night.png" class="icon">
+                    VIP候機室
+                </button>
+                <button type="button" class="bonus">
+                    <img src="./圖片/yuubin_takuhaiin_box.png" class="icon">
+                    額外行李
+                </button>
             </div>
         </div>
         <div class="in" v-if="shirase">
-            <p>旅遊通知</p>
+            <div class="list">
+                <h1><img src="./圖片/calender_aseru_woman.png" class="forget">出發前檢查一下……有什麼東西忘了吧！<img
+                        src="./圖片/jikan_tobu_man.png" class="forget"></h1>
+                <ul>
+                    <li v-for="(item, index) in checklist" :key="index" :class="{ 'edit-mode': editMode }">
+                        <input type="checkbox" v-model="checkedItems[index]" v-show="!editMode">
+                        <span v-show="!editMode">{{ item }}</span>
+                        <input type="text" v-model="checklist[index]" v-show="editMode">
+                        <button @click="removeItem(index)">移除</button>
+                    </li>
+                </ul><br>
+                <input v-model="newItem" placeholder="Add new item">
+                <button @click="addItem">增加選項</button>
+                <button @click="toggleEditMode">修改選項</button>
+                <button @click="clearChecked">清除勾選</button>
+            </div>
         </div>
     </div>
 </template>
@@ -446,9 +508,9 @@ export default {
 <style scoped lang="scss">
 .screen {
     width: fill;
-    height: 90vh;
+    height: fill;
     display: flex;
-    background-color: darkblue;
+    background-color: rgb(49, 48, 77);
 }
 
 
@@ -458,7 +520,7 @@ export default {
     width: 300px;
     height: 600px;
     margin: 10px;
-    background-color:darkblue;
+    background-color: rgb(49, 48, 77);
     color: white;
 }
 
@@ -488,7 +550,7 @@ export default {
 .up {
     width: 1100px;
     height: 100px;
-    background-color: blue;
+    background-color: rgb(22, 26, 48);
     color: white;
     text-align: left;
     align-items: center;
@@ -497,7 +559,7 @@ export default {
 .bottom {
     width: 1100px;
     height: 500px;
-    background-color: lightgray;
+    background-color: rgb(182, 187, 196);
     display: flex;
 }
 
@@ -524,7 +586,7 @@ export default {
 .option {
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 30px;
+    // font-size: 25px;
 }
 
 .left1 {
@@ -559,19 +621,85 @@ td {
     text-align: left;
 }
 
-tr{
-    background-color:brown;
+tr {
+    background-color: brown;
 }
-.white{
+
+.white {
     color: white;
 }
 
-.red{
+.red {
     width: 300px;
     height: 300px;
-    background-color:coral;
+    background-color: coral;
     border-radius: 50%;
     margin-left: 400px;
+    padding: 50px;
+    color: brown;
+    text-shadow: 0.1em 0.1em 0.2em yellow
+}
 
+.num {
+    font-size: 100px;
+}
+
+.ben {
+    margin-top: 100px;
+    width: 1100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgb(240, 236, 229);
+}
+
+.bonus {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    border: 0px;
+    background-color: rgb(240, 236, 229);
+}
+
+.icon {
+    height: 50px;
+}
+
+.list {
+    background-color: rgb(240, 236, 229);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    /* 可根据需要调整复选框与文本之间的间距 */
+}
+
+.forget {
+    height: 50px;
+}
+
+.result {
+    display: flex;
+    text-align: center;
+    width: 1100px;
+
+    .checked {
+        border-right: 5px;
+    }
 }
 </style>

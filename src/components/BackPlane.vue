@@ -24,26 +24,61 @@ export default {
       <span>BackPlane</span>
     </div>
     <div class="content">
-      <div class="search"></div>
+      <div class="search">
+        <div class="no">
+          <span>航班號碼 : </span>
+          <input type="text" name="" placeholder="請輸入航班號碼" id="" v-model="planNo">
+        </div>
+        <div class="no">
+          <span>出發地  : </span>
+          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="departureLocation">
+        </div>
+        <div class="no">
+          <span>目的地 : </span>
+          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="arrivalLocation">
+        </div>
+        <div class="date">
+          <span>出發日期 : </span>
+          <input type="date" name="" id="" v-model="departureDate">
+        </div>
+        <div class="date to">
+          <span>抵達日期 : </span>
+          <input type="date" name="" id="" v-model="arrivalDate">
+        </div>
+        <button type="submit">搜尋</button>
+      </div>
       <div class="inside">
         <table>
           <tr>
             <th class="b1 bb">/</th>
-            <th class="no bb">編號</th>
-            <th class="name bb">名稱</th>
-            <th class="b4 bb">狀態</th>
-            <th class="start bb">開始時間</th>
-            <th class="end bb">結束時間</th>
-            <th class="b7 bb">結果</th>
+            <th class="no bb">航班編號</th>
+            <th class="place bb">出發地 departureLocation</th>
+            <th class="place bb">目的地 arrivalLocation</th>
+            <th class="date bb">出發日期</th>
+            <th class="date bb">抵達日期</th>
+            <th class="b7 bb">操作</th>
           </tr>
           <tr>
-            <td class="bb">1</td>
-            <td class="bb">2</td>
-            <td class="bb">3</td>
-            <td class="bb">4</td>
-            <td class="bb">5</td>
-            <td class="bb">6</td>
-            <td class="bb">7</td>
+            <td class="bb"><input type="checkbox"></td>
+            <td class="bb">No.0</td>
+            <td class="bb">台北 , 台灣</td>
+            <td class="bb">沖繩 , 日本</td>
+            <td class="bb">2024-12-48</td>
+            <td class="bb">2024-01-32</td>
+            <td class="bb">
+              <a href="">修改</a>
+              <br>
+              <a href="">刪除</a>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>1</td>
+            <td>5</td>
           </tr>
         </table>
       </div>
@@ -63,6 +98,8 @@ export default {
     height: 10vh;
     text-align: center;
     font-size: 3rem;
+
+    span {}
   }
 
   .content {
@@ -71,9 +108,64 @@ export default {
     height: 90vh;
 
     .search {
-      height: 20%;
+      position: relative;
+      box-sizing: border-box;
+      flex-wrap: wrap;
       width: 100%;
       border: 1px solid red;
+      display: flex;
+      align-items: baseline;
+      justify-content: left;
+
+      .no {
+        padding: 2px;
+        font-size: 2rem;
+        font-weight: 500;
+
+        span {
+          margin-left: 1rem;
+        }
+
+        input {
+          width: 15rem;
+          height: 2rem;
+          font-size: 1.5rem;
+          border-radius: .7rem;
+        }
+      }
+
+
+      .date {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-weight: 500;
+        font-size: 1.4rem;
+        padding-left: 1.1rem;
+
+        span {}
+
+        input {
+          width: 11rem;
+          height: 2rem;
+          border-radius: .5rem;
+        }
+      }
+
+      .to {
+        padding-left: 8.2rem;
+      }
+
+      button {
+        position: absolute;
+        right: 5rem;
+        bottom: .5rem;
+        border-radius: .5rem;
+        width: 5rem;
+        height: 2rem;
+        background-color: #0062e3;
+        color: white;
+      }
+
     }
 
     .inside {
@@ -83,14 +175,20 @@ export default {
       // padding: 25px;
 
       th {
-        background-color: gray;
+        background-color: rgb(90, 90, 90);
         color: white;
         padding: 10px;
       }
 
       tr {
+        height: 3rem;
+        border: 1px solid black;
+
         .bb {
-          border: 1px solid black;
+
+          a {
+            text-decoration: none;
+          }
         }
 
         .b1 {
@@ -98,34 +196,27 @@ export default {
         }
 
         .no {
-          width: 50px;
+          width: 7rem;
         }
 
-        .name {
-          width: 220px;
+        .place {
+          width: 15rem;
         }
 
-        .b4 {
-          width: 70px;
-        }
-
-        .start {
-          width: 120px;
-        }
-
-        .end {
-          width: 120px;
+        .date {
+          width: 12rem;
         }
 
         .b7 {
-          width: 50px;
+          width: 7rem;
+
         }
 
+        td {
+          background-color: rgb(248, 246, 246);
+        }
       }
 
-      td {
-        background-color: rgb(227, 227, 227);
-      }
     }
   }
 }
