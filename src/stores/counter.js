@@ -4,15 +4,21 @@ export default defineStore("counter", {
     //data(){}
     state() {
         return {
+            pp: 1,
         }
 
     },
     //computed
     getters: {
-
+        locationInfo(state) {
+            return `現在位置:${this.location}`
+        }
     },
     //methods
     actions: {
+        setPP(num) {
+            this.pp = num;
+        },
         goHome(){
             this.$router.push('/HomeView')
         },

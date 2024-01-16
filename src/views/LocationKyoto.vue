@@ -1,27 +1,82 @@
 <script>
-export default {
-    data() {
+import { defineComponent, ref } from 'vue'
+import { NDropdown, NButton, NDatePicker } from 'naive-ui'
+
+export default defineComponent({
+    setup() {
+        // const message = useMessage();
         return {
-        }
+            options: [
+                {
+                    label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    // disabled: true
+                },
+                {
+                    label: "舊金山, 美國, SFO, San Francisco International Airport",
+                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                },
+                {
+                    label: "函館, 日本, HKD, Hakodate Airport",
+                    key: "函館, 日本, HKD, Hakodate Airport"
+                },
+                {
+                    label: "東京, 日本, NRT, Narita Internation",
+                    key: "東京, 日本, NRT, Narita Internation"
+                },
+                {
+                    label: "大阪, 日本, KIX, Kansai International Airport",
+                    key: "大阪, 日本, KIX, Kansai International Airport"
+                },
+                {
+                    label: "沖繩, 日本, OKA, Naha Airport",
+                    key: "沖繩, 日本, OKA, Naha Airport"
+                },
+                {
+                    label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
+                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                },
+                {
+                    label: "曼谷, 泰國, BKK, 素萬那普國際機場",
+                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                },
+                {
+                    label: "新加坡, 新加坡, SIN, Changi Airport",
+                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                },
+                {
+                    label: "澳門, 澳門, MFM, Macau International Airportn",
+                    key: "澳門, 澳門, MFM, Macau International Airport"
+                },
+            ],
+            handleSelect(key) {
+            },
+            range: ref([Date.now(), Date.now()]),
+        };
     },
-}
+    components: {
+        NDropdown,
+        NButton,
+        NDatePicker,
+        ref,
+    },
+});
 </script>
 <template>
     <div class="search">
         <div class="searchFor">
             <br>
             <h1>搭乘樂狗航空從台北飛往大阪 ，自 TWD13,589* 起！</h1>
-            <br><br>
-            <select>
-                <option value="">單程</option>
-                <option value="">來回</option>
-            </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
-                class="fa-solid fa-right-left"></i>
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
-            <input type="date" placeholder="出發" class="goTime">　
-            <input type="date" placeholder="回程" class="backTime">　
+        </div>
+        <div class="condition">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>出發地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button>目的地：國家/地區、城市或機場</n-button>
+            </n-dropdown>
+            <n-date-picker v-model:value="range" type="daterange" clearable />
+            <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
             <button type="button" class="searchBtn">搜尋</button>　
         </div>
     </div>
@@ -68,7 +123,8 @@ export default {
             <br><br><br>
             <img src="/sabrina/大阪1.jpeg" alt="">
             <h4>大阪，歡樂、華麗，又熱鬧有趣</h4>
-            <p>雖然從東京乘坐新幹線到大阪只是很短的一段車程，但大阪卻與日本的首都有著截然不同的風情。大阪，一個民風淳樸、民眾坦率的地方。這裡夜生活豐富多彩，美食讓人流連忘返。 除了購物血拼和現代景點外，大阪還有歷史的一面，其中最引人注目的就是大阪城。這座城堡是進一步探尋日本歷史的理想之地，也是在風景優美的街區漫步的好地方，尤其是在 4 月賞櫻季，此時櫻花盛開，氣候宜人。</p>
+            <p>雖然從東京乘坐新幹線到大阪只是很短的一段車程，但大阪卻與日本的首都有著截然不同的風情。大阪，一個民風淳樸、民眾坦率的地方。這裡夜生活豐富多彩，美食讓人流連忘返。
+                除了購物血拼和現代景點外，大阪還有歷史的一面，其中最引人注目的就是大阪城。這座城堡是進一步探尋日本歷史的理想之地，也是在風景優美的街區漫步的好地方，尤其是在 4 月賞櫻季，此時櫻花盛開，氣候宜人。</p>
         </div>
     </div>
     <div class="footer">
@@ -84,9 +140,10 @@ export default {
     background-image: url("/sabrina/大阪1.jpeg");
     background-repeat: no-repeat;
     background-position: center;
+
     .searchFor {
         width: 70vw;
-        height: 30vh;
+        height: 10vh;
         background-color: rgb(7, 102, 7);
         opacity: 0.8;
         margin: 0 auto;
@@ -95,45 +152,50 @@ export default {
         h1 {
             color: white;
         }
-
-        .departure {
-            width: 200px;
-            height: 60px;
-        }
-
-        .destination {
-            width: 200px;
-            height: 60px;
-        }
-
-        .goTime {
-            width: 110px;
-            height: 60px;
-        }
-
-        .backTime {
-            width: 110px;
-            height: 60px;
-        }
     }
 
-    .fa-location-dot {
-        position: absolute;
-        left: 200px;
-    }
+    .condition {
+        width: 70vw;
+        height: 20vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(7, 102, 7);
 
+        .n-button {
+            width: 230px;
+            height: 60px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .n-date-picker {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .searchBtn {
+            width: 120px;
+            height: 45px;
+            box-shadow: none;
+            border-radius: 10px;
+            background-color: rgb(155, 190, 200);
+            border: 0px;
+            color: black;
+            font-size: 16px;
+        }
+    }
 }
 
 .content {
     width: 100vw;
     height: 200vh;
-    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
-        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -209,7 +271,6 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
-        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
 
@@ -232,6 +293,5 @@ export default {
 .footer {
     width: 100vw;
     height: 30vh;
-    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
 }</style>

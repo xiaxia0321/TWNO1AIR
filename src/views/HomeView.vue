@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia'
-import date from '../stores/date'
 import counter from '../stores/counter'
+import date from '../stores/date'
 export default {
   data() {
     return {
@@ -14,7 +14,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(counter,['goBangkok','goHome','goKyoto','goLogin','goSFO','goSingapore','goSubmit','goTokyo']),
+    ...mapActions(counter, ['goBangkok', 'goHome', 'goKyoto', 'goLogin', 'goSFO', 'goSingapore', 'goSubmit',]),
     login() {
       if (this.account == "A01" && this.pwd == "aaa") {
         this.$router.push('/Backstage')
@@ -22,6 +22,24 @@ export default {
         this.$router.push('/')
       }
     },
+    goTokyo() {
+      this.$router.push('/LocationTokyo')
+    },
+    goKyoto() {
+      this.$router.push('/LocationKyoto')
+    },
+    goSingapore() {
+      this.$router.push('/LocationSingapore')
+    },
+    goBangkok() {
+      this.$router.push('/LocationBangkok')
+    },
+    goSFO() {
+      this.$router.push('/LocationSFO')
+    },
+    backStage(){
+    this.$router.push('/Backstage')
+  },
     updateMinDate() {
       const selected = new Date(this.selectedDate);
       selected.setDate(selected.getDate() + 1);
@@ -39,17 +57,19 @@ export default {
     <div class="header" style="width: 100%;height: 40vh;">
       <div class="top">
         <!-- <div class="logo"></div> -->
-        <span>HappyDog</span>
+        <span>Happy Dog 樂狗航空</span>
         <div class="user">
-          <i class="fa-solid fa-earth-americas ii"></i>
-          <i class="fa-solid fa-heart ii"></i>
-          <img src="/marine.jpeg" class="ii" alt="" style="width: 20%;height: 100%;" @click="login">
-          <i class="fa-solid fa-bars ii"></i>
+          <div class="oo">
+            <i class="fa-solid fa-earth-americas ii"></i>
+            <i class="fa-solid fa-heart ii" @click="backStage"></i>
+            <img src="/marine.jpeg" alt="" style="width: 20%;height: 100%;" @click="login">
+            <i class="fa-solid fa-bars ii"></i>
+          </div>
         </div>
       </div>
       <div class="title">
         <p style="margin: 0; font-size: 2.5em; color: white;
-      ">即刻搜尋，數個便宜航班等待您發現。</p>
+      ">即刻搜尋，數個航班等待您發現。</p>
       </div>
       <div class="search" style="width: 90%; height: 30%; ">
         <div class="place" name="出發地" style="border-radius: 15px 0 0 15px ;">
@@ -152,7 +172,7 @@ export default {
     <div class="air" style="width: 100%; ">
       <p style="font-size: 3.1rem; margin: 2% 0 1% 0; font-weight: 900;">探索景點</p>
       <div class="airIn">
-        <div class="block">
+        <div class="block" @click="">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/246fa4ebad55ce0c252a19705e17514b/hongkong-0304.jpg?crop=100px:100px&quality=90);">
           </div>
@@ -198,7 +218,7 @@ export default {
             <span>人不可貌相</span>
           </div>
         </div>
-        <div class="block">
+        <div class="block" @click="goSingapore">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/m/13843abc13d27263/original/Singapore.jpg?crop=100px:100px&quality=90);">
           </div>
@@ -216,7 +236,7 @@ export default {
             <span>灘賭聖</span>
           </div>
         </div>
-        <div class="block">
+        <div class="block" @click="goKyoto">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/m/14316548b29a2ab3/original/Osaka.jpg?crop=100px:100px&quality=90);">
           </div>
@@ -345,10 +365,7 @@ export default {
         height: 100%;
         position: absolute;
         right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: row;
+
         //   button {
         //     display: flex;
         //     justify-content: center;
@@ -357,8 +374,23 @@ export default {
         //     padding: 0;
         //     border: none;
         //     background: none;
-
         // }
+        .oo {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+
+          .ii {
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.354);
+            }
+
+            &:active {
+              background-color: rgba(255, 255, 255, 0.061);
+            }
+          }
+        }
       }
     }
 
@@ -611,6 +643,15 @@ export default {
         font-size: 50px;
         width: 50px;
         height: 50px;
+
+        &:hover {
+          box-shadow: 2px 2px 5px 0 black;
+          background-color: white;
+        }
+
+        &:active {
+          box-shadow: -1px -1px 1px 2px black;
+        }
       }
     }
   }

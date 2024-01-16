@@ -49,20 +49,21 @@ export default {
 <template>
     <div class="loginArea">
         <div class="loginInput">
+            <br>
             <h1>會員註冊</h1>
+            <br>
             <div class="loginInputArea">
+                <label for="" style="font-size: 14pt;">信箱：</label>
+                <input type="email" placeholder="請輸入信箱" id="inputAccount" class="email">
                 <br><br>
-                <label for="">信箱：</label>
-                <input type="email" placeholder="請輸入信箱" id="inputAccount">
+                <label for="" style="font-size: 14pt;">密碼：</label>
+                <input type="text" placeholder="請輸入密碼" id="inputPassword" class="password">
+                <br><br>
+                <label for="" style="font-size: 14pt;">請再次確認密碼：</label>
+                <input type="text" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword">
                 <br><br><br>
-                <label for="">密碼：</label>
-                <input type="text" placeholder="請輸入密碼" id="inputPassword">
-                <br><br><br><br>
-                <label for="">請再次確認密碼：</label>
-                <input type="text" placeholder="請再次輸入密碼" id="inputRepeatPassword">
-                <br><br><br><br><br>
                 <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
-                <button class="buttonSubmit" @click="login()" style="margin-left: 10rem;">返回</button>
+                <button class="buttonSubmit" @click="login()" style="margin-left: 40px;">返回</button>
             </div>
         </div>
     </div>
@@ -72,21 +73,44 @@ export default {
 .loginArea {
     width: 100vw;
     height: 100vh;
-
+    background-color: rgb(22, 26, 48);
+    box-sizing: border-box;
+    padding-top: 150px;
     .loginInput {
-        width: 40vw;
-        height: 60vh;
+        width: 70vw;
+        height: 48vh;
         border: 2px solid black;
         border-radius: 15px;
-        margin-left: 30vw;
-        margin-top: 15vh;
+        margin-left: 15vw;
         text-align: center;
+        background-color: rgb(240, 236, 229);
 
         .loginInputArea {
             text-align: left;
-            margin-top: 20px;
+            margin-top: 10px;
             margin-left: 10vw;
+            .email{
+                width: 300px;
+                height: 35px;
+                background-color: rgb(240, 236, 229);
+                border: 2px gray solid;
+                border-radius: 5px;
+            }
 
+            .password{
+                width: 300px;
+                height: 35px;
+                background-color: rgb(240, 236, 229);
+                border: 2px gray solid;
+                border-radius: 5px;
+            }
+            .repeatPassword{
+                width: 300px;
+                height: 35px;
+                background-color: rgb(240, 236, 229);
+                border: 2px gray solid;
+                border-radius: 5px;
+            }
             .buttonLoginIn {
                 margin-right: 20px;
             }
@@ -95,11 +119,13 @@ export default {
                 margin-right: 20px;
             }
             .buttonSubmit{
-                background-color: none;
+                box-shadow: none;
                 border-radius: 15px;
-                width: 5rem;
-                height: 2rem;
-                font-size: 1.3rem;
+                width: 80px;
+                height: 40px;
+                margin-left: 560px;
+                border: none;
+                background-color: rgb(108, 95, 91);
             }
         }
     }

@@ -174,6 +174,11 @@ const router = createRouter({
         }
       ]
     },
+    {
+      path:"/CheckInIntro",
+      name:"CheckInIntro",
+      component:() => import('../views/CheckInIntro.vue')
+    },
     // {
     //   path:"/dynamicQuestionnaireBack",
     //   name:"dynamicQuestionnaireBack",

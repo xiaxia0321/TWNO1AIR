@@ -35,6 +35,12 @@ export default {
         goSFO() {
             this.$router.push('/LocationSFO')
         },
+        checkInIntro(){
+            this.$router.push('/CheckInIntro')
+        },
+        onlineCheckIn(){
+            this.$router.push('/OnlineCheckIn')
+        },
         A321() {
             this.$router.push("/A321"); //推送至下一頁的路徑
         },
@@ -77,7 +83,7 @@ export default {
 
 <template>
     <div class="headerShow">
-        <div class="happydog" style="background-image: url(/01.png);" @click="home"></div>
+        <div class="happydog" @click="home"></div>
         <ul class="drop-down-menu">
             <li>
                 <a href="#" style="color: white;font-size: 16pt;">預訂行程</a>
@@ -129,9 +135,9 @@ export default {
                             <div class="checkIn">
                                 <br>
                                 <h5>網路報到</h5>
-                                <button>線上報到</button>
+                                <button @click="this.onlineCheckIn()">線上報到</button>
                                 <br>
-                                <button>報到方式說明</button>
+                                <button @click="this.checkInIntro()">報到方式說明</button>
                                 <br>
                                 <br>
                                 <h5>機艙配置圖</h5>
@@ -201,10 +207,17 @@ export default {
         position: absolute;
         left: 50px;
         top: 20px;
+        background-image: url(/noBack.png);
         background-size: contain;
         background-repeat: no-repeat;
         width: 6%;
-        height: 35%;
+        height: 40%;
+        &:hover{
+            box-shadow: 2px 2px 5px 0 black;
+        }
+        &:active{
+            box-shadow: -1px -1px 1px 2px black;
+        }
     }
 
     ul {

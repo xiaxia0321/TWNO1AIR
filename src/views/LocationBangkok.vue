@@ -1,29 +1,100 @@
 <script>
-export default {
+import { defineComponent, ref } from 'vue'
+import { NDropdown, NButton, NDatePicker } from 'naive-ui'
+
+export default defineComponent({
     data() {
         return {
+            start: "",
+            end: "",
+            options: [
+                {
+                    label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+                    key: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+                    disabled: false
+                },
+                {
+                    label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                },
+                {
+                    label: "舊金山, 美國, SFO, San Francisco International Airport",
+                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                },
+                {
+                    label: "函館, 日本, HKD, Hakodate Airport",
+                    key: "函館, 日本, HKD, Hakodate Airport"
+                },
+                {
+                    label: "東京, 日本, NRT, Narita Internation",
+                    key: "東京, 日本, NRT, Narita Internation"
+                },
+                {
+                    label: "大阪, 日本, KIX, Kansai International Airport",
+                    key: "大阪, 日本, KIX, Kansai International Airport"
+                },
+                {
+                    label: "沖繩, 日本, OKA, Naha Airport",
+                    key: "沖繩, 日本, OKA, Naha Airport"
+                },
+                {
+                    label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
+                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                },
+                {
+                    label: "曼谷, 泰國, BKK, 素萬那普國際機場",
+                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                },
+                {
+                    label: "新加坡, 新加坡, SIN, Changi Airport",
+                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                },
+                {
+                    label: "澳門, 澳門, MFM, Macau International Airportn",
+                    key: "澳門, 澳門, MFM, Macau International Airport"
+                },
+            ],
+            range: ""
         }
     },
-}
+    methods: {
+        handleSelect(key) {
+            this.start = key
+            console.log(start)
+            // console.log(key)
+        },
+        handleSelectTwo(key) {
+            this.end = key
+            console.log(start)
+            // console.log(key)
+        },
+    },
+    components: {
+        NDropdown,
+        NButton,
+        NDatePicker,
+    },
+});
 </script>
 <template>
     <div class="search">
         <div class="searchFor">
             <br>
             <h1>搭乘樂狗航空從台北飛往曼谷 ，自 TWD9,220* 起！</h1>
-            <br><br>
-            <select>
-                <option value="">單程</option>
-                <option value="">來回</option>
-            </select>
-            <p></p><input type="search" placeholder="出發地：國家/地區、城市或機場" class="departure">　<i
-                class="fa-solid fa-right-left"></i>
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="search" placeholder="目的地：國家/地區、城市或機場" class="destination">　
-            <input type="date" placeholder="出發" class="goTime">　
-            <input type="date" placeholder="回程" class="backTime">　
+        </div>
+        <div class="condition">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <!-- <n-button>出發地：國家/地區、城市或機場</n-button> -->
+                <n-button>出發地：{{ start }}</n-button>
+            </n-dropdown>
+            <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
+                <n-button>目的地：{{ end }}</n-button>
+            </n-dropdown>
+            <n-date-picker v-model:value="range" type="daterange" clearable />
+            <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
             <button type="button" class="searchBtn">搜尋</button>　
         </div>
+
     </div>
     <div class="content">
         <div class="ticket">
@@ -68,7 +139,8 @@ export default {
             <br><br><br>
             <img src="/sabrina/曼谷.webp" alt="">
             <h4>曼谷，同時兼具古老氣息和現代風情的東方大城</h4>
-            <p>這個同時兼具古老氣息和現代風情的東方大城，是個處處充滿著讚歎與美麗的地方。這個城市是於1782年由卻克里(Chakri)王朝的帝王所建，面積為1,568平方公里，現為首都，也是政治、商業與文化中心。不僅在地理上位居輻轃點，更是旅遊觀光的重要據點。曼谷目前人口約700萬人，湄南河貫穿整個曼谷市，為曼谷市帶來了繁榮與商機，曼谷也因此贏得了『東方威尼斯』的美名。</p>
+            <p>這個同時兼具古老氣息和現代風情的東方大城，是個處處充滿著讚歎與美麗的地方。這個城市是於1782年由卻克里(Chakri)王朝的帝王所建，面積為1,568平方公里，現為首都，也是政治、商業與文化中心。不僅在地理上位居輻轃點，更是旅遊觀光的重要據點。曼谷目前人口約700萬人，湄南河貫穿整個曼谷市，為曼谷市帶來了繁榮與商機，曼谷也因此贏得了『東方威尼斯』的美名。
+            </p>
         </div>
     </div>
     <div class="footer">
@@ -85,9 +157,10 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1600px;
+
     .searchFor {
         width: 70vw;
-        height: 30vh;
+        height: 10vh;
         background-color: rgb(7, 102, 7);
         opacity: 0.8;
         margin: 0 auto;
@@ -96,45 +169,50 @@ export default {
         h1 {
             color: white;
         }
-
-        .departure {
-            width: 200px;
-            height: 60px;
-        }
-
-        .destination {
-            width: 200px;
-            height: 60px;
-        }
-
-        .goTime {
-            width: 110px;
-            height: 60px;
-        }
-
-        .backTime {
-            width: 110px;
-            height: 60px;
-        }
     }
 
-    .fa-location-dot {
-        position: absolute;
-        left: 200px;
-    }
+    .condition {
+        width: 70vw;
+        height: 20vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(7, 102, 7);
 
+        .n-button {
+            width: 230px;
+            height: 60px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .n-date-picker {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .searchBtn {
+            width: 120px;
+            height: 45px;
+            box-shadow: none;
+            border-radius: 10px;
+            background-color: rgb(155, 190, 200);
+            border: 0px;
+            color: black;
+            font-size: 16px;
+        }
+    }
 }
 
 .content {
     width: 100vw;
     height: 200vh;
-    // border: 1px solid green;
     background-color: rgb(22, 26, 48);
 
     .ticket {
         width: 100vw;
         height: 80vh;
-        // border: 1px solid orange;
         box-sizing: border-box;
         padding-top: 20px;
 
@@ -210,7 +288,6 @@ export default {
     .attraction {
         width: 70vw;
         height: 100vh;
-        // border: 1px solid palevioletred;
         margin-top: 250px;
         margin-left: 220px;
 
@@ -233,6 +310,6 @@ export default {
 .footer {
     width: 100vw;
     height: 30vh;
-    // border: 1px solid blue;
     background-color: rgb(49, 48, 77);
-}</style>
+}
+</style>
