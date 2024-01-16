@@ -7,39 +7,39 @@ export default {
         return {
         }
     },
-    methods: {
-        toLogin() {
-            this.$router.push('/Submit')
-        },
-        signUpCheck() {
-            let inputAccount = document.getElementById("inputAccount")
-            let inputPassword = document.getElementById("inputPassword")
-            let inputRepeatPassword = document.getElementById("inputRepeatPassword")
-            if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value) {
-                console.log("xxx")
-                Swal.fire({
-                    icon: "error",
-                    text: "你有資料尚未填寫"
-                })
-                return
-            }
-            if (inputPassword.value !== inputRepeatPassword.value) {
-                Swal.fire({
-                    icon: "error",
-                    text: "你輸入的密碼與確認的密碼不相符"
-                })
-            } else {
-                Swal.fire({
-                    icon: "success",
-                    text: "你已經註冊成功",
-                    showConfirmButton: true,
-                })
-            }
-            inputAccount.value = "";
-            inputPassword.value = "";
-            inputRepeatPassword.value = "";
-        },
-    },
+    // methods: {
+    //     toLogin() {
+    //         this.$router.push('/Submit')
+    //     },
+    //     signUpCheck() {
+    //         let inputAccount = document.getElementById("inputAccount")
+    //         let inputPassword = document.getElementById("inputPassword")
+    //         let inputRepeatPassword = document.getElementById("inputRepeatPassword")
+    //         if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value) {
+    //             console.log("xxx")
+    //             Swal.fire({
+    //                 icon: "error",
+    //                 text: "你有資料尚未填寫"
+    //             })
+    //             return
+    //         }
+    //         if (inputPassword.value !== inputRepeatPassword.value) {
+    //             Swal.fire({
+    //                 icon: "error",
+    //                 text: "你輸入的密碼與確認的密碼不相符"
+    //             })
+    //         } else {
+    //             Swal.fire({
+    //                 icon: "success",
+    //                 text: "你已經註冊成功",
+    //                 showConfirmButton: true,
+    //             })
+    //         }
+    //         inputAccount.value = "";
+    //         inputPassword.value = "";
+    //         inputRepeatPassword.value = "";
+    //     },
+    // },
 }
 </script>
 
@@ -120,31 +120,4 @@ export default {
 </template>
 
 <style scoped lang="scss">
-
-// .loginArea {
-//   width: 100vw;
-//   height: 100vh;
-
-//   .loginInput {
-//     width: 40vw;
-//     height: 60vh;
-//     border: 2px solid black;
-//     border-radius: 15px;
-//     margin-left: 30vw;
-//     margin-top: 15vh;
-
-//     /* text-align: center; */
-//     .loginInputArea {
-//       margin-top: 20px;
-
-//       .buttonLoginIn {
-//         margin-right: 20px;
-//       }
-
-//       .buttonForgotPassword {
-//         margin-right: 20px;
-//       }
-//     }
-//   }
-// }
 </style>

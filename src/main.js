@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap"
 
 const pinia = createPinia();
-const app = createApp(App)
+const app = createApp(App);
 
 app.use(router)
 app.use(pinia)

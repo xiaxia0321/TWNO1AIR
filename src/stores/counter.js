@@ -4,15 +4,45 @@ export default defineStore("counter", {
     //data(){}
     state() {
         return {
+            pp: 1,
         }
 
     },
     //computed
     getters: {
-
+        locationInfo(state) {
+            return `現在位置:${this.location}`
+        }
     },
     //methods
     actions: {
+        setPP(num) {
+            this.pp = num;
+        },
+        goHome(){
+            this.$router.push('/HomeView')
+        },
+        goSubmit() {
+            this.$router.push('/Submit')
+        },
+        goLogin() {
+            this.$router.push('/')
+        },
+        goTokyo() {
+            this.$router.push('/LocationTokyo')
+        },
+        goKyoto() {
+            this.$router.push('/LocationKyoto')
+        },
+        goSingapore() {
+            this.$router.push('/LocationSingapore')
+        },
+        goBangkok() {
+            this.$router.push('/LocationBangkok')
+        },
+        goSFO() {
+            this.$router.push('/LocationSFO')
+        }
     }
 }
 )
