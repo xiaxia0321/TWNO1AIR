@@ -1,6 +1,6 @@
 <script>
-import counter from "../stores/counter";
-import { mapState, mapActions } from "pinia";
+import counter from "../stores/counter"
+import { mapState, mapActions } from "pinia"
 import Swal from 'sweetalert2'
 export default {
     data() {

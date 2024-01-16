@@ -3,14 +3,19 @@ import { defineComponent, ref } from 'vue'
 import { NDropdown, NButton, NDatePicker } from 'naive-ui'
 
 export default defineComponent({
-    setup() {
-        // const message = useMessage();
+    data() {
         return {
+            start: "",
+            end: "",
             options: [
+                {
+                    label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+                    key: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+                    disabled: false
+                },
                 {
                     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
                     key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-                    // disabled: true
                 },
                 {
                     label: "舊金山, 美國, SFO, San Francisco International Airport",
@@ -49,16 +54,25 @@ export default defineComponent({
                     key: "澳門, 澳門, MFM, Macau International Airport"
                 },
             ],
-            handleSelect(key) {
-            },
-            range: ref([Date.now(), Date.now()]),
-        };
+            range: ""
+        }
+    },
+    methods: {
+        handleSelect(key) {
+            this.start = key
+            console.log(start)
+            // console.log(key)
+        },
+        handleSelectTwo(key) {
+            this.end = key
+            console.log(start)
+            // console.log(key)
+        },
     },
     components: {
         NDropdown,
         NButton,
         NDatePicker,
-        ref,
     },
 });
 </script>
@@ -74,10 +88,10 @@ export default defineComponent({
             </select> -->
         <div class="condition">
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
-                <n-button>出發地：國家/地區、城市或機場</n-button>
+                <n-button>出發地：{{ start }}</n-button>
             </n-dropdown>
-            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
-                <n-button>目的地：國家/地區、城市或機場</n-button>
+            <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
+                <n-button>目的地：{{ end }}</n-button>
             </n-dropdown>
             <n-date-picker v-model:value="range" type="daterange" clearable />
             <!-- <pre>{{ JSON.stringify(range) }}</pre> -->

@@ -15,10 +15,14 @@ export default {
             this.$router.push('/Submit')
         },
         signUpCheck() {
+            let inputName = document.getElementById("inputName")
+            let inputPhone = document.getElementById("inputPhone")
+            let inputEmail = document.getElementById("inputEmail")
             let inputAccount = document.getElementById("inputAccount")
             let inputPassword = document.getElementById("inputPassword")
             let inputRepeatPassword = document.getElementById("inputRepeatPassword")
-            if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value) {
+            if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value || 
+            !inputName.value || !inputPhone.value || !!inputEmail.value) {
                 console.log("xxx")
                 Swal.fire({
                     icon: "error",
@@ -37,7 +41,11 @@ export default {
                     text: "你已經註冊成功",
                     showConfirmButton: true,
                 })
+                this.$router.push('/User')
             }
+            inputName.value = "";
+            inputPhone.value = "";
+            inputEmail.value = "";
             inputAccount.value = "";
             inputPassword.value = "";
             inputRepeatPassword.value = "";
@@ -53,14 +61,20 @@ export default {
             <h1>會員註冊</h1>
             <br>
             <div class="loginInputArea">
+                <label for="" style="font-size: 14pt;">姓名：</label>
+                <input type="text" placeholder="請輸入正確的姓名" id="inputName" class="name">
+                <br><br>
+                <label for="" style="font-size: 14pt;">電話：</label>
+                <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone">
+                <br><br>
                 <label for="" style="font-size: 14pt;">信箱：</label>
-                <input type="email" placeholder="請輸入信箱" id="inputAccount" class="email">
+                <input type="email" placeholder="請輸入信箱" id="inputEmail" class="email">
                 <br><br>
                 <label for="" style="font-size: 14pt;">密碼：</label>
-                <input type="text" placeholder="請輸入密碼" id="inputPassword" class="password">
+                <input type="password" placeholder="請輸入密碼" id="inputPassword" class="password">
                 <br><br>
                 <label for="" style="font-size: 14pt;">請再次確認密碼：</label>
-                <input type="text" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword">
+                <input type="" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword">
                 <br><br><br>
                 <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
                 <button class="buttonSubmit" @click="login()" style="margin-left: 40px;">返回</button>
@@ -78,7 +92,7 @@ export default {
     padding-top: 150px;
     .loginInput {
         width: 70vw;
-        height: 48vh;
+        height: 60vh;
         border: 2px solid black;
         border-radius: 15px;
         margin-left: 15vw;
@@ -89,6 +103,20 @@ export default {
             text-align: left;
             margin-top: 10px;
             margin-left: 10vw;
+            .name{
+                width: 300px;
+                height: 35px;
+                background-color: rgb(240, 236, 229);
+                border: 2px gray solid;
+                border-radius: 5px;
+            }
+            .phone{
+                width: 300px;
+                height: 35px;
+                background-color: rgb(240, 236, 229);
+                border: 2px gray solid;
+                border-radius: 5px;
+            }
             .email{
                 width: 300px;
                 height: 35px;

@@ -3,11 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'Login',
-    //   component: () => import('../views/Login.vue')
-    // },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: () => import('../views/Login.vue')
+    },
     {
       path: '/Backstage',
       name: 'Backstage',
@@ -158,6 +158,26 @@ const router = createRouter({
       path:"/CheckInIntro",
       name:"CheckInIntro",
       component:() => import('../views/CheckInIntro.vue')
+    },
+    {
+      path:"/OnlineCheckIn",
+      name:"OnlineCheckIn",
+      component:() => import('../views/OnlineCheckIn.vue')
+    },
+    {
+      path:"/OnlineCheckInTwo",
+      name:"OnlineCheckInTwo",
+      component:() => import('../views/OnlineCheckInTwo.vue')
+    },
+    {
+      path:"/Dangerous",
+      name:"Dangerous",
+      component:() => import('../views/Dangerous.vue')
+    },
+    {
+      path:"/FinalCheckIn",
+      name:"FinalCheckIn",
+      component:() => import('../views/FinalCheckIn.vue')
     },
     // {
     //   path:"/dynamicQuestionnaireBack",
