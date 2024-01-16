@@ -4,8 +4,11 @@ export default {
     return {};
   },
   methods: {
-    gogo() {
+    back() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
+        },
+        gogo() {
+            this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
         },
   }
 };
@@ -22,7 +25,7 @@ export default {
   <!-- <div class="push"></div> -->
   <div class="big">
     <div class="header1">
-      <i class="fa-solid fa-arrow-left arrow" @click="gogo"></i>
+      <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
       <h2>查詢結果</h2>
     </div>
     <div class="header2">
@@ -75,7 +78,7 @@ export default {
       <div class="b9 bb"></div>
     </div>
     <!-- <div class="mid3 mm"></div> -->
-    <button>預定行程</button>
+    <button @click="gogo">預定行程</button>
   </div>
   <div class="bottom">
     <h2>注意事項</h2>
