@@ -89,11 +89,6 @@ const router = createRouter({
       component:() => import('../views/LocationSFO.vue')
     },
     {
-      path:"/LocationTokyo",
-      name:"LocationTokyo",
-      component:() => import('../views/LocationTokyo.vue')
-    },
-    {
       path:"/LocationKyoto",
       name:"LocationKyoto",
       component:() => import('../views/LocationKyoto.vue')
@@ -122,6 +117,11 @@ const router = createRouter({
       path:"/LocationMacao",
       name:"LocationMacao",
       component:() => import('../views/LocationMacao.vue')
+    },
+    {
+      path:"/LocationTokyo",
+      name:"LocationTokyo",
+      component:() => import('../views/LocationTokyo.vue')
     },
     {
       path:"/User",
@@ -165,7 +165,7 @@ const router = createRouter({
       component:() => import('../views/OnlineCheckIn.vue')
     },
     {
-      //要加在最後一個
+      //要加在最後一個 若路徑錯誤則會跳出error404
       path:"/:pathMatch(.*)*",
       name:"NotFound",
       component:()=>import('../views/NotFound.vue')

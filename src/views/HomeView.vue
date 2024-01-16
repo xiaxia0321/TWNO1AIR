@@ -24,22 +24,49 @@ export default {
     },
     goTokyo() {
       this.$router.push('/LocationTokyo')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
     },
     goKyoto() {
       this.$router.push('/LocationKyoto')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
     },
     goSingapore() {
       this.$router.push('/LocationSingapore')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
     },
     goBangkok() {
       this.$router.push('/LocationBangkok')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
     },
     goSFO() {
       this.$router.push('/LocationSFO')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
     },
-    backStage(){
-    this.$router.push('/Backstage')
-  },
+    backStage() {
+      this.$router.push('/Backstage')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
+    },
+    goMacao() {
+      this.$router.push('/LocationMacao')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
+    },
     updateMinDate() {
       const selected = new Date(this.selectedDate);
       selected.setDate(selected.getDate() + 1);
@@ -47,7 +74,7 @@ export default {
     },
   },
   created() {
-  }
+  },
 
 }
 </script>
@@ -56,10 +83,10 @@ export default {
   <div class="big">
     <div class="header" style="width: 100%;height: 40vh;">
       <div class="top">
-        <!-- <div class="logo"></div> -->
         <span>Happy Dog 樂狗航空</span>
         <div class="user">
           <div class="oo">
+            <!--    右上角     -->
             <i class="fa-solid fa-earth-americas ii"></i>
             <i class="fa-solid fa-heart ii" @click="backStage"></i>
             <img src="/marine.jpeg" alt="" style="width: 20%;height: 100%;" @click="login">
@@ -120,7 +147,7 @@ export default {
 
     </div>
     <div class="pic" style="width: 100%; height: 80vh;">
-      <!-- ======================= -->
+      <!-- ============輪播=========== -->
 
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -135,14 +162,14 @@ export default {
           <div class="carousel-item active">
             <img src="https://img.triplisher.com/PIC/908f/05a6/f9b1/c4c7/5283084_full.jpg" class="d-block w-100"
               alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-none d-md-block wwc">
               <h1>開拓自身眼界</h1>
               <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="https://www.kkday.com/zh-hk/blog/wp-content/uploads/jpg-39-5.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-none d-md-block wwc">
               <h1>感受每個當下</h1>
               <p>Some representative placeholder content for the second slide.</p>
             </div>
@@ -150,7 +177,7 @@ export default {
           <div class="carousel-item">
             <img src="https://img.triplisher.com/PIC/908f/05a6/f9b1/c4c7/5283084_full.jpg" class="d-block w-100"
               alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-none d-md-block wwc">
               <h1>體驗異國風情</h1>
               <p>漫步塞納河畔，和你的美，品嘗左岸的咖啡</p>
             </div>
@@ -199,7 +226,7 @@ export default {
             <span>炸醬面+炒年糕</span>
           </div>
         </div>
-        <div class="block">
+        <div class="block" @click="goMacao">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/m/288a593f841ac262/original/macau_china.jpg?crop=100px:100px&quality=90);">
           </div>
