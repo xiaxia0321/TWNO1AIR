@@ -6,7 +6,9 @@ export default {
     return {};
   },
   methods: {
-
+    gogo() {
+            this.$router.push("/AirTime"); //推送至下一頁的路徑
+        },
   } ,
   components: {
     DepartureLocationTime,
@@ -45,7 +47,7 @@ export default {
         <input type="date" id="start" name="trip-start" max="2050-12-31" />
       </div>
     </div>
-    <div class="mid3"><button class="bu">查詢</button></div>
+    <div class="mid3"><button class="bu" @click="gogo">查詢</button></div>
   </div>
   <div class="bottom">
     <h2>注意事項</h2>

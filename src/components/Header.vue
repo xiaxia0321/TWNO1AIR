@@ -56,12 +56,25 @@ export default {
         ArrivalLocationTime() {
             this.$router.push("/ArrivalLocationTime"); //推送至下一頁的路徑
         },
-        AirTime() {
-            this.$router.push("/AirTime"); //推送至下一頁的路徑
-        },
         AirTimeSearch() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
         },
+        AirTime() {
+            this.$router.push("/AirTime"); //推送至下一頁的路徑
+        },
+        OutboundConfirm() {
+            this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
+        },
+        ReturnConfirm() {
+            this.$router.push("/ReturnConfirm"); //推送至下一頁的路徑
+        },
+        PassengerInformation() {
+            this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
+        },
+        ProductDetailed() {
+            this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
+        },
+       
       
     }
   
@@ -153,6 +166,14 @@ export default {
                                 <br>
                                 <h5>測試</h5>
                                 <button @click="AirTime">飛機時刻</button>
+                                <br>
+                                <button @click="OutboundConfirm">去程訂票確認</button>
+                                <br>
+                                <button @click="ReturnConfirm">回程訂票確認</button>
+                                <br>
+                                <button @click="PassengerInformation">旅客資訊聯絡方式輸入頁面</button>
+                                <br>
+                                <button @click="ProductDetailed">最終訂票確認頁面</button>
                             </div>
                         </div>
                     </li>

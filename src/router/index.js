@@ -69,6 +69,26 @@ const router = createRouter({
       component: () => import('../views/AirTime.vue')
     },
     {
+      path: "/OutboundConfirm",
+      name: "OutboundConfirm",
+      component: () => import('../views/OutboundConfirm.vue')
+    },
+    {
+      path: "/ReturnConfirm",
+      name: "ReturnConfirm",
+      component: () => import('../views/ReturnConfirm.vue')
+    },
+    {
+      path: "/PassengerInformation",
+      name: "PassengerInformation",
+      component: () => import('../views/PassengerInformation.vue')
+    },
+    {
+      path: "/ProductDetailed",
+      name: "ProductDetailed",
+      component: () => import('../views/ProductDetailed.vue')
+    },
+    {
       path: "/A321Seat",
       name: "A321Seat",
       component: () => import('../views/A321Seat.vue')
