@@ -189,10 +189,13 @@ export default {
         background-image: url(/noBack.png);
         background-size: contain;
         background-repeat: no-repeat;
-        width: 6%;
-        height: 40%;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 1rem;
+        transition: .2s;
         &:hover{
             box-shadow: 2px 2px 5px 0 black;
+            background-color: rgba(255, 255, 255, 0.063);
         }
         &:active{
             box-shadow: -1px -1px 1px 2px black;

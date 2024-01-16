@@ -159,26 +159,11 @@ const router = createRouter({
       name:"CheckInIntro",
       component:() => import('../views/CheckInIntro.vue')
     },
-    // {
-    //   path:"/dynamicQuestionnaireBack",
-    //   name:"dynamicQuestionnaireBack",
-    //   component:() => import('../views/dynamicQuestionnaireBack.vue')
-    // },
-    // {
-    //   path:"/backForm",
-    //   name:"backForm",
-    //   component:() => import('../views/backForm.vue')
-    // },
-    // {
-    //   path:"/questionsForms",
-    //   name:"questionsForms",
-    //   component:() => import('../views/questionsForms.vue')
-    // },
-    // {
-    //   path:"/dynamicQuestionnaireLogin",
-    //   name:"dynamicQuestionnaireLogin",
-    //   component:() => import('../views/dynamicQuestionnaireLogin.vue')
-    // },
+    {
+      path:"/OnlineCheckIn",
+      name:"OnlineCheckIn",
+      component:() => import('../views/OnlineCheckIn.vue')
+    },
     {
       //要加在最後一個
       path:"/:pathMatch(.*)*",
