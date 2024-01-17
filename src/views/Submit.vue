@@ -20,8 +20,9 @@ export default {
             let inputEmail = document.getElementById("inputEmail")
             let inputPassword = document.getElementById("inputPassword")
             let inputRepeatPassword = document.getElementById("inputRepeatPassword")
-            if ( !inputPassword.value || !inputRepeatPassword.value || 
-            !inputName.value || !inputPhone.value || !!inputEmail.value) {
+            let inputUser = document.getElementById("inputUser")
+            if ( inputPassword.value == "" || inputRepeatPassword.value == "" ||
+            inputName.value == "" || inputPhone.value == "" || inputEmail.value == "") {
                 console.log("xxx")
                 Swal.fire({
                     icon: "error",
@@ -47,6 +48,7 @@ export default {
             inputEmail.value = "";
             inputPassword.value = "";
             inputRepeatPassword.value = "";
+            inputUser = "";
         },
     },
 }
@@ -62,17 +64,20 @@ export default {
                 <label for="" style="font-size: 14pt;">姓名：</label>
                 <input type="text" placeholder="請輸入正確的姓名" id="inputName" class="name">
                 <br><br>
-                <label for="" style="font-size: 14pt;">電話：</label>
-                <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone">
-                <br><br>
-                <label for="" style="font-size: 14pt;">信箱：</label>
-                <input type="email" placeholder="請輸入信箱" id="inputEmail" class="email">
-                <br><br>
                 <label for="" style="font-size: 14pt;">密碼：</label>
                 <input type="password" placeholder="請輸入密碼" id="inputPassword" class="password">
                 <br><br>
                 <label for="" style="font-size: 14pt;">請再次確認密碼：</label>
-                <input type="" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword">
+                <input type="password" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword">
+                <br><br>
+                <label for="" style="font-size: 14pt;">信箱：</label>
+                <input type="email" placeholder="請輸入信箱" id="inputEmail" class="email">
+                <br><br>
+                <label for="" style="font-size: 14pt;">使用者名稱：</label>
+                <input type="text" placeholder="請輸入使用者名稱(非必填)" id="inputUser" class="user">
+                <br><br>
+                <label for="" style="font-size: 14pt;">電話：</label>
+                <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone">
                 <br><br><br>
                 <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
                 <button class="buttonSubmit" @click="login()" style="margin-left: 40px;">返回</button>
@@ -90,12 +95,13 @@ export default {
     padding-top: 150px;
     .loginInput {
         width: 70vw;
-        height: 60vh;
+        height: 70vh;
         border: 2px solid black;
         border-radius: 15px;
         margin-left: 15vw;
         text-align: center;
         background-color: rgb(240, 236, 229);
+        margin-bottom: 60px;
 
         .loginInputArea {
             text-align: left;
@@ -131,6 +137,13 @@ export default {
                 border-radius: 5px;
             }
             .repeatPassword{
+                width: 300px;
+                height: 35px;
+                background-color: rgb(240, 236, 229);
+                border: 2px gray solid;
+                border-radius: 5px;
+            }
+            .user{
                 width: 300px;
                 height: 35px;
                 background-color: rgb(240, 236, 229);

@@ -59,13 +59,17 @@ export default defineComponent({
     },
     methods: {
         handleSelect(key) {
+            // let depature = getElementById("depature")
+            // let destination = getElementById("destination")
             this.start = key
-            console.log(start)
-            // console.log(key)
+            this.end = ""
+            if( this.start !== this.options ){
+                this.end == this.options
+            }
+            console.log(this.option);
         },
         handleSelectTwo(key) {
             this.end = key
-            console.log(start)
             // console.log(key)
         },
     },
@@ -88,10 +92,10 @@ export default defineComponent({
             </select> -->
         <div class="condition">
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
-                <n-button>出發地：{{ start }}</n-button>
+                <n-button id="depature">出發地：{{ start }}</n-button>
             </n-dropdown>
             <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
-                <n-button>目的地：{{ end }}</n-button>
+                <n-button id="destination">目的地：{{ end }}</n-button>
             </n-dropdown>
             <n-date-picker v-model:value="range" type="daterange" clearable />
             <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
