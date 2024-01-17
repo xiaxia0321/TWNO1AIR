@@ -123,6 +123,10 @@ export default {
       相關連結
     </p>
   </div>
+  <div class="bottom1">
+    <span>TWD 20,680</span>
+    <button @click="gogo">下一步</button>
+  </div>
   <!-- 底部 -->
 </template>
 
@@ -326,11 +330,35 @@ export default {
 }
 .bottom {
   width: 100vw;
-  height: 80vh;
+  height: 85vh;
   text-align: justify;
   padding: 0px 40px 0px 40px;
   background-color: #31304d;
   color: white;
   font-size: 14px;
+}
+.bottom1 {
+  width: 100vw;
+  height: 10vh;
+  background-color: #a79b8d;
+  bottom: 0;
+  color: #794425;
+  z-index: 2;
+  position: fixed;
+  span{
+    position: absolute;
+    font-size: 24px;
+    right: 280px;
+    top: 15px;
+  }
+  button {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    width: 15vw;
+    height: 7vh;
+    background-color: #3b2641;
+    color: white;
+  }
 }
 </style>
