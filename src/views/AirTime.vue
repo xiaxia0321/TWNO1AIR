@@ -114,9 +114,11 @@ export default {
     text-align: justify;
     color: white;
     background-color: #31304d;
-    padding: 20px;
+    padding-left: 40px;
     .arrow {
       font-size: 24px;
+      color: #f8c68a;
+
     }
   }
   .header2 {
