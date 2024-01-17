@@ -165,6 +165,11 @@ const router = createRouter({
       component:() => import('../views/OnlineCheckIn.vue')
     },
     {
+      path:"/Refund",
+      name:"Refund",
+      component:() => import('../views/Refund.vue')
+    },
+    {
       //要加在最後一個 若路徑錯誤則會跳出error404
       path:"/:pathMatch(.*)*",
       name:"NotFound",

@@ -281,7 +281,9 @@ export default {
             newItem: "",
             editingItem: null,
             editedItemValue: "",
-            editMode: false
+            editMode: false,
+            selectedCity: "",
+            suggestedItems: []
         }
     },
     props: {
@@ -365,6 +367,49 @@ export default {
         },
         toggleEditMode() {
             this.editMode = !this.editMode;
+        },
+        updateSuggestedItems() {
+            // 根据选中的城市更新建议物品列表
+            switch (this.selectedCity) {
+                case "San Francisco":
+                    this.suggestedItems = ["舊金山城市通行證(San Francisco CityPASS)", "舊金山交通卡(Clipper Card)", "外套", "防曬用品"];
+                    break;
+                case "Los Angeles":
+                    this.suggestedItems = ["洛杉磯交通卡(TAP)", "外套", "墨鏡", "防曬用品"];
+                    break;
+                case "Hakodate":
+                    this.suggestedItems = ["保暖物品(春、秋、冬季)", "JR北海道IC晶片卡", "墨鏡"];
+                    break;
+                case "Tokyo":
+                    this.suggestedItems = ["JR東京廣域周遊券", "現金", "東京地鐵遊客乘車指南(APP)"];
+                    break;
+                case "Osaka":
+                    this.suggestedItems = ["大阪周遊卡", "現金", "大阪觀光局旅遊指南"];
+                    break;
+                case "Okinawa":
+                    this.suggestedItems = ["防曬用品", "現金", "OKICA(交通卡)", "泳裝"];
+                    break;
+                case "Ho Chi Minh City":
+                    this.suggestedItems = ["防曬用品", "濕紙巾", "胡志明公車(bus map APP)", "防蚊液"];
+                    break;
+                case "Bangkok":
+                    this.suggestedItems = ["防曬用品", "濕紙巾", "曼谷旅遊地圖-Krung Thep Maha Nakhon", "兔子卡"];
+                    break;
+                case "Singapore":
+                    this.suggestedItems = ["萬國轉接頭", "新加坡旅遊注意事項", "Ez-Link卡"];
+                    break;
+                case "Macau":
+                    this.suggestedItems = ["萬國轉接頭", "澳門通卡"];
+                    break;
+                // 添加其他城市的建议物品
+                default:
+                    this.suggestedItems = [];
+            }
+        },
+        addToChecklist(item) {
+            // 将建议物品添加到清单
+            this.checklist.push(item);
+            this.checkedItems.push(false);
         }
     },
 }
@@ -373,8 +418,8 @@ export default {
 <template>
     <div class="screen">
         <div class="user">
-            <p>歡迎登機</p>
-            <img class="img"><br>
+            <p>旅途愉快</p>
+            <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="user('旅客資料')">旅客資料</button><br>
             <button type="button" class="record" @click="user('旅行紀錄')">機票預訂</button><br>
             <button type="button" class="record" @click="user('關注城市')">紅利優惠</button><br>
@@ -388,7 +433,7 @@ export default {
             <div class="bottom">
                 <div class="right" v-if="question">
                     <span>姓名</span>
-                    <input class="data" type="text" id="name" v-model="userInfo.name"><br>
+                    <input class="data" type="text" id="name" v-model="userInfo.name" disabled><br>
                     <span>生日</span>
                     <input class="data D" type="date" id="age" v-model="userInfo.age"><br>
                     <span>性別：</span>
@@ -433,28 +478,28 @@ export default {
             <table class="table">
                 <thead>
                     <tr>
+                        <th>訂位編號</th>
                         <th>價格</th>
                         <th>出發時間</th>
                         <th>出發地點</th>
                         <th>抵達時間</th>
                         <th>抵達地點</th>
-                        <th>客艙等級</th>
                         <th>人數</th>
                         <th>旅程</th>
-                        <th>操作</th>
+                        <!-- <th>操作</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="ticket in paginatedTickets" :key="ticket.id">
+                        <td>{{ ticket.id }}</td>
                         <td>{{ ticket.price }}</td>
                         <td>{{ ticket.departureDate }}</td>
                         <td>{{ ticket.departureLocation }}</td>
                         <td>{{ ticket.arrivalDate }}</td>
                         <td>{{ ticket.arrivalLocation }}</td>
-                        <td>{{ ticket.classType }}</td>
                         <td>{{ ticket.numberOfPeople }}</td>
                         <td>{{ ticket.oneway }}</td>
-                        <td><button @click="cancelBooking(ticket.id)">取消預約</button></td>
+                        <!-- <td><button @click="cancelBooking(ticket.id)">取消預約</button></td> -->
                     </tr>
                 </tbody>
             </table>
@@ -465,7 +510,7 @@ export default {
                 <div class="num">{{ bonus }}</div>
             </div>
             <div class="ben">
-                <span>您可以選擇的優惠</span><br>
+                <!-- <span>您可以選擇的優惠</span><br>
                 <button type="button" class="bonus">
                     <img src="./圖片/cooking_cloche_domecover_close.png" class="icon">
                     免費餐點
@@ -481,13 +526,39 @@ export default {
                 <button type="button" class="bonus">
                     <img src="./圖片/yuubin_takuhaiin_box.png" class="icon">
                     額外行李
-                </button>
+                </button> -->
             </div>
         </div>
         <div class="in" v-if="shirase">
             <div class="list">
                 <h1><img src="./圖片/calender_aseru_woman.png" class="forget">出發前檢查一下……有什麼東西忘了吧！<img
-                        src="./圖片/jikan_tobu_man.png" class="forget"></h1>
+                        src="./圖片/jikan_tobu_man.png" class="forget"></h1><br>
+
+
+                <select v-model="selectedCity" @change="updateSuggestedItems">
+                    <option value="">請選擇您的目的地</option>
+                    <option value="San Francisco">舊金山</option>
+                    <option value="Los Angeles">洛杉磯</option>
+                    <option value="Hakodate">函館</option>
+                    <option value="Tokyo">東京</option>
+                    <option value="Osaka">大阪</option>
+                    <option value="Okinawa">那霸</option>
+                    <option value="Ho Chi Minh City">胡志明市</option>
+                    <option value="Bangkok">曼谷</option>
+                    <option value="Singapore">新加坡</option>
+                    <option value="Macau">澳門</option>
+                </select>
+
+                <div class="suggested-items">
+                    <p v-if="selectedCity">建議您帶上:</p>
+                    <ul v-if="selectedCity">
+                        <li v-for="(item, index) in suggestedItems" :key="index" class="suggested-item">
+                            {{ item }}
+                            <button @click="addToChecklist(item)">Add</button>
+                        </li>
+                    </ul>
+                </div>
+
                 <ul>
                     <li v-for="(item, index) in checklist" :key="index" :class="{ 'edit-mode': editMode }">
                         <input type="checkbox" v-model="checkedItems[index]" v-show="!editMode">
@@ -507,8 +578,8 @@ export default {
 
 <style scoped lang="scss">
 .screen {
-    width: fill;
-    height: fill;
+    width: 100%;
+    height: 100%;
     display: flex;
     background-color: rgb(49, 48, 77);
 }
