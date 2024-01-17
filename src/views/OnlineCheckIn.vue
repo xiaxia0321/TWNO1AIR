@@ -47,7 +47,7 @@ export default {
             <h2>線上報到</h2>
             <div class="checkInBox">
                 <label for="">機票號碼</label>
-                <input type="text" name="" id="ticketNumber" placeholder="機票號碼">　　　　
+                <input type="text" name="" id="ticketNumber" placeholder="">　　　　
                 <label for="">姓氏</label>
                 <input type="text" name="" id="surname">　　　　
                 <label for="">名字</label>

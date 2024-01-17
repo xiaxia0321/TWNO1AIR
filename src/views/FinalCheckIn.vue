@@ -11,7 +11,7 @@ export default {
     <div class="main">
         <h2>登機證</h2>
         <div class="boardingPass">
-            
+            <img src="../../public/01.png" alt="">
         </div>
     </div>
 </template>
@@ -22,5 +22,9 @@ export default {
     background-color: rgb(240, 236, 229);
     margin: auto;
     border-radius: 13px;
+    img{
+        width: 40px;
+        height: 40px;
+    }
 }
 </style>

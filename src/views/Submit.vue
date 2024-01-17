@@ -18,10 +18,9 @@ export default {
             let inputName = document.getElementById("inputName")
             let inputPhone = document.getElementById("inputPhone")
             let inputEmail = document.getElementById("inputEmail")
-            let inputAccount = document.getElementById("inputAccount")
             let inputPassword = document.getElementById("inputPassword")
             let inputRepeatPassword = document.getElementById("inputRepeatPassword")
-            if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value || 
+            if ( !inputPassword.value || !inputRepeatPassword.value || 
             !inputName.value || !inputPhone.value || !!inputEmail.value) {
                 console.log("xxx")
                 Swal.fire({
@@ -46,7 +45,6 @@ export default {
             inputName.value = "";
             inputPhone.value = "";
             inputEmail.value = "";
-            inputAccount.value = "";
             inputPassword.value = "";
             inputRepeatPassword.value = "";
         },

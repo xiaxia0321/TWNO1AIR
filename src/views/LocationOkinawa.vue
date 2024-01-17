@@ -10,48 +10,48 @@ export default defineComponent({
             options: [
                 {
                     label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
-                    key: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+                    key: "台北, 台灣, TPE",
                     disabled: false
                 },
                 {
                     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯 (美國), LAX",
                 },
                 {
                     label: "舊金山, 美國, SFO, San Francisco International Airport",
-                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                    key: "舊金山, 美國, SFO"
                 },
                 {
                     label: "函館, 日本, HKD, Hakodate Airport",
-                    key: "函館, 日本, HKD, Hakodate Airport"
+                    key: "函館, 日本, HKD"
                 },
                 {
                     label: "東京, 日本, NRT, Narita Internation",
-                    key: "東京, 日本, NRT, Narita Internation"
+                    key: "東京, 日本, NRT"
                 },
                 {
                     label: "大阪, 日本, KIX, Kansai International Airport",
-                    key: "大阪, 日本, KIX, Kansai International Airport"
+                    key: "大阪, 日本, KIX"
                 },
                 {
                     label: "沖繩, 日本, OKA, Naha Airport",
-                    key: "沖繩, 日本, OKA, Naha Airport"
+                    key: "沖繩, 日本, OKA"
                 },
                 {
                     label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
-                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                    key: "胡志明市, 越南, SGN"
                 },
                 {
                     label: "曼谷, 泰國, BKK, 素萬那普國際機場",
-                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                    key: "曼谷, 泰國, BKK"
                 },
                 {
                     label: "新加坡, 新加坡, SIN, Changi Airport",
-                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                    key: "新加坡, 新加坡, SIN"
                 },
                 {
                     label: "澳門, 澳門, MFM, Macau International Airportn",
-                    key: "澳門, 澳門, MFM, Macau International Airport"
+                    key: "澳門, 澳門, MFM"
                 },
             ],
             range: ""
