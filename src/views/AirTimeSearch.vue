@@ -73,12 +73,12 @@ export default {
     padding: 30px;
     text-align: justify;
     color: white;
-    background-color: rgb(6, 33, 33);
+    background-color: #31304d;
   }
   .mid1 {
     width: 95vw;
     height: 15vh;
-    margin: 0 auto;
+    margin: 8vh auto 0 auto;
     padding: 30px;
     text-align: justify;
     background-color: #eedfcd;
