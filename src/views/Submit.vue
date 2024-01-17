@@ -23,6 +23,8 @@ export default {
             let inputUser = document.getElementById("inputUser")
             if ( inputPassword.value == "" || inputRepeatPassword.value == "" ||
             inputName.value == "" || inputPhone.value == "" || inputEmail.value == "") {
+            if ( !inputPassword.value || !inputRepeatPassword.value || 
+            !inputName.value || !inputPhone.value || !!inputEmail.value) {
                 console.log("xxx")
                 Swal.fire({
                     icon: "error",
