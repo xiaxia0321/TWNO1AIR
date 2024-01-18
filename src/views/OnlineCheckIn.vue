@@ -20,7 +20,7 @@ export default {
                 })
                 return
             }
-            if ( checkbox.value == null ) {
+            if ( checkbox.value == "on" ) {
                 Swal.fire({
                     icon: "error",
                     text: "你尚未勾選隱私保護政策"

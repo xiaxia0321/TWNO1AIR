@@ -22,7 +22,7 @@ export default {
                 </tr>
                 <tr>
                     <td>76435</td>
-                    <td>周杰倫</td>
+                    <td>周餅倫</td>
                     <td>TPE-臺北(桃園)</td>
                 </tr>
             </table>
