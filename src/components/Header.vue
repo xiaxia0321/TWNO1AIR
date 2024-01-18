@@ -59,22 +59,9 @@ export default {
         AirTimeSearch() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
         },
-        AirTime() {
-            this.$router.push("/AirTime"); //推送至下一頁的路徑
-        },
-        OutboundConfirm() {
-            this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
-        },
-        ReturnConfirm() {
-            this.$router.push("/ReturnConfirm"); //推送至下一頁的路徑
-        },
-        PassengerInformation() {
-            this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
-        },
-        ProductDetailed() {
-            this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
-        },
-       
+        Refund(){
+            this.$router.push("/Refund");
+        }
       
     }
   
@@ -100,7 +87,7 @@ export default {
                                 <br>
                                 <button>更改航班</button>
                                 <br>
-                                <button>線上退票</button>
+                                <button @click="Refund()">線上退票</button>
                             </div>
                             <div class="hot">
                                 <br>
