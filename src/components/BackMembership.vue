@@ -27,24 +27,24 @@ export default {
       <div class="search">
         <div class="no">
           <span>會員編號 : </span>
-          <input type="text" name="" placeholder="請輸入航班號碼" id="" v-model="planNo">
+          <input type="text" name="" placeholder="請輸入ID" id="" v-model="userId">
         </div>
         <div class="no">
-          <span>出發地 : </span>
-          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="departureLocation">
+          <span>會員信箱 : </span>
+          <input type="text" name="" placeholder="請輸入信箱" id="" v-model="userEmail">
         </div>
         <div class="no">
-          <span>目的地 : </span>
-          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="arrivalLocation">
+          <span>會員名字 : </span>
+          <input type="text" name="" placeholder="請輸入名字" id="" v-model="userName">
         </div>
-        <div class="date">
-          <span>出發日期 : </span>
-          <input type="date" name="" id="" v-model="departureDate">
+        <div class="no">
+          <span>手機號碼 : </span>
+          <input type="text" name="" placeholder="請輸入手機號碼" id="" v-model="userPhone">
         </div>
-        <div class="date to">
-          <span>抵達日期 : </span>
-          <input type="date" name="" id="" v-model="arrivalDate">
-        </div>
+        <!-- <div class="date">
+          <span>手機號碼 : </span>
+          <input type="text" name="" placeholder="請輸入手機號碼" id="" v-model="arrivalLocation">
+        </div> -->
         <button type="submit">搜尋</button>
       </div>
       <div class="inside">

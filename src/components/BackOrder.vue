@@ -1,18 +1,42 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import axios from 'axios';
 export default {
   data() {
     return {
+      order:[],
     }
   },
+  computed: {
+    ...mapState(counter, ['searchOrder'])
+  },
   methods: {
-    ...mapActions(counter, ['setPP',])
+    ...mapActions(counter, ['setPP',]),
+    search() {
+      axios({
+        url: 'http://localhost:8080/order/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          order_id: this.searchOrder.getOrderId,
+          arrival_date:this.searchOrder.getArrivalDate,
+          departure_date: this.searchOrder.getDepartureDate,
+          arrival_location: this.searchOrder.getArrivalLocation,
+          departure_location: this.searchOrder.getDepartureLocation,
+        },
+      })
+        .then(res => this.order = res.data.orderList)
+        console.log(this.order)
+    },
   },
   components: {
   },
   mounted() {
-    this.setPP(4)
+    this.setPP(4),
+    this.search()
   }
 
 }
@@ -45,40 +69,31 @@ export default {
           <span>抵達日期 : </span>
           <input type="date" name="" id="" v-model="arrivalDate">
         </div>
-        <button type="submit">搜尋</button>
+        <button type="submit" @click="search">搜尋</button>
       </div>
       <div class="inside">
         <table>
           <tr>
             <th class="b1 bb">/</th>
             <th class="no bb">訂單編號</th>
-            <th class="place bb">出發地 departureLocation</th>
-            <th class="place bb">目的地 arrivalLocation</th>
+            <th class="place bb">出發地</th>
+            <th class="place bb">目的地</th>
             <th class="date bb">出發日期</th>
             <th class="date bb">抵達日期</th>
+            <th class="date bb">人數</th>
+            <th class="date bb">金額</th>
             <th class="b7 bb">操作</th>
           </tr>
-          <tr>
-            <td class="bb"><input type="checkbox"></td>
-            <td class="bb">No.0</td>
-            <td class="bb">台北 , 台灣</td>
-            <td class="bb">沖繩 , 日本</td>
-            <td class="bb">2024-12-48</td>
-            <td class="bb">2024-01-32</td>
-            <td class="bb">
-              <a href="">修改</a>
-              <br>
-              <a href="">刪除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>1</td>
-            <td>5</td>
+          <tr v-for="(item, index) in order" :key="index">
+            <td></td>
+            <td>{{ item.orderId }}</td>
+            <td>{{ item.departureLocation }}</td>
+            <td>{{ item.arrivalLocation }}</td>
+            <td>{{ item.departureDate }}</td>
+            <td>{{ item.arrivalDate }}</td>
+            <td>{{ item.numberOfPeople }}</td>
+            <td>{{ item.price }}</td>
+            <td><a href="操作啥呢"></a></td>
           </tr>
         </table>
       </div>
@@ -214,7 +229,7 @@ export default {
         }
 
         td {
-            background-color: rgb(248, 246, 246);
+          background-color: rgb(248, 246, 246);
         }
       }
 

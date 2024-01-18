@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
-import date from '../stores/date'
+import { NDropdown, NButton, NDatePicker } from 'naive-ui'
 export default {
   data() {
     return {
@@ -11,15 +11,86 @@ export default {
       selectedDate: '',
       tomorrowDate: '',
       minDate: '',
+      minDateHave:false,
+      start: '',
+      end: '',
+      options: [
+        {
+          label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+          key: "TPE, 台北, 台灣",
+          disabled: false
+        },
+        {
+          label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+          key: "LAX , 洛杉磯 , 美國 ",
+        },
+        {
+          label: "舊金山, 美國, SFO, San Francisco International Airport",
+          key: "SFO , 舊金山 , 美國"
+        },
+        {
+          label: "函館, 日本, HKD, Hakodate Airport",
+          key: "HKD , 函館 , 日本  "
+        },
+        {
+          label: "東京, 日本, NRT, Narita Internation",
+          key: "NRT , 東京 , 日本   "
+        },
+        {
+          label: "大阪, 日本, KIX, Kansai International Airport",
+          key: " KIX , 大阪 , 日本 "
+        },
+        {
+          label: "沖繩, 日本, OKA, Naha Airport",
+          key: "OKA , 沖繩, 日本 "
+        },
+        {
+          label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
+          key: "SGN , 胡志明市 , 越南 "
+        },
+        {
+          label: "曼谷, 泰國, BKK, 素萬那普國際機場",
+          key: "BKK , 曼谷, 泰國 "
+        },
+        {
+          label: "新加坡, 新加坡, SIN, Changi Airport",
+          key: "SIN , 新加坡 , 新加坡 "
+        },
+        {
+          label: "澳門, 澳門, MFM, Macau International Airportn",
+          key: "MFM , 澳門 , 澳門 "
+        },
+      ],
     }
   },
   methods: {
+    handleSelect(key) {
+      console.log(this.start)
+      this.start = key
+      if (this.start == "TPE, 台北, 台灣") {
+        this.start = key
+        this.end = "請選擇目的地"
+      } else {
+        this.start = key
+        this.end = "TPE, 台北, 台灣"
+      }
+    },
+    handleSelectTwo(key) {
+      this.end = key
+      if (this.end != this.start) {
+        if (this.start != "TPE, 台北, 台灣") {
+          this.end = "TPE, 台北, 台灣"
+        }
+      } else {
+        this.end = "請重新輸入"
+      }
+    },
     ...mapActions(counter, ['goBangkok', 'goHome', 'goKyoto', 'goLogin', 'goSFO', 'goSingapore', 'goSubmit',]),
-    login() {
+    goLogin() {
       if (this.account == "A01" && this.pwd == "aaa") {
         this.$router.push('/Backstage')
       } else {
-        this.$router.push('/')
+        this.$router.push('/Login')
       }
     },
     goTokyo() {
@@ -55,6 +126,12 @@ export default {
         window.scrollTo(0, 0);
       });
     },
+    goUser() {
+      this.$router.push('/User')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
+    },
     backStage() {
       this.$router.push('/Backstage')
       this.$nextTick(() => {
@@ -71,9 +148,16 @@ export default {
       const selected = new Date(this.selectedDate);
       selected.setDate(selected.getDate() + 1);
       this.minDate = selected.toISOString().split('T')[0];
+      this.minDateHave = true;
     },
+    
   },
   created() {
+  },
+  components: {
+    NDropdown,
+    NButton,
+    NDatePicker,
   },
 
 }
@@ -87,10 +171,11 @@ export default {
         <div class="user">
           <div class="oo">
             <!--    右上角     -->
-            <i class="fa-solid fa-earth-americas ii"></i>
+            <!-- <i class="fa-solid fa-earth-americas ii"></i> -->
             <i class="fa-solid fa-heart ii" @click="backStage"></i>
-            <img src="/marine.jpeg" alt="" style="width: 20%;height: 100%;" @click="login">
-            <i class="fa-solid fa-bars ii"></i>
+            <img src="/marine.jpeg" alt="" style="width: 30%;height: 100%;" @click="goLogin">
+            <!-- <i class="fa-solid fa-bars ii"></i> -->
+            <i class="fa-solid fa-user ii" @click="goUser"></i>
           </div>
         </div>
       </div>
@@ -99,50 +184,46 @@ export default {
       ">即刻搜尋，數個航班等待您發現。</p>
       </div>
       <div class="search" style="width: 90%; height: 30%; ">
-        <div class="place" name="出發地" style="border-radius: 15px 0 0 15px ;">
+        <div class="place gogo" name="出發地" style="border-radius: 15px 0 0 15px ;">
           <label for="" class="lab">
-            <div class="placeIn">
-              <span style="color: rgb(98 105 113); font-size: 1.2rem;">出發地</span>
-              <input type="text" class="input" value="台北桃園 (TPE)" placeholder="輸入國家/地區">
-            </div>
+            <!-- <p style="position: absolute; top: 0; left: 1rem; color: rgb(98 105 113); font-size: 1.2rem; ">出發地：</p> -->
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+              <n-button style="font-size: 1.4rem;">出發地 : {{ this.start }}</n-button>
+            </n-dropdown>
           </label>
-          <div class="meme">
-            <ul></ul>
-          </div>
         </div>
-        <div class="place" name="目的地">
+        <div class="place onon" name="目的地">
           <label for="" class="lab">
-            <div class="placeIn">
-              <span style="color: rgb(98 105 113); font-size: 1.2rem;">目的地</span>
-              <input type="text" class="input" value="日本 (JP)" placeholder="輸入國家/地區">
-            </div>
+            <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
+              <n-button style="font-size: 1.4rem;">目的地：{{ this.end }}</n-button>
+            </n-dropdown>
           </label>
           <div class="meme">
             <ul></ul>
           </div>
         </div>
         <div class="program" name="出發">
-          <button type="button">
+          <label type="button">
             <span class="span1">出發</span>
             <input type="date" name="" v-model="selectedDate" :min="this.today" @change="updateMinDate" class="span2">
             <!-- <span class="span2">新增日期</span> -->
-          </button>
+          </label>
         </div>
         <div class="program" name="回程">
-          <button type="button">
+          <label type="button" style="border-radius:0 15px 15px 0;">
             <span class="span1">回程</span>
-            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" class="span2">
+            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" :disabled="!minDateHave" class="span2">
             <!-- <span class="span2">新增日期</span> -->
-          </button>
+          </label>
         </div>
-        <div class="program" name="旅客與艙等">
+        <!-- <div class="program" name="旅客與艙等">
           <button type="button" style="border-radius:0 15px 15px 0;">
             <span class="span1">旅客與艙等</span>
 
             <span style="font-size: 1.3rem;">1成人,經濟艙</span>
           </button>
-        </div>
-        <button class="gogo">搜尋</button>
+        </div> -->
+        <button class="searchBu">搜尋</button>
       </div>
 
     </div>
@@ -175,8 +256,9 @@ export default {
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://image.cdn-eztravel.com.tw/3sYW0R-LNq_O4QjEnyAjz97HzYw4CPMHKSmMdP8Ea9E/g:ce/aHR0cDovL3ZhY2F0aW9uLmNkbi1lenRyYXZlbC5jb20udHcvaW1nL1ZEUi9USF8xMDIzMjkxMTk2LmpwZw.jpg" class="d-block w-100"
-              alt="...">
+            <img
+              src="https://image.cdn-eztravel.com.tw/3sYW0R-LNq_O4QjEnyAjz97HzYw4CPMHKSmMdP8Ea9E/g:ce/aHR0cDovL3ZhY2F0aW9uLmNkbi1lenRyYXZlbC5jb20udHcvaW1nL1ZEUi9USF8xMDIzMjkxMTk2LmpwZw.jpg"
+              class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block wwc">
               <h1>體驗異國風情</h1>
               <p>漫步塞納河畔，和你的美，品嘗左岸的咖啡</p>
@@ -388,7 +470,7 @@ export default {
       }
 
       .user {
-        width: 18%;
+        width: 12%;
         height: 100%;
         position: absolute;
         right: 0;
@@ -430,9 +512,10 @@ export default {
     }
 
     .search {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: left;
       margin-top: 20px;
 
       div {
@@ -440,7 +523,7 @@ export default {
       }
 
       .place {
-        width: 18%;
+        width: 25%;
         height: 90%;
         background-color: whitesmoke;
         display: inline-block;
@@ -455,41 +538,48 @@ export default {
         padding: 5px 0.1rem 5px 0.1rem;
 
         .lab {
+          box-sizing: border-box;
+          position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
           height: 100%;
           width: 100%;
+          // .placeIn {
+          //   span {
+          //     line-height: 1.2rem;
+          //     font-weight: 700;
+          //   }
 
-          .placeIn {
-            span {
-              line-height: 1.2rem;
-              font-weight: 700;
-            }
-
-            .input {
-              width: 90%;
-              height: 1.3rem;
-              padding: 0 1rem 0 0;
-              font-size: 1.3rem;
-              border: none;
-              outline: none !important;
-              outline-offset: unset !important;
-              background-color: initial;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              overflow: hidden;
-            }
-          }
+          //   .input {
+          //     width: 90%;
+          //     height: 1.3rem;
+          //     padding: 0 1rem 0 0;
+          //     font-size: 1.3rem;
+          //     border: none;
+          //     outline: none !important;
+          //     outline-offset: unset !important;
+          //     background-color: initial;
+          //     text-overflow: ellipsis;
+          //     white-space: nowrap;
+          //     overflow: hidden;
+          //   }
+          // }
 
         }
       }
 
+      // .gogo {
+      //   width: 500px;
+      // }
+
+      .onon {}
+
       .program {
-        width: 18%;
+        width: 20%;
         height: 90%;
 
-        button {
+        label {
           width: 100%;
           height: 100%;
           background-color: whitesmoke;
@@ -502,9 +592,6 @@ export default {
           flex-direction: column;
           justify-content: center;
           align-items: start;
-
-          span {}
-
           .span1 {
             color: #626971;
             white-space: nowrap;
@@ -514,17 +601,19 @@ export default {
           }
 
           .span2 {
-            font-size: 1.3rem;
+            width: 80%;
+            font-size: 1.4rem;
             color: gray;
           }
         }
       }
 
-      .gogo {
+      .searchBu {
+        position: absolute;
+        right: 0;
         width: 7%;
-        height: 90%;
+        height: 100%;
         background-color: #0062e3;
-        margin-left: 20px;
         border-radius: 20%;
         color: white;
         font-size: 1.2rem;

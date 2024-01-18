@@ -5,6 +5,13 @@ export default defineStore("counter", {
     state() {
         return {
             pp: 1,
+            searchOrder:{
+                getOrderId :'',
+                getArrivalDate :'',
+                getDepartureDate :'',
+                getArrivalLocation :'',
+                getDepartureLocation :'',
+            },
         }
 
     },
