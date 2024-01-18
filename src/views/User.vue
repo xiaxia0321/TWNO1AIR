@@ -421,7 +421,7 @@ export default {
             <p>旅途愉快</p>
             <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="user('旅客資料')">旅客資料</button><br>
-            <button type="button" class="record" @click="user('旅行紀錄')">機票預訂</button><br>
+            <button type="button" class="record" @click="user('旅行紀錄')">行程管理</button><br>
             <button type="button" class="record" @click="user('關注城市')">紅利優惠</button><br>
             <button type="button" class="record" @click="user('旅遊通知')">行李清單</button><br>
             <button type="button" class="out">登出</button>
@@ -474,7 +474,7 @@ export default {
             </div>
         </div>
         <div class="in" v-if="travel">
-            <h1 class="white">機票預訂</h1>
+            <h1 class="white">行程管理</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -486,7 +486,7 @@ export default {
                         <th>抵達地點</th>
                         <th>人數</th>
                         <th>旅程</th>
-                        <!-- <th>操作</th> -->
+                        <th>其他操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -499,7 +499,7 @@ export default {
                         <td>{{ ticket.arrivalLocation }}</td>
                         <td>{{ ticket.numberOfPeople }}</td>
                         <td>{{ ticket.oneway }}</td>
-                        <!-- <td><button @click="cancelBooking(ticket.id)">取消預約</button></td> -->
+                        <td><button @click="cancelBooking(ticket.id)">取消</button><button @click="">修改</button></td>
                     </tr>
                 </tbody>
             </table>

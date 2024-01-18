@@ -62,6 +62,9 @@ export default {
         AirTimeSearch() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
         },
+        Refund(){
+            this.$router.push("/Refund");
+        }
       
     }
   
@@ -87,7 +90,7 @@ export default {
                                 <br>
                                 <button>更改航班</button>
                                 <br>
-                                <button>線上退票</button>
+                                <button @click="Refund()">線上退票</button>
                             </div>
                             <div class="hot">
                                 <br>
