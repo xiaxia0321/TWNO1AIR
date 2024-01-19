@@ -55,12 +55,12 @@ export default {
       <span>Home</span>
     </div>
     <div class="content">
-      <!-- <div class="block member" @click="goMember">
+      <div class="block member" @click="goMember">
         <div class="icon" style="background-image: url(/user.png);">
         </div>
         <p>會員管理</p>
         <p>目前會員數 : </p>
-      </div> -->
+      </div>
       <div class="block plane" @click="goPlane">
         <div class="icon" style="background-image: url(/planestart.png);">
         </div>

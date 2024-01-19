@@ -33,11 +33,11 @@ export default {
               <li :class="{ 'planB': this.pp == 1 }">首頁</li>
             </RouterLink>
           </div>
-          <!-- <div class="liu" @click="ppc2">
+          <div class="liu" @click="ppc2">
             <RouterLink to="/Backstage/BackMembership" class="routerItem">
               <li :class="{ 'planB': this.pp == 2 }">會員管理</li>
             </RouterLink>
-          </div> -->
+          </div>
           <div class="liu" @click="ppc3">
             <RouterLink to="/Backstage/BackPlane" class="routerItem">
               <li :class="{ 'planB': this.pp == 3 }">航班管理</li>
