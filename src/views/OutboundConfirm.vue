@@ -2,7 +2,20 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      departureLocation:"",//出發地地名
+      arrivalLocation:"",//抵達地地名
+      DA:"",//出發機場縮寫
+      AA:"",//抵達機場縮寫
+      aircraftNumber:"",//機號
+      departureDate:"",//出發日期
+      arrivalDate:"",//抵達日期
+      departureTime:"",//出發時間
+      arrivalTime:"",//抵達時間
+      totalTime:"",//總花費時間
+      classType:"",//艙等
+      price:"",//價錢
+    };
   },
   methods: {
     back() {

@@ -2,7 +2,24 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      DA:"",//出發機場縮寫
+      AA:"",//抵達機場縮寫
+      departureAirport:"",//出發機場
+      arrivalAirport:"",//抵達機場 
+      classType:"",//艙等
+      aircraftNumber:"",//機號
+      aircraftType:"",//飛機型號
+      departureDate:"",//出發日期
+      arrivalDate:"",//抵達日期
+      departureTime:"",//出發時間
+      arrivalTime:"",//抵達時間
+      totalTime:"",//總花費時間
+      departureTerminal:"",//出發航廈
+      arriveTerminal:"",//抵達航廈
+      price:"",//價錢
+
+    };
   },
   methods: {
     back() {

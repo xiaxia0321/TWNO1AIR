@@ -1,8 +1,27 @@
 <script>
 export default {
   data() {
-    return {};
+    
+    return {
+      departureLocation:"",//出發地點
+      arrivalLocation:"",//抵達地點
+      DA:"",//出發機場縮寫
+      AA:"",//抵達機場縮寫
+      departureAirport:"",//出發機場
+      arrivalAirport:"",//抵達機場 
+      depatureTime:"",//出發時間
+      arriveTime:"",//抵達時間
+      // totalTime:"",//總花費時間
+      // d1:"",//前三天
+      // d2:"",//前兩天
+      // d3:"",//前一天
+      // d4:"",//當天
+      // d5:"",//後一天
+      // d6:"",//後兩天
+      // d7:"",//後三天
+    };
   },
+
   methods: {
     back() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
@@ -10,7 +29,19 @@ export default {
         gogo() {
             this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
         },
-  }
+  },
+  mounted() {
+    this.departureLocation = this.$route.params.departureLocation;
+    this.arrivalLocation = this.$route.params.arrivalLocation;
+    // const departureLocation = this.$route.params.departureLocation;
+    // const arrivalLocation = this.$route.params.arrivalLocation;
+    const DA = this.$route.params.DA;
+    const AA = this.$route.params.AA;
+    const departureAirport = this.$route.params.departureAirport;
+    const arrivalAirport = this.$route.params.arrivalAirport;
+    const departureTime = this.$route.params.departureTime;
+    const arrivalTime = this.$route.params.arrivalTime;
+  },
 };
 </script>
 
@@ -24,12 +55,13 @@ export default {
   />
   <!-- <div class="push"></div> -->
   <div class="big">
+  
     <div class="header1">
       <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
       <h2>查詢結果</h2>
     </div>
     <div class="header2">
-      <h4>台北 - 福岡</h4>
+      <h4>{{ departureLocation  }} - {{ arrivalLocation }}</h4>
       <span>以主管機關核定為主</span>
     </div>
     <div class="mid1 mm">
@@ -67,15 +99,28 @@ export default {
         </div>
         <div class="b23"><h2>18:00</h2></div>
       </div>
-      <div class="b3 bb"></div>
-      <div class="b4 bb"></div>
-      <div class="b5 bb"></div>
-      <div class="b6 bb">
+      <div class="b3 bb" v-if="d3">
+        <span><i class="fa-solid fa-plane"></i></span>
+        </div>
+      <div class="b4 bb" v-if="d4">
         <span><i class="fa-solid fa-plane"></i></span>
       </div>
-      <div class="b7 bb"></div>
-      <div class="b8 bb"></div>
-      <div class="b9 bb"></div>
+      <div class="b5 bb" v-if="d5">
+        <span><i class="fa-solid fa-plane"></i></span>
+      </div>
+      <div class="b6 bb" v-if="d6"> 
+      <!-- 當天 -->
+        <span><i class="fa-solid fa-plane"></i></span> 
+      </div>
+      <div class="b7 bb" v-if="d7">
+        <span><i class="fa-solid fa-plane"></i></span>
+      </div>
+      <div class="b8 bb" v-if="d8">
+        <span><i class="fa-solid fa-plane"></i></span>
+      </div>
+      <div class="b9 bb" v-if="d9">
+        <span><i class="fa-solid fa-plane"></i></span>
+      </div>
     </div>
     <!-- <div class="mid3 mm"></div> -->
     <button @click="gogo">預定行程</button>

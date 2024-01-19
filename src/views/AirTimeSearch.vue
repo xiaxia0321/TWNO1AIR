@@ -3,17 +3,90 @@ import DepartureLocationTime from "./DepartureLocationTime.vue";
 import ArrivalLocationTime from "./ArrivalLocationTime.vue";
 export default {
   data() {
-    return {};
+    return {
+      // 定義變數，表示今天的日期，格式為 "YYYY-MM-DD"
+      today: new Date().toISOString().split('T')[0],
+      // 使用 v-model 綁定選擇的日期
+      selectedDate: '',
+      tomorrowDate: '',
+      minDate: '',
+      minDateHave:false,
+      //z
+      arrivalDate:"",
+      departureDate:"",
+      departureLocation:"",
+      arrivalLocation:"",
+      classType:"",
+      isOneway:false,
+    };
   },
-  methods: {
-    gogo() {
-            this.$router.push("/AirTime"); //推送至下一頁的路徑
+  props:[
+    "departureLocation",
+    "arrivalLocation",
+  ],
+  methods : {
+      search(){
+        axios({
+          url:'http://localhost:8080/airplainInfo/search',
+          method:'POST',
+          withCredentials:true,
+          headers:{
+            'Content-Type':'applicatoin/json'
+          },
+          data:{
+            departureDate:this.departureDate, //出發日期
+            arriveDate:this.arriveDate, //抵達日期
+            departureLocation:this.departureLocation, //出發地點
+            arrivalLocation:this.arrivalLocation, //抵達地點
+            classType:this.classType, //艙等
+            isOneway:this.isOneway, //來回
+            // price:this.price,
+            // seat:this.seat,
+            // DA:this.DA,
+            // AA:this.AA,
+            // depature_terminal:this.depature_terminal,
+            // arrive_terminal:this.arrive_terminal,
+          },
+        }).then(res => {
+          console.log("成功", res.data);
+        })
+      },
+      updateMinDate() {
+      const selected = new Date(this.selectedDate);
+      selected.setDate(selected.getDate() + 1);
+      this.minDate = selected.toISOString().split('T')[0];
+      this.minDateHave = true;
+    },
+      gogo() {
+        console.log("Selected Departure:", this.departureLocation);
+      console.log("Selected Arrival:", this.arrivalLocation);
+            this.$router.push({
+    name: 'AirTime',
+    params: {
+      departureLocation: this.departureLocation,
+      arrivalLocation: this.arrivalLocation,
+      // DA: this.DA,
+      // AA: this.AA,
+      // departureAirport: this.departureAirport,
+      // arrivalAirport: this.arrivalAirport,
+      // depatureTime: this.depatureTime,
+      // arriveTime: this.arriveTime,
+    },
+  });
         },
-  } ,
+        handleDepartureSelected(departure) {
+      this.departureLocation = departure;
+    },
+    handleArrivalSelected(arrival) {
+      this.arrivalLocation = arrival;
+    },
+    },
+
   components: {
     DepartureLocationTime,
     ArrivalLocationTime,
   },
+
 };
 </script>
 
@@ -37,20 +110,23 @@ export default {
         >使用班機查詢功能，查詢您要的日期以及前後和未來兩天樂狗航空最新的班機資訊</span
       >
     </div>
-
+    <!-- v-model="d.departureLocation"
+    v-model="a.arrivalLocation" -->
     <div class="mid2">
       <!-- 裡面塞出發地目的地的按鈕 -->
-      <div class="b1"><DepartureLocationTime /></div>
+      <div class="b1"  ><DepartureLocationTime @departure-selected="handleDepartureSelected"/></div> 
       <div class="b2"><i class="fa-solid fa-arrow-right"></i></div>
-      <div class="b3"><ArrivalLocationTime /></div>
+      <div class="b3" ><ArrivalLocationTime @arrival-selected="handleArrivalSelected"/></div>
       <div class="b4">
-        <input type="date" id="start" name="trip-start" max="2050-12-31" />
+        <input type="date" id="start" name="trip-start" max="2050-12-31" :min="this.today" @click="updateMinDate"/>
       </div>
     </div>
     <div class="mid3"><button class="bu" @click="gogo">查詢</button></div>
   </div>
   <div class="bottom">
     <h2>注意事項</h2>
+    <p>{{ $data.departureLocation }}</p>
+    <p>{{ $data.arrivalLocation }}</p>
     <br />
     <p>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</p>
     <p>
