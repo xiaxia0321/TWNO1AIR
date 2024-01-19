@@ -7,6 +7,12 @@ export default defineComponent({
         return {
             start: "",
             end: "",
+            airplain_id: "",
+            depature_date: "",
+            depature_location: "",
+            arrival_location: "",
+            price: "",
+            
             options: [
                 {
                     label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
@@ -60,6 +66,10 @@ export default defineComponent({
     methods: {
         handleSelect(key) {
             this.start = key
+            if (!key.includes('台灣')) {
+                this.options = this.options.filter(option => option.key.includes('台灣'));//當出發地不是台灣的時候，將目的地過濾為台灣
+                // this.end = ''; 
+            }
             // this.end = ""
             // if( this.start !== "台北, 台灣, TPE" ){
             //     this.end == "台北, 台灣, TPE"
@@ -68,7 +78,24 @@ export default defineComponent({
         },
         handleSelectTwo(key) {
             this.end = key
-            // console.log(key)
+            if (!key.includes('台灣')) {
+                this.options = this.options.filter(option => option.key.includes('台灣'));
+            }
+        },
+        search() {
+            axios({
+                url: 'http://localhost:8080/airplainInfo/search',
+                methods: 'POST',
+                withCredentials: true,
+                headers: {
+                    'Contect-Type': 'applicatoin/json'
+                },
+                data: {
+                    
+                },
+            }).then(res => {
+                console.log(data);
+            })
         },
     },
     components: {
@@ -84,11 +111,16 @@ export default defineComponent({
             <br>
             <h1>搭乘樂狗航空從台北飛往東京 ，自 TWD13,589* 起！</h1>
         </div>
-        <!-- <select>
-                <option value="">單程</option>
-                <option value="">來回</option>
-            </select> -->
         <div class="condition">
+            <select name="" id="" class="oneway">
+                <option value="true">單程</option>
+                <option value="false">來回</option>
+            </select>
+            <select name="" id="" style="" class="classType">
+                <option value="">經濟艙</option>
+                <option value="">商務艙</option>
+                <option value="">頭等艙</option>
+            </select>
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
                 <n-button>出發地：{{ start }}</n-button>
             </n-dropdown>
@@ -97,7 +129,7 @@ export default defineComponent({
             </n-dropdown>
             <n-date-picker v-model:value="range" type="daterange" clearable />
             <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
-            <button type="button" class="searchBtn">搜尋</button>　
+            <button type="button" class="searchBtn" @click="search()">搜尋</button>　
         </div>
 
     </div>
@@ -149,9 +181,50 @@ export default defineComponent({
                 的文化，那就去原宿，或去秋葉原選購電玩和動漫。夜間可以沿著橫丁 (巷弄的意思) 探索，沿途都可以找到氣氛悠閒的居酒屋和小酒吧。當然這裡還有更多精彩的體驗等您探索，請參考以下更多推薦。</p>
         </div>
     </div>
-    <div class="footer">
+    <div class="foot">
+        <div class="footBlock">
+            <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+                    style="padding-left: 10px;">瞭解樂狗</span></h2>
+            <ul>
+                <li><a href="">認識樂狗</a></li>
+                <li><a href="">團隊成員</a></li>
+                <li><a href="">加入團隊</a></li>
+                <li><a href="">加入團隊</a></li>
+                <li><a href="">加入團隊</a></li>
+            </ul>
+        </div>
+        <div class="footBlock">
+            <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+                    style="padding-left: 10px;">接觸樂狗</span></h2>
+            <ul>
+                <li><a href="">認識樂狗</a></li>
+                <li><a href="">團隊成員</a></li>
+                <li><a href="">加入團隊</a></li>
+                <li><a href="">加入團隊</a></li>
+                <li><a href="">加入團隊</a></li>
+            </ul>
+        </div>
+        <div class="footBlock">
+            <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
+                    style="padding-left: 10px;">加入樂狗</span></h2>
+            <ul>
+                <li><a href="">加入我們</a></li>
+                <li><a href="">加入我們</a></li>
+                <li><a href="">加入我們</a></li>
+                <li><a href="">加入我們</a></li>
+                <li><a href="">加入{{ '樂狗' }}團隊</a></li>
+            </ul>
+        </div>
 
+        <div class="under">
+            <a href=""><i class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
+            <a href=""><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
+            <a href=""><i class="fa-brands fa-square-youtube ii" style="color: #161a30;"></i></a>
+        </div>
     </div>
+    <!-- <div class="footer">
+
+    </div> -->
 </template>
 <style scoped lang="scss">
 .search {
@@ -184,6 +257,25 @@ export default defineComponent({
         justify-content: space-evenly;
         align-items: center;
         background-color: rgb(7, 102, 7);
+        box-sizing: border-box;
+        padding-top: 50px;
+
+        .oneway {
+            position: absolute;
+            left: 17%;
+            top: 38%;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        .classType{
+            position: absolute;
+            left: 25%;
+            top: 38%;
+            width: 120px;
+            height: 30px;
+            border-radius: 5px;
+        }
 
         .n-button {
             width: 230px;
@@ -313,10 +405,91 @@ export default defineComponent({
     }
 }
 
-.footer {
-    width: 100vw;
-    height: 30vh;
-    // border: 1px solid blue;
-    background-color: rgb(49, 48, 77);
+.foot {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-color: #5e5045;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px 50px 120px 50px;
+
+    .footBlock {
+        width: 26%;
+        height: 100%;
+        // border: 1px solid black;
+        color: white;
+
+        ul {
+            list-style-type: none;
+
+            li {
+                text-align: left;
+                height: 3rem;
+                padding-left: 20px;
+                display: flex;
+                justify-content: left;
+                margin: 0 0 5px;
+                align-items: center;
+                font-size: 1.3rem;
+                transition: .5s;
+
+                &:hover {
+                    // width: 70%;
+                    background-color: rgba(255, 255, 255, 0.15);
+                    border-left: 10px solid rgba(22, 26, 48, 0.533);
+                    box-shadow: 2px 1px 2px black;
+                    transition: .5s;
+                }
+
+                &:active {
+                    background-color: #372f2a66;
+                    border-left: 12px solid rgb(22, 26, 48);
+                    transition: .4s;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .under {
+        position: absolute;
+        bottom: 0;
+        background-color: #4a3f37;
+        width: 100%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+
+        .ii {
+            margin-left: 15px;
+            font-size: 50px;
+            width: 50px;
+            height: 50px;
+
+            &:hover {
+                box-shadow: 2px 2px 5px 0 black;
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: .5rem;
+            }
+
+            &:active {
+                box-shadow: -1px -1px 1px 2px black;
+            }
+        }
+    }
 }
+
+// .footer {
+//     width: 100vw;
+//     height: 30vh;
+//     // border: 1px solid blue;
+//     background-color: rgb(49, 48, 77);
+// }
 </style>

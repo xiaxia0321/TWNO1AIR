@@ -2,6 +2,7 @@
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
 import date from '../stores/date'
+import Swal from 'sweetalert2'
 export default {
   data() {
     return {
@@ -16,65 +17,84 @@ export default {
   methods: {
     ...mapActions(counter, ['goBangkok', 'goHome', 'goKyoto', 'goLogin', 'goSFO', 'goSingapore', 'goSubmit',]),
     login() {
-      if (this.account == "A01" && this.pwd == "aaa") {
+      let account = document.getElementById("account")
+      let pwd = document.getElementById("pwd")
+      if ( account.value == "A01" && pwd.value == "aaa") {
         this.$router.push('/Backstage')
-      } else {
-        this.$router.push('/')
       }
-    },
-    goTokyo() {
-      this.$router.push('/LocationTokyo')
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-    },
-    goKyoto() {
-      this.$router.push('/LocationKyoto')
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-    },
-    goSingapore() {
-      this.$router.push('/LocationSingapore')
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-    },
-    goBangkok() {
-      this.$router.push('/LocationBangkok')
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-    },
-    goSFO() {
-      this.$router.push('/LocationSFO')
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-    },
-    backStage() {
-      this.$router.push('/Backstage')
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-    },
-    goMacao() {
-      this.$router.push('/LocationMacao')
-      this.$nextTick(() => {
-        window.scrollTo(0, 0);
-      });
-    },
-    updateMinDate() {
-      const selected = new Date(this.selectedDate);
-      selected.setDate(selected.getDate() + 1);
-      this.minDate = selected.toISOString().split('T')[0];
-    },
+      if (account.value == "" || pwd.value == "") {
+        console.log("xxx")
+        Swal.fire({
+          icon: "error",
+          text: "你有資料尚未填寫"
+        })
+        return
+      }
+      else {
+        Swal.fire({
+          icon: "success",
+          text: "你已經登入成功",
+          showConfirmButton: true,
+        })
+        this.$router.push('/User')
+      }
   },
-  created() {
+  toSubmit(){
+    this.$router.push('/Submit')
   },
+  goTokyo() {
+    this.$router.push('/LocationTokyo')
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
+  goKyoto() {
+    this.$router.push('/LocationKyoto')
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
+  goSingapore() {
+    this.$router.push('/LocationSingapore')
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
+  goBangkok() {
+    this.$router.push('/LocationBangkok')
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
+  goSFO() {
+    this.$router.push('/LocationSFO')
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
+  backStage() {
+    this.$router.push('/Backstage')
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
+  goMacao() {
+    this.$router.push('/LocationMacao')
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
+  updateMinDate() {
+    const selected = new Date(this.selectedDate);
+    selected.setDate(selected.getDate() + 1);
+    this.minDate = selected.toISOString().split('T')[0];
+  },
+},
+created() {
+},
 
 }
 </script>
@@ -89,7 +109,7 @@ export default {
             <!--    右上角     -->
             <i class="fa-solid fa-earth-americas ii"></i>
             <i class="fa-solid fa-heart ii" @click="backStage"></i>
-            <img src="/marine.jpeg" alt="" style="width: 20%;height: 100%;" @click="login">
+            <a data-bs-toggle="modal" href="#exampleModalToggle" role="button" @click="login()">登入</a>
             <i class="fa-solid fa-bars ii"></i>
           </div>
         </div>
@@ -175,8 +195,9 @@ export default {
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://image.cdn-eztravel.com.tw/3sYW0R-LNq_O4QjEnyAjz97HzYw4CPMHKSmMdP8Ea9E/g:ce/aHR0cDovL3ZhY2F0aW9uLmNkbi1lenRyYXZlbC5jb20udHcvaW1nL1ZEUi9USF8xMDIzMjkxMTk2LmpwZw.jpg" class="d-block w-100"
-              alt="...">
+            <img
+              src="https://image.cdn-eztravel.com.tw/3sYW0R-LNq_O4QjEnyAjz97HzYw4CPMHKSmMdP8Ea9E/g:ce/aHR0cDovL3ZhY2F0aW9uLmNkbi1lenRyYXZlbC5jb20udHcvaW1nL1ZEUi9USF8xMDIzMjkxMTk2LmpwZw.jpg"
+              class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block wwc">
               <h1>體驗異國風情</h1>
               <p>漫步塞納河畔，和你的美，品嘗左岸的咖啡</p>
@@ -315,6 +336,80 @@ export default {
         <a href=""><i class="fa-brands fa-square-youtube ii" style="color: #161a30;"></i></a>
       </div>
     </div>
+    <!-- ==========登入頁=========== -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel">登入以獲得更多資訊</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="loginArea">
+              <div class="loginInput">
+                <div class="loginInputArea">
+                  <h1>會員登入</h1>
+                  <br /><br />
+                  <label for="">帳號：</label>
+                  <input type="text" placeholder="請輸入帳號" id="account">
+                  <br /><br /><br />
+                  <label for="">密碼：</label>
+                  <input type="text" placeholder="請輸入密碼" id="pwd">
+                  <br /><br /><br /><br />
+                  <button class="buttonLoginIn" id="buttonLoginIn" data-bs-dismiss="modal" @click="login()" >登入</button>
+                  <button class="buttonForgotPassword" id="buttonForgotPassword">
+                    忘記密碼
+                  </button>
+                  <!-- 增加data-bs-dismiss="modal"代表跳轉頁面後不會灰畫面 -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" @click="toSubmit()">尚未註冊</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ==========註冊頁========== -->
+    <!-- <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">加入樂狗</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="loginArea">
+        <div class="loginInput">
+            <h1>會員註冊</h1>
+            <div class="loginInputArea">
+                <br><br> -->
+    <!-- <label for="">信箱：</label> -->
+    <!-- <p>信箱</p>
+                <input type="email" placeholder="請輸入信箱" id="inputAccount">
+                <br><br><br> -->
+    <!-- <label for="">密碼：</label> -->
+    <!-- <p>密碼</p>
+                <input type="text" placeholder="請輸入密碼" id="inputPassword">
+                <br><br><br> -->
+    <!-- <label for="">確認密碼：</label> -->
+    <!-- <p>確認密碼</p>
+                <input type="text" placeholder="請再次輸入密碼" id="inputRepeatPassword">
+                <br><br><br><br><br>
+                <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
+            </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">返回登入</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+    <!-- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">登入</a> -->
   </div>
 </template>
 
