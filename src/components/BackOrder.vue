@@ -5,15 +5,15 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      order:[],
+      order: [],
     }
   },
   computed: {
-    ...mapState(counter, ['searchOrder'])
+    ...mapState(counter, ['Order'])
   },
   methods: {
     ...mapActions(counter, ['setPP',]),
-    search() {
+    searchOrder() {
       axios({
         url: 'http://localhost:8080/order/search',
         method: "POST",
@@ -21,22 +21,23 @@ export default {
           "Content-Type": "application/json"
         },
         data: {
-          order_id: this.searchOrder.getOrderId,
-          arrival_date:this.searchOrder.getArrivalDate,
-          departure_date: this.searchOrder.getDepartureDate,
-          arrival_location: this.searchOrder.getArrivalLocation,
-          departure_location: this.searchOrder.getDepartureLocation,
+          order_id: this.Order.getOrderId,
+          arrival_date: this.Order.getArrivalDate,
+          departure_date: this.Order.getDepartureDate,
+          arrival_location: this.Order.getArrivalLocation,
+          departure_location: this.Order.getDepartureLocation,
+          account: this.Order.getAccount,
         },
       })
         .then(res => this.order = res.data.orderList)
-        console.log(this.order)
+      console.log(this.order)
     },
   },
   components: {
   },
   mounted() {
-    this.setPP(4),
-    this.search()
+    this.setPP(4)
+    this.searchOrder()
   }
 
 }
@@ -51,7 +52,7 @@ export default {
       <div class="search">
         <div class="no">
           <span>訂單編號 : </span>
-          <input type="text" name="" placeholder="請輸入航班號碼" id="" v-model="planNo">
+          <input type="text" name="" placeholder="請輸入航班號碼" id="">
         </div>
         <div class="no">
           <span>出發地 : </span>
@@ -69,23 +70,23 @@ export default {
           <span>抵達日期 : </span>
           <input type="date" name="" id="" v-model="arrivalDate">
         </div>
-        <button type="submit" @click="search">搜尋</button>
+        <button type="submit" @click="searchOrder">搜尋</button>
       </div>
       <div class="inside">
         <table>
           <tr>
-            <th class="b1 bb">/</th>
-            <th class="no bb">訂單編號</th>
+            <th class="account bb">account</th>
+            <th class="no bb">編號</th>
             <th class="place bb">出發地</th>
             <th class="place bb">目的地</th>
             <th class="date bb">出發日期</th>
             <th class="date bb">抵達日期</th>
-            <th class="date bb">人數</th>
-            <th class="date bb">金額</th>
+            <th class="peo bb">人數</th>
+            <th class="money bb">金額</th>
             <th class="b7 bb">操作</th>
           </tr>
           <tr v-for="(item, index) in order" :key="index">
-            <td></td>
+            <td>{{ item.account }}</td>
             <td>{{ item.orderId }}</td>
             <td>{{ item.departureLocation }}</td>
             <td>{{ item.arrivalLocation }}</td>
@@ -93,7 +94,7 @@ export default {
             <td>{{ item.arrivalDate }}</td>
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
-            <td><a href="操作啥呢"></a></td>
+            <td class="bb"><a href="">修改&刪除</a></td>
           </tr>
         </table>
       </div>
@@ -207,20 +208,28 @@ export default {
           }
         }
 
-        .b1 {
-          width: 50px;
+        .account {
+          width: 3rem;
         }
 
         .no {
-          width: 7rem;
+          width: 5rem;
         }
 
         .place {
-          width: 15rem;
+          width: 7rem;
         }
 
         .date {
-          width: 12rem;
+          width: 10rem;
+        }
+
+        .peo {
+          width: 2rem;
+        }
+
+        .money {
+          width: 4rem;
         }
 
         .b7 {

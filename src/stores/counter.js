@@ -5,12 +5,27 @@ export default defineStore("counter", {
     state() {
         return {
             pp: 1,
-            searchOrder:{
-                getOrderId :'',
-                getArrivalDate :'',
-                getDepartureDate :'',
-                getArrivalLocation :'',
-                getDepartureLocation :'',
+            Order: {
+                getOrderId: '',
+                getArrivalDate: '',
+                getDepartureDate: '',
+                getArrivalLocation: '',
+                getDepartureLocation: '',
+                getAccount:'',
+            },
+            plane: {
+                departureDate: "",
+                arrivalDate: "",
+                departureLocation: "",
+                arrivalLocation: "",
+                classType: "經濟艙;商務艙;頭等艙",
+                isOneway: false,
+                // depatureTerminal: 0,
+                // arriveTerminal: 0,
+                // depatureTime: "",
+                // arriveTime: "",
+                // aa: "",
+                // da: ""
             },
         }
 
@@ -26,7 +41,7 @@ export default defineStore("counter", {
         setPP(num) {
             this.pp = num;
         },
-        goHome(){
+        goHome() {
             this.$router.push('/HomeView')
         },
         goSubmit() {

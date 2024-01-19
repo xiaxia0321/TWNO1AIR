@@ -1,12 +1,33 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import axios from 'axios';
 export default {
   data() {
     return {
+      plane:[],
     }
   },
   methods: {
+    searchPlane() {
+      axios({
+        url: 'http://localhost:8080/airplainInfo/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          departureDate: "",
+          arrivalDate: "",
+          departureLocation: "",
+          arrivalLocation: "",
+          classType: "",
+          isOneway: ""
+        },
+      })
+        .then(res => this.plane = res.data.airplainInfoList)
+      console.log(this.plane)
+    },
     ...mapActions(counter, ['setPP',]),
     goMember() {
       this.$router.push('/Backstage/BackMembership')
@@ -22,6 +43,7 @@ export default {
   },
   mounted() {
     this.setPP(1)
+    this.searchPlane()
   }
 
 }
@@ -43,6 +65,7 @@ export default {
         <div class="icon" style="background-image: url(/planestart.png);">
         </div>
         <p>航班管理</p>
+        <p>總航班數量 : {{ this.plane.length }}</p>
       </div>
       <div class="block Order" @click="goOrder">
         <div class="icon" style="background-image: url(/order.png);">

@@ -1,18 +1,43 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import axios from 'axios';
 export default {
   data() {
     return {
+      planeArr: [],
     }
   },
+  computed: {
+    ...mapState(counter,['plane'])
+  },
   methods: {
-    ...mapActions(counter, ['setPP',])
+    ...mapActions(counter, ['setPP',]),
+    searchPlane() {
+      axios({
+        url: 'http://localhost:8080/airplainInfo/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          departureDate: this.plane.departureDate,
+          arrivalDate: this.plane.arrivalDate,
+          departureLocation: this.plane.departureLocation,
+          arrivalLocation: this.plane.arrivalLocation,
+          classType: this.plane.classType,
+          isOneway: this.plane.isOneway
+        },
+      })
+        .then(res => this.planeArr = res.data.airplainInfoList)
+      console.log(this.planeArr)
+    },
   },
   components: {
   },
   mounted() {
     this.setPP(3)
+    this.searchPlane()
   }
 
 }
@@ -27,58 +52,50 @@ export default {
       <div class="search">
         <div class="no">
           <span>航班號碼 : </span>
-          <input type="text" name="" placeholder="請輸入航班號碼" id="" v-model="planNo">
+          <input type="text" name="" placeholder="請輸入航班號碼" id="" >
         </div>
         <div class="no">
-          <span>出發地  : </span>
-          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="departureLocation">
+          <span>出發地 : </span>
+          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="plane.departureLocation">
         </div>
         <div class="no">
           <span>目的地 : </span>
-          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="arrivalLocation">
+          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
         </div>
         <div class="date">
           <span>出發日期 : </span>
-          <input type="date" name="" id="" v-model="departureDate">
+          <input type="date" name="" id="" v-model="plane.departureDate">
         </div>
         <div class="date to">
           <span>抵達日期 : </span>
-          <input type="date" name="" id="" v-model="arrivalDate">
+          <input type="date" name="" id="" v-model="plane.arrivalDate">
         </div>
-        <button type="submit">搜尋</button>
+        <button type="submit" @click="searchPlane">搜尋</button>
       </div>
       <div class="inside">
         <table>
           <tr>
             <th class="b1 bb">/</th>
             <th class="no bb">航班編號</th>
-            <th class="place bb">出發地 departureLocation</th>
-            <th class="place bb">目的地 arrivalLocation</th>
+            <th class="place bb">出發地</th>
+            <th class="place bb">目的地</th>
             <th class="date bb">出發日期</th>
             <th class="date bb">抵達日期</th>
             <th class="b7 bb">操作</th>
           </tr>
-          <tr>
+          <tr v-for="(item, index) in planeArr" :key="index">
             <td class="bb"><input type="checkbox"></td>
-            <td class="bb">No.0</td>
-            <td class="bb">台北 , 台灣</td>
-            <td class="bb">沖繩 , 日本</td>
-            <td class="bb">2024-12-48</td>
-            <td class="bb">2024-01-32</td>
+            <td class="bb">No.{{ item.airplainId }}</td>
+            <td class="bb">{{ item.departureLocation }}</td>
+            <td class="bb">{{ item.arrivalLocation }}</td>
+            <td class="bb">{{ item.departureDate }}</td>
+            <td class="bb">{{ item.arrivalDate
+ }}</td>
             <td class="bb">
               <a href="">修改</a>
               <br>
               <a href="">刪除</a>
             </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>1</td>
-            <td>5</td>
           </tr>
         </table>
       </div>
