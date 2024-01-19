@@ -98,7 +98,7 @@ export default defineComponent({
                 this.options = this.options.filter(option => option.key.includes('台灣'));
             }
             if(key.includes ("洛杉磯, 美國, LAX")){
-                this.$router.push('/LocationLAX')
+                this.$router.push('/LocationLA')
             }
             if(key.includes ("舊金山, 美國, SFO")){
                 this.$router.push('/LocationSFO')
