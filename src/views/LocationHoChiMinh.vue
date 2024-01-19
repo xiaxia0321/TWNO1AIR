@@ -60,12 +60,17 @@ export default defineComponent({
     methods: {
         handleSelect(key) {
             this.start = key
-            console.log(start)
+            if (!key.includes('台灣')) {
+                this.options = this.options.filter(option => option.key.includes('台灣'));//當出發地不是台灣的時候，將目的地過濾為台灣
+                // this.end = ''; 
+            }
             // console.log(key)
         },
         handleSelectTwo(key) {
             this.end = key
-            console.log(start)
+            if (!key.includes('台灣')) {
+                this.options = this.options.filter(option => option.key.includes('台灣'));
+            }
             // console.log(key)
         },
     },
@@ -83,6 +88,15 @@ export default defineComponent({
             <h1>搭乘樂狗航空從台北飛往胡志明市 ，自 TWD9,979* 起！</h1>
         </div>
         <div class="condition">
+            <select name="" id="" class="oneway">
+                <option value="true">單程</option>
+                <option value="false">來回</option>
+            </select>
+            <select name="" id="" style="" class="classType">
+                <option value="">經濟艙</option>
+                <option value="">商務艙</option>
+                <option value="">頭等艙</option>
+            </select>
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
                 <n-button>出發地：{{ start }}</n-button>
             </n-dropdown>
@@ -97,7 +111,7 @@ export default defineComponent({
     </div>
     <div class="content">
         <div class="ticket">
-            <span class="top">去程：臺北-胡志明市</span>
+            <span class="top">　去程：臺北-胡志明市</span>
             <div class="go">
                 <p>　　經濟艙</p>
                 <p>　　JX870　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時40分鐘</p>
@@ -109,7 +123,7 @@ export default defineComponent({
                 </div>
             </div>
             <br>
-            <span class="bottom">回程：胡志明市-臺北</span>
+            <span class="bottom">　回程：胡志明市-臺北</span>
             <div class="back">
                 <p>　　經濟艙</p>
                 <p>　　JX871　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時25分鐘</p>
@@ -135,7 +149,6 @@ export default defineComponent({
             </div>
         </div>
         <div class="attraction">
-            <br><br><br>
             <img src="../../public/sabrina/胡志明市.jpeg" alt="">
             <h4>胡志明市，東方小巴黎</h4>
             <p>東方小巴黎-胡志明市在十八世紀時在法國人經營殖民下，生活習慣深受影響，市容更是十足的法國風味。西貢是法國在越南最早的殖民地，處處可見法式基礎建築架構融入當地文化色彩，更因歷經戰事、革新運動等重大變化，今天的胡志明市除了接受外來文化薰陶之外
@@ -178,6 +191,24 @@ export default defineComponent({
         justify-content: space-evenly;
         align-items: center;
         background-color: rgb(7, 102, 7);
+        box-sizing: border-box;
+        padding-top: 50px;
+        .oneway {
+            position: absolute;
+            left: 17%;
+            top: 38%;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        .classType{
+            position: absolute;
+            left: 25%;
+            top: 38%;
+            width: 120px;
+            height: 30px;
+            border-radius: 5px;
+        }
 
         .n-button {
             width: 230px;
@@ -286,7 +317,7 @@ export default defineComponent({
     .attraction {
         width: 70vw;
         height: 100vh;
-        margin-top: 250px;
+        margin-top: 120px;
         margin-left: 220px;
 
         img {

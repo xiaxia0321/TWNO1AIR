@@ -60,12 +60,17 @@ export default defineComponent({
     methods: {
         handleSelect(key) {
             this.start = key
-            console.log(start)
+            if (!key.includes('台灣')) {
+                this.options = this.options.filter(option => option.key.includes('台灣'));//當出發地不是台灣的時候，將目的地過濾為台灣
+                // this.end = ''; 
+            }
             // console.log(key)
         },
         handleSelectTwo(key) {
             this.end = key
-            console.log(start)
+            if (!key.includes('台灣')) {
+                this.options = this.options.filter(option => option.key.includes('台灣'));
+            }
             // console.log(key)
         },
     },
@@ -87,6 +92,15 @@ export default defineComponent({
                 <option value="">來回</option>
             </select> -->
         <div class="condition">
+            <select name="" id="" class="oneway">
+                <option value="true">單程</option>
+                <option value="false">來回</option>
+            </select>
+            <select name="" id="" style="" class="classType">
+                <option value="">經濟艙</option>
+                <option value="">商務艙</option>
+                <option value="">頭等艙</option>
+            </select>
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
                 <n-button>出發地：{{ start }}</n-button>
             </n-dropdown>
@@ -184,6 +198,24 @@ export default defineComponent({
         justify-content: space-evenly;
         align-items: center;
         background-color: rgb(7, 102, 7);
+        box-sizing: border-box;
+        padding-top: 50px;
+        .oneway {
+            position: absolute;
+            left: 17%;
+            top: 38%;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        .classType{
+            position: absolute;
+            left: 25%;
+            top: 38%;
+            width: 120px;
+            height: 30px;
+            border-radius: 5px;
+        }
 
         .n-button {
             width: 230px;

@@ -5,14 +5,11 @@ import { NDropdown, NButton, NDatePicker } from 'naive-ui'
 export default defineComponent({
     data() {
         return {
-            start: "",
-            end: "",
-            airplain_id: "",
-            depature_date: "",
-            depature_location: "",
-            arrival_location: "",
-            price: "",
-            
+            departureDate: "",
+            arrivalDate: "",
+            departureLocation:"",
+            arrivalLocation:"",
+            isOneway: false,
             options: [
                 {
                     label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
@@ -83,6 +80,11 @@ export default defineComponent({
             }
         },
         search() {
+            let departureDate = document.getElementById("departureDate")
+            let arrivalDate = document.getElementById("arrivalDate")
+            let departureLocation = document.getElementById("departureLocation")
+            let arrivalLocation = document.getElementById("arrivalLocation")
+            let isOneway = document.getElementById("isOneway")
             axios({
                 url: 'http://localhost:8080/airplainInfo/search',
                 methods: 'POST',
@@ -112,22 +114,22 @@ export default defineComponent({
             <h1>搭乘樂狗航空從台北飛往東京 ，自 TWD13,589* 起！</h1>
         </div>
         <div class="condition">
-            <select name="" id="" class="oneway">
+            <select name="" id="oneway" class="oneway">
                 <option value="true">單程</option>
                 <option value="false">來回</option>
             </select>
-            <select name="" id="" style="" class="classType">
+            <select name="" id="classType" style="" class="classType">
                 <option value="">經濟艙</option>
                 <option value="">商務艙</option>
                 <option value="">頭等艙</option>
             </select>
-            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect" id="depatureLocation">
                 <n-button>出發地：{{ start }}</n-button>
             </n-dropdown>
-            <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo" id="arrivalLocation">
                 <n-button>目的地：{{ end }}</n-button>
             </n-dropdown>
-            <n-date-picker v-model:value="range" type="daterange" clearable />
+            <n-date-picker v-model:value="range" type="daterange" clearable id="departureDate"/>
             <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
             <button type="button" class="searchBtn" @click="search()">搜尋</button>　
         </div>
@@ -181,7 +183,7 @@ export default defineComponent({
                 的文化，那就去原宿，或去秋葉原選購電玩和動漫。夜間可以沿著橫丁 (巷弄的意思) 探索，沿途都可以找到氣氛悠閒的居酒屋和小酒吧。當然這裡還有更多精彩的體驗等您探索，請參考以下更多推薦。</p>
         </div>
     </div>
-    <div class="foot">
+    <!-- <div class="foot">
         <div class="footBlock">
             <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
                     style="padding-left: 10px;">瞭解樂狗</span></h2>
@@ -221,10 +223,10 @@ export default defineComponent({
             <a href=""><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
             <a href=""><i class="fa-brands fa-square-youtube ii" style="color: #161a30;"></i></a>
         </div>
-    </div>
-    <!-- <div class="footer">
-
     </div> -->
+    <div class="footer">
+
+    </div>
 </template>
 <style scoped lang="scss">
 .search {
@@ -405,91 +407,91 @@ export default defineComponent({
     }
 }
 
-.foot {
-    position: relative;
-    width: 100%;
-    height: 70vh;
-    background-color: #5e5045;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    padding: 20px 50px 120px 50px;
+// .foot {
+//     position: relative;
+//     width: 100%;
+//     height: 70vh;
+//     background-color: #5e5045;
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//     flex-direction: row;
+//     padding: 20px 50px 120px 50px;
 
-    .footBlock {
-        width: 26%;
-        height: 100%;
-        // border: 1px solid black;
-        color: white;
+//     .footBlock {
+//         width: 26%;
+//         height: 100%;
+//         // border: 1px solid black;
+//         color: white;
 
-        ul {
-            list-style-type: none;
+//         ul {
+//             list-style-type: none;
 
-            li {
-                text-align: left;
-                height: 3rem;
-                padding-left: 20px;
-                display: flex;
-                justify-content: left;
-                margin: 0 0 5px;
-                align-items: center;
-                font-size: 1.3rem;
-                transition: .5s;
+//             li {
+//                 text-align: left;
+//                 height: 3rem;
+//                 padding-left: 20px;
+//                 display: flex;
+//                 justify-content: left;
+//                 margin: 0 0 5px;
+//                 align-items: center;
+//                 font-size: 1.3rem;
+//                 transition: .5s;
 
-                &:hover {
-                    // width: 70%;
-                    background-color: rgba(255, 255, 255, 0.15);
-                    border-left: 10px solid rgba(22, 26, 48, 0.533);
-                    box-shadow: 2px 1px 2px black;
-                    transition: .5s;
-                }
+//                 &:hover {
+//                     // width: 70%;
+//                     background-color: rgba(255, 255, 255, 0.15);
+//                     border-left: 10px solid rgba(22, 26, 48, 0.533);
+//                     box-shadow: 2px 1px 2px black;
+//                     transition: .5s;
+//                 }
 
-                &:active {
-                    background-color: #372f2a66;
-                    border-left: 12px solid rgb(22, 26, 48);
-                    transition: .4s;
-                }
+//                 &:active {
+//                     background-color: #372f2a66;
+//                     border-left: 12px solid rgb(22, 26, 48);
+//                     transition: .4s;
+//                 }
 
-                a {
-                    text-decoration: none;
-                    color: white;
-                }
-            }
-        }
-    }
+//                 a {
+//                     text-decoration: none;
+//                     color: white;
+//                 }
+//             }
+//         }
+//     }
 
-    .under {
-        position: absolute;
-        bottom: 0;
-        background-color: #4a3f37;
-        width: 100%;
-        height: 20%;
-        display: flex;
-        align-items: center;
+//     .under {
+//         position: absolute;
+//         bottom: 0;
+//         background-color: #4a3f37;
+//         width: 100%;
+//         height: 20%;
+//         display: flex;
+//         align-items: center;
 
-        .ii {
-            margin-left: 15px;
-            font-size: 50px;
-            width: 50px;
-            height: 50px;
+//         .ii {
+//             margin-left: 15px;
+//             font-size: 50px;
+//             width: 50px;
+//             height: 50px;
 
-            &:hover {
-                box-shadow: 2px 2px 5px 0 black;
-                background-color: rgba(255, 255, 255, 0.2);
-                border-radius: .5rem;
-            }
+//             &:hover {
+//                 box-shadow: 2px 2px 5px 0 black;
+//                 background-color: rgba(255, 255, 255, 0.2);
+//                 border-radius: .5rem;
+//             }
 
-            &:active {
-                box-shadow: -1px -1px 1px 2px black;
-            }
-        }
-    }
-}
-
-// .footer {
-//     width: 100vw;
-//     height: 30vh;
-//     // border: 1px solid blue;
-//     background-color: rgb(49, 48, 77);
+//             &:active {
+//                 box-shadow: -1px -1px 1px 2px black;
+//             }
+//         }
+//     }
 // }
+
+.footer {
+    width: 100vw;
+    height: 30vh;
+    // border: 1px solid blue;
+    background-color: rgb(49, 48, 77);
+}
 </style>
