@@ -1,7 +1,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import { NDropdown, NButton, NDatePicker } from 'naive-ui'
-
+import axios from "axios";
 export default defineComponent({
     data() {
         return {
@@ -17,8 +17,8 @@ export default defineComponent({
                     disabled: false
                 },
                 {
-                    label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-                    key: "洛杉磯 (美國), LAX",
+                    label: "洛杉磯, 美國, LAX, Los Angeles International Airport",
+                    key: "洛杉磯, 美國, LAX",
                 },
                 {
                     label: "舊金山, 美國, SFO, San Francisco International Airport",
@@ -67,6 +67,34 @@ export default defineComponent({
                 this.options = this.options.filter(option => option.key.includes('台灣'));//當出發地不是台灣的時候，將目的地過濾為台灣
                 // this.end = ''; 
             }
+            if(key.includes ("洛杉磯, 美國, LA")){
+                this.$router.push('/LocationLA')
+            }
+            if(key.includes ("舊金山, 美國, SFO")){
+                this.$router.push('/LocationSFO')
+            }
+            if(key.includes ("函館, 日本, HKD")){
+                this.$router.push('/LocationHakodate')
+            }
+            if(key.includes ("大阪, 日本, KIX")){
+                this.$router.push('/LocationKyoto')
+            }
+            if(key.includes ("沖繩, 日本, OKA")){
+                this.$router.push('/LocationOkinawa')
+            }
+            if(key.includes ("胡志明市, 越南, SGN")){
+                this.$router.push('/LocationHoChiMinh')
+            }
+            if(key.includes ("曼谷, 泰國, BKK")){
+                this.$router.push('/LocationBangkok')
+            }
+            if(key.includes ("新加坡, 新加坡, SIN")){
+                this.$router.push('/LocationSingapore')
+            }
+            if(key.includes ("澳門, 澳門, MFM")){
+                this.$router.push('/LocationMacao')
+            }
+            console.log(key);
             // this.end = ""
             // if( this.start !== "台北, 台灣, TPE" ){
             //     this.end == "台北, 台灣, TPE"
@@ -77,6 +105,33 @@ export default defineComponent({
             this.end = key
             if (!key.includes('台灣')) {
                 this.options = this.options.filter(option => option.key.includes('台灣'));
+            }
+            if(key.includes ("洛杉磯, 美國, LAX")){
+                this.$router.push('/LocationLAX')
+            }
+            if(key.includes ("舊金山, 美國, SFO")){
+                this.$router.push('/LocationSFO')
+            }
+            if(key.includes ("函館, 日本, HKD")){
+                this.$router.push('/LocationHakodate')
+            }
+            if(key.includes ("大阪, 日本, KIX")){
+                this.$router.push('/LocationKyoto')
+            }
+            if(key.includes ("沖繩, 日本, OKA")){
+                this.$router.push('/LocationOkinawa')
+            }
+            if(key.includes ("胡志明市, 越南, SGN")){
+                this.$router.push('/LocationHoChiMinh')
+            }
+            if(key.includes ("曼谷, 泰國, BKK")){
+                this.$router.push('/LocationBangkok')
+            }
+            if(key.includes ("新加坡, 新加坡, SIN")){
+                this.$router.push('/LocationSingapore')
+            }
+            if(key.includes ("澳門, 澳門, MFM")){
+                this.$router.push('/LocationMacao')
             }
         },
         search() {
@@ -93,7 +148,11 @@ export default defineComponent({
                     'Contect-Type': 'applicatoin/json'
                 },
                 data: {
-                    
+                    departureDate: this.departureDate,
+                    arrivalDate: this.arrivalDate,
+                    departureLocation: this.departureLocation,
+                    arrivalLocation: this.arrivalLocation,
+                    isOneway: this.isOneway
                 },
             }).then(res => {
                 console.log(data);
@@ -137,6 +196,9 @@ export default defineComponent({
     </div>
     <div class="content">
         <div class="ticket">
+            <!-- <p style="display: inline;color: white;margin-right: 800px;">去程：</p>
+            <p style="display: inline;color: white;">{{ start }}</p>
+            <p style="display: inline;color: white;">{{ end }}</p> -->
             <span class="top">去程：臺北-東京</span>
             <div class="go">
                 <p>　　經濟艙</p>

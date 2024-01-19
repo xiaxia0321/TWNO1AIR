@@ -14,8 +14,8 @@ export default defineComponent({
                     disabled: false
                 },
                 {
-                    label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-                    key: "洛杉磯 (美國), LAX",
+                    label: "洛杉磯, 美國 , LAX, Los Angeles International Airport",
+                    key: "洛杉磯, 美國, LAX",
                 },
                 {
                     label: "舊金山, 美國, SFO, San Francisco International Airport",
@@ -64,12 +64,66 @@ export default defineComponent({
                 this.options = this.options.filter(option => option.key.includes('台灣'));//當出發地不是台灣的時候，將目的地過濾為台灣
                 // this.end = ''; 
             }
+            if(key.includes ("洛杉磯, 美國, LA")){
+                this.$router.push('/LocationLA')
+            }
+            if(key.includes ("舊金山, 美國, SFO")){
+                this.$router.push('/LocationSFO')
+            }
+            if(key.includes ("函館, 日本, HKD")){
+                this.$router.push('/LocationHakodate')
+            }
+            if(key.includes ("東京, 日本, NRT")){
+                this.$router.push('/LocationTokyo')
+            }
+            if(key.includes ("大阪, 日本, KIX")){
+                this.$router.push('/LocationKyoto')
+            }
+            if(key.includes ("沖繩, 日本, OKA")){
+                this.$router.push('/LocationOkinawa')
+            }
+            if(key.includes ("曼谷, 泰國, BKK")){
+                this.$router.push('/LocationBangkok')
+            }
+            if(key.includes ("新加坡, 新加坡, SIN")){
+                this.$router.push('/LocationSingapore')
+            }
+            if(key.includes ("澳門, 澳門, MFM")){
+                this.$router.push('/LocationMacao')
+            }
             // console.log(key)
         },
         handleSelectTwo(key) {
             this.end = key
             if (!key.includes('台灣')) {
                 this.options = this.options.filter(option => option.key.includes('台灣'));
+            }
+            if(key.includes ("洛杉磯, 美國, LA")){
+                this.$router.push('/LocationLA')
+            }
+            if(key.includes ("舊金山, 美國, SFO")){
+                this.$router.push('/LocationSFO')
+            }
+            if(key.includes ("函館, 日本, HKD")){
+                this.$router.push('/LocationHakodate')
+            }
+            if(key.includes ("東京, 日本, NRT")){
+                this.$router.push('/LocationTokyo')
+            }
+            if(key.includes ("大阪, 日本, KIX")){
+                this.$router.push('/LocationKyoto')
+            }
+            if(key.includes ("沖繩, 日本, OKA")){
+                this.$router.push('/LocationOkinawa')
+            }
+            if(key.includes ("曼谷, 泰國, BKK")){
+                this.$router.push('/LocationBangkok')
+            }
+            if(key.includes ("新加坡, 新加坡, SIN")){
+                this.$router.push('/LocationSingapore')
+            }
+            if(key.includes ("澳門, 澳門, MFM")){
+                this.$router.push('/LocationMacao')
             }
             // console.log(key)
         },

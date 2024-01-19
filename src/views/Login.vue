@@ -1,12 +1,50 @@
 <script>
+import axios from "axios";
 import counter from "../stores/counter"
 import { mapState, mapActions } from "pinia"
 import Swal from 'sweetalert2'
 export default {
   data() {
     return {
+      account: "",
+      password: "",
     }
   },
+  methods: {
+    toLogin() {
+      axios({
+        url: 'http://localhost:8080/api/login',
+        method: 'POST',
+        withCredentials: true,
+        headers: {
+          'Contect-Type': 'applicatoin/json'
+        },
+        data: {
+          account: this.account,
+          password: this.password,
+        },
+      }).then(res => {
+        // console.log(data);
+        let account = document.getElementById("account")
+        let password = document.getElementById("password")
+        if (account.value == "" || password.value == "") {
+          Swal.fire({
+            icon: "error",
+            text: "你有資料尚未填寫"
+          })
+          return
+        }
+        else {
+          Swal.fire({
+            icon: "success",
+            text: "登入成功",
+            showConfirmButton: true,
+          })
+          this.$router.push('/User')
+        }
+      })
+    }
+  }
   // methods: {
   //     toLogin() {
   //         this.$router.push('/Submit')
@@ -127,10 +165,10 @@ export default {
       <div class="right">
         <h3><b>登入</b></h3>
         <span><b>姓名：</b></span><br>
-        <input type="text" class="input"><br>
+        <input type="text" class="input" id="account" v-model="this.account"><br>
         <span><b>密碼：</b></span><br>
-        <input type="text" class="input"><br>
-        <button type="button" class="login">登入</button>
+        <input type="text" class="input" id="password" v-model="this.password"><br>
+        <button type="button" class="login" @click="toLogin()">登入</button>
       </div>
     </div>
   </div>
@@ -166,23 +204,25 @@ export default {
   width: 400px;
   height: 400px;
   padding: 50px;
-  background-color: rgb(182, 187, 196) ;
+  background-color: rgb(182, 187, 196);
   border-radius: 5%;
   color: white;
   text-align: left;
 }
-.input{
+
+.input {
   width: 300px;
   height: 30px;
   border: 0px;
-  background-color: rgb(240, 236, 229) ;
+  background-color: rgb(240, 236, 229);
   margin-bottom: 20px;
   border-radius: 5px;
 }
-.login{
+
+.login {
   margin-left: 250px;
   margin-top: 50px;
-  background-color:  rgb(49, 48, 77);
+  background-color: rgb(49, 48, 77);
   color: white;
 }
 </style>
