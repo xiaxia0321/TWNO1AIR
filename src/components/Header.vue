@@ -180,6 +180,11 @@ export default {
                 </ul>
             </li>
         </ul>
+        <!-- <RouterLink to="HomeView" class="routerItem">Home</RouterLink>
+        <RouterLink to="/" class="routerItem">Login</RouterLink>
+        <RouterLink to="Submit" class="routerItem">Submit</RouterLink>
+        <RouterLink to="AboutView" class="routerItem">AboutView</RouterLink>
+        <RouterLink to="LocationHakodate" class="routerItem">LocationHakodate</RouterLink> -->
     </div>
 </template>
 
