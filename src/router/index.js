@@ -66,7 +66,7 @@ const router = createRouter({
     {
       path: "/AirTime",
       name: "AirTime",
-      component: () => import('../views/AirTime.vue')
+      component: () => import('../views/AirTime.vue'),
     },
     {
       path: "/OutboundConfirm",

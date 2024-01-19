@@ -2,14 +2,17 @@
 export default {
   data() {
     return {
-      selectedDeparture: "", // 新增變數，用於存儲所選擇的出發地
-      airport: "", // 機場縮寫
+      arrivalLocation: "", // 目的地
+      airport: "", // 機場縮寫例如TPE
     };
   },
+
   methods: {
     selectDeparture(x,y) {
       this.airport = x;
-      this.selectedDeparture = y;
+      this.arrivalLocation = y;
+      console.log("選擇的目的地:", this.airport, this.arrivalLocation);
+      this.$emit('arrival-selected', this.arrivalLocation);
     },
   }
 };
@@ -22,7 +25,7 @@ export default {
     class="btn btn-primary dd"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal1"
-    v-if="this.selectedDeparture === ''"
+    v-if="this.arrivalLocation === ''"
   >
   <span style="font-size: 26px; color:#794425">目的地　</span>
     <span style="font-size: 0.75rem; color:#08202D;">請選擇目的地</span>
@@ -36,7 +39,7 @@ export default {
     v-else
   >
     <span style="font-size: 2.25rem; color:#794425;">{{this.airport}}</span>
-    <span style="font-size: 0.75rem; color:#08202D;">{{this.selectedDeparture}}</span>
+    <span style="font-size: 0.75rem; color:#08202D;">{{this.arrivalLocation}}</span>
   </button>
 <!-- ===============按鈕=========== -->
   <!-- Modal -->
@@ -66,7 +69,7 @@ export default {
             <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('TPE　','台北,臺灣')">
               <span>臺北，臺灣　　　　　　　　　　　　　　　　　　　　　　TPE</span>
               <br />
-              <small class="sm">台北桃園國際機場</small>
+              <small class="sm">台灣桃園國際機場</small>
             </button>
           </div>
 
@@ -100,7 +103,7 @@ export default {
             <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('HKD　','函館,日本')">
               <span>函館，日本　　　　　　　　　　　　　　　　　　　　　　HKD</span>
               <br />
-              <small>涵館機場</small>
+              <small>函館機場</small>
             </button>
             <br />
             <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('OKA　','沖繩,日本')">

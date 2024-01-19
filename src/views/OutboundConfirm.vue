@@ -2,11 +2,27 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      departureLocation:"",//出發地地名
+      arrivalLocation:"",//抵達地地名
+      DA:"",//出發機場縮寫
+      AA:"",//抵達機場縮寫
+      aircraftNumber:"",//機號
+      departureDate:"",//出發日期
+      arrivalDate:"",//抵達日期
+      departureTime:"",//出發時間
+      arrivalTime:"",//抵達時間
+      totalTime:"",//總花費時間
+      classType:"",//艙等
+      price:"",//價錢
+    };
   },
   methods: {
     back() {
             this.$router.push("/AirTime"); //推送至下一頁的路徑
+        },
+    gogo() {
+            this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
         },
   },
 };
@@ -94,6 +110,10 @@ export default {
       10.機票折扣僅適用於機票票價，不適用於各項附加費(包含但不限於燃油附加費、兵險、指定日期加價、停留點加價等)、服務費(包含但不限於訂位服務費、機場服務費、旅客服務費等)、手續費(包含但不限於改票、退票、未登機手續費等)與各地機場稅金與政府規費等。
       相關連結
     </p>
+  </div>
+  <div class="bottom1">
+    <span>TWD 20,680</span>
+    <button @click="gogo">下一步</button>
   </div>
   <!-- 底部 -->
 </template>
@@ -204,11 +224,35 @@ export default {
 }
 .bottom {
   width: 100vw;
-  height: 80vh;
+  height: 85vh;
   text-align: justify;
   padding: 0px 40px 0px 40px;
   background-color: #31304d;
   color: white;
   font-size: 14px;
+}
+.bottom1 {
+  width: 100vw;
+  height: 10vh;
+  background-color: #a79b8d;
+  bottom: 0;
+  color: #794425;
+  z-index: 2;
+  position: fixed;
+  span{
+    position: absolute;
+    font-size: 24px;
+    right: 280px;
+    top: 15px;
+  }
+  button {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    width: 15vw;
+    height: 7vh;
+    background-color: #3b2641;
+    color: white;
+  }
 }
 </style>

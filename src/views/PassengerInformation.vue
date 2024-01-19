@@ -11,7 +11,14 @@ export default {
       days: Array.from({ length: 31 }, (_, index) => index + 1),
     };
   },
-  methods: {},
+  methods: {
+    gogo() {
+            this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
+        },
+        back() {
+      this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
+    },
+  },
 };
 </script>
 
@@ -24,7 +31,10 @@ export default {
     referrerpolicy="no-referrer"
   />
   <div class="big">
-    <div class="top"><h2>旅客資訊</h2></div>
+    <div class="top">
+      <i class="fa-solid fa-arrow-left arrow cc" @click="back"></i>
+    <h2>旅客資訊</h2>
+    </div>
     <div class="mid">
       <div class="m1">
         <h3>成人</h3>
@@ -87,19 +97,66 @@ export default {
     </div>
   </div>
   <div class="bottom">
-    <button>送出</button>
+    <br />
+    <br />
+    <h2>注意事項</h2>
+    <br />
+    <p>
+      1.來回行程之票價產品價格是以各航段分開顯示，各航段之價格並非單程票價，該顯示價格僅為提供計算所購買的票價產品之參考。
+    </p>
+    <p>
+      2.各航段如選擇不同之票價產品組合時，相關收費標準以較嚴格者為主。例如:
+      航段中包含全額與基本之票價產品組合時，相關手續費用需依照「基本」票價產品規範收取。
+    </p>
+    <p>
+      3.兒童旅客的改票/退票/未登機手續費為成人旅客收費的75%；嬰兒旅客的改票/退票手續費為成人旅客收費的10%。
+    </p>
+    <p>
+      4.依據臺灣消費者保護法第19條第2項但書所訂之「通訊交易解除權合理例外情事適用準則」規定，網路購買國際航空機票不適用七天解除權。如消費者購買機票後欲退票，將依樂狗航空退票規定辦理。於樂狗航空官方網站/App
+      購買機票後，欲辦理機票退費，將按實際已搭乘行程之適用票價計算，相關退票申請條款與規定，詳見「線上退票」。當日購買、申請退票時間點為原訂航班起飛後4小時內或以
+      COSMILE 哩程支付之機票不適用此線上退票功能，請透過「退票申請」頁面辦理。
+    </p>
+    <p>
+      5.樂狗航空保留隨時修訂或終止各種票價產品、優惠及相關規則之權利，詳見「運送條款」。
+    </p>
+    <p>6.以上規定僅適用於搭乘樂狗航空實際營運之航班。</p>
+    <p>
+      7.因應新型冠狀病毒影響，調整樂狗航空國際航線班機服務內容，詳見「樂狗航空安心防疫措施及服務調整」。
+    </p>
+    <p>
+      8.樂狗航空關心每位旅客的健康，如有發燒、咳嗽、呼吸急促等身體不適，請暫緩搭機。各國入境相關規定及簽證須知，請參考「外交部領事事務局」。
+    </p>
+    <p>
+      9.搭機前，務必先行確認目的地之檢疫和入境規範
+      (最新相關規定與法令仍應以各國政府公告為主) ，詳見「最新旅遊限制相關規定」。
+    </p>
+    <p>
+      10.機票折扣僅適用於機票票價，不適用於各項附加費(包含但不限於燃油附加費、兵險、指定日期加價、停留點加價等)、服務費(包含但不限於訂位服務費、機場服務費、旅客服務費等)、手續費(包含但不限於改票、退票、未登機手續費等)與各地機場稅金與政府規費等。
+      相關連結
+    </p>
+  </div>
+  <div class="bottom1">
+    <button @click="gogo">送出</button>
   </div>
 </template>
 
 <style scoped lang="scss">
 .big {
   width: 100vw;
-  height: 150vh;
-  background-color: cadetblue;
+  height: 115vh;
+  background-color: #161a30;
   .top {
     width: 100vw;
     height: 10vh;
-    background-color: blue;
+    padding: 0px 40px 0px 40px;
+
+    background-color: #31304d;
+    color: white;
+    text-align: justify;
+    .cc {
+      font-size: 24px;
+      color: #f8c68a;
+    }
   }
   .mid {
     width: 90vw;
@@ -111,7 +168,8 @@ export default {
       width: 25%;
       height: 100%;
       color: white;
-      background-color: #3b2641;
+      // background-color: #3b2641;
+      background-color: #0f2d3c;
       text-align: justify;
       padding: 30px 0px 0px 30px;
     }
@@ -137,6 +195,15 @@ export default {
   }
 }
 .bottom {
+  width: 100vw;
+  height: 92vh;
+  text-align: justify;
+  padding: 0px 40px 0px 40px;
+  background-color: #31304d;
+  color: white;
+  font-size: 14px;
+}
+.bottom1 {
   width: 100vw;
   height: 10vh;
   background-color: #a79b8d;
