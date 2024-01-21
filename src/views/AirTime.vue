@@ -1,7 +1,8 @@
 <script>
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
 export default {
   data() {
-    
     return {
       departureLocation:"",//出發地點
       arrivalLocation:"",//抵達地點
@@ -12,16 +13,13 @@ export default {
       depatureTime:"",//出發時間
       arriveTime:"",//抵達時間
       // totalTime:"",//總花費時間
-      // d1:"",//前三天
-      // d2:"",//前兩天
-      // d3:"",//前一天
-      // d4:"",//當天
-      // d5:"",//後一天
-      // d6:"",//後兩天
-      // d7:"",//後三天
+      planeArr: [],
+
     };
   },
-
+  computed: {
+    ...mapState(counter,["plane"])
+  },
   methods: {
     back() {
             this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
@@ -31,16 +29,14 @@ export default {
         },
   },
   mounted() {
-    this.departureLocation = this.$route.params.departureLocation;
-    this.arrivalLocation = this.$route.params.arrivalLocation;
-    // const departureLocation = this.$route.params.departureLocation;
-    // const arrivalLocation = this.$route.params.arrivalLocation;
-    const DA = this.$route.params.DA;
-    const AA = this.$route.params.AA;
-    const departureAirport = this.$route.params.departureAirport;
-    const arrivalAirport = this.$route.params.arrivalAirport;
-    const departureTime = this.$route.params.departureTime;
-    const arrivalTime = this.$route.params.arrivalTime;
+  this.departureLocation = this.plane.departureLocation; //出發地
+  this.arrivalLocation = this.plane.arrivalLocation;  //抵達地
+  this.DA = this.plane.DA; // 出發機場縮寫
+  this.AA = this.plane.AA; // 抵達機場縮寫
+  this.departureAirport = this.plane.departureAirport; //出發機場
+  this.arrivalAirport = this.plane.arrivalAirport; //抵達機場
+  this.depatureTime = this.plane.depatureTime; //出發時間
+  this.arriveTime = this.plane.arriveTime; //抵達時間
   },
 };
 </script>
@@ -61,19 +57,19 @@ export default {
       <h2>查詢結果</h2>
     </div>
     <div class="header2">
-      <h4>{{ departureLocation  }} - {{ arrivalLocation }}</h4>
+      <h4>{{ departureLocation }} - {{ arrivalLocation }}</h4>
       <span>以主管機關核定為主</span>
     </div>
     <div class="mid1 mm">
       <div class="a1"></div>
       <div class="a2">
         <div class="a21">
-          <h3>TPE</h3>
-          <span>臺灣桃園國際機場</span>
+          <h3>{{ DA }}</h3>
+          <span>{{ departureAirport }}</span>
         </div>
         <div class="a22">
-          <h3>FUK</h3>
-          <span>福岡機場</span>
+          <h3>{{ AA }}</h3>
+          <span>{{ arrivalAirport }}</span>
         </div>
       </div>
       <div class="a3 aa"><span>1月13號</span><span>周六</span></div>
@@ -91,13 +87,13 @@ export default {
         ><span><i class="fa-solid fa-plane"></i>A321neo</span>
       </div>
       <div class="b2">
-        <div class="b21"><h2>14:45</h2></div>
+        <div class="b21"><h2>{{ depatureTime }}</h2></div>
         <div class="b22">
           <span>直飛</span>
           <hr />
           <span>2小時15分鐘</span>
         </div>
-        <div class="b23"><h2>18:00</h2></div>
+        <div class="b23"><h2>{{ depatureTime }}</h2></div>
       </div>
       <div class="b3 bb" v-if="d3">
         <span><i class="fa-solid fa-plane"></i></span>
