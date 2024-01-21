@@ -6,10 +6,11 @@ export default {
     return {
       arrivalLocation: "", // 目的地
       AA: "", // 機場縮寫例如TPE
+      arrivalAirport:"",
     };
   },
   computed: {
-    ...mapState(counter,["plane"])
+    ...mapState(counter,['planeSearchArr'])
   },
   methods: {
     selectDeparture(x,y,z) {
@@ -17,9 +18,9 @@ export default {
       this.arrivalLocation = y;
       this.arrivalAirport = z;
       console.log("選擇的目的地:", this.AA, this.arrivalLocation, this.arrivalAirport);
-      this.plane.AA = this.AA
-      this.plane.arrivalLocation = this.arrivalLocation
-      this.plane.arrivalAirport = this.arrivalAirport
+      this.planeSearchArr.aa = this.AA
+      this.planeSearchArr.arrivalLocation = this.arrivalLocation
+      this.planeSearchArr.arrivalAirport = this.arrivalAirport
       // this.$emit('arrival-selected', this.arrivalLocation);
     },
   }

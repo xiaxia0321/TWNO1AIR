@@ -17,7 +17,7 @@ export default {
       minDate: '',
       minDateHave: false,
       //
-      planeArr: [], //planeArr裡面塞資料庫所有航班
+      // planeArr: [], //planeArr裡面塞資料庫所有航班
     };
   },
   methods: {
@@ -78,7 +78,7 @@ export default {
     ArrivalLocationTime,
   },
   computed: {
-    ...mapState(counter, ['plane'])
+    ...mapState(counter, ['plane','planeArr'])
   },
 
 };

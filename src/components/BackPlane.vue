@@ -75,6 +75,7 @@ export default {
           <input type="date" name="" id="" v-model="plane.arrivalDate">
         </div>
         <button type="submit" @click="searchPlane">搜尋</button>
+        <button type="submit" @click="createFlight">創建</button>
       </div>
       <div class="inside">
         <table>

@@ -1,75 +1,84 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import axios from 'axios';
 export default {
   data() {
     return {
-      departureLocation:"",//出發地點
-      arrivalLocation:"",//抵達地點
-      DA:"",//出發機場縮寫
-      AA:"",//抵達機場縮寫
-      departureAirport:"",//出發機場
-      arrivalAirport:"",//抵達機場 
-      depatureTime:"",//出發時間
-      arriveTime:"",//抵達時間
-      // totalTime:"",//總花費時間
+      // departureLocation:"",//出發地點
+      // arrivalLocation:"",//抵達地點
+      // DA:"",//出發機場縮寫
+      // AA:"",//抵達機場縮寫
+      // departureAirport:"",//出發機場
+      // arrivalAirport:"",//抵達機場 
+      // depatureTime:"",//出發時間
+      // arriveTime:"",//抵達時間
+      // // totalTime:"",//總花費時間
       planeArr: [],
 
     };
   },
   computed: {
-    ...mapState(counter,["plane"])
+    ...mapState(counter, ["plane", 'planeSearchArr'])
   },
   methods: {
+    searchPlane() {
+      axios({
+        url: 'http://localhost:8080/airplainInfo/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          departureDate: this.planeSearchArr.departureDate,
+          arrivalDate: this.planeSearchArr.arrivalDate,
+          departureLocation: this.planeSearchArr.departureLocation,
+          arrivalLocation: this.planeSearchArr.arrivalLocation,
+          classType: this.planeSearchArr.classType,
+          isOneway: this.planeSearchArr.isOneway
+        },
+      })
+        .then(res => this.planeArr = res.data.airplainInfoList)
+      console.log(this.planeArr)
+    },
     back() {
-            this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
-        },
-        gogo() {
-            this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
-        },
+      this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
+    },
+    gogo() {
+      this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
+    },
   },
-  mounted() {
-  this.departureLocation = this.plane.departureLocation; //出發地
-  this.arrivalLocation = this.plane.arrivalLocation;  //抵達地
-  this.DA = this.plane.DA; // 出發機場縮寫
-  this.AA = this.plane.AA; // 抵達機場縮寫
-  this.departureAirport = this.plane.departureAirport; //出發機場
-  this.arrivalAirport = this.plane.arrivalAirport; //抵達機場
-  this.depatureTime = this.plane.depatureTime; //出發時間
-  this.arriveTime = this.plane.arriveTime; //抵達時間
-  },
+  // mounted() {
+  //   searchPlane()
+  // },
 };
 </script>
 
 <template>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- <div class="push"></div> -->
-  <div class="big">
-  
+  <div class="big" v-for="(item, index) in planeArr" :key="index">
+
     <div class="header1">
       <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
-      <h2>查詢結果</h2>
+      <h2 @click="searchPlane">查詢結果</h2>
     </div>
     <div class="header2">
-      <h4>{{ departureLocation }} - {{ arrivalLocation }}</h4>
+      <h4>{{ item.departureLocation }} - {{ item.arrivalLocation }}</h4>
       <span>以主管機關核定為主</span>
     </div>
     <div class="mid1 mm">
       <div class="a1"></div>
       <div class="a2">
         <div class="a21">
-          <h3>{{ DA }}</h3>
-          <span>{{ departureAirport }}</span>
+          <h3>{{ item.da }}</h3>
+          <span>{{ item.departureLocation }}</span>
         </div>
         <div class="a22">
-          <h3>{{ AA }}</h3>
-          <span>{{ arrivalAirport }}</span>
+          <h3>{{ item.aa }}</h3>
+          <span>{{ item.arrivalLocation }}</span>
         </div>
       </div>
       <div class="a3 aa"><span>1月13號</span><span>周六</span></div>
@@ -83,38 +92,42 @@ export default {
     <div class="mid2 mm">
       <div class="b1">
         <h3>JX0840</h3>
-        <span>由HAPPYDOG</span><span>Airlines</span> <span>執飛</span
-        ><span><i class="fa-solid fa-plane"></i>A321neo</span>
+        <span>由HAPPYDOG</span><span>Airlines</span> <span>執飛</span><span><i class="fa-solid fa-plane"></i>A321neo</span>
       </div>
       <div class="b2">
-        <div class="b21"><h2>{{ depatureTime }}</h2></div>
+        <div class="b21">
+          <h2>{{item.depatureTime}}</h2>
+        </div>
         <div class="b22">
           <span>直飛</span>
           <hr />
           <span>2小時15分鐘</span>
         </div>
-        <div class="b23"><h2>{{ depatureTime }}</h2></div>
-      </div>
-      <div class="b3 bb" v-if="d3">
-        <span><i class="fa-solid fa-plane"></i></span>
+        <div class="b23">
+          <h2>{{item.arriveTime
+}}</h2>
         </div>
-      <div class="b4 bb" v-if="d4">
+      </div>
+      <div class="b3 bb">
         <span><i class="fa-solid fa-plane"></i></span>
       </div>
-      <div class="b5 bb" v-if="d5">
+      <div class="b4 bb">
+        <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+      </div>
+      <div class="b5 bb">
         <span><i class="fa-solid fa-plane"></i></span>
       </div>
-      <div class="b6 bb" v-if="d6"> 
-      <!-- 當天 -->
-        <span><i class="fa-solid fa-plane"></i></span> 
-      </div>
-      <div class="b7 bb" v-if="d7">
+      <div class="b6 bb">
+        <!-- 當天 -->
         <span><i class="fa-solid fa-plane"></i></span>
       </div>
-      <div class="b8 bb" v-if="d8">
+      <div class="b7 bb">
+        <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+      </div>
+      <div class="b8 bb">
         <span><i class="fa-solid fa-plane"></i></span>
       </div>
-      <div class="b9 bb" v-if="d9">
+      <div class="b9 bb">
         <span><i class="fa-solid fa-plane"></i></span>
       </div>
     </div>
@@ -122,7 +135,7 @@ export default {
     <button @click="gogo">預定行程</button>
   </div>
   <div class="bottom">
-    <h2>注意事項</h2>
+    <h2 @click="searchPlane">注意事項</h2>
     <br />
     <p>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</p>
     <p>
@@ -135,10 +148,12 @@ export default {
 .push {
   height: 10vh;
 }
+
 .big {
   width: 100vw;
   height: 90vh;
   background-color: #161a30;
+
   button {
     width: 20vw;
     height: 7vh;
@@ -149,6 +164,7 @@ export default {
     letter-spacing: 7px;
     border-radius: 7px;
   }
+
   .header1 {
     width: 100%;
     height: 15vh;
@@ -156,12 +172,14 @@ export default {
     color: white;
     background-color: #31304d;
     padding-left: 40px;
+
     .arrow {
       font-size: 24px;
       color: #f8c68a;
 
     }
   }
+
   .header2 {
     width: 100%;
     height: 10vh;
@@ -171,17 +189,20 @@ export default {
     display: flex;
     justify-content: space-between;
   }
+
   .mid1 {
     width: 95%;
     height: 12vh;
     margin: 0 auto;
     background-color: #f0ece5;
     display: flex;
+
     .a1 {
       width: 15%;
       height: 100%;
       background-color: #ffeeda;
     }
+
     .a2 {
       width: 29%;
       height: 100%;
@@ -192,6 +213,7 @@ export default {
       text-align: justify;
       padding: 0px 10px 0px 0px;
     }
+
     .aa {
       width: 8%;
       height: 100%;
@@ -202,17 +224,20 @@ export default {
       justify-content: center;
       align-items: center;
     }
+
     .a6 {
       //當天
       background-color: #ffeeda;
     }
   }
+
   .mid2 {
     width: 95%;
     height: 22vh;
     margin: 0 auto;
     background-color: #ffeeda;
     display: flex;
+
     .b1 {
       width: 15%;
       height: 100%;
@@ -222,16 +247,19 @@ export default {
       text-align: justify;
       flex-direction: column; //將日期都置中
       display: flex;
+
       span {
         font-size: 12px;
       }
     }
+
     .b2 {
       width: 29%;
       height: 100%;
       background-color: #ffeeda;
       color: rgb(60, 60, 60);
       display: flex;
+
       .b21 {
         width: 33%;
         height: 100%;
@@ -239,6 +267,7 @@ export default {
         flex-direction: column;
         justify-content: center;
       }
+
       .b22 {
         width: 33%;
         height: 100%;
@@ -246,6 +275,7 @@ export default {
         flex-direction: column;
         justify-content: center;
       }
+
       .b23 {
         width: 33%;
         height: 100%;
@@ -254,6 +284,7 @@ export default {
         justify-content: center;
       }
     }
+
     .bb {
       width: 8%;
       height: 100%;
@@ -264,12 +295,14 @@ export default {
       justify-content: center;
       align-items: center;
     }
+
     .b6 {
       //當天
       background-color: #ffeeda;
       color: rgb(60, 60, 60);
     }
   }
+
   .mid3 {
     width: 100%;
     height: 22vh;
@@ -277,6 +310,7 @@ export default {
     background-color: #ffeeda;
   }
 }
+
 .bottom {
   width: 100vw;
   height: 30vh;
