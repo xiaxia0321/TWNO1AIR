@@ -1,6 +1,11 @@
-<script>//航班時刻搜尋頁面
+<script>
+//航班時刻搜尋頁面
 import DepartureLocationTime from "./DepartureLocationTime.vue";
 import ArrivalLocationTime from "./ArrivalLocationTime.vue";
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -10,123 +15,105 @@ export default {
       selectedDate: '',
       tomorrowDate: '',
       minDate: '',
-      minDateHave:false,
-      //z
-      arrivalDate:"",
-      departureDate:"",
-      departureLocation:"",
-      arrivalLocation:"",
-      classType:"",
-      isOneway:false,
+      minDateHave: false,
+      //
+      planeArr: [], //planeArr裡面塞資料庫所有航班
     };
   },
-  props:[
-    "departureLocation",
-    "arrivalLocation",
-  ],
-  methods : {
-      search(){
-        axios({
-          url:'http://localhost:8080/airplainInfo/search',
-          method:'POST',
-          withCredentials:true,
-          headers:{
-            'Content-Type':'applicatoin/json'
+  methods: {
+    // search() {
+    //   fetch('http://localhost:8080/api/search_commodity', {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       name: this.searchData
+    //     })
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       console.log(data.commodityList);
+    //       this.dataList = data.commodityList;
+    //       this.saveSearchData(this.dataList)
+    //       console.log(this.dataList)
+    //       // 將資料存儲到 Local Storage 中，使用 'searchData' 作為鑰匙
+    //       localStorage.setItem('searchDataList', this.dataList);
+    //     })
+    //     .catch(error => console.log(error))
+     
+    // },
+    searchPlane() {
+      axios({
+        url: 'http://localhost:8080/airplainInfo/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+        },
+      })
+      .then(res => {
+        this.planeArr = res.data.airplainInfoList; //planeArr裡面塞資料庫所有航班
+        console.log(this.planeArr);
+        // 在請求完成後執行路由導航
+        this.$router.push({
+          name: 'AirTime',
+          params: {
+            // 可以根據需要傳遞其他參數
           },
-          data:{
-            departureDate:this.departureDate, //出發日期
-            arriveDate:this.arriveDate, //抵達日期
-            departureLocation:this.departureLocation, //出發地點
-            arrivalLocation:this.arrivalLocation, //抵達地點
-            classType:this.classType, //艙等
-            isOneway:this.isOneway, //來回
-            // price:this.price,
-            // seat:this.seat,
-            // DA:this.DA,
-            // AA:this.AA,
-            // depature_terminal:this.depature_terminal,
-            // arrive_terminal:this.arrive_terminal,
-          },
-        }).then(res => {
-          console.log("成功", res.data);
-        })
-      },
-      updateMinDate() {
+        });
+      })
+    },
+    updateMinDate() {
       const selected = new Date(this.selectedDate);
       selected.setDate(selected.getDate() + 1);
       this.minDate = selected.toISOString().split('T')[0];
       this.minDateHave = true;
     },
-      gogo() {
-        console.log("Selected Departure:", this.departureLocation);
-      console.log("Selected Arrival:", this.arrivalLocation);
-            this.$router.push({
-    name: 'AirTime',
-    params: {
-      departureLocation: this.departureLocation,
-      arrivalLocation: this.arrivalLocation,
-      // DA: this.DA,
-      // AA: this.AA,
-      // departureAirport: this.departureAirport,
-      // arrivalAirport: this.arrivalAirport,
-      // depatureTime: this.depatureTime,
-      // arriveTime: this.arriveTime,
-    },
-  });
-        },
-        handleDepartureSelected(departure) {
-      this.departureLocation = departure;
-    },
-    handleArrivalSelected(arrival) {
-      this.arrivalLocation = arrival;
-    },
-    },
+  },
 
   components: {
     DepartureLocationTime,
     ArrivalLocationTime,
+  },
+  computed: {
+    ...mapState(counter, ['plane'])
   },
 
 };
 </script>
 
 <template>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- <div class="push"></div> -->
   <div class="big">
-    <!-- <ArrivalLocationTime /> -->
     <div class="header">
       <h2>班機時刻表</h2>
       <span>提供前後3天可預訂機位的班機時刻</span>
     </div>
     <div class="mid1">
-      <span
-        >使用班機查詢功能，查詢您要的日期以及前後和未來兩天樂狗航空最新的班機資訊</span
-      >
+      <span>使用班機查詢功能，查詢您要的日期以及前後和未來兩天樂狗航空最新的班機資訊</span>
     </div>
-    <!-- v-model="d.departureLocation"
-    v-model="a.arrivalLocation" -->
     <div class="mid2">
       <!-- 裡面塞出發地目的地的按鈕 -->
-      <div class="b1"  ><DepartureLocationTime @departure-selected="handleDepartureSelected"/></div> 
+      <div class="b1">
+        <DepartureLocationTime @departure-selected="handleDepartureSelected" />
+      </div>
       <div class="b2"><i class="fa-solid fa-arrow-right"></i></div>
-      <div class="b3" ><ArrivalLocationTime @arrival-selected="handleArrivalSelected"/></div>
+      <div class="b3">
+        <ArrivalLocationTime @arrival-selected="handleArrivalSelected" />
+      </div>
       <div class="b4">
-        <input type="date" id="start" name="trip-start" max="2050-12-31" :min="this.today" @click="updateMinDate"/>
+        <input type="date" id="start" name="trip-start" max="2050-12-31" :min="this.today" @click="updateMinDate" />
       </div>
     </div>
-    <div class="mid3"><button class="bu" @click="gogo">查詢</button></div>
+    <div class="mid3"><button class="bu" @click="searchPlane">查詢</button></div>
   </div>
   <div class="bottom">
     <h2>注意事項</h2>
-    <p>{{ $data.departureLocation }}</p>
-    <p>{{ $data.arrivalLocation }}</p>
     <br />
     <p>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</p>
     <p>
@@ -136,13 +123,15 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.push{
+.push {
   height: 10vh;
 }
+
 .big {
   width: 100vw;
   height: 75vh;
   background-color: #161a30;
+
   .header {
     width: 100%;
     height: 20vh;
@@ -151,6 +140,7 @@ export default {
     color: white;
     background-color: #31304d;
   }
+
   .mid1 {
     width: 95vw;
     height: 15vh;
@@ -159,6 +149,7 @@ export default {
     text-align: justify;
     background-color: #eedfcd;
   }
+
   .mid2 {
     width: 95vw;
     height: 15vh;
@@ -167,47 +158,55 @@ export default {
     justify-content: center;
     // align-items: center;
     background-color: #ffeeda;
-    .b1{
+
+    .b1 {
       margin: 5vh auto;
     }
-    .b2{
+
+    .b2 {
       margin: 6vh auto;
       font-size: 30px;
 
     }
-    .b3{
+
+    .b3 {
       margin: 5vh auto;
 
     }
-    .b4{
+
+    .b4 {
       margin: 7vh auto;
-      input{
+
+      input {
         width: 15vw;
         height: 7vh;
       }
     }
   }
-  .mid3{
+
+  .mid3 {
     width: 95vw;
     height: 10vh;
     margin: 0 auto;
     display: flex;
-   justify-content: center;
+    justify-content: center;
     align-items: center;
     background-color: #ffeeda;
+
     // background-color: red;
-    .bu{
+    .bu {
       width: 10vw;
-    height: 6vh;
-    margin: 10px 0px 10px 960px;
-    color: white;
-    background-color: rgb(60, 60, 60);
-    font-size: 24px;
-    letter-spacing: 5px;
-    border-radius: 7px;
+      height: 6vh;
+      margin: 10px 0px 10px 960px;
+      color: white;
+      background-color: rgb(60, 60, 60);
+      font-size: 24px;
+      letter-spacing: 5px;
+      border-radius: 7px;
     }
   }
 }
+
 .bottom {
   width: 100vw;
   height: 30vh;
@@ -215,5 +214,4 @@ export default {
   background-color: #31304d;
   color: white;
   text-align: justify;
-}
-</style>
+}</style>
