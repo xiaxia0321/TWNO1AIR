@@ -30,6 +30,7 @@ export default {
         },
       })
         .then(res => this.order = res.data.orderList)
+      console.log(this.Order);
       console.log(this.order)
     },
   },
@@ -56,19 +57,19 @@ export default {
         </div>
         <div class="no">
           <span>出發地 : </span>
-          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="departureLocation">
+          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="Order.getDepartureLocation">
         </div>
         <div class="no">
           <span>目的地 : </span>
-          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="arrivalLocation">
+          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="Order.getArrivalLocation">
         </div>
         <div class="date">
           <span>出發日期 : </span>
-          <input type="date" name="" id="" v-model="departureDate">
+          <input type="date" name="" id="" v-model="Order.getDepartureDate">
         </div>
         <div class="date to">
           <span>抵達日期 : </span>
-          <input type="date" name="" id="" v-model="arrivalDate">
+          <input type="date" name="" id="" v-model="Order.getArrivalDate">
         </div>
         <button type="submit" @click="searchOrder">搜尋</button>
       </div>

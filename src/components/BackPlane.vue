@@ -8,9 +8,6 @@ export default {
       planeArr: [],
     }
   },
-  computed: {
-    ...mapState(counter,['plane'])
-  },
   methods: {
     ...mapActions(counter, ['setPP',]),
     searchPlane() {
@@ -33,6 +30,9 @@ export default {
       console.log(this.planeArr)
     },
   },
+  computed: {
+    ...mapState(counter, ['plane'])
+  },
   components: {
   },
   mounted() {
@@ -52,15 +52,19 @@ export default {
       <div class="search">
         <div class="no">
           <span>航班號碼 : </span>
-          <input type="text" name="" placeholder="請輸入航班號碼" id="" >
+          <input type="text" name="" placeholder="請輸入航班號碼" id="">
         </div>
         <div class="no">
           <span>出發地 : </span>
-          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="plane.departureLocation">
+          <label for="">
+            <input type="text" name="" placeholder="請輸入出發地" id="" v-model="plane.departureLocation">
+          </label>
         </div>
         <div class="no">
           <span>目的地 : </span>
+          <label for="">
           <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
+        </label>
         </div>
         <div class="date">
           <span>出發日期 : </span>
@@ -89,8 +93,7 @@ export default {
             <td class="bb">{{ item.departureLocation }}</td>
             <td class="bb">{{ item.arrivalLocation }}</td>
             <td class="bb">{{ item.departureDate }}</td>
-            <td class="bb">{{ item.arrivalDate
- }}</td>
+            <td class="bb">{{ item.arriveDate }}</td>
             <td class="bb">
               <a href="">修改</a>
               <br>

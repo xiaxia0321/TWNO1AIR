@@ -20,12 +20,12 @@ export default defineStore("counter", {
                 arrivalLocation: "",
                 classType: "經濟艙;商務艙;頭等艙",
                 isOneway: false,
-                // depatureTerminal: 0,
-                // arriveTerminal: 0,
-                // depatureTime: "",
-                // arriveTime: "",
-                // aa: "",
-                // da: ""
+                depatureTerminal: 0,
+                arriveTerminal: 0,
+                depatureTime: "",
+                arriveTime: "",
+                aa: "",
+                da: ""
             },
         }
 
