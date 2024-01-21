@@ -53,7 +53,7 @@ export default {
       <div class="search">
         <div class="no">
           <span>訂單編號 : </span>
-          <input type="text" name="" placeholder="請輸入航班號碼" id="">
+          <input type="text" name="" placeholder="請輸入航班號碼" id="" v-model="Order.getOrderId">
         </div>
         <div class="no">
           <span>出發地 : </span>
@@ -95,7 +95,8 @@ export default {
             <td>{{ item.arrivalDate }}</td>
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
-            <td class="bb"><a href="">修改&刪除</a></td>
+            <!-- <td>{{ item. }}</td> -->
+            <!-- <td class="bb"><a href="">修改&刪除</a></td> -->
           </tr>
         </table>
       </div>
@@ -230,11 +231,11 @@ export default {
         }
 
         .date {
-          width: 10rem;
+          width: 9rem;
         }
 
         .peo {
-          width: 2rem;
+          width: 4rem;
         }
 
         .money {
