@@ -149,6 +149,11 @@ const router = createRouter({
       component:() => import('../views/User.vue')
     },
     {
+      path:"/BackCreateFlight",
+      name:"BackCreateFlight",
+      component:() => import('../components/BackCreateFlight.vue')
+    },
+    {
       path: '/Backstage',
       name: 'Backstage',
       component: () => import('../views/Backstage.vue'),
@@ -199,6 +204,7 @@ const router = createRouter({
       name:"FinalCheckIn",
       component:() => import('../views/FinalCheckIn.vue')
     },
+  
     // {
     //   path:"/dynamicQuestionnaireBack",
     //   name:"dynamicQuestionnaireBack",

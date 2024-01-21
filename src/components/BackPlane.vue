@@ -46,6 +46,9 @@ export default {
         },
       }).then(res => console.log(res.data),)
     },
+    createFlight() {
+            this.$router.push("/BackCreateFlight"); //推送至下一頁的路徑
+        },
   },
   computed: {
     ...mapState(counter, ['plane'])
@@ -92,6 +95,7 @@ export default {
           <input type="date" name="" id="" v-model="plane.arrivalDate">
         </div>
         <button type="submit" @click="searchPlane">搜尋</button>
+        <button type="submit" @click="createFlight">創建</button>
       </div>
       <div class="inside">
         <table>
