@@ -31,6 +31,15 @@ export default defineStore("counter", {
                 // aa: "",
                 // da: ""
             },
+            user: {
+                userId:0,
+                account:'',
+                password:'',
+                email:'',
+                userName:'',
+                phone:'',
+                point:'',
+            }
         }
 
     },

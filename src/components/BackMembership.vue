@@ -1,18 +1,37 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import axios from 'axios';
 export default {
   data() {
     return {
+      user:[],
+      accountININ:'',
     }
   },
   methods: {
-    ...mapActions(counter, ['setPP',])
+    ...mapActions(counter, ['setPP',]),
+    searchUser() {
+      axios({
+        url: 'http://localhost:8080/user/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          account: this.accountININ,
+          password: '',
+        },
+      })
+        .then(res => this.user = res.data.userList)
+      console.log(this.user);
+    },
   },
   components: {
   },
   mounted() {
     this.setPP(2)
+    this.searchUser()
   }
 
 }
@@ -26,59 +45,51 @@ export default {
     <div class="content">
       <div class="search">
         <div class="no">
+          <span>會員帳號 : </span>
+          <input type="text" name="" placeholder="請輸入帳號" id=""
+          v-model="accountININ">
+        </div>
+        <div class="no">
+          <span>會員密碼 : </span>
+          <input type="text" name="" placeholder="暫未開放此功能" id="" disabled>
+        </div>
+        <!-- <div class="no">
           <span>會員編號 : </span>
           <input type="text" name="" placeholder="請輸入ID" id="" v-model="userId">
         </div>
         <div class="no">
           <span>會員信箱 : </span>
           <input type="text" name="" placeholder="請輸入信箱" id="" v-model="userEmail">
-        </div>
-        <div class="no">
+        </div> -->
+        <!-- <div class="no">
           <span>會員名字 : </span>
           <input type="text" name="" placeholder="請輸入名字" id="" v-model="userName">
-        </div>
-        <div class="no">
+        </div> -->
+        <!-- <div class="no">
           <span>手機號碼 : </span>
           <input type="text" name="" placeholder="請輸入手機號碼" id="" v-model="userPhone">
-        </div>
-        <!-- <div class="date">
-          <span>手機號碼 : </span>
-          <input type="text" name="" placeholder="請輸入手機號碼" id="" v-model="arrivalLocation">
         </div> -->
-        <button type="submit">搜尋</button>
+        <button type="submit" @click="searchUser()">搜尋</button>
       </div>
       <div class="inside">
         <table>
           <tr>
-            <th class="b1 bb">/</th>
-            <th class="no bb">會員編號</th>
-            <th class="place bb">出發地 departureLocation</th>
-            <th class="place bb">目的地 arrivalLocation</th>
-            <th class="date bb">出發日期</th>
-            <th class="date bb">抵達日期</th>
-            <th class="b7 bb">操作</th>
+            <th class="b1 bb">ID</th>
+            <th class="no bb">帳號</th>
+            <th class="place bb">密碼</th>
+            <th class="place bb">信箱</th>
+            <th class="date bb">帳戶名稱</th>
+            <th class="date bb">手機號碼</th>
+            <th class="b7 bb">點數</th>
           </tr>
-          <tr>
-            <td class="bb"><input type="checkbox"></td>
-            <td class="bb">No.0</td>
-            <td class="bb">台北 , 台灣</td>
-            <td class="bb">沖繩 , 日本</td>
-            <td class="bb">2024-12-48</td>
-            <td class="bb">2024-01-32</td>
-            <td class="bb">
-              <a href="">修改</a>
-              <br>
-              <a href="">刪除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-            <td>1</td>
-            <td>5</td>
+          <tr v-for="(item, index) in user" :key="index">
+            <td class="bb">{{ item.userId }}</td>
+            <td class="bb">{{ item.account }}</td>
+            <td class="bb">保密</td>
+            <td class="bb">{{ item.email }}</td>
+            <td class="bb">{{ item.name }}</td>
+            <td class="bb">{{ item.phone }}</td>
+            <td class="bb">{{ item.point }}</td>
           </tr>
         </table>
       </div>
@@ -103,7 +114,7 @@ export default {
   }
 
   .content {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 82%;
     height: 90vh;
 
@@ -112,7 +123,7 @@ export default {
       box-sizing: border-box;
       flex-wrap: wrap;
       width: 100%;
-      border: 1px solid red;
+      // border: 1px solid red;
       display: flex;
       align-items: baseline;
       justify-content: left;
@@ -157,14 +168,24 @@ export default {
 
 
       button {
-        position: absolute;
+        // position: absolute;
         right: 5rem;
         bottom: .5rem;
+        margin-left: 6rem;
         border-radius: .5rem;
         width: 5rem;
         height: 2rem;
-        background-color: #0062e3;
+        background-color: #3472c2;
         color: white;
+
+        &:hover {
+          background-color: rgba(144, 27, 27, 0.499);
+        }
+
+        &:active {
+          background-color: rgba(144, 27, 27, 0.811);
+
+        }
       }
 
     }

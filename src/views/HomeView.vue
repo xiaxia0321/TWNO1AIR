@@ -11,7 +11,7 @@ export default {
       selectedDate: '',
       tomorrowDate: '',
       minDate: '',
-      minDateHave:false,
+      minDateHave: false,
       start: '',
       end: '',
       options: [
@@ -72,7 +72,7 @@ export default {
         this.end = "請選擇目的地"
       } else {
         this.start = key
-        this.end = "TPE, 台北, 台灣"
+        this.end = "請選擇目的地 : 台灣"
       }
     },
     handleSelectTwo(key) {
@@ -82,7 +82,7 @@ export default {
           this.end = "TPE, 台北, 台灣"
         }
       } else {
-        this.end = "請重新輸入"
+        this.end = "請重新選擇不同的城市"
       }
     },
     ...mapActions(counter, ['goBangkok', 'goHome', 'goKyoto', 'goLogin', 'goSFO', 'goSingapore', 'goSubmit',]),
@@ -150,7 +150,7 @@ export default {
       this.minDate = selected.toISOString().split('T')[0];
       this.minDateHave = true;
     },
-    
+
   },
   created() {
   },
@@ -281,11 +281,11 @@ export default {
     <div class="air" style="width: 100%; ">
       <p style="font-size: 3.1rem; margin: 2% 0 1% 0; font-weight: 900;">探索景點</p>
       <div class="airIn">
-        <div class="block" @click="">
+        <div class="block blockN" @click="">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/246fa4ebad55ce0c252a19705e17514b/hongkong-0304.jpg?crop=100px:100px&quality=90);">
           </div>
-          <div class="text">
+          <div class="text ">
             <p>香港</p>
             <span>該吃飯了</span>
           </div>
@@ -299,7 +299,7 @@ export default {
             <span>天氣還行 很熱</span>
           </div>
         </div>
-        <div class="block">
+        <div class="block blockN">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/db465e93dcaad614e9bfcaddb5865e36/GettyImages-505777764.jpg?crop=100px:100px&quality=90);">
           </div>
@@ -336,7 +336,7 @@ export default {
             <span>八瓜</span>
           </div>
         </div>
-        <div class="block">
+        <div class="block blockN">
           <div class="img"
             style="background-image: url(https://content.skyscnr.com/c10d466e9ded52fcd9d103fa6e7b4e92/stock-photo-shanghai-in-blue-32506683.jpg?crop=100px:100px&quality=90);">
           </div>
@@ -592,6 +592,7 @@ export default {
           flex-direction: column;
           justify-content: center;
           align-items: start;
+
           .span1 {
             color: #626971;
             white-space: nowrap;
@@ -653,12 +654,16 @@ export default {
         display: flex;
         margin: 0 0% 5% 0;
         border-radius: 10px;
+        transition: .5s;
 
         &:hover {
           // width: 70%;
-          background-color: rgba(255, 255, 255, 0.15);
+          background-color: rgba(130, 157, 238, 0.15);
           box-shadow: 2px 1px 2px black;
-          transition: .5s;
+        }
+        &:active{
+          background-color: rgba(48, 71, 139, 0.15);
+          
         }
 
 
@@ -687,6 +692,16 @@ export default {
           }
         }
 
+      }
+
+      .blockN {
+
+        &:hover {
+          background-color: #0F2D3C;
+          // width: 70%;
+          transition: .5s;
+
+        }
       }
     }
 
@@ -772,5 +787,4 @@ export default {
       }
     }
   }
-}
-</style>
+}</style>

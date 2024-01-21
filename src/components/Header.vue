@@ -11,7 +11,7 @@ export default {
         RouterLink,
     },
     methods: {
-        home(){
+        home() {
             this.$router.push('/')
         },
         join() {
@@ -35,10 +35,10 @@ export default {
         goSFO() {
             this.$router.push('/LocationSFO')
         },
-        checkInIntro(){
+        checkInIntro() {
             this.$router.push('/CheckInIntro')
         },
-        onlineCheckIn(){
+        onlineCheckIn() {
             this.$router.push('/OnlineCheckIn')
         },
         A321() {
@@ -74,10 +74,10 @@ export default {
         ProductDetailed() {
             this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
         },
-       
-      
+
+
     }
-  
+
 }
 </script>
 
@@ -86,7 +86,7 @@ export default {
         <div class="happydog" @click="home"></div>
         <ul class="drop-down-menu">
             <li>
-                <a href="#" style="color: white;font-size: 16pt;">預訂行程</a>
+                <a href="#" style="color: white;font-size: 16pt;" class="titleHover">預訂行程</a>
                 <ul>
                     <li>
                         <div class="reservation">
@@ -214,11 +214,13 @@ export default {
         height: 4rem;
         border-radius: 1rem;
         transition: .2s;
-        &:hover{
+
+        &:hover {
             box-shadow: 2px 2px 5px 0 black;
             background-color: rgba(255, 255, 255, 0.063);
         }
-        &:active{
+
+        &:active {
             box-shadow: -1px -1px 1px 2px black;
         }
     }
@@ -250,6 +252,12 @@ export default {
                 box-shadow: none;
                 border: 0px;
                 font-size: 12pt;
+
+                &:hover {
+                    transition: .3s;
+                    background-color: rgba(0, 0, 0, 0.128);
+                    border-radius: 3rem;
+                }
             }
 
             .booking {
@@ -262,6 +270,7 @@ export default {
                 height: 40vh;
                 border-left: 2px solid rgb(118, 69, 59);
                 border-right: 2px solid rgb(118, 69, 59);
+
             }
 
             .seat {
@@ -298,6 +307,11 @@ export default {
                 box-shadow: none;
                 border: 0px;
                 font-size: 12pt;
+                &:hover {
+                    transition: .3s;
+                    background-color: rgba(0, 0, 0, 0.128);
+                    border-radius: 3rem;
+                }
             }
         }
 
@@ -323,6 +337,11 @@ export default {
                 box-shadow: none;
                 border: 0px;
                 font-size: 12pt;
+                border-radius: 3rem;
+                &:hover {
+                    transition: .3s;
+                    background-color: rgb(154, 154, 154);
+                }
             }
         }
     }
@@ -351,12 +370,18 @@ export default {
     }
 
     ul.drop-down-menu a {
+        border-radius: 2rem;
         background-color: rgb(49, 48, 77);
         color: #333;
         display: block;
         padding: 0 30px;
         text-decoration: none;
         line-height: 40px;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.23);
+        }
+
     }
 
     // ul.drop-down-menu a:hover {
@@ -444,5 +469,4 @@ export default {
     //         background-color: rgba(0, 0, 0, 0.344);
     //     }
     // }
-}
-</style>
+}</style>

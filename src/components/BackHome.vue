@@ -6,6 +6,8 @@ export default {
   data() {
     return {
       plane:[],
+      order:[],
+      user:[],
     }
   },
   methods: {
@@ -28,6 +30,41 @@ export default {
         .then(res => this.plane = res.data.airplainInfoList)
       console.log(this.plane)
     },
+    searchOrder() {
+      axios({
+        url: 'http://localhost:8080/order/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          order_id: "",
+          arrival_date: "",
+          departure_date: "",
+          arrival_location: "",
+          departure_location: "",
+          account: "",
+        },
+      })
+        .then(res => this.order = res.data.orderList)
+      console.log(this.Order);
+      console.log(this.order)
+    },
+    searchUser() {
+      axios({
+        url: 'http://localhost:8080/user/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          account: '',
+          password: '',
+        },
+      })
+        .then(res => this.user = res.data.userList)
+      console.log(this.user);
+    },
     ...mapActions(counter, ['setPP',]),
     goMember() {
       this.$router.push('/Backstage/BackMembership')
@@ -44,6 +81,8 @@ export default {
   mounted() {
     this.setPP(1)
     this.searchPlane()
+    this.searchOrder()
+    this.searchUser()
   }
 
 }
@@ -59,7 +98,7 @@ export default {
         <div class="icon" style="background-image: url(/user.png);">
         </div>
         <p>會員管理</p>
-        <p>目前會員數 : </p>
+        <p>目前會員數 : {{ this.user.length }} </p>
       </div>
       <div class="block plane" @click="goPlane">
         <div class="icon" style="background-image: url(/planestart.png);">
@@ -71,7 +110,7 @@ export default {
         <div class="icon" style="background-image: url(/order.png);">
         </div>
         <p>訂單管理</p>
-        <p>目前訂單數 : </p>
+        <p>目前訂單數 : {{ this.order.length }}</p>
       </div>
     </div>
   </div>

@@ -29,6 +29,23 @@ export default {
         .then(res => this.planeArr = res.data.airplainInfoList)
       console.log(this.planeArr)
     },
+    createPlane() {
+      console.log(this.qData);
+      axios({
+        url: 'http://localhost:8080/airplainInfo/create',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          name: this.qData.qName,
+          description: this.qData.qText,
+          start_date: this.qData.qStartTime,
+          end_date: this.qData.qEndTime,
+          question_list: this.qData.qArr,
+        },
+      }).then(res => console.log(res.data),)
+    },
   },
   computed: {
     ...mapState(counter, ['plane'])
@@ -63,8 +80,8 @@ export default {
         <div class="no">
           <span>目的地 : </span>
           <label for="">
-          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
-        </label>
+            <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
+          </label>
         </div>
         <div class="date">
           <span>出發日期 : </span>
@@ -123,7 +140,7 @@ export default {
   }
 
   .content {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 82%;
     height: 90vh;
 
@@ -132,7 +149,7 @@ export default {
       box-sizing: border-box;
       flex-wrap: wrap;
       width: 100%;
-      border: 1px solid red;
+      // border: 1px solid red;
       display: flex;
       align-items: baseline;
       justify-content: left;
@@ -176,14 +193,24 @@ export default {
       }
 
       button {
-        position: absolute;
+        // position: absolute;
         right: 5rem;
         bottom: .5rem;
+        margin-left: 6rem;
         border-radius: .5rem;
         width: 5rem;
         height: 2rem;
-        background-color: #0062e3;
+        background-color: #3472c2;
         color: white;
+
+        &:hover {
+          background-color: rgba(144, 27, 27, 0.499);
+        }
+
+        &:active {
+          background-color: rgba(144, 27, 27, 0.811);
+
+        }
       }
 
     }

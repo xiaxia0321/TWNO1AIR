@@ -120,7 +120,7 @@ export default {
   }
 
   .content {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 82%;
     height: 90vh;
 
@@ -129,7 +129,7 @@ export default {
       box-sizing: border-box;
       flex-wrap: wrap;
       width: 100%;
-      border: 1px solid red;
+      // border: 1px solid red;
       display: flex;
       align-items: baseline;
       justify-content: left;
@@ -174,14 +174,22 @@ export default {
 
 
       button {
-        position: absolute;
+        // position: absolute;
         right: 5rem;
         bottom: .5rem;
+        margin-left: 6rem;
         border-radius: .5rem;
         width: 5rem;
         height: 2rem;
-        background-color: #0062e3;
+        background-color: #3472c2;
         color: white;
+        &:hover{
+          background-color: rgba(144, 27, 27, 0.499);
+        }
+        &:active{
+          background-color: rgba(144, 27, 27, 0.811);
+
+        }
       }
 
     }
