@@ -32,6 +32,27 @@ export default defineStore("counter", {
                 seat: "", //座位
 
             },
+            planeArr:{
+
+            },
+            planeSearchArr:{
+                departureDate: "", //出發日期
+                arrivalDate: "", //抵達日期
+                departureLocation: "", //出發地
+                arrivalLocation: "", //抵達地
+                departureAirport: "", //出發機場
+                arrivalAirport: "", //抵達機場
+                da: "", //出發機場縮寫
+                aa: "", //抵達機場縮寫
+                classType: "經濟艙;商務艙;頭等艙",
+                isOneway: false, //單程
+                depatureTerminal: 0, //出發航廈
+                arriveTerminal: 0,  //抵達航廈
+                depatureTime: "", //出發時間
+                arriveTime: "", //抵達時間
+                price: "", //價錢
+                seat: "", //座位
+            },
             user: {
                 userId:0,
                 account:'',

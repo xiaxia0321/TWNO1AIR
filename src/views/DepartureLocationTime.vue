@@ -5,12 +5,13 @@ export default {
   data() {
     return {
       departureLocation: "", // 出發地
+      departureAirport:"",
       DA: "", // 機場縮寫
 
     };
   },
   computed: {
-    ...mapState(counter,["plane"])
+    ...mapState(counter,['planeSearchArr'])
   },
   methods: {
     selectDeparture(x,y,z) {
@@ -19,9 +20,12 @@ export default {
       this.departureAirport = z;
       console.log("選擇的出發地:", this.DA, this.departureLocation , this.departureAirport);
       //把下面這個套用pinia的變數名稱
-      this.plane.DA = this.DA
-      this.plane.departureLocation = this.departureLocation
-      this.plane.departureAirport = this.departureAirport
+      this.planeSearchArr.da = this.DA
+      this.planeSearchArr.departureLocation = this.departureLocation
+      this.planeSearchArr.departureAirport = this.departureAirport
+      console.log(this.planeSearchArr.da);
+      console.log(this.planeSearchArr.departureLocation);
+      console.log(this.planeSearchArr.departureAirport);
     },
 },
 };
@@ -77,7 +81,7 @@ export default {
           </div>
           <div class="twAll">
           <!-- @click="selectDeparture('TPE　','台北,臺灣')" -->
-            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('TPE　','台北,臺灣','台灣桃園國際機場')">
+            <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('TPE　','台北,臺灣','桃園國際機場')">
               <span>臺北，臺灣　　　　　　　　　　　　　　　　　　　　　　TPE</span>
               <br />
               <small class="sm">台灣桃園國際機場</small>
