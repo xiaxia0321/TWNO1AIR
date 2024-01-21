@@ -212,7 +212,7 @@ export default defineComponent({
             </div>
             <br>
             <span class="bottom">回程：東京-臺北</span>
-            <div class="back">
+            <div class="back" v-if="!oneway">
                 <p>　　經濟艙</p>
                 <p>　　JX801　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　4小時5分鐘</p>
                 <p>　　2024年2月26日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月26日</p>

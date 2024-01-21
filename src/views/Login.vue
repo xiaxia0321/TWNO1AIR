@@ -8,10 +8,71 @@ export default {
     return {
       account: "",
       password: "",
+      isEntityAccount: true,
+      isEntityPassword: true,
     }
   },
   methods: {
+    login() {
+      //確認輸入帳號 + 密碼
+      this.isEntityAccount = !!this.account
+      this.isEntityPassword = !!this.password
+      //確認輸入正確帳號 + 密碼
+      if (this.account || this.password) {
+        fetch('http://localhost:8080/user/search',
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              account: this.account,
+              password: this.password,
+            })
+          }).then(response => response.json())
+          .then(res => {
+            console.log(res)
+            if (res.rtncode !== "SUCCESSFUL") {
+              console.log("登入成功");
+              Swal.fire({
+                icon: "error",
+                text: "你有資料尚未填寫"
+              })
+              // $cookies.set("account", this.account)
+
+            } else {
+              Swal.fire({
+                icon: "success",
+                text: "登入成功",
+                showConfirmButton: true,
+              })
+              this.$router.push('/User');
+            }
+          })
+      }
+    },
+    search() {
+      console.log(this.userData);
+      fetch('http://localhost:8080/user/search', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          account: this.userData.account,
+          password: this.userData.password,
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.userList = data.userList
+          console.log(this.userList)
+        })
+        .catch(error => console.log(error))
+    },
     toLogin() {
+      this.search();
       axios({
         url: 'http://localhost:8080/api/login',
         method: 'POST',
@@ -24,7 +85,7 @@ export default {
           password: this.password,
         },
       }).then(res => {
-        // console.log(data);
+        // console.log(this.data);
         let account = document.getElementById("account")
         let password = document.getElementById("password")
         if (account.value == "" || password.value == "") {
@@ -43,41 +104,44 @@ export default {
           this.$router.push('/User')
         }
       })
-    }
+    },
+    // mounted() {
+    //   this.search()
+    // },
+    // methods: {
+    //     toLogin() {
+    //         this.$router.push('/Submit')
+    //     },
+    //     signUpCheck() {
+    //         let inputAccount = document.getElementById("inputAccount")
+    //         let inputPassword = document.getElementById("inputPassword")
+    //         let inputRepeatPassword = document.getElementById("inputRepeatPassword")
+    //         if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value) {
+    //             console.log("xxx")
+    //             Swal.fire({
+    //                 icon: "error",
+    //                 text: "你有資料尚未填寫"
+    //             })
+    //             return
+    //         }
+    //         if (inputPassword.value !== inputRepeatPassword.value) {
+    //             Swal.fire({
+    //                 icon: "error",
+    //                 text: "你輸入的密碼與確認的密碼不相符"
+    //             })
+    //         } else {
+    //             Swal.fire({
+    //                 icon: "success",
+    //                 text: "你已經註冊成功",
+    //                 showConfirmButton: true,
+    //             })
+    //         }
+    //         inputAccount.value = "";
+    //         inputPassword.value = "";
+    //         inputRepeatPassword.value = "";
+    //     },
+    // },
   }
-  // methods: {
-  //     toLogin() {
-  //         this.$router.push('/Submit')
-  //     },
-  //     signUpCheck() {
-  //         let inputAccount = document.getElementById("inputAccount")
-  //         let inputPassword = document.getElementById("inputPassword")
-  //         let inputRepeatPassword = document.getElementById("inputRepeatPassword")
-  //         if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value) {
-  //             console.log("xxx")
-  //             Swal.fire({
-  //                 icon: "error",
-  //                 text: "你有資料尚未填寫"
-  //             })
-  //             return
-  //         }
-  //         if (inputPassword.value !== inputRepeatPassword.value) {
-  //             Swal.fire({
-  //                 icon: "error",
-  //                 text: "你輸入的密碼與確認的密碼不相符"
-  //             })
-  //         } else {
-  //             Swal.fire({
-  //                 icon: "success",
-  //                 text: "你已經註冊成功",
-  //                 showConfirmButton: true,
-  //             })
-  //         }
-  //         inputAccount.value = "";
-  //         inputPassword.value = "";
-  //         inputRepeatPassword.value = "";
-  //     },
-  // },
 }
 </script>
 
@@ -168,7 +232,7 @@ export default {
         <input type="text" class="input" id="account" v-model="this.account"><br>
         <span><b>密碼：</b></span><br>
         <input type="text" class="input" id="password" v-model="this.password"><br>
-        <button type="button" class="login" @click="toLogin()">登入</button>
+        <button type="button" class="login" @click="login()">登入</button>
       </div>
     </div>
   </div>

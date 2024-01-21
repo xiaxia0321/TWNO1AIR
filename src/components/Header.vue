@@ -83,10 +83,10 @@ export default {
                                 <button>搜尋航班</button>
                                 <br><br>
                                 <h5>行程內容更改</h5>
-                                <button>行程管理</button>
+                                <!-- <button>行程管理</button>
                                 <br>
                                 <button>更改航班</button>
-                                <br>
+                                <br> -->
                                 <button @click="Refund()">線上退票</button>
                             </div>
                             <div class="hot">
