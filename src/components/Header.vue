@@ -106,7 +106,7 @@ export default {
                                 <br>
                                 <button>更改航班</button>
                                 <br>
-                                <button>線上退票</button>
+                                <button @click="Refund()">線上退票</button>
                             </div>
                             <div class="hot">
                                 <br>
