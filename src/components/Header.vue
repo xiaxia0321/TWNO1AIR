@@ -79,7 +79,7 @@ export default {
         <div class="happydog" @click="home"></div>
         <ul class="drop-down-menu">
             <li>
-                <a href="#" style="color: white;font-size: 16pt;">預訂行程</a>
+                <a href="#" style="color: white;font-size: 26pt;">預訂行程</a>
                 <ul>
                     <li>
                         <div class="reservation">
@@ -118,10 +118,10 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 16pt;" @click="AirTimeSearch">班機時刻</a>
+                <a href="#" style="color: white;font-size: 26pt;" @click="AirTimeSearch">班機時刻</a>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 16pt;">準備啟程</a>
+                <a href="#" style="color: white;font-size: 26pt;">準備啟程</a>
                 <ul>
                     <li>
                         <div class="prepare">
@@ -145,7 +145,7 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 16pt;">樂狗會員</a>
+                <a href="#" style="color: white;font-size: 26pt;">樂狗會員</a>
                 <ul>
                     <li>
                         <div class="happyDogMember">

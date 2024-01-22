@@ -12,7 +12,7 @@ export default {
             let givenName = document.getElementById("givenName")
             let checkbox = document.getElementById("checkbox")
             console.log(checkbox.value);
-            if (!ticketNumber.value || !surname.value || !givenName.value ) {
+            if (ticketNumber.value == "" || surname.value == "" || givenName.value == "" ) {
                 console.log("xxx")
                 Swal.fire({
                     icon: "error",
