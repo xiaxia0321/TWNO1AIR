@@ -29,6 +29,12 @@ export default {
         .then(res => this.planeArr = res.data.airplainInfoList ,)
       console.log(this.planeArr)
     },
+    createFlight(){
+      this.$router.push('/BackCreateFlight')
+      this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
+    }
   },
   computed: {
     ...mapState(counter, ['plane'])

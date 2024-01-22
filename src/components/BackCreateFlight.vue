@@ -34,34 +34,34 @@ export default {
     ...mapActions(counter, ['setPP',]),
     createPlane() {
       this.plane.depatureTime = this.selectedTime,
-      this.plane.arriveTime = this.selectedTimeAA,
-console.log(this.plane.depatureTime);
-        axios({
-          url: 'http://localhost:8080/airplainInfo/create',
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          data: {
-            departureDate: this.plane.departureDate, //出發日期
-            arriveDate: this.plane.arrivalDate, //抵達日期
-            departureLocation: this.plane.departureLocation, //出發地
-            arrivalLocation: this.plane.arrivalLocation, //抵達地
-            // departureAirport: this.plane.departureAirport, //出發機場
-            // arrivalAirport: this.plane.arrivalAirport, //抵達機場
-            price: this.plane.price, //價錢
-            classType: this.plane.classType, //艙等
-            seat: this.plane.seat, //座位
-            isOneway: this.plane.isOneway, //單程
-            DA: this.plane.da, //出發機場縮寫
-            AA: this.plane.aa, //抵達機場縮寫
-            depature_terminal: this.plane.depatureTerminal, //出發航廈
-            arrive_terminal: this.plane.arriveTerminal, //抵達航廈
-            depature_time: this.plane.depatureTime, //出發時間
-            arrive_time: this.plane.arriveTime, //抵達時間
-          },
-        }).then(res => console.log(res.data),)
-        console.log(this.plane);
+        this.plane.arriveTime = this.selectedTimeAA,
+        console.log(this.plane.depatureTime);
+      axios({
+        url: 'http://localhost:8080/airplainInfo/create',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          departureDate: this.plane.departureDate, //出發日期
+          arriveDate: this.plane.arrivalDate, //抵達日期
+          departureLocation: this.plane.departureLocation, //出發地
+          arrivalLocation: this.plane.arrivalLocation, //抵達地
+          // departureAirport: this.plane.departureAirport, //出發機場
+          // arrivalAirport: this.plane.arrivalAirport, //抵達機場
+          price: this.plane.price, //價錢
+          classType: this.plane.classType, //艙等
+          seat: this.plane.seat, //座位
+          isOneway: this.plane.isOneway, //單程
+          DA: this.plane.da, //出發機場縮寫
+          AA: this.plane.aa, //抵達機場縮寫
+          depature_terminal: this.plane.depatureTerminal, //出發航廈
+          arrive_terminal: this.plane.arriveTerminal, //抵達航廈
+          depature_time: this.plane.depatureTime, //出發時間
+          arrive_time: this.plane.arriveTime, //抵達時間
+        },
+      }).then(res => console.log(res.data),)
+      console.log(this.plane);
     },
   },
   components: {
@@ -262,7 +262,7 @@ console.log(this.plane.depatureTime);
 .big {
   width: 100vw;
   // height: 50vh;
-  border: 1px solid black;
+  // border: 1px solid black;
 
   // display: flex;
   // flex-direction: column;
