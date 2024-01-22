@@ -18,7 +18,7 @@ export default {
       this.isEntityAccount = !!this.account
       this.isEntityPassword = !!this.password
       //確認輸入正確帳號 + 密碼
-      if (this.account || this.password) {
+      if (this.account && this.password) {
         fetch('http://localhost:8080/user/search',
           {
             method: "POST",
@@ -33,14 +33,15 @@ export default {
           }).then(response => response.json())
           .then(res => {
             console.log(res)
-            if (res.rtncode !== "SUCCESSFUL") {
+            if (res.rtncode == "SUCCESSFUL") {
               console.log("登入成功");
               Swal.fire({
                 icon: "error",
-                text: "你有資料尚未填寫"
+                text: "你有資料尚未填寫",
+                // showConfirmButton: true,
               })
+              // this.$router.push('/User');
               // $cookies.set("account", this.account)
-
             } else {
               Swal.fire({
                 icon: "success",

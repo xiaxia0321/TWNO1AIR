@@ -61,6 +61,12 @@ export default {
         },
         Refund(){
             this.$router.push("/Refund");
+        },
+        Refund(){
+            this.$router.push("/Refund");
+        },
+        search(){
+            this.$router.push("/");
         }
     
     }
@@ -80,7 +86,7 @@ export default {
                             <div class="booking">
                                 <br>
                                 <h5>預訂行程</h5>
-                                <button>搜尋航班</button>
+                                <button @click="search()">搜尋航班</button>
                                 <br><br>
                                 <h5>行程內容更改</h5>
                                 <!-- <button>行程管理</button>

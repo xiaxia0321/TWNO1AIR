@@ -20,7 +20,7 @@ export default {
       if (this.account == "A01" && this.pwd == "aaa") {
         this.$router.push('/Backstage')
       } else {
-        this.$router.push('/')
+        this.$router.push('/Login')
       }
   },
   toSubmit(){
