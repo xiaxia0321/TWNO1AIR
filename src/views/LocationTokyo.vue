@@ -60,13 +60,100 @@ export default defineComponent({
     methods: {
         handleSelect(key) {
             this.start = key
-            console.log(start)
-            // console.log(key)
+            // if (!key.includes('台灣')) {
+            //     this.options = this.options.filter(option => option.key.includes('台灣'));//當出發地不是台灣的時候，將目的地過濾為台灣
+            //     // this.end = ''; 
+            // }
+            if(key.includes ("洛杉磯, 美國, LA")){
+                this.$router.push('/LocationLA')
+            }
+            if(key.includes ("舊金山, 美國, SFO")){
+                this.$router.push('/LocationSFO')
+            }
+            if(key.includes ("函館, 日本, HKD")){
+                this.$router.push('/LocationHakodate')
+            }
+            if(key.includes ("大阪, 日本, KIX")){
+                this.$router.push('/LocationKyoto')
+            }
+            if(key.includes ("沖繩, 日本, OKA")){
+                this.$router.push('/LocationOkinawa')
+            }
+            if(key.includes ("胡志明市, 越南, SGN")){
+                this.$router.push('/LocationHoChiMinh')
+            }
+            if(key.includes ("曼谷, 泰國, BKK")){
+                this.$router.push('/LocationBangkok')
+            }
+            if(key.includes ("新加坡, 新加坡, SIN")){
+                this.$router.push('/LocationSingapore')
+            }
+            if(key.includes ("澳門, 澳門, MFM")){
+                this.$router.push('/LocationMacao')
+            }
+            console.log(key);
+            // this.end = ""
+            // if( this.start !== "台北, 台灣, TPE" ){
+            //     this.end == "台北, 台灣, TPE"
+            // }
+            // console.log(this.data.option);
         },
         handleSelectTwo(key) {
             this.end = key
-            console.log(start)
-            // console.log(key)
+            // if (!key.includes('台灣')) {
+            //     this.options = this.options.filter(option => option.key.includes('台灣'));
+            // }
+            if(key.includes ("洛杉磯, 美國, LAX")){
+                this.$router.push('/LocationLA')
+            }
+            if(key.includes ("舊金山, 美國, SFO")){
+                this.$router.push('/LocationSFO')
+            }
+            if(key.includes ("函館, 日本, HKD")){
+                this.$router.push('/LocationHakodate')
+            }
+            if(key.includes ("大阪, 日本, KIX")){
+                this.$router.push('/LocationKyoto')
+            }
+            if(key.includes ("沖繩, 日本, OKA")){
+                this.$router.push('/LocationOkinawa')
+            }
+            if(key.includes ("胡志明市, 越南, SGN")){
+                this.$router.push('/LocationHoChiMinh')
+            }
+            if(key.includes ("曼谷, 泰國, BKK")){
+                this.$router.push('/LocationBangkok')
+            }
+            if(key.includes ("新加坡, 新加坡, SIN")){
+                this.$router.push('/LocationSingapore')
+            }
+            if(key.includes ("澳門, 澳門, MFM")){
+                this.$router.push('/LocationMacao')
+            }
+        },
+        search() {
+            let departureDate = document.getElementById("departureDate")
+            let arrivalDate = document.getElementById("arrivalDate")
+            let departureLocation = document.getElementById("departureLocation")
+            let arrivalLocation = document.getElementById("arrivalLocation")
+            let isOneway = document.getElementById("isOneway")
+            axios({
+                url: 'http://localhost:8080/airplainInfo/search',
+                methods: 'POST',
+                withCredentials: true,
+                headers: {
+                    'Contect-Type': 'applicatoin/json'
+                },
+                data: {
+                    departureDate: this.departureDate,
+                    arrivalDate: this.arrivalDate,
+                    departureLocation: this.departureLocation,
+                    arrivalLocation: this.arrivalLocation,
+                    isOneway: this.isOneway
+                },
+            }).then(res => {
+                console.log(data);
+            })
         },
     },
     components: {
