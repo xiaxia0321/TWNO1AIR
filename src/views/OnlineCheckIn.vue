@@ -12,7 +12,7 @@ export default {
             let givenName = document.getElementById("givenName")
             let checkbox = document.getElementById("checkbox")
             console.log(checkbox.value);
-            if (!ticketNumber.value || !surname.value || !givenName.value ) {
+            if (ticketNumber.value == "" || surname.value == "" || givenName.value == "" ) {
                 console.log("xxx")
                 Swal.fire({
                     icon: "error",
@@ -20,7 +20,7 @@ export default {
                 })
                 return
             }
-            if ( checkbox.value == null ) {
+            if ( checkbox.value == "on" ) {
                 Swal.fire({
                     icon: "error",
                     text: "你尚未勾選隱私保護政策"
@@ -47,7 +47,7 @@ export default {
             <h2>線上報到</h2>
             <div class="checkInBox">
                 <label for="">機票號碼</label>
-                <input type="text" name="" id="ticketNumber" placeholder="機票號碼">　　　　
+                <input type="text" name="" id="ticketNumber" placeholder="">　　　　
                 <label for="">姓氏</label>
                 <input type="text" name="" id="surname">　　　　
                 <label for="">名字</label>
