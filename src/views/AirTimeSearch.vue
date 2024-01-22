@@ -78,7 +78,7 @@ export default {
     ArrivalLocationTime,
   },
   computed: {
-    ...mapState(counter, ['plane','planeArr'])
+    ...mapState(counter, ['planeSearchArr','planeArr'])
   },
 
 };
@@ -99,7 +99,7 @@ export default {
     </div>
     <div class="mid2">
       <!-- 裡面塞出發地目的地的按鈕 -->
-      <div class="b1">
+      <div class="b1">{{  }}
         <DepartureLocationTime @departure-selected="handleDepartureSelected" />
       </div>
       <div class="b2"><i class="fa-solid fa-arrow-right"></i></div>

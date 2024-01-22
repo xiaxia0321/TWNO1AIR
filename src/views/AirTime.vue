@@ -22,6 +22,45 @@ export default {
     ...mapState(counter, ["plane", 'planeSearchArr'])
   },
   methods: {
+    //時間
+    calculateDuration(depatureTime, arriveTime) {
+      const [depatureHour, depatureMinute] = depatureTime.split(":").map(Number);
+      const [arriveHour, arriveMinute] = arriveTime.split(":").map(Number);
+
+      // 轉換成分鐘
+      const depatureTotalMinutes = depatureHour * 60 + depatureMinute;
+      const arriveTotalMinutes = arriveHour * 60 + arriveMinute;
+
+      // 計算差距，考慮跨越午夜的情況
+      let durationMinutes = arriveTotalMinutes - depatureTotalMinutes;
+      if (durationMinutes < 0) {
+        durationMinutes += 24 * 60; // 一天的分鐘數
+      }
+
+      // 轉換成小時和分鐘
+      const hours = Math.floor(durationMinutes / 60);
+      const minutes = durationMinutes % 60;
+
+      return `${hours}小時${minutes}分`;
+    },
+    // 加減天數的方法
+    addDays(dateString, days) {
+      const date = new Date(dateString);
+      date.setDate(date.getDate() + days);
+      return date.toISOString().split("T")[0]; // 格式化為 "YYYY-MM-DD"
+    },
+    // 獲取星期幾的方法
+    calculateDay(dateString, days) {
+      const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+      const calculateDate = (date, days) => {
+        const newDate = new Date(date);
+        newDate.setDate(newDate.getDate() + days);
+        return newDate.toISOString().split("T")[0];
+      };
+      const date = new Date(calculateDate(dateString, days));
+      const dayIndex = date.getDay();
+      return weekdays[dayIndex];
+    },
     searchPlane() {
       axios({
         url: 'http://localhost:8080/airplainInfo/search',
@@ -58,256 +97,267 @@ export default {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <div class="push"></div> -->
-  <div class="big" v-for="(item, index) in planeArr" :key="index">
+  <div class="body">
+    <div class="big" v-for="(item, index) in planeArr" :key="index">
 
-    <div class="header1">
-      <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
-      <h2 @click="searchPlane">查詢結果</h2>
+      <div class="header1">
+        <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
+        <h2 @click="searchPlane">查詢結果</h2>
+      </div>
+      <div class="header2">
+        <h4>{{ item.departureLocation }} - {{ item.arrivalLocation }}</h4>
+        <span>以主管機關核定為主</span>
+      </div>
+      <div class="mid1 mm">
+        <div class="a1"></div>
+        <div class="a2">
+          <div class="a21">
+            <h3>{{ item.da }}</h3>
+            <span>{{ item.departureLocation }}</span>
+          </div>
+          <div class="a22">
+            <h3>{{ item.aa }}</h3>
+            <span>{{ item.arrivalLocation }}</span>
+          </div>
+        </div>
+        <div class="a3 aa"><span>{{ addDays(item.departureDate, -4) }}</span><span>{{ calculateDay(item.departureDate,
+          -4) }}</span></div>
+        <div class="a4 aa"><span>{{ addDays(item.departureDate, -3) }}</span><span>{{ calculateDay(item.departureDate,
+          -3) }}</span></div>
+        <div class="a5 aa"><span>{{ addDays(item.departureDate, -2) }}</span><span>{{ calculateDay(item.departureDate,
+          -2) }}</span></div>
+        <div class="a6 aa"><span>{{ addDays(item.departureDate, -1) }}</span><span>{{ calculateDay(item.departureDate,
+          -1) }}</span></div>
+        <div class="a7 aa"><span>{{ addDays(item.departureDate, 0) }}</span><span>{{ calculateDay(item.departureDate,
+          0) }}</span></div>
+        <div class="a8 aa"><span>{{ addDays(item.departureDate, 1) }}</span><span>{{ calculateDay(item.departureDate,
+          1) }}</span></div>
+        <div class="a9 aa"><span>{{ addDays(item.departureDate, 2) }}</span><span>{{ calculateDay(item.departureDate,
+          2) }}</span></div>
+      </div>
+      <div class="mid2 mm">
+        <div class="b1">
+          <h3>JX0840</h3>
+          <span>由HAPPYDOG</span><span>Airlines</span> <span>執飛</span><span><i class="fa-solid fa-plane"></i>A321neo</span>
+        </div>
+        <div class="b2">
+          <div class="b21">
+            <h2>{{ item.depatureTime }}</h2>
+          </div>
+          <div class="b22">
+            <span>直飛</span>
+            <hr />
+            <span> {{ calculateDuration(item.depatureTime, item.arriveTime) }}</span>
+          </div>
+          <div class="b23">
+            <h2>{{ item.arriveTime
+            }}</h2>
+          </div>
+        </div>
+        <div class="b3 bb">
+          <span><i class="fa-solid fa-plane"></i></span>
+        </div>
+        <div class="b4 bb">
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+        </div>
+        <div class="b5 bb">
+          <span><i class="fa-solid fa-plane"></i></span>
+        </div>
+        <div class="b6 bb">
+          <!-- 當天 -->
+          <span><i class="fa-solid fa-plane"></i></span>
+        </div>
+        <div class="b7 bb">
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+        </div>
+        <div class="b8 bb">
+          <span><i class="fa-solid fa-plane"></i></span>
+        </div>
+        <div class="b9 bb">
+          <span><i class="fa-solid fa-plane"></i></span>
+        </div>
+      </div>
+      <!-- <div class="mid3 mm"></div> -->
+      <button @click="gogo">預定行程</button>
     </div>
-    <div class="header2">
-      <h4>{{ item.departureLocation }} - {{ item.arrivalLocation }}</h4>
-      <span>以主管機關核定為主</span>
+
+
+    <div class="bottom">
+      <span style="font-size: 3.5rem;" @click="searchPlane">注意事項 >點此顯示搜尋結果</span style="font-size: 4rem;">
+      <br />
+      <p>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</p>
+      <p>
+        樂狗航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂狗航空客服中心。
+      </p>
     </div>
-    <div class="mid1 mm">
-      <div class="a1"></div>
-      <div class="a2">
-        <div class="a21">
-          <h3>{{ item.da }}</h3>
-          <span>{{ item.departureLocation }}</span>
-        </div>
-        <div class="a22">
-          <h3>{{ item.aa }}</h3>
-          <span>{{ item.arrivalLocation }}</span>
-        </div>
-      </div>
-      <div class="a3 aa"><span>1月13號</span><span>周六</span></div>
-      <div class="a4 aa"><span>1月14號</span><span>周日</span></div>
-      <div class="a5 aa"><span>1月15號</span><span>周一</span></div>
-      <div class="a6 aa"><span>1月16號</span><span>周二</span></div>
-      <div class="a7 aa"><span>1月17號</span><span>周三</span></div>
-      <div class="a8 aa"><span>1月18號</span><span>周四</span></div>
-      <div class="a9 aa"><span>1月19號</span><span>周五</span></div>
-    </div>
-    <div class="mid2 mm">
-      <div class="b1">
-        <h3>JX0840</h3>
-        <span>由HAPPYDOG</span><span>Airlines</span> <span>執飛</span><span><i class="fa-solid fa-plane"></i>A321neo</span>
-      </div>
-      <div class="b2">
-        <div class="b21">
-          <h2>{{item.depatureTime}}</h2>
-        </div>
-        <div class="b22">
-          <span>直飛</span>
-          <hr />
-          <span>2小時15分鐘</span>
-        </div>
-        <div class="b23">
-          <h2>{{item.arriveTime
-}}</h2>
-        </div>
-      </div>
-      <div class="b3 bb">
-        <span><i class="fa-solid fa-plane"></i></span>
-      </div>
-      <div class="b4 bb">
-        <!-- <span><i class="fa-solid fa-plane"></i></span> -->
-      </div>
-      <div class="b5 bb">
-        <span><i class="fa-solid fa-plane"></i></span>
-      </div>
-      <div class="b6 bb">
-        <!-- 當天 -->
-        <span><i class="fa-solid fa-plane"></i></span>
-      </div>
-      <div class="b7 bb">
-        <!-- <span><i class="fa-solid fa-plane"></i></span> -->
-      </div>
-      <div class="b8 bb">
-        <span><i class="fa-solid fa-plane"></i></span>
-      </div>
-      <div class="b9 bb">
-        <span><i class="fa-solid fa-plane"></i></span>
-      </div>
-    </div>
-    <!-- <div class="mid3 mm"></div> -->
-    <button @click="gogo">預定行程</button>
-  </div>
-  <div class="bottom">
-    <h2 @click="searchPlane">注意事項</h2>
-    <br />
-    <p>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</p>
-    <p>
-      樂狗航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂狗航空客服中心。
-    </p>
   </div>
 </template>
 
 <style scoped lang="scss">
-.push {
-  height: 10vh;
-}
+.body {
+  height: 100vh;
+  overflow-y: auto;
 
-.big {
-  width: 100vw;
-  height: 90vh;
-  background-color: #161a30;
+  .big {
+    width: 100vw;
+    height: 90vh;
+    background-color: #161a30;
 
-  button {
-    width: 20vw;
-    height: 7vh;
-    margin: 10vh;
-    color: white;
-    background-color: rgb(60, 60, 60);
-    font-size: 24px;
-    letter-spacing: 7px;
-    border-radius: 7px;
-  }
-
-  .header1 {
-    width: 100%;
-    height: 15vh;
-    text-align: justify;
-    color: white;
-    background-color: #31304d;
-    padding-left: 40px;
-
-    .arrow {
+    button {
+      width: 20vw;
+      height: 7vh;
+      margin: 10vh;
+      color: white;
+      background-color: rgb(60, 60, 60);
       font-size: 24px;
-      color: #f8c68a;
-
-    }
-  }
-
-  .header2 {
-    width: 100%;
-    height: 10vh;
-    text-align: justify;
-    color: white;
-    padding: 10px 35px 0px 35px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .mid1 {
-    width: 95%;
-    height: 12vh;
-    margin: 0 auto;
-    background-color: #f0ece5;
-    display: flex;
-
-    .a1 {
-      width: 15%;
-      height: 100%;
-      background-color: #ffeeda;
+      letter-spacing: 7px;
+      border-radius: 7px;
     }
 
-    .a2 {
-      width: 29%;
-      height: 100%;
-      background-color: #ffeeda;
-      color: rgb(60, 60, 60);
+    .header1 {
+      width: 100%;
+      height: 15vh;
+      text-align: justify;
+      color: white;
+      background-color: #31304d;
+      padding-left: 40px;
+
+      .arrow {
+        font-size: 24px;
+        color: #f8c68a;
+
+      }
+    }
+
+    .header2 {
+      width: 100%;
+      height: 10vh;
+      text-align: justify;
+      color: white;
+      padding: 10px 35px 0px 35px;
       display: flex;
       justify-content: space-between;
-      text-align: justify;
-      padding: 0px 10px 0px 0px;
     }
 
-    .aa {
-      width: 8%;
-      height: 100%;
-      background-color: #eedfcd;
-      color: rgb(60, 60, 60);
-      flex-direction: column; //將日期都置中
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .a6 {
-      //當天
-      background-color: #ffeeda;
-    }
-  }
-
-  .mid2 {
-    width: 95%;
-    height: 22vh;
-    margin: 0 auto;
-    background-color: #ffeeda;
-    display: flex;
-
-    .b1 {
-      width: 15%;
-      height: 100%;
-      padding: 20px;
-      background-color: #ffeeda;
-      color: rgb(60, 60, 60);
-      text-align: justify;
-      flex-direction: column; //將日期都置中
+    .mid1 {
+      width: 95%;
+      height: 12vh;
+      margin: 0 auto;
+      background-color: #f0ece5;
       display: flex;
 
-      span {
-        font-size: 12px;
-      }
-    }
-
-    .b2 {
-      width: 29%;
-      height: 100%;
-      background-color: #ffeeda;
-      color: rgb(60, 60, 60);
-      display: flex;
-
-      .b21 {
-        width: 33%;
+      .a1 {
+        width: 15%;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        background-color: #ffeeda;
       }
 
-      .b22 {
-        width: 33%;
+      .a2 {
+        width: 29%;
         height: 100%;
+        background-color: #ffeeda;
+        color: rgb(60, 60, 60);
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
+        text-align: justify;
+        padding: 0px 10px 0px 0px;
       }
 
-      .b23 {
-        width: 33%;
+      .aa {
+        width: 8%;
         height: 100%;
+        background-color: #eedfcd;
+        color: rgb(60, 60, 60);
+        flex-direction: column; //將日期都置中
         display: flex;
-        flex-direction: column;
         justify-content: center;
+        align-items: center;
+      }
+
+      .a6 {
+        //當天
+        background-color: #ffeeda;
       }
     }
 
-    .bb {
-      width: 8%;
-      height: 100%;
-      background-color: #eedfcd;
-      color: rgb(60, 60, 60);
-      flex-direction: column; //將日期都置中
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .b6 {
-      //當天
+    .mid2 {
+      width: 95%;
+      height: 22vh;
+      margin: 0 auto;
       background-color: #ffeeda;
-      color: rgb(60, 60, 60);
-    }
-  }
+      display: flex;
 
-  .mid3 {
-    width: 100%;
-    height: 22vh;
-    margin: 10px auto;
-    background-color: #ffeeda;
+      .b1 {
+        width: 15%;
+        height: 100%;
+        padding: 20px;
+        background-color: #ffeeda;
+        color: rgb(60, 60, 60);
+        text-align: justify;
+        flex-direction: column; //將日期都置中
+        display: flex;
+
+        span {
+          font-size: 12px;
+        }
+      }
+
+      .b2 {
+        width: 29%;
+        height: 100%;
+        background-color: #ffeeda;
+        color: rgb(60, 60, 60);
+        display: flex;
+
+        .b21 {
+          width: 33%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .b22 {
+          width: 33%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .b23 {
+          width: 33%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+
+      .bb {
+        width: 8%;
+        height: 100%;
+        background-color: #eedfcd;
+        color: rgb(60, 60, 60);
+        flex-direction: column; //將日期都置中
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .b6 {
+        //當天
+        background-color: #ffeeda;
+        color: rgb(60, 60, 60);
+      }
+    }
+
+    .mid3 {
+      width: 100%;
+      height: 22vh;
+      margin: 10px auto;
+      background-color: #ffeeda;
+    }
   }
 }
 
@@ -318,5 +368,12 @@ export default {
   background-color: #31304d;
   color: white;
   text-align: justify;
+
+  span {
+    cursor: pointer;
+    &:hover{
+      color:#f8c68a ;
+    }
+  }
 }
 </style>

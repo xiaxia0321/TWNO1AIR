@@ -1,5 +1,7 @@
 // 去程訂票確認頁
 <script>
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
 export default {
   data() {
     return {
@@ -25,6 +27,9 @@ export default {
             this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
         },
   },
+  computed: {
+    ...mapState(counter,['planeArr'])
+  },
 };
 </script>
 
@@ -44,7 +49,7 @@ export default {
       <p>
         5.如於班機起飛前24小時內購買頭等艙票價產品，餐點可能無法完全滿足，我們仍將盡力協助提供完整之頭等艙餐食。
       </p>
-      <h2>去程： 臺北 - 熊本</h2>
+      <h2>去程： <span>{{ planeArr.departureLocation }}</span> - <span>{{ planeArr.arrivalLocation }}</span></h2>
     </div>
     <div class="date">
       <span>1月18日周四</span>
@@ -59,7 +64,7 @@ export default {
         </div>
         <div class="a2"><i class="fa-solid fa-arrow-right"></i></div>
         <div class="a3">
-          <p class="p1">2 小時 15 分鐘</p>
+          <p class="p1">2 小時 30 分鐘</p>
           <p class="p1">2024年1月18日</p>
           <p class="time">11:00</p>
           <p class="nation">FUK</p>

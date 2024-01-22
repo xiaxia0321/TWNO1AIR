@@ -1,12 +1,114 @@
 <script>
+import axios from "axios";
 import counter from "../stores/counter"
 import { mapState, mapActions } from "pinia"
 import Swal from 'sweetalert2'
 export default {
-    data() {
-        return {
-        }
+  data() {
+    return {
+      account: "",
+      password: "",
+      isEntityAccount: true,
+      isEntityPassword: true,
+    }
+  },
+  methods: {
+    login() {
+      //確認輸入帳號 + 密碼
+      this.isEntityAccount = !!this.account
+      this.isEntityPassword = !!this.password
+      //確認輸入正確帳號 + 密碼
+      if (this.account && this.password) {
+        fetch('http://localhost:8080/user/search',
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              account: this.account,
+              password: this.password,
+            })
+          }).then(response => response.json())
+          .then(res => {
+            console.log(res)
+            if (res.rtncode == "SUCCESSFUL") {
+              console.log("登入成功");
+              Swal.fire({
+                icon: "error",
+                text: "你有資料尚未填寫",
+                // showConfirmButton: true,
+              })
+              // this.$router.push('/User');
+              // $cookies.set("account", this.account)
+            } else {
+              Swal.fire({
+                icon: "success",
+                text: "登入成功",
+                showConfirmButton: true,
+              })
+              this.$router.push('/User');
+            }
+          })
+      }
     },
+    search() {
+      console.log(this.userData);
+      fetch('http://localhost:8080/user/search', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          account: this.userData.account,
+          password: this.userData.password,
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.userList = data.userList
+          console.log(this.userList)
+        })
+        .catch(error => console.log(error))
+    },
+    toLogin() {
+      this.search();
+      axios({
+        url: 'http://localhost:8080/api/login',
+        method: 'POST',
+        withCredentials: true,
+        headers: {
+          'Contect-Type': 'applicatoin/json'
+        },
+        data: {
+          account: this.account,
+          password: this.password,
+        },
+      }).then(res => {
+        // console.log(this.data);
+        let account = document.getElementById("account")
+        let password = document.getElementById("password")
+        if (account.value == "" || password.value == "") {
+          Swal.fire({
+            icon: "error",
+            text: "你有資料尚未填寫"
+          })
+          return
+        }
+        else {
+          Swal.fire({
+            icon: "success",
+            text: "登入成功",
+            showConfirmButton: true,
+          })
+          this.$router.push('/User')
+        }
+      })
+    },
+    // mounted() {
+    //   this.search()
+    // },
     // methods: {
     //     toLogin() {
     //         this.$router.push('/Submit')
@@ -40,6 +142,7 @@ export default {
     //         inputRepeatPassword.value = "";
     //     },
     // },
+  }
 }
 </script>
 
@@ -58,13 +161,13 @@ export default {
               <div class="loginInputArea">
                 <h1>會員登入</h1>
                 <br /><br />
-                <label for="" id="inputAccount">帳號：</label>
-                <input type="text" placeholder="請輸入帳號" />
+                <label for="">帳號：</label>
+                <input type="text" placeholder="請輸入帳號" id="account">
                 <br /><br /><br />
                 <label for="">密碼：</label>
-                <input type="text" placeholder="請輸入密碼" />
+                <input type="text" placeholder="請輸入密碼" id="password">
                 <br /><br /><br /><br />
-                <button class="buttonLoginIn" id="buttonLoginIn">登入</button>
+                <button class="buttonLoginIn" id="buttonLoginIn" @click="letLogin()" data-bs-dismiss="modal">登入</button>
                 <button class="buttonForgotPassword" id="buttonForgotPassword">
                   忘記密碼
                 </button> -->
@@ -72,9 +175,9 @@ export default {
   <!-- </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">尚未註冊</button>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" @click="goSubmit()" data-bs-dismiss="modal">尚未註冊</button>
+        </div>
       </div>
     </div>
   </div>
@@ -106,12 +209,13 @@ export default {
                 <input type="text" placeholder="請再次輸入密碼" id="inputRepeatPassword">
                 <br><br><br><br><br>
                 <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">返回登入</button>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">返回登入</button>
+        </div>
       </div>
     </div>
   </div>
@@ -126,10 +230,10 @@ export default {
       <div class="right">
         <h3><b>登入</b></h3>
         <span><b>姓名：</b></span><br>
-        <input type="text" class="input"><br>
+        <input type="text" class="input" id="account" v-model="this.account"><br>
         <span><b>密碼：</b></span><br>
-        <input type="text" class="input"><br>
-        <button type="button" class="login">登入</button>
+        <input type="text" class="input" id="password" v-model="this.password"><br>
+        <button type="button" class="login" @click="login()">登入</button>
       </div>
     </div>
   </div>
@@ -165,23 +269,25 @@ export default {
   width: 400px;
   height: 400px;
   padding: 50px;
-  background-color: rgb(182, 187, 196) ;
+  background-color: rgb(182, 187, 196);
   border-radius: 5%;
   color: white;
   text-align: left;
 }
-.input{
+
+.input {
   width: 300px;
   height: 30px;
   border: 0px;
-  background-color: rgb(240, 236, 229) ;
+  background-color: rgb(240, 236, 229);
   margin-bottom: 20px;
   border-radius: 5px;
 }
-.login{
+
+.login {
   margin-left: 250px;
   margin-top: 50px;
-  background-color:  rgb(49, 48, 77);
+  background-color: rgb(49, 48, 77);
   color: white;
 }
 </style>

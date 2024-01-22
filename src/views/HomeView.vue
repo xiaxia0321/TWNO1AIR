@@ -64,6 +64,16 @@ export default {
     }
   },
   methods: {
+    goSearch() {
+      this.planeSearchArr.departureLocation = this.start
+      this.planeSearchArr.arrivalLocation = this.end
+
+      this.$router.push('/AirTimeSearch')
+      this.$nextTick(() => {
+        '/AirTimeSearch'
+        window.scrollTo(0, 0);
+      });
+    },
     handleSelect(key) {
       console.log(this.start)
       this.start = key
@@ -144,13 +154,16 @@ export default {
         window.scrollTo(0, 0);
       });
     },
-    updateMinDate() {
-      const selected = new Date(this.selectedDate);
-      selected.setDate(selected.getDate() + 1);
-      this.minDate = selected.toISOString().split('T')[0];
-      this.minDateHave = true;
-    },
+    // updateMinDate() {
+    //   const selected = new Date(this.selectedDate);
+    //   selected.setDate(selected.getDate() + 1);
+    //   this.minDate = selected.toISOString().split('T')[0];
+    //   this.minDateHave = true;
+    // },
 
+  },
+  computed: {
+    ...mapState(counter, ['planeSearchArr'])
   },
   created() {
   },
@@ -172,10 +185,9 @@ export default {
           <div class="oo">
             <!--    右上角     -->
             <!-- <i class="fa-solid fa-earth-americas ii"></i> -->
-            <i class="fa-solid fa-heart ii" @click="backStage"></i>
-            <img src="/marine.jpeg" alt="" style="width: 30%;height: 100%;" @click="goLogin">
-            <!-- <i class="fa-solid fa-bars ii"></i> -->
+            <i class="fa-solid fa-power-off ii" ii @click="goLogin"></i>
             <i class="fa-solid fa-user ii" @click="goUser"></i>
+            <!-- <i class="fa-solid fa-bars ii"></i> -->
           </div>
         </div>
       </div>
@@ -184,9 +196,8 @@ export default {
       ">即刻搜尋，數個航班等待您發現。</p>
       </div>
       <div class="search" style="width: 90%; height: 30%; ">
-        <div class="place gogo" name="出發地" style="border-radius: 15px 0 0 15px ;">
+        <!-- <div class="place gogo" name="出發地" style="border-radius: 15px 0 0 15px ;">
           <label for="" class="lab">
-            <!-- <p style="position: absolute; top: 0; left: 1rem; color: rgb(98 105 113); font-size: 1.2rem; ">出發地：</p> -->
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
               <n-button style="font-size: 1.4rem;">出發地 : {{ this.start }}</n-button>
             </n-dropdown>
@@ -204,26 +215,19 @@ export default {
         </div>
         <div class="program" name="出發">
           <label type="button">
-            <span class="span1">出發</span>
-            <input type="date" name="" v-model="selectedDate" :min="this.today" @change="updateMinDate" class="span2">
-            <!-- <span class="span2">新增日期</span> -->
+            <span class="span1">出發日期</span>
+            <input type="date" name="" v-model="selectedDate" :min="this.today" @change="updateMinDate" class="span2"
+              :v-model="planeSearchArr.departureDate">
           </label>
-        </div>
-        <div class="program" name="回程">
-          <label type="button" style="border-radius:0 15px 15px 0;">
-            <span class="span1">回程</span>
-            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" :disabled="!minDateHave" class="span2">
-            <!-- <span class="span2">新增日期</span> -->
-          </label>
-        </div>
-        <!-- <div class="program" name="旅客與艙等">
-          <button type="button" style="border-radius:0 15px 15px 0;">
-            <span class="span1">旅客與艙等</span>
-
-            <span style="font-size: 1.3rem;">1成人,經濟艙</span>
-          </button>
         </div> -->
-        <button class="searchBu">搜尋</button>
+        <!-- <div class="program" name="抵達日期">
+          <label type="button" style="border-radius:0 15px 15px 0;">
+            <span class="span1">抵達日期</span>
+            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" :disabled="!minDateHave" class="span2"
+              :v-model="planeSearchArr.arrivalDate">
+          </label>
+        </div> -->
+        <button class="searchBu" @click="goSearch">前往搜尋</button>
       </div>
 
     </div>
@@ -287,7 +291,7 @@ export default {
           </div>
           <div class="text ">
             <p>香港</p>
-            <span>該吃飯了</span>
+            <span>是講法律的地方</span>
           </div>
         </div>
         <div class="block" @click="goTokyo">
@@ -296,7 +300,7 @@ export default {
           </div>
           <div class="text">
             <p>東京</p>
-            <span>天氣還行 很熱</span>
+            <span>很熱</span>
           </div>
         </div>
         <div class="block blockN">
@@ -305,7 +309,7 @@ export default {
           </div>
           <div class="text">
             <p>首爾</p>
-            <span>炸醬面+炒年糕</span>
+            <span>炒年糕</span>
           </div>
         </div>
         <div class="block" @click="goMacao">
@@ -470,7 +474,7 @@ export default {
       }
 
       .user {
-        width: 12%;
+        width: 10%;
         height: 100%;
         position: absolute;
         right: 0;
@@ -485,18 +489,21 @@ export default {
         //     background: none;
         // }
         .oo {
+          //樂狗航空右側 使用者圖示
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          // justify-content: space-between;
           flex-direction: row;
-
+          padding: 0;
+          margin: 0;
           .ii {
+            margin-left: 1rem;
             &:hover {
               background-color: rgba(255, 255, 255, 0.354);
             }
-
+            
             &:active {
-              background-color: rgba(255, 255, 255, 0.061);
+              background-color: rgba(161, 29, 29, 0.861);
             }
           }
         }
@@ -611,14 +618,22 @@ export default {
 
       .searchBu {
         position: absolute;
-        right: 0;
-        width: 7%;
+        right: 5rem;
+        width: 10rem;
         height: 100%;
-        background-color: #0062e3;
-        border-radius: 20%;
+        background-color: #0062e374;
+        border-radius: 3rem;
         color: white;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         font-weight: 600;
+        &:hover{
+          font-size: 2rem;
+          background-color: rgba(255, 255, 255, 0.401);
+        }
+        &:active{
+          background-color: rgba(0, 0, 0, 0.194);
+
+        }
       }
     }
 
@@ -661,9 +676,10 @@ export default {
           background-color: rgba(130, 157, 238, 0.15);
           box-shadow: 2px 1px 2px black;
         }
-        &:active{
+
+        &:active {
           background-color: rgba(48, 71, 139, 0.15);
-          
+
         }
 
 
@@ -787,4 +803,5 @@ export default {
       }
     }
   }
-}</style>
+}
+</style>

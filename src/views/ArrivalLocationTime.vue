@@ -21,6 +21,9 @@ export default {
       this.planeSearchArr.aa = this.AA
       this.planeSearchArr.arrivalLocation = this.arrivalLocation
       this.planeSearchArr.arrivalAirport = this.arrivalAirport
+      console.log('aa ='+ this.planeSearchArr.aa);
+      console.log('arrivalLocation ='+ this.planeSearchArr.arrivalLocation);
+      console.log('arrivalAirport ='+ this.planeSearchArr.arrivalAirport);
       // this.$emit('arrival-selected', this.arrivalLocation);
     },
   }
@@ -37,7 +40,7 @@ export default {
     v-if="this.arrivalLocation === ''"
   >
   <span style="font-size: 26px; color:#794425">目的地　</span>
-    <span style="font-size: 0.75rem; color:#08202D;">請選擇目的地</span>
+    <span style="font-size: 0.8rem; color:#08202D;">請選擇目的地</span>
   </button>
 <!-- ===============按鈕=========== -->
 <button

@@ -10,6 +10,24 @@ export default {
   },
   methods: {
     ...mapActions(counter, ['setPP',]),
+    searchPlaneAA() {
+      axios({
+        url: 'http://localhost:8080/airplainInfo/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          departureDate: "",
+          arrivalDate: "",
+          departureLocation: "",
+          arrivalLocation: "",
+          classType: "",
+          isOneway: ""
+        },
+      })
+        .then(res => this.planeArr = res.data.airplainInfoList,)
+    },
     searchPlane() {
       axios({
         url: 'http://localhost:8080/airplainInfo/search',
@@ -26,10 +44,10 @@ export default {
           isOneway: this.plane.isOneway
         },
       })
-        .then(res => this.planeArr = res.data.airplainInfoList ,)
+        .then(res => this.planeArr = res.data.airplainInfoList,)
       console.log(this.planeArr)
     },
-    createFlight(){
+    createFlight() {
       this.$router.push('/BackCreateFlight')
       this.$nextTick(() => {
         window.scrollTo(0, 0);
@@ -41,9 +59,9 @@ export default {
   },
   components: {
   },
-  mounted() { 
+  mounted() {
     this.setPP(3)
-    this.searchPlane()
+    this.searchPlaneAA()
   }
 
 }
@@ -108,6 +126,7 @@ export default {
               <a href="">刪除</a>
             </td> -->
           </tr>
+          <tr><a href="">top</a></tr>
         </table>
       </div>
     </div>
@@ -120,6 +139,7 @@ export default {
   align-items: start;
   justify-content: center;
   flex-direction: column;
+  overflow-y: auto;
 
   .header {
     width: 82%;
@@ -238,7 +258,7 @@ export default {
         }
 
         .place {
-          width: 15rem;
+          width: 8rem;
         }
 
         .date {

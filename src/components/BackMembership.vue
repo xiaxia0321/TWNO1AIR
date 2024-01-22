@@ -103,7 +103,7 @@ export default {
   align-items: start;
   justify-content: center;
   flex-direction: column;
-
+  overflow-y: auto;
   .header {
     width: 82%;
     height: 10vh;

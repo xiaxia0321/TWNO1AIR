@@ -23,9 +23,9 @@ export default {
       this.planeSearchArr.da = this.DA
       this.planeSearchArr.departureLocation = this.departureLocation
       this.planeSearchArr.departureAirport = this.departureAirport
-      console.log(this.planeSearchArr.da);
-      console.log(this.planeSearchArr.departureLocation);
-      console.log(this.planeSearchArr.departureAirport);
+      console.log('da' + this.planeSearchArr.da);
+      console.log('departureLocation' + this.planeSearchArr.departureLocation);
+      console.log('departureAirport' +this.planeSearchArr.departureAirport);
     },
 },
 };
@@ -41,7 +41,7 @@ export default {
     v-if="this.departureLocation === ''"
   >
     <span style="font-size: 26px; color:#794425">出發地　</span>
-    <span style="font-size: 0.75rem; color:#08202D;">請選擇出發地</span>
+    <span style="font-size: .8rem; color:#08202D;">請選擇出發地</span>
   </button>
 <!-- ===============按鈕=========== -->
   <button
@@ -88,7 +88,7 @@ export default {
             </button>
           </div>
 
-          <div class="ma">
+          <!-- <div class="ma">
             <span>港澳大陸地區</span>
           </div>
           <div class="maAll">
@@ -166,7 +166,7 @@ export default {
               <br />
               <small>舊金山國際機場</small>
             </button>
-          </div>
+          </div> -->
         </div>
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

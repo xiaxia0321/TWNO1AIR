@@ -5,11 +5,12 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      order: [],
+      OrderArr: {
+      },
     }
   },
   computed: {
-    ...mapState(counter, ['Order'])
+    ...mapState(counter, [ 'OrderSearchArr'])
   },
   methods: {
     ...mapActions(counter, ['setPP',]),
@@ -21,17 +22,16 @@ export default {
           "Content-Type": "application/json"
         },
         data: {
-          order_id: this.Order.getOrderId,
-          arrival_date: this.Order.getArrivalDate,
-          departure_date: this.Order.getDepartureDate,
-          arrival_location: this.Order.getArrivalLocation,
-          departure_location: this.Order.getDepartureLocation,
-          account: this.Order.getAccount,
+          order_id: this.OrderSearchArr.getOrderId,
+          arrival_date: this.OrderSearchArr.getArrivalDate,
+          departure_date: this.OrderSearchArr.getDepartureDate,
+          arrival_location: this.OrderSearchArr.getArrivalLocation,
+          departure_location: this.OrderSearchArr.getDepartureLocation,
+          account: this.OrderSearchArr.getAccount,
         },
       })
-        .then(res => this.order = res.data.orderList)
-      console.log(this.Order);
-      console.log(this.order)
+        .then(res => this.OrderArr = res.data.orderList)
+      console.log(this.OrderArr);
     },
   },
   components: {
@@ -52,24 +52,24 @@ export default {
     <div class="content">
       <div class="search">
         <div class="no">
-          <span>訂單編號 : </span>
-          <input type="text" name="" placeholder="請輸入航班號碼" id="" v-model="Order.getOrderId">
+          <span>訂單ID : </span>
+          <input type="text" name="" placeholder="請輸入訂單ID" id="" v-model="OrderSearchArr.getOrderId">
         </div>
         <div class="no">
           <span>出發地 : </span>
-          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="Order.getDepartureLocation">
+          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="OrderSearchArr.getDepartureLocation">
         </div>
         <div class="no">
           <span>目的地 : </span>
-          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="Order.getArrivalLocation">
+          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="OrderSearchArr.getArrivalLocation">
         </div>
         <div class="date">
           <span>出發日期 : </span>
-          <input type="date" name="" id="" v-model="Order.getDepartureDate">
+          <input type="date" name="" id="" v-model="OrderSearchArr.getDepartureDate">
         </div>
         <div class="date to">
           <span>抵達日期 : </span>
-          <input type="date" name="" id="" v-model="Order.getArrivalDate">
+          <input type="date" name="" id="" v-model="OrderSearchArr.getArrivalDate">
         </div>
         <button type="submit" @click="searchOrder">搜尋</button>
       </div>
@@ -86,7 +86,7 @@ export default {
             <th class="money bb">金額</th>
             <th class="b7 bb">操作</th>
           </tr>
-          <tr v-for="(item, index) in order" :key="index">
+          <tr v-for="(item, index) in OrderArr" :key="index">
             <td>{{ item.account }}</td>
             <td>{{ item.orderId }}</td>
             <td>{{ item.departureLocation }}</td>
@@ -95,8 +95,7 @@ export default {
             <td>{{ item.arrivalDate }}</td>
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
-            <!-- <td>{{ item. }}</td> -->
-            <!-- <td class="bb"><a href="">修改&刪除</a></td> -->
+            <td class="bb"><span href="">修改&刪除</span></td>
           </tr>
         </table>
       </div>
@@ -110,7 +109,7 @@ export default {
   align-items: start;
   justify-content: center;
   flex-direction: column;
-
+  overflow-y: auto;
   .header {
     width: 82%;
     height: 10vh;
@@ -184,10 +183,12 @@ export default {
         height: 2rem;
         background-color: #3472c2;
         color: white;
-        &:hover{
+
+        &:hover {
           background-color: rgba(144, 27, 27, 0.499);
         }
-        &:active{
+
+        &:active {
           background-color: rgba(144, 27, 27, 0.811);
 
         }
