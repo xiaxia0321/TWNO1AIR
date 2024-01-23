@@ -1,18 +1,19 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import { NDropdown, NButton, NDatePicker } from 'naive-ui'
-
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
 export default defineComponent({
     data() {
         return {
             start: "",
-            end: "",
+            location:"",
             options: [
-                {
-                    label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
-                    key: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
-                    disabled: false
-                },
+                // {
+                //     label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+                //     key: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+                //     disabled: false
+                // },
                 {
                     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
                     key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
@@ -54,16 +55,11 @@ export default defineComponent({
                     key: "澳門, 澳門, MFM, Macau International Airport"
                 },
             ],
-            range: ""
         }
     },
     methods: {
         handleSelect(key) {
             this.start = key
-            // if (!key.includes('台灣')) {
-            //     this.options = this.options.filter(option => option.key.includes('台灣'));//當出發地不是台灣的時候，將目的地過濾為台灣
-            //     // this.end = ''; 
-            // }
             if(key.includes ("洛杉磯, 美國, LA")){
                 this.$router.push('/LocationLA')
             }
@@ -98,39 +94,6 @@ export default defineComponent({
             // }
             // console.log(this.data.option);
         },
-        handleSelectTwo(key) {
-            this.end = key
-            // if (!key.includes('台灣')) {
-            //     this.options = this.options.filter(option => option.key.includes('台灣'));
-            // }
-            if(key.includes ("洛杉磯, 美國, LAX")){
-                this.$router.push('/LocationLA')
-            }
-            if(key.includes ("舊金山, 美國, SFO")){
-                this.$router.push('/LocationSFO')
-            }
-            if(key.includes ("函館, 日本, HKD")){
-                this.$router.push('/LocationHakodate')
-            }
-            if(key.includes ("大阪, 日本, KIX")){
-                this.$router.push('/LocationKyoto')
-            }
-            if(key.includes ("沖繩, 日本, OKA")){
-                this.$router.push('/LocationOkinawa')
-            }
-            if(key.includes ("胡志明市, 越南, SGN")){
-                this.$router.push('/LocationHoChiMinh')
-            }
-            if(key.includes ("曼谷, 泰國, BKK")){
-                this.$router.push('/LocationBangkok')
-            }
-            if(key.includes ("新加坡, 新加坡, SIN")){
-                this.$router.push('/LocationSingapore')
-            }
-            if(key.includes ("澳門, 澳門, MFM")){
-                this.$router.push('/LocationMacao')
-            }
-        },
         search() {
             let departureDate = document.getElementById("departureDate")
             let arrivalDate = document.getElementById("arrivalDate")
@@ -155,11 +118,22 @@ export default defineComponent({
                 console.log(data);
             })
         },
+        data(){
+            this.$router.push('/AirTime')
+        },
+        ...mapActions(counter,['setLocation'])
+    },
+    computed: {
+        ...mapState(counter,['planeSearchArr'])
     },
     components: {
         NDropdown,
         NButton,
         NDatePicker,
+    },
+    mounted() {
+        this.setLocation("東京")
+        console.log(this.planeSearchArr.departureLocation);
     },
 });
 </script>
@@ -169,20 +143,10 @@ export default defineComponent({
             <br>
             <h1>搭乘樂狗航空從台北飛往東京 ，自 TWD13,589* 起！</h1>
         </div>
-        <!-- <select>
-                <option value="">單程</option>
-                <option value="">來回</option>
-            </select> -->
         <div class="condition">
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
                 <n-button>出發地：{{ start }}</n-button>
             </n-dropdown>
-            <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
-                <n-button>目的地：{{ end }}</n-button>
-            </n-dropdown>
-            <n-date-picker v-model:value="range" type="daterange" clearable />
-            <!-- <pre>{{ JSON.stringify(range) }}</pre> -->
-            <button type="button" class="searchBtn">搜尋</button>　
         </div>
 
     </div>

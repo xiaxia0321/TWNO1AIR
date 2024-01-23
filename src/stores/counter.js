@@ -99,7 +99,11 @@ export default defineStore("counter", {
         },
         goSFO() {
             this.$router.push('/LocationSFO')
+        },
+        setLocation(num){
+            this.planeSearchArr.departureLocation = num ;
         }
+
     }
 }
 )

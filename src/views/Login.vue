@@ -106,42 +106,6 @@ export default {
         }
       })
     },
-    // mounted() {
-    //   this.search()
-    // },
-    // methods: {
-    //     toLogin() {
-    //         this.$router.push('/Submit')
-    //     },
-    //     signUpCheck() {
-    //         let inputAccount = document.getElementById("inputAccount")
-    //         let inputPassword = document.getElementById("inputPassword")
-    //         let inputRepeatPassword = document.getElementById("inputRepeatPassword")
-    //         if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value) {
-    //             console.log("xxx")
-    //             Swal.fire({
-    //                 icon: "error",
-    //                 text: "你有資料尚未填寫"
-    //             })
-    //             return
-    //         }
-    //         if (inputPassword.value !== inputRepeatPassword.value) {
-    //             Swal.fire({
-    //                 icon: "error",
-    //                 text: "你輸入的密碼與確認的密碼不相符"
-    //             })
-    //         } else {
-    //             Swal.fire({
-    //                 icon: "success",
-    //                 text: "你已經註冊成功",
-    //                 showConfirmButton: true,
-    //             })
-    //         }
-    //         inputAccount.value = "";
-    //         inputPassword.value = "";
-    //         inputRepeatPassword.value = "";
-    //     },
-    // },
   }
 }
 </script>

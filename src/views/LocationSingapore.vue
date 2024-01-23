@@ -1,7 +1,8 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import { NDropdown, NButton, NDatePicker } from 'naive-ui'
-
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
 export default defineComponent({
     data() {
         return {
