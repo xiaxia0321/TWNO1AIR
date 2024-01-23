@@ -131,8 +131,13 @@ export default {
         <br>
         <span><b>姓名：</b></span><br>
         <input type="text" class="input" id="account" v-model="this.account"><br>
-        <span><b>密碼：</b></span><br><i class="fa-solid fa-eye" @click="show()"></i>
-        <input type="password" class="input" id="password" :type="showPassword ? 'text' : 'password'" v-model="this.password"><br>
+        <span><b>密碼：</b></span><br>
+        <!-- <input type="password" class="input" id="password" :type="showPassword ? 'text' : 'password'" v-model="password"><br>
+        <i class="fa-solid fa-eye eye" @click="show()" v-show="showPassword"></i>
+        <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i> -->
+        <input :type="showPassword ? 'text' : 'password'" class="inputClass" v-model="loginPassword">
+                <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
+                <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
         <button type="button" class="login" @click="login()">登入</button>
       </div>
     </div>
@@ -143,7 +148,9 @@ export default {
 .screen {
   width: 100%;
   height: 100%;
-  background-color: rgb(49, 48, 77);
+  background-color: rgb(22, 26, 48);
+  box-sizing: border-box;
+  padding-top: 90px;
 }
 
 .main {
@@ -198,7 +205,13 @@ export default {
 .fa-eye{
   position: absolute;
   left: 75%;
-  top: 53%;
+  top: 59%;
+  color: rgb(49, 48, 77);
+  }
+  .fa-eye-slash{
+  position: absolute;
+  left: 75%;
+  top: 59%;
   color: rgb(49, 48, 77);
   }
 </style>

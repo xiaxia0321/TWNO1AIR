@@ -55,6 +55,26 @@ export default {
         },
     },
     methods: {
+        search() {
+            console.log(this.searchData);
+            fetch('http://localhost:8080/user/search', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    quiz_name: this.searchData.quizName,
+                    startdate: this.searchData.startdate,
+                    enddate: this.searchData.enddate
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    this.quizList = data.quizList
+                    console.log(this.quizList)
+                })
+                .catch(error => console.log(error))
+        },
         user(im) {
             if (im === '旅客資料') {
                 this.data = true
@@ -187,15 +207,15 @@ export default {
                     <input class="data" type="text" id="name" v-model="userInfo.name" ><br>
                     <span>生日</span>
                     <input class="data D" type="date" id="birthday" v-model="userInfo.birthday"><br>
-                    <br>
                     <span>年齡</span>
                     <br>
-                    <input type="number" id="age" v-model="userInfo.age">
+                    <input type="number" id="age" v-model="userInfo.age" style="border-radius: 10px;border: none;">
                     <br>
                     <span>手機</span>
                     <input class="data" type="number" id="phone" v-model="userInfo.phone"><br>
                     <span>信箱</span>
                     <input class="data" type="email" id="email" v-model="userInfo.email"><br>
+                    <br><br>
                     <button type="button" @click="confirm('確認')">確認</button>
                 </div>
                 <div class="right" v-if="confirmationVisible">
@@ -329,7 +349,9 @@ export default {
     height: 100px;
 }
 
-
+.age{
+    border-radius: 10px;
+}
 
 
 

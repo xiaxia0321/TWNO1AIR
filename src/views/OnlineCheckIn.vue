@@ -60,9 +60,6 @@ export default {
                 <button type="button" @click="goOnlineCheckInTwo">確認</button>
             </div>
         </div>
-        <div class="footer">
-
-        </div>
     </div>
 </template>
 <style scoped lang="scss">
@@ -72,7 +69,7 @@ export default {
 
     .content {
         width: 100vw;
-        height: 70vh;
+        height: 100vh;
         background-color: rgb(22, 26, 48);
         box-sizing: border-box;
         padding-top: 100px;
@@ -117,11 +114,5 @@ export default {
                 top: 63%;
             }
         }
-    }
-
-    .footer {
-        width: 100vw;
-        height: 30vh;
-        background-color: #5e5045;
     }
 }</style>

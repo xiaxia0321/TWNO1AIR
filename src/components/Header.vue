@@ -316,7 +316,7 @@ export default {
             height: 40vh;
             background-color: rgb(240, 240, 240);
             position: absolute;
-            left: -36%;
+            left: -34%;
             border-radius: 20px;
             text-align: center;
 

@@ -96,9 +96,11 @@ export default {
                 <input type="text" placeholder="請輸入正確的姓名" id="inputName" class="name" v-model="this.account" style="margin-left: 5px;">
                 <br><br>
                 <label for="" style="font-size: 14pt;">密碼：</label>　　　
+                <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 49.5%;"></i>
                 <input type="password" placeholder="請輸入密碼" id="inputPassword" class="password" v-model="this.password" style="margin-left: 5px;width: 298px;">
                 <br><br>
                 <label for="" style="font-size: 14pt;">確認密碼：</label>　
+                <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 56.5%;"></i>
                 <input type="password" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword" style="width: 298px;">
                 <br><br>
                 <label for="" style="font-size: 14pt;">信箱：</label>　　　
@@ -128,7 +130,7 @@ export default {
     height: 100vh;
     background-color: rgb(22, 26, 48);
     box-sizing: border-box;
-    padding-top: 150px;
+    padding-top: 100px;
 
     .loginInput {
         width: 70vw;
@@ -144,6 +146,9 @@ export default {
             text-align: left;
             margin-top: 10px;
             margin-left: 10vw;
+            .fa-eye{
+
+            }
 
             .name {
                 width: 300px;
