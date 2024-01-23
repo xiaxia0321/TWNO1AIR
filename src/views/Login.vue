@@ -20,7 +20,7 @@ export default {
       this.isEntityPassword = !!this.password
       //確認輸入正確帳號 + 密碼
       if (this.account && this.password) {
-        fetch('http://localhost:8080/api/login',
+        fetch('http://localhost:8080/user/search',
           {
             method: "POST",
             headers: {
@@ -34,7 +34,7 @@ export default {
           }).then(response => response.json())
           .then(res => {
             console.log(res)
-            if (res.rtnCode == "SUCCESSFUL") {
+            if (res.code == "200") {
               console.log("登入成功");
               Swal.fire({
                 icon: "success",
