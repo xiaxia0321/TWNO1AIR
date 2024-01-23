@@ -102,10 +102,6 @@ export default {
                                 <button @click="search()">搜尋航班</button>
                                 <br><br>
                                 <h5>行程內容更改</h5>
-                                <button>行程管理</button>
-                                <br>
-                                <button>更改航班</button>
-                                <br>
                                 <button @click="Refund()">線上退票</button>
                             </div>
                             <div class="hot">
@@ -197,21 +193,18 @@ export default {
 
 <style scoped lang="scss">
 .headerShow {
-    position: relative;
+    position: absolute;
     width: 100vw;
     height: 20vh;
     background-color: rgb(49, 48, 77);
     box-sizing: border-box;
     padding-left: 500px;
     padding-top: 20px;
-    // display: flex;
-    // justify-content: center;
-    // align-content: center;
     letter-spacing: 2px;
 
     .happydog {
         position: absolute;
-        left: 50px;
+        left: 100px;
         top: 20px;
         background-image: url(/noBack.png);
         background-size: contain;
@@ -236,9 +229,6 @@ export default {
         margin: 0;
         padding: 0;
         list-style: none;
-        box-sizing: border-box;
-        // padding-top: 60px;
-        // padding-left: 200px;
 
         .reservation {
             width: 60vw;
@@ -296,7 +286,7 @@ export default {
             height: 40vh;
             background-color: rgb(240, 240, 240);
             position: absolute;
-            left: -70px;
+            left: -45px;
             border-radius: 20px;
             text-align: center;
 
@@ -326,7 +316,7 @@ export default {
             height: 30vh;
             background-color: rgb(240, 240, 240);
             position: absolute;
-            left: -70px;
+            left: -40px;
             border-radius: 20px;
             text-align: center;
 

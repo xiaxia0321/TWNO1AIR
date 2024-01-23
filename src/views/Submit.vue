@@ -11,6 +11,8 @@ export default {
             emails: "",
             user_name: "",
             phone: "",
+            birthday:"",
+            age:"",
         }
     },
     methods: {
@@ -27,6 +29,8 @@ export default {
             let inputPassword = document.getElementById("inputPassword")
             let inputRepeatPassword = document.getElementById("inputRepeatPassword")
             let inputUser = document.getElementById("inputUser")
+            let inputBirthday = document.getElementById("inputBirthday")
+            let inputAge = document.getElementById("inputAge")
             axios({
                 url: 'http://localhost:8080/user/create',
                 method: 'POST',
@@ -39,11 +43,14 @@ export default {
                     password: this.password,
                     emails: this.emails,
                     user_name: this.user_name,
-                    phone: this.phone
+                    phone: this.phone,
+                    birthday: this.birthday,
+                    age: this.age
                 },
             }).then(res => {
                 if (inputPassword.value == "" || inputRepeatPassword.value == "" ||
-                    inputName.value == "" || inputPhone.value == "" || inputEmail.value == "") {
+                    inputName.value == "" || inputPhone.value == "" || inputEmail.value == "" ||
+                    inputBirthday == "" || inputAge == "") {
                     console.log("xxx")
                     Swal.fire({
                         icon: "error",
@@ -69,7 +76,9 @@ export default {
                 inputEmail.value = "";
                 inputPassword.value = "";
                 inputRepeatPassword.value = "";
-                inputUser = "";
+                inputUser.value = "";
+                inputBirthday.value = "";
+                inputAge.value = "";
             })
         },
     },
@@ -100,7 +109,12 @@ export default {
                 <br><br>
                 <label for="" style="font-size: 14pt;">電話：</label>　　　
                 <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone" v-model="this.phone" style="width: 303px;margin-left: 4px;">
-                <br><br><br>
+                <br><br>
+                <label for="" style="font-size: 14pt;">出生年月日：</label>　　　
+                <input type="text" placeholder="請輸入西元生日(ex:20000101)" id="inputBirthday" class="birthday" v-model="this.birthday">
+                <br><br>
+                <label for="" style="font-size: 14pt;">年齡：</label>　　　
+                <input type="text" placeholder="請輸入實際年齡" id="inputAge" class="age" v-model="this.age">
                 <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
                 <button class="buttonSubmit" @click="login()" style="margin-left: 40px;">返回</button>
             </div>
@@ -118,7 +132,7 @@ export default {
 
     .loginInput {
         width: 70vw;
-        height: 70vh;
+        height: 75vh;
         border: 2px solid black;
         border-radius: 15px;
         margin-left: 15vw;
@@ -134,7 +148,6 @@ export default {
             .name {
                 width: 300px;
                 height: 35px;
-                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -142,15 +155,13 @@ export default {
             .phone {
                 width: 300px;
                 height: 35px;
-                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
 
             .email {
-                width: 300px;
+                width: 298px;
                 height: 35px;
-                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -158,15 +169,26 @@ export default {
             .password {
                 width: 300px;
                 height: 35px;
-                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
-
+            .birthday{
+                width: 300px;
+                height: 35px;
+                border: 2px gray solid;
+                border-radius: 5px;
+                margin-left: -50px;
+            }
+            .age{
+                width: 300px;
+                height: 35px;
+                border: 2px gray solid;
+                border-radius: 5px;
+                margin-left: 5px;
+            }
             .repeatPassword {
                 width: 300px;
                 height: 35px;
-                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -174,7 +196,6 @@ export default {
             .user {
                 width: 300px;
                 height: 35px;
-                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -195,6 +216,7 @@ export default {
                 margin-left: 560px;
                 border: none;
                 background-color: rgb(108, 95, 91);
+                color: white;
             }
         }
     }
