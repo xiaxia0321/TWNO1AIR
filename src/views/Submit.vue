@@ -11,16 +11,21 @@ export default {
             emails: "",
             user_name: "",
             phone: "",
-            birthday:"",
-            age:"",
+            birthday: "",
+            age: "",
+            showPassword: false,
+            showPasswordTwo: false,
         }
     },
     methods: {
         login() {
             this.$router.push('/')
         },
-        toLogin() {
-            this.$router.push('/Submit')
+        show() {
+            this.showPassword = !this.showPassword
+        },
+        showTwo(){
+            this.showPasswordTwo = !this.showPasswordTwo
         },
         signUpCheck() {
             let inputName = document.getElementById("inputName")
@@ -93,27 +98,41 @@ export default {
             <br>
             <div class="loginInputArea">
                 <label for="" style="font-size: 14pt;">姓名：</label>　　　
-                <input type="text" placeholder="請輸入正確的姓名" id="inputName" class="name" v-model="this.account" style="margin-left: 5px;">
+                <input type="text" placeholder="請輸入正確的姓名" id="inputName" class="name" v-model="this.account"
+                    style="margin-left: 5px;">
                 <br><br>
                 <label for="" style="font-size: 14pt;">密碼：</label>　　　
-                <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 49.5%;"></i>
-                <input type="password" placeholder="請輸入密碼" id="inputPassword" class="password" v-model="this.password" style="margin-left: 5px;width: 298px;">
+                <!-- <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
+                <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
+                <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i> -->
+                <!-- <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 49.5%;"></i> -->
+                <input :type="showPassword ? 'text' : 'password'" placeholder="請輸入密碼" id="inputPassword" class="password" v-model="password" style="margin-left: 5px;width: 298px;">
+                <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()" style="position: absolute;left: 51%;top: 49.5%;"></i>
+                <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()" style="position: absolute;left: 51%;top: 49.5%;"></i>
                 <br><br>
                 <label for="" style="font-size: 14pt;">確認密碼：</label>　
-                <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 56.5%;"></i>
-                <input type="password" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword" style="width: 298px;">
+                <input :type="showPasswordTwo ? 'text' : 'password'" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword"
+                    style="width: 298px;">
+                <i class="fa-solid fa-eye-slash eye" v-show="!showPasswordTwo" @click="showTwo()" style="position: absolute;left: 51%;top: 56.5%;"></i>
+                <i class="fa-solid fa-eye eye" v-show="showPasswordTwo" @click="showTwo()" style="position: absolute;left: 51%;top: 56.5%;"></i>
+                <!-- <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 56.5%;"></i>
+                <input type="password" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword"
+                    style="width: 298px;"> -->
                 <br><br>
                 <label for="" style="font-size: 14pt;">信箱：</label>　　　
-                <input type="email" placeholder="請輸入信箱" id="inputEmail" class="email" v-model="this.emails" style="margin-left: 5px;">
+                <input type="email" placeholder="請輸入信箱" id="inputEmail" class="email" v-model="this.emails"
+                    style="margin-left: 5px;">
                 <br><br>
                 <label for="" style="font-size: 14pt;">使用者名稱：</label>
                 <input type="text" placeholder="請輸入使用者名稱(非必填)" id="inputUser" class="user" v-model="this.user_name">
                 <br><br>
                 <label for="" style="font-size: 14pt;">電話：</label>　　　
-                <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone" v-model="this.phone" style="width: 303px;margin-left: 4px;">
+                <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone" v-model="this.phone"
+                    style="width: 303px;margin-left: 4px;">
                 <br><br>
                 <label for="" style="font-size: 14pt;">出生年月日：</label>　　　
-                <input type="text" placeholder="請輸入西元生日(ex:20000101)" id="inputBirthday" class="birthday" v-model="this.birthday">
+                <input type="text" placeholder="請輸入西元生日(ex:20000101)" id="inputBirthday" class="birthday"
+                    v-model="this.birthday">
                 <br><br>
                 <label for="" style="font-size: 14pt;">年齡：</label>　　　
                 <input type="text" placeholder="請輸入實際年齡" id="inputAge" class="age" v-model="this.age">
@@ -146,9 +165,6 @@ export default {
             text-align: left;
             margin-top: 10px;
             margin-left: 10vw;
-            .fa-eye{
-
-            }
 
             .name {
                 width: 300px;
@@ -177,20 +193,23 @@ export default {
                 border: 2px gray solid;
                 border-radius: 5px;
             }
-            .birthday{
+
+            .birthday {
                 width: 300px;
                 height: 35px;
                 border: 2px gray solid;
                 border-radius: 5px;
                 margin-left: -50px;
             }
-            .age{
+
+            .age {
                 width: 300px;
                 height: 35px;
                 border: 2px gray solid;
                 border-radius: 5px;
                 margin-left: 5px;
             }
+
             .repeatPassword {
                 width: 300px;
                 height: 35px;
