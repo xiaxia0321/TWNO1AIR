@@ -283,7 +283,8 @@ export default {
             editedItemValue: "",
             editMode: false,
             selectedCity: "",
-            suggestedItems: []
+            suggestedItems: [],
+            sensitiveWords: ["刀", "knife", "槍", "gun", "rifle", "火", "lighter", "酒", "棒", "桿", "棍", "架", "彈", "油", "殺", "毒", "酸", "鹼", "炸", "肉", "果", "魚", "蛋", "盜"],
         }
     },
     props: {
@@ -353,6 +354,18 @@ export default {
         //清單
         addItem() {
             if (this.newItem.trim() !== "") {
+                // 檢查是否包含敏感詞
+                if (this.sensitiveWords.some(word => this.newItem.includes(word))) {
+                    // 如果包含敏感詞，顯示提醒
+                    const confirmed = window.confirm("請注意，此物品包含敏感詞。確定要加入清單嗎？");
+                    if (!confirmed) {
+                        // 如果使用者取消，清空輸入
+                        this.newItem = "";
+                        return;
+                    }
+                }
+
+                // 如果不包含敏感詞，加入清單
                 this.checklist.push(this.newItem);
                 this.checkedItems.push(false);
                 this.newItem = "";
@@ -410,7 +423,7 @@ export default {
             // 将建议物品添加到清单
             this.checklist.push(item);
             this.checkedItems.push(false);
-        }
+        },
     },
 }
 </script>
@@ -534,7 +547,10 @@ export default {
                 <h1><img src="./圖片/calender_aseru_woman.png" class="forget">出發前檢查一下……有什麼東西忘了吧！<img
                         src="./圖片/jikan_tobu_man.png" class="forget"></h1><br>
 
-
+                <input v-model="newItem" placeholder="Add new item">
+                <button @click="addItem">增加選項</button>
+                <button @click="toggleEditMode">修改選項</button>
+                <button @click="clearChecked">清除勾選</button><br>
                 <select v-model="selectedCity" @change="updateSuggestedItems">
                     <option value="">請選擇您的目的地</option>
                     <option value="San Francisco">舊金山</option>
@@ -566,11 +582,28 @@ export default {
                         <input type="text" v-model="checklist[index]" v-show="editMode">
                         <button @click="removeItem(index)">移除</button>
                     </li>
-                </ul><br>
-                <input v-model="newItem" placeholder="Add new item">
-                <button @click="addItem">增加選項</button>
-                <button @click="toggleEditMode">修改選項</button>
-                <button @click="clearChecked">清除勾選</button>
+                </ul>
+
+                <h5>想知道有那些東西是違禁品或需要申報請參考以下文章：</h5>
+                <a href="https://www.callcarbar.com.tw/10290/departure_0218"  target="_blank">違禁品</a>、<a href="https://www.edh.tw/lohas/article/31229"  target="_blank">申報</a>
+
+                <!-- <ul>
+                    <li v-for="(item, index) in checklist" :key="index" :class="{ 'edit-mode': editMode }">
+                        <input type="checkbox" v-model="isChecked[index]" v-show="!editMode">
+                        <span v-show="!editMode">{{ item }}</span>
+                        <input type="text" v-model="checklist[index]" v-show="editMode">
+                        <button @click="removeItem(index)">移除</button>
+                    </li>
+                </ul> -->
+
+                <!-- <div>
+                    <h2>已完成事項：</h2>
+                    <ul>
+                        <li v-for="(isChecked, index) in checkedItems" :key="index" v-if="isChecked">
+                            {{ checklist[index] }}
+                        </li>
+                    </ul>
+                </div> -->
             </div>
         </div>
     </div>
@@ -745,14 +778,18 @@ tr {
 ul {
     list-style: none;
     padding: 0;
-    display: inline-block;
+    //display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 li {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin: 5px;
     justify-content: space-between;
+    flex-basis: 18%;
 }
 
 input[type="checkbox"] {
@@ -772,5 +809,9 @@ input[type="checkbox"] {
     .checked {
         border-right: 5px;
     }
+}
+
+.Contraband {
+    width: 1080px;
 }
 </style>
