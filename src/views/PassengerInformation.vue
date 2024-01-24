@@ -3,12 +3,7 @@
 export default {
   data() {
     return {
-      selectedYear: "",
-      selectedMonth: "",
-      selectedDay: "",
-      years: Array.from({ length: 100 }, (_, index) => new Date().getFullYear() - index),
-      months: Array.from({ length: 12 }, (_, index) => index + 1),
-      days: Array.from({ length: 31 }, (_, index) => index + 1),
+      planeArr: [1],
     };
   },
   methods: {
@@ -35,13 +30,17 @@ export default {
       <i class="fa-solid fa-arrow-left arrow cc" @click="back"></i>
     <h2>旅客資訊</h2>
     </div>
-    <div class="mid">
-      <div class="m1">
+    <div class="mid" v-for="(item, index) in planeArr[0]" :key="index">
+      <div class="m1" >
         <h3>成人</h3>
       </div>
 
       <div class="m2">
         <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
+        <input type="checkbox">
+        <label>同會員資訊</label>
+        <br>
+        <br>
         <div class="form-floating mb-3">
           <select
             class="form-select aa"
@@ -63,23 +62,10 @@ export default {
           <input type="text" class="form-control" placeholder="" />
           <label>名字</label>
         </div>
-       <br>
-        <span>年：</span>
-        <select v-model="selectedYear" id="year" name="year" class="Birthday">
-          <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
-        </select>
-
-        <span>月：</span>
-        <select v-model="selectedMonth" id="month" name="month" class="Birthday">
-          <option v-for="month in months" :key="month" :value="month">{{ month }}</option>
-        </select>
-
-        <span>日：</span>
-        <select v-model="selectedDay" id="day" name="day" class="Birthday">
-          <option v-for="day in days" :key="day" :value="day">{{ day }}</option>
-        </select>
-        <br>
-        <br>
+        <div class="form-floating mb-3 bb">
+          <input type="date" class="form-control" placeholder="" />
+          <label>生日</label>
+        </div>
         <div class="form-floating mb-3 bb">
           <input type="text" class="form-control" placeholder="" />
           <label>聯絡人</label>
@@ -181,6 +167,9 @@ export default {
       text-align: justify;
       // display: flex;
       // justify-content: center;
+      span{
+        font-size: 24px;
+      }
       .aa {
         width: 30%;
       }
@@ -188,7 +177,7 @@ export default {
         width: 60%;
       }
       .Birthday {
-        width: 25%;
+        width: 60%;
         height: 8vh;
       }
     }

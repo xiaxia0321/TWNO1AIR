@@ -39,8 +39,8 @@ export default {
     data-bs-target="#exampleModal1"
     v-if="this.arrivalLocation === ''"
   >
-  <span style="font-size: 26px; color:#794425">目的地　</span>
-    <span style="font-size: 0.8rem; color:#08202D;">請選擇目的地</span>
+  <span style="font-size: 2.75rem; color:#794425"></span>
+    <span style="font-size: 1.75rem; color:#08202D;">請選擇目的地</span>
   </button>
 <!-- ===============按鈕=========== -->
 <button
@@ -50,8 +50,8 @@ export default {
     data-bs-target="#exampleModal1"
     v-else
   >
-    <span style="font-size: 2.25rem; color:#794425;">{{this.AA}}</span>
-    <span style="font-size: 0.75rem; color:#08202D;">{{this.arrivalLocation}}</span>
+    <span style="font-size: 3rem; color:#794425;">{{this.AA}}</span>
+    <span style="font-size: 1.75rem; color:#08202D;">{{this.arrivalLocation}}</span>
   </button>
 <!-- ===============按鈕=========== -->
   <!-- Modal -->
@@ -173,8 +173,8 @@ export default {
 
 <style scoped lang="scss">
 .dd{
-  width: 17vw;
-  height: 10vh;
+  width: 27vw;
+  height: 12vh;
   background-color: rgba(0, 0, 0, 0);
   display: flex;
   justify-content: center;

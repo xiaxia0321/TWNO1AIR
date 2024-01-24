@@ -196,7 +196,7 @@ export default {
       ">即刻搜尋，數個航班等待您發現。</p>
       </div>
       <div class="search" style="width: 90%; height: 30%; ">
-        <!-- <div class="place gogo" name="出發地" style="border-radius: 15px 0 0 15px ;">
+        <div class="place gogo" name="出發地" style="border-radius: 15px 0 0 15px ;">
           <label for="" class="lab">
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
               <n-button style="font-size: 1.4rem;">出發地 : {{ this.start }}</n-button>
@@ -219,14 +219,14 @@ export default {
             <input type="date" name="" v-model="selectedDate" :min="this.today" @change="updateMinDate" class="span2"
               :v-model="planeSearchArr.departureDate">
           </label>
-        </div> -->
-        <!-- <div class="program" name="抵達日期">
+        </div>
+        <div class="program" name="抵達日期">
           <label type="button" style="border-radius:0 15px 15px 0;">
             <span class="span1">抵達日期</span>
             <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" :disabled="!minDateHave" class="span2"
               :v-model="planeSearchArr.arrivalDate">
           </label>
-        </div> -->
+        </div>
         <button class="searchBu" @click="goSearch">前往搜尋</button>
       </div>
 
@@ -496,12 +496,14 @@ export default {
           flex-direction: row;
           padding: 0;
           margin: 0;
+
           .ii {
             margin-left: 1rem;
+
             &:hover {
               background-color: rgba(255, 255, 255, 0.354);
             }
-            
+
             &:active {
               background-color: rgba(161, 29, 29, 0.861);
             }
@@ -626,11 +628,13 @@ export default {
         color: white;
         font-size: 1.5rem;
         font-weight: 600;
-        &:hover{
+
+        &:hover {
           font-size: 2rem;
           background-color: rgba(255, 255, 255, 0.401);
         }
-        &:active{
+
+        &:active {
           background-color: rgba(0, 0, 0, 0.194);
 
         }
@@ -665,16 +669,18 @@ export default {
         width: 280px;
         height: 14vh;
         // border: 1px solid rgb(231, 0, 231);
-        box-shadow: 1.2px 2px 3px 1px #000000;
+        // box-shadow: 1.2px 2px 3px 1px #000000;
         display: flex;
         margin: 0 0% 5% 0;
         border-radius: 10px;
         transition: .5s;
+        background-color: white;
+        color: black;
 
         &:hover {
           // width: 70%;
-          background-color: rgba(130, 157, 238, 0.15);
-          box-shadow: 2px 1px 2px black;
+          background-color: rgb(250, 163, 146);
+          box-shadow: 2px 1px 2px rgb(255, 212, 212);
         }
 
         &:active {
@@ -686,7 +692,7 @@ export default {
         .img {
           width: 7vw;
           height: 100%;
-          background-color: rgba(0, 255, 255, 0.271);
+          // background-color: rgba(0, 255, 255, 0.271);
           background-size: cover;
           border-radius: 10px 0 0 10px;
         }
@@ -713,7 +719,7 @@ export default {
       .blockN {
 
         &:hover {
-          background-color: #0F2D3C;
+          background-color: white;
           // width: 70%;
           transition: .5s;
 

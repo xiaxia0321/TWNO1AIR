@@ -43,7 +43,6 @@ export default {
     <div class="top">
       <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
     <h2>產品明細</h2>
-    <br>
     <h3>航班資訊</h3>
     </div>
     <div class="mt1"><span>經濟艙</span></div>
@@ -54,7 +53,8 @@ export default {
     <p class="time">14:45</p>
     <p class="nationbk">TPE</p>
     <p>臺灣桃園國際機場</p>
-    <p>第1航廈</p>
+    <p>第{{}}航廈</p>
+    <p>座位: {{  }}</p>
     </div>
     <div class="m2"><i class="fa-solid fa-arrow-right"></i></div>
     <div class="m3">
@@ -63,19 +63,9 @@ export default {
     <p class="time">17:55</p>
     <p class="nationbk">FUK</p>
     <p>福岡機場</p>
-    <p>第1航廈</p>
+    <p>第{{}}航廈</p>
     </div>
     </div>
-    
-    
-
-    <!-- <div class="mt2"></div>
-    <div class="mid2">
-    <div class="m1"></div>
-    <div class="m2"></div>
-    <div class="m3"></div>
-    </div> -->
-    
 
     </div>
     <div class="big1">
@@ -134,7 +124,7 @@ export default {
 
 .big{
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   background-color: #161a30;
   .top{
   width: 100vw;
@@ -146,12 +136,12 @@ export default {
   .arrow{
     font-size: 24px;
     color: #f8c68a;
-
+    margin-bottom: 10px;
   }
 }
 //第一張票區
 .mt1{
-  width: 90vw;
+  width: 80vw;
   height: 5vh;
   background-color: rgb(90, 90, 90);
   margin: 0 auto;
@@ -163,69 +153,74 @@ export default {
   border-top-left-radius: 10px; /* 設置左上角為圓形導角 */
   border-top-right-radius: 10px; /* 設置右上角為圓形導角 */
   span{
-    margin-left: 10px;
+    margin-left: 40px;
   }
 }
 .mid1{
-  width: 90vw;
-  height: 25vh;
+  width: 80vw;
+  // height: 25vh;
+  height: 50vh;
   background-color: salmon;
   margin: 0 auto;
   display: flex;
   
   .m1{
-    width: 20%;
-    height: 100%;
+    width: 40%;
+    height: 110%;
     text-align: justify;
     background-color: #ffeeda;
     .time{
-      font-size: 24px;
+      font-size: 36px;
       letter-spacing: 2px;
       color: #794425;
 
     }
     .nationbk{
-      font-size: 24px;
+      font-size: 36px;
       letter-spacing: 2px;  
     }
     p{
   margin: 0;
-  line-height: 1.2;
-  margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 10px;
+  line-height: 1.1;
+  margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    font-size: 24px;
 }
   }
   .m2{
-    width: 60%;
-    height: 100%;
+    width: 20%;
+    height: 110%;
     background-color: #ffeeda;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 120px;
+    // background-color: #161a30;
     }
   .m3{
-    width: 20%;
-    height: 100%;
+    width: 40%;
+    height: 110%;
     text-align: right;
     background-color: #ffeeda;
     .time{
-      font-size: 24px;
+      font-size: 36px;
       letter-spacing: 2px;
       color: #794425;
+
     }
     .nationbk{
-      font-size: 24px;
+      font-size: 36px;
       letter-spacing: 2px;  
     }
     p{
   margin: 0;
-  line-height: 1.2;
-  margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 10px;
-}
+  line-height: 1.1;
+  margin-top: 20px;
+    margin-bottom: 15px;
+    margin-right: 40px;
+    font-size: 24px;
+    }
   }
 }
 //第一張票區

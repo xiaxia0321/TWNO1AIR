@@ -49,10 +49,6 @@ export default {
           <input type="text" name="" placeholder="請輸入帳號" id=""
           v-model="accountININ">
         </div>
-        <div class="no">
-          <span>會員密碼 : </span>
-          <input type="text" name="" placeholder="暫未開放此功能" id="" disabled>
-        </div>
         <!-- <div class="no">
           <span>會員編號 : </span>
           <input type="text" name="" placeholder="請輸入ID" id="" v-model="userId">
@@ -76,7 +72,6 @@ export default {
           <tr>
             <th class="b1 bb">ID</th>
             <th class="no bb">帳號</th>
-            <th class="place bb">密碼</th>
             <th class="place bb">信箱</th>
             <th class="date bb">帳戶名稱</th>
             <th class="date bb">手機號碼</th>
@@ -85,7 +80,6 @@ export default {
           <tr v-for="(item, index) in user" :key="index">
             <td class="bb">{{ item.userId }}</td>
             <td class="bb">{{ item.account }}</td>
-            <td class="bb">保密</td>
             <td class="bb">{{ item.email }}</td>
             <td class="bb">{{ item.name }}</td>
             <td class="bb">{{ item.phone }}</td>

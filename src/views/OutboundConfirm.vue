@@ -5,18 +5,19 @@ import counter from '../stores/counter'
 export default {
   data() {
     return {
-      departureLocation:"",//出發地地名
-      arrivalLocation:"",//抵達地地名
-      DA:"",//出發機場縮寫
-      AA:"",//抵達機場縮寫
-      aircraftNumber:"",//機號
-      departureDate:"",//出發日期
-      arrivalDate:"",//抵達日期
-      departureTime:"",//出發時間
-      arrivalTime:"",//抵達時間
-      totalTime:"",//總花費時間
-      classType:"",//艙等
-      price:"",//價錢
+      // departureLocation:"",//出發地地名
+      // arrivalLocation:"",//抵達地地名
+      // DA:"",//出發機場縮寫
+      // AA:"",//抵達機場縮寫
+      // aircraftNumber:"",//機號
+      // departureDate:"",//出發日期
+      // arrivalDate:"",//抵達日期
+      // departureTime:"",//出發時間
+      // arrivalTime:"",//抵達時間
+      // totalTime:"",//總花費時間
+      // classType:"",//艙等
+      // price:"",//價錢
+      planeArr: [],
     };
   },
   methods: {
@@ -28,7 +29,7 @@ export default {
         },
   },
   computed: {
-    ...mapState(counter,['planeArr'])
+    ...mapState(counter, ["plane", 'planeSearchArr'])
   },
 };
 </script>
@@ -49,31 +50,32 @@ export default {
       <p>
         5.如於班機起飛前24小時內購買頭等艙票價產品，餐點可能無法完全滿足，我們仍將盡力協助提供完整之頭等艙餐食。
       </p>
-      <h2>去程： <span>{{ planeArr.departureLocation }}</span> - <span>{{ planeArr.arrivalLocation }}</span></h2>
+      <h2>去程： <span>{{ item.departureLocation }}</span> - <span>{{ item.arrivalLocation }}</span></h2>
     </div>
     <div class="date">
-      <span>1月18日周四</span>
+      <span>{{item.departureDate}}</span>
     </div>
     <div class="mid">
       <div class="m1">
         <div class="a1">
           <p class="p1">JX0840</p>
-          <p class="p1">2024年1月18日</p>
-          <p class="time">07:45</p>
-          <p class="nation">TPE</p>
+          <p class="p1">{{item.departureDate}}</p>
+          <p class="time">{{ item.depatureTime }}</p>
+          <p class="nation">{{ item.da }}</p>
         </div>
         <div class="a2"><i class="fa-solid fa-arrow-right"></i></div>
         <div class="a3">
           <p class="p1">2 小時 30 分鐘</p>
-          <p class="p1">2024年1月18日</p>
-          <p class="time">11:00</p>
-          <p class="nation">FUK</p>
+          <p class="p1">{{ item.arrivalDate}}</p>
+          <p class="time">{{ item.arriveTime
+            }}</p>
+          <p class="nation">{{ item.aa }}</p>
         </div>
       </div>
       <div class="m2">
         <h3>經濟艙</h3>
         <span>TWD</span>
-        <span class="money">19,608</span>
+        <span class="money">{{19,608}}</span>
         <span>起</span>
       </div>
     </div>
@@ -190,7 +192,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 120px;
+        font-size: 60px;
       }
       .a3 {
         width: 20%;

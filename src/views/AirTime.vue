@@ -15,7 +15,6 @@ export default {
       // arriveTime:"",//抵達時間
       // // totalTime:"",//總花費時間
       planeArr: [],
-
     };
   },
   computed: {
@@ -99,6 +98,7 @@ export default {
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <div class="body">
     <div class="big" v-for="(item, index) in planeArr" :key="index">
+    <!-- <div class="big"> -->
 
       <div class="header1">
         <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
@@ -183,12 +183,15 @@ export default {
 
 
     <div class="bottom">
-      <span style="font-size: 3.5rem;" @click="searchPlane">注意事項 >點此顯示搜尋結果</span style="font-size: 4rem;">
+      <span style="font-size: 3.5rem;">注意事項</span>
+        
       <br />
-      <p>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</p>
-      <p>
+      <span>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</span>
+      <br>
+      <span>
         樂狗航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂狗航空客服中心。
-      </p>
+      </span>
+      <span class="show" @click="searchPlane" style="font-size: 2.5rem;">點此顯示搜尋結果</span>
     </div>
   </div>
 </template>
@@ -364,12 +367,12 @@ export default {
 .bottom {
   width: 100vw;
   height: 30vh;
-  padding: 30px;
+  padding: 0 0 0 30px;
   background-color: #31304d;
   color: white;
   text-align: justify;
-
-  span {
+  .show {
+    margin: 0 0 0 60px;
     cursor: pointer;
     &:hover{
       color:#f8c68a ;
