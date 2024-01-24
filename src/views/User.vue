@@ -357,7 +357,7 @@ export default {
                 // 檢查是否包含敏感詞
                 if (this.sensitiveWords.some(word => this.newItem.includes(word))) {
                     // 如果包含敏感詞，顯示提醒
-                    const confirmed = window.confirm("請注意，此物品包含敏感詞。確定要加入清單嗎？");
+                    const confirmed = window.confirm("請注意，此物品包含可能是違禁品的敏感詞。確定要加入清單嗎？");
                     if (!confirmed) {
                         // 如果使用者取消，清空輸入
                         this.newItem = "";
@@ -551,7 +551,7 @@ export default {
                 <button @click="addItem">增加選項</button>
                 <button @click="toggleEditMode">修改選項</button>
                 <button @click="clearChecked">清除勾選</button><br>
-                <select v-model="selectedCity" @change="updateSuggestedItems">
+                <select v-model="selectedCity" @change="updateSuggestedItems" class="lo">
                     <option value="">請選擇您的目的地</option>
                     <option value="San Francisco">舊金山</option>
                     <option value="Los Angeles">洛杉磯</option>
@@ -585,25 +585,8 @@ export default {
                 </ul>
 
                 <h5>想知道有那些東西是違禁品或需要申報請參考以下文章：</h5>
-                <a href="https://www.callcarbar.com.tw/10290/departure_0218"  target="_blank">違禁品</a>、<a href="https://www.edh.tw/lohas/article/31229"  target="_blank">申報</a>
-
-                <!-- <ul>
-                    <li v-for="(item, index) in checklist" :key="index" :class="{ 'edit-mode': editMode }">
-                        <input type="checkbox" v-model="isChecked[index]" v-show="!editMode">
-                        <span v-show="!editMode">{{ item }}</span>
-                        <input type="text" v-model="checklist[index]" v-show="editMode">
-                        <button @click="removeItem(index)">移除</button>
-                    </li>
-                </ul> -->
-
-                <!-- <div>
-                    <h2>已完成事項：</h2>
-                    <ul>
-                        <li v-for="(isChecked, index) in checkedItems" :key="index" v-if="isChecked">
-                            {{ checklist[index] }}
-                        </li>
-                    </ul>
-                </div> -->
+                <a href="https://www.callcarbar.com.tw/10290/departure_0218" target="_blank">違禁品</a>、<a
+                    href="https://www.edh.tw/lohas/article/31229" target="_blank">申報</a>
             </div>
         </div>
     </div>
@@ -789,7 +772,7 @@ li {
     align-items: center;
     margin: 5px;
     justify-content: space-between;
-    flex-basis: 18%;
+    flex-basis: 22.5%;
 }
 
 input[type="checkbox"] {
@@ -813,5 +796,9 @@ input[type="checkbox"] {
 
 .Contraband {
     width: 1080px;
+}
+
+.lo {
+    margin-top: 5px;
 }
 </style>
