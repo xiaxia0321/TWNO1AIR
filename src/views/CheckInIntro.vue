@@ -186,6 +186,7 @@ export default {
     -moz-column-gap: 5px;
     column-gap: 5px;
     width: 100vw;
+    background-color: rgb(22, 26, 48);
 }
 
 .footer {

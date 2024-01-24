@@ -12,6 +12,8 @@ export default defineStore("counter", {
                 getArrivalLocation: '',
                 getDepartureLocation: '',
                 getAccount:'',
+                getArriveTime:'',
+                getDepatureTime:'',
             },
             OrderArr: {
             },
@@ -22,6 +24,8 @@ export default defineStore("counter", {
                 getArrivalLocation: '',
                 getDepartureLocation: '',
                 getAccount:'',
+                getArriveTime:'',
+                getDepatureTime:'',
             },
             plane: {
                 departureDate: "", //出發日期
@@ -40,7 +44,6 @@ export default defineStore("counter", {
                 arriveTime: "", //抵達時間
                 price: "", //價錢
                 seat: "", //座位
-
             },
             planeArr:{
 

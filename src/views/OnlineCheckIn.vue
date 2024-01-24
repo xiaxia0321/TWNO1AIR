@@ -1,18 +1,26 @@
 <script>
 import Swal from 'sweetalert2'
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
+import axios from 'axios';
 export default {
     data() {
         return {
+            OrderArr: {
+            },
         }
     },
-    methods:{
+    computed: {
+        ...mapState(counter, ['OrderSearchArr'])
+    },
+    methods: {
         goOnlineCheckInTwo() {
-            let ticketNumber = document.getElementById("ticketNumber")
-            let surname = document.getElementById("surname")
-            let givenName = document.getElementById("givenName")
+            let account = document.getElementById("account")
+            let departureLocation = document.getElementById("departureLocation")
+            let arrivalLocation = document.getElementById("arrivalLocation")
             let checkbox = document.getElementById("checkbox")
             console.log(checkbox.value);
-            if (ticketNumber.value == "" || surname.value == "" || givenName.value == "" ) {
+            if ( account.value == "" || departureLocation.value == "" || arrivalLocation.value == "") {
                 console.log("xxx")
                 Swal.fire({
                     icon: "error",
@@ -20,24 +28,40 @@ export default {
                 })
                 return
             }
-            if ( checkbox.value == "on" ) {
+            if (checkbox.checked == false) {
                 Swal.fire({
                     icon: "error",
                     text: "你尚未勾選隱私保護政策"
                 })
             } else {
-                // Swal.fire({
-                //     icon: "success",
-                //     text: "你已經註冊成功",
-                //     showConfirmButton: true,
-                // })
                 this.$router.push('/OnlineCheckInTwo')
             }
-            ticketNumber.value = "";
-            surname.value = "";
-            givenName.value = "";
-            checkbox.value = "";
+            // account.value = "";
+            // departureLocation.value = "";
+            // arrivalLocation.value = "";
+            // checkbox.value = "";
         },
+        searchOrder() {
+            axios({
+                url: 'http://localhost:8080/order/search',
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    arrival_date: this.OrderSearchArr.getArrivalDate,
+                    departure_date: this.OrderSearchArr.getDepartureDate,
+                    arrival_location: this.OrderSearchArr.getArrivalLocation,
+                    departure_location: this.OrderSearchArr.getDepartureLocation,
+                    account: this.OrderSearchArr.getAccount,
+                },
+            })
+                .then(res => this.OrderArr = res.data.orderList)
+            console.log(this.OrderArr);
+        },
+    },
+    mounted(){
+        this.searchOrder()
     }
 }
 </script>
@@ -46,16 +70,17 @@ export default {
         <div class="content">
             <h2>線上報到</h2>
             <div class="checkInBox">
-                <label for="">姓名</label>
-                <input type="text" name="" id="ticketNumber" placeholder="請輸入正確名稱">　　　　
-                <label for="">姓氏</label>
-                <input type="text" name="" id="surname">　　　　
-                <label for="">名字</label>
-                <input type="text" name="" id="givenName">
+                <label for="" style="margin-left: 20px;">會員帳號</label>
+                <input type="text" name="" id="account" placeholder="" v-model="OrderSearchArr.getAccount">　　
+                <label for="">出發地</label>
+                <input type="text" name="" id="departureLocation" placeholder="" v-model="OrderSearchArr.getDepartureLocation">　　
+                <label for="">抵達地</label>
+                <input type="text" name="" id="arrivalLocation" v-model="OrderSearchArr.getArrivalLocation">　　
                 <br><br>
                 <hr style="border: 2px solid gray;width: 900px;margin-left: 140px;">
                 <br>
-                <input type="checkbox" style="width: 20px;height: 20px;position: absolute;top: 54.5%;left: 34%;" id="checkbox">
+                <input type="checkbox" style="width: 20px;height: 20px;position: absolute;top: 62.7%;left: 34%;"
+                    id="checkbox">
                 <span>提供本人資訊，代表本人確認且接受樂狗航空隱私保護政策</span>
                 <button type="button" @click="goOnlineCheckInTwo">確認</button>
             </div>
@@ -72,14 +97,14 @@ export default {
         height: 100vh;
         background-color: rgb(22, 26, 48);
         box-sizing: border-box;
-        padding-top: 100px;
+        padding-top: 180px;
         padding-left: 150px;
 
         h2 {
             color: white;
             position: absolute;
             left: 11%;
-            top: 24%;
+            top: 26%;
         }
 
         .checkInBox {
@@ -88,7 +113,7 @@ export default {
             background-color: rgb(240, 236, 229);
             border-radius: 20px;
             box-sizing: border-box;
-            padding-top: 60px;
+            padding-top: 90px;
             border: 2px solid gray;
 
             label {
@@ -98,11 +123,11 @@ export default {
             input {
                 width: 200px;
                 height: 40px;
-                background-color: rgb(240, 236, 229);
                 border-radius: 5px;
                 border: 2px solid gray;
             }
-            button{
+
+            button {
                 box-shadow: none;
                 border-radius: 15px;
                 width: 120px;
@@ -111,8 +136,10 @@ export default {
                 background-color: rgb(108, 95, 91);
                 position: absolute;
                 left: 75%;
-                top: 63%;
+                top: 68%;
+                color: white;
             }
         }
     }
-}</style>
+}
+</style>

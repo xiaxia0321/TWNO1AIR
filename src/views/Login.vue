@@ -61,7 +61,7 @@ export default {
     },
     show() {
       this.showPassword = !this.showPassword
-    }
+    },
     // search() {
     //   console.log(this.userData);
     //   fetch('http://localhost:8080/user/search', {
@@ -129,13 +129,13 @@ export default {
       <div class="right">
         <h2><b>登入</b></h2>
         <br>
-        <span><b>姓名：</b></span><br>
+        <span><b>會員帳號：</b></span><br>
         <input type="text" class="input" id="account" v-model="this.account"><br>
         <span><b>密碼：</b></span><br>
         <!-- <input type="password" class="input" id="password" :type="showPassword ? 'text' : 'password'" v-model="password"><br>
         <i class="fa-solid fa-eye eye" @click="show()" v-show="showPassword"></i>
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i> -->
-        <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
+        <input type="password" class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
         <button type="button" class="login" @click="login()">登入</button>
