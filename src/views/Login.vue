@@ -43,7 +43,7 @@ export default {
               })
               this.$router.push('/User');
               // $cookies.set("account", this.account)
-            } 
+            }
             else {
               Swal.fire({
                 icon: "error",
@@ -52,14 +52,14 @@ export default {
             }
           })
       }
-      else{
+      else {
         Swal.fire({
-                icon: "error",
-                text: "帳號或密碼未輸入",
-              })
+          icon: "error",
+          text: "帳號或密碼未輸入",
+        })
       }
     },
-    show(){
+    show() {
       this.showPassword = !this.showPassword
     }
     // search() {
@@ -135,9 +135,9 @@ export default {
         <!-- <input type="password" class="input" id="password" :type="showPassword ? 'text' : 'password'" v-model="password"><br>
         <i class="fa-solid fa-eye eye" @click="show()" v-show="showPassword"></i>
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i> -->
-        <input :type="showPassword ? 'text' : 'password'" class="inputClass" v-model="loginPassword">
-                <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
-                <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
+        <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
+        <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
+        <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
         <button type="button" class="login" @click="login()">登入</button>
       </div>
     </div>
@@ -202,16 +202,18 @@ export default {
   height: 40px;
   border: none;
 }
-.fa-eye{
+
+.fa-eye {
   position: absolute;
   left: 75%;
   top: 59%;
   color: rgb(49, 48, 77);
-  }
-  .fa-eye-slash{
+}
+
+.fa-eye-slash {
   position: absolute;
   left: 75%;
   top: 59%;
   color: rgb(49, 48, 77);
-  }
+}
 </style>
