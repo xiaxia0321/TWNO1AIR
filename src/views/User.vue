@@ -45,7 +45,7 @@ export default {
         flights: Array, // 機票數據陣列
     },
     computed: {
-        // 表格部分
+        //表格部分
         totalRows() {
             return this.flights.length;
         },
@@ -60,50 +60,50 @@ export default {
         ...mapState(counter, ['user'])
     },
     methods: {
-        // searchUser() {
-        //     axios({
-        //         url: 'http://localhost:8080/user/search',
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         data: {
-        //             userName: this.user.userName,
-        //             birthday: this.user.birthday,
-        //             age: this.user.age,
-        //             phone: this.user.phone,
-        //             email: this.user.email,
-        //             order_id: this.OrderSearchArr.getOrderId,
-        //             arrival_date: this.OrderSearchArr.getArrivalDate,
-        //             departure_date: this.OrderSearchArr.getDepartureDate,
-        //             arrival_location: this.OrderSearchArr.getArrivalLocation,
-        //             departure_location: this.OrderSearchArr.getDepartureLocation,
-        //             account: this.OrderSearchArr.getAccount,
-        //         },
-        //     })
-        //         .then(res => this.uerArr = res.data.userList)
-        //     console.log(this.userArr);
-        // },
-        // search() {
-        //     console.log(this.searchData);
-        //     fetch('http://localhost:8080/user/search', {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //             quiz_name: this.searchData.quizName,
-        //             startdate: this.searchData.startdate,
-        //             enddate: this.searchData.enddate
-        //         })
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             this.quizList = data.quizList
-        //             console.log(this.quizList)
-        //         })
-        //         .catch(error => console.log(error))
-        // },
+        searchUser() {
+            axios({
+                url: 'http://localhost:8080/user/search',
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    userName: this.user.userName,
+                    birthday: this.user.birthday,
+                    age: this.user.age,
+                    phone: this.user.phone,
+                    email: this.user.email,
+                    order_id: this.OrderSearchArr.getOrderId,
+                    arrival_date: this.OrderSearchArr.getArrivalDate,
+                    departure_date: this.OrderSearchArr.getDepartureDate,
+                    arrival_location: this.OrderSearchArr.getArrivalLocation,
+                    departure_location: this.OrderSearchArr.getDepartureLocation,
+                    account: this.OrderSearchArr.getAccount,
+                },
+            })
+                .then(res => this.uerArr = res.data.userList)
+            console.log(this.userArr);
+        },
+        search() {
+            console.log(this.searchData);
+            fetch('http://localhost:8080/user/search', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    quiz_name: this.searchData.quizName,
+                    startdate: this.searchData.startdate,
+                    enddate: this.searchData.enddate
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    this.quizList = data.quizList
+                    console.log(this.quizList)
+                })
+                .catch(error => console.log(error))
+        },
         user(im) {
             if (im === '旅客資料') {
                 this.data = true
@@ -238,25 +238,19 @@ export default {
                     <span>姓名</span>
                     <input class="data" type="text" id="name" v-model="userInfo.name"><br>
                     <span>生日</span>
-                    <input class="data D" type="date" id="age" v-model="userInfo.age"><br>
-                    <span>性別：</span>
-                    <label v-for="(option, index) in options" :key="index" class="option">
-                        <input type="radio" :value="option" v-model="userInfo.selectedOption" name="gender">
-                        {{ option }}
-                    </label>
+                    <input class="data D" type="date" id="birthday" v-model="userInfo.birthday"><br>
+                    <span>年齡</span>
                     <br>
-                    <span>國家</span>
-                    <select class="data" id="nation" v-model="userInfo.selectedCountry">
-                        <option v-for="country in countries" :key="country.code" :value="country.name">{{ country.name }}
-                        </option>
-                    </select><br>
+                    <input type="number" id="age" v-model="userInfo.age" style="border-radius: 10px;border: none;">
+                    <br>
                     <span>手機</span>
                     <input class="data" type="number" id="phone" v-model="userInfo.phone"><br>
                     <span>信箱</span>
                     <input class="data" type="email" id="email" v-model="userInfo.email"><br>
+                    <br><br>
                     <button type="button" @click="confirm('確認')">確認</button>
                 </div>
-                <div class="right" v-if="confirmationVisible">
+                <!-- <div class="right" v-if="confirmationVisible">
                     <span>姓名：</span><span class="option">{{ userInfo.name }}</span><br>
                     <hr>
                     <span>生日：</span><span class="option">{{ userInfo.birthday }}</span><br>
@@ -268,7 +262,7 @@ export default {
                     <span>信箱：</span><span class="option">{{ userInfo.email }}</span><br>
                     <hr>
                     <button type="button" @click="confirm('修改')">修改</button>
-                </div>
+                </div> -->
                 <div class="left1">
                     <img src="./圖片/chikyu_issyuu_travel.png" class="left">
                 </div>

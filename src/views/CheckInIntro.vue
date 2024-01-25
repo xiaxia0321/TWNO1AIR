@@ -1,9 +1,16 @@
 <script>
+import OnlineCheckInTwo from './OnlineCheckInTwo.vue';
+
 export default {
     data() {
         return {
         }
     },
+    methods:{
+        onlineCheckIn() {
+            this.$router.push('/OnlineCheckIn')
+        },
+    }
 }
 </script>
 <template>
@@ -13,7 +20,7 @@ export default {
         <label for="tab-1" style="font-size: 26px;">線上報到說明</label>
         <div class="tab-content">
             <p>請點選下方連結進行報到。</p>
-            <span>線上報到</span><i class="fa-solid fa-link"></i><a href=""></a>
+            <span @click="onlineCheckIn()">線上報到</span><i class="fa-solid fa-link" @click="onlineCheckIn()"></i><a href=""></a>
             <div class="bigCard">
                 <div class="card">
                     <img src="../../public/sabrina/線上報到1.jpeg" class="card-img-top" alt="">
@@ -176,7 +183,6 @@ export default {
         </div>
         <!--   tab group end -->
     </div>
-    <div class="footer"></div>
 </template>
 <style scoped lang="scss">
 .tabs {
@@ -188,20 +194,13 @@ export default {
     width: 100vw;
     background-color: rgb(22, 26, 48);
 }
-
-.footer {
-    width: 100vw;
-    height: 30vh;
-    background-color: rgb(49, 48, 77);
-}
-
 .tabs input[type=radio] {
     display: none;
 }
 
 .tabs input[type=radio]:checked+label {
     color: white;
-    background-color: rgb(49, 48, 77);
+    background-color: rgb(22, 26, 48);
     transform: translatey(1px);
 }
 

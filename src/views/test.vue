@@ -156,60 +156,48 @@ export default defineComponent({
         </div>
         <div class="attractions">
             <div class="attractionsOne">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                <div class="card" style="width: 26rem;height: 32rem;">
+                    <img src="../../public/sabrina/東京鐵塔.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">1958年誕生的東京鐵塔，高333m，當時超過了巴黎的艾菲爾鐵塔，是世界第一高的自立式鐵塔。因為位於東京中心部分的港區，能夠從展望台一覽東京的景色，至今仍然深受東京民眾喜愛的東京地標。令人印象深刻的紅白搭配是依據法律制定的配色，為了讓飛機駕駛在白天能夠清楚地看見鐵塔。而這具有影響力的存在，作為東京地標深受東京民眾喜愛。在2012年東京鐵塔將幾個電波塔機能轉交給東京晴空塔，現在還是有在發送廣播等電波。</p>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="../../public/sabrina/明治神宮.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="../../public/sabrina/淺草寺雷門.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
+            <br><br><br><br>
             <div class="attractionsTwo">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="../../public/sabrina/迪士尼.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="../../public/sabrina/吉卜力美術館.webp" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="../../public/sabrina/澀谷天空.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
@@ -219,6 +207,8 @@ export default defineComponent({
 <style>
 .main {
     background-color: rgb(22, 26, 48);
+    width: 100vw;
+    height: 200vh;
 
     .explore {
         width: 100vw;
@@ -282,17 +272,20 @@ export default defineComponent({
         justify-content: center; */
 
         .attractionsOne {
-            border: 3px solid white;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-evenly;
+            width: 100vw;
+            height: 40vh;
+            margin-bottom: 30px;
         }
+
         .attractionsTwo {
-            border: 3px solid white;
+            /* border: 3px solid white; */
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-top: 60px;
+            width: 100vw;
+            height: 40vh;
+            /* align-items: center; */
         }
     }
 }

@@ -1,4 +1,7 @@
 <script>
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
+import axios from 'axios';
 export default {
     data() {
         return {
