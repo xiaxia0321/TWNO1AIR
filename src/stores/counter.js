@@ -11,7 +11,7 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
-                getAccount:'',
+                getAccount: '',
             },
             OrderArr: {
             },
@@ -21,7 +21,7 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
-                getAccount:'',
+                getAccount: '',
             },
             plane: {
                 departureDate: "", //出發日期
@@ -42,10 +42,10 @@ export default defineStore("counter", {
                 seat: "", //座位
 
             },
-            planeArr:{
+            planeArr: {
 
             },
-            planeSearchArr:{
+            planeSearchArr: {
                 departureDate: "", //出發日期
                 arrivalDate: "", //抵達日期
                 departureLocation: "", //出發地
@@ -53,14 +53,26 @@ export default defineStore("counter", {
                 classType: "經濟艙;商務艙;頭等艙",
                 isOneway: false, //單程
             },
+            planeSearchCheack: {
+            },
+            MemberInformation: {
+
+            },
             user: {
-                userId:0,
-                account:'',
-                password:'',
-                email:'',
-                userName:'',
-                phone:'',
-                point:'',
+                userId: 0,
+                account: '',
+                password: '',
+                email: '',
+                userName: '', //用戶名稱
+                // title:'', //缺少稱謂
+                // lastName:'',//缺少用戶姓氏
+                // name:'',//缺少用戶名字
+                birthday: '',//生日
+                // contactPerson:'',//缺少聯絡人 可能不一定是自己
+                age: '',//年齡
+                phone: '', //手機
+                // homePhone:'',//缺少住家電話
+                point: '', //點數
             }
         }
 

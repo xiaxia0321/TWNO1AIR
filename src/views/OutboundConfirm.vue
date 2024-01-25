@@ -5,31 +5,22 @@ import counter from '../stores/counter'
 export default {
   data() {
     return {
-      // departureLocation:"",//出發地地名
-      // arrivalLocation:"",//抵達地地名
-      // DA:"",//出發機場縮寫
-      // AA:"",//抵達機場縮寫
-      // aircraftNumber:"",//機號
-      // departureDate:"",//出發日期
-      // arrivalDate:"",//抵達日期
-      // departureTime:"",//出發時間
-      // arrivalTime:"",//抵達時間
-      // totalTime:"",//總花費時間
-      // classType:"",//艙等
-      // price:"",//價錢
-      planeArr: [],
+      planeSearchCheack: [],
     };
   },
   methods: {
     back() {
-            this.$router.push("/AirTime"); //推送至下一頁的路徑
-        },
+      this.$router.push("/AirTime"); //推送至下一頁的路徑
+    },
     gogo() {
-            this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
-        },
+      this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
+    },
+    consslog() {
+      console.log(this.planeSearchCheack);
+    }
   },
   computed: {
-    ...mapState(counter, ["plane", 'planeSearchArr'])
+    ...mapState(counter, ["plane", 'planeSearchCheack'])
   },
 };
 </script>
@@ -38,7 +29,7 @@ export default {
   <div class="big">
     <div class="top">
       <i class="fa-solid fa-arrow-left arrow cc" @click="back"></i>
-      <h1>搜尋票價產品</h1>
+      <h1 @click="consslog()">搜尋票價產品</h1>
       <p>
         1.下述所顯示時間皆為當地時間，票價適用於目前選取的日期與航班，且為所有旅客購買的票價產品總價，包含機票票價、各項附加費與各地機場稅金等。
       </p>
@@ -50,33 +41,71 @@ export default {
       <p>
         5.如於班機起飛前24小時內購買頭等艙票價產品，餐點可能無法完全滿足，我們仍將盡力協助提供完整之頭等艙餐食。
       </p>
-      <h2>去程： <span>{{ item.departureLocation }}</span> - <span>{{ item.arrivalLocation }}</span></h2>
+      <h2>去程： <span>{{ departureLocation }}</span> - <span>{{ arrivalLocation }}</span></h2>
     </div>
     <div class="date">
-      <span>{{item.departureDate}}</span>
+      <span>{{ departureDate }}</span>
     </div>
     <div class="mid">
       <div class="m1">
         <div class="a1">
           <p class="p1">JX0840</p>
-          <p class="p1">{{item.departureDate}}</p>
-          <p class="time">{{ item.depatureTime }}</p>
-          <p class="nation">{{ item.da }}</p>
+          <p class="p1">{{ departureDate }}</p>
+          <p class="time">{{ depatureTime }}</p>
+          <p class="nation">{{ da }}</p>
         </div>
         <div class="a2"><i class="fa-solid fa-arrow-right"></i></div>
         <div class="a3">
           <p class="p1">2 小時 30 分鐘</p>
-          <p class="p1">{{ item.arrivalDate}}</p>
-          <p class="time">{{ item.arriveTime
-            }}</p>
-          <p class="nation">{{ item.aa }}</p>
+          <p class="p1">{{ arrivalDate }}</p>
+          <p class="time">{{ arriveTime }}</p>
+          <p class="nation">{{ aa }}</p>
         </div>
       </div>
       <div class="m2">
         <h3>經濟艙</h3>
         <span>TWD</span>
-        <span class="money">{{19,608}}</span>
+        <span class="money">{{ 19, 608 }}</span>
         <span>起</span>
+      </div>
+    </div>
+    <div class="choose">
+      <div class="c1">
+        <!-- <br> -->
+        <span class="s1">TWD</span>
+        <span class="s2">7,000</span>
+        <br>
+        <button type="">選擇</button>
+        <p>訂位艙等</p>
+        <p class="p1">{{ da }}-{{ aa }}: 經濟艙</p>
+        <p>預選座位</p>
+        <p class="p1">收費選位</p>
+        <p>托運行李</p>
+        <p class="p1">1件(每件23公斤)</p>
+      </div>
+      <div class="c2">
+        <span class="s1">TWD</span>
+        <span class="s2">14,000</span>
+        <br>
+        <button type="">選擇</button>
+        <p>訂位艙等</p>
+        <p class="p1">{{ da }}-{{ aa }}: 商務艙</p>
+        <p>預選座位</p>
+        <p class="p1">免費選位</p>
+        <p>托運行李</p>
+        <p class="p1">2件(每件32公斤)</p>
+      </div>
+      <div class="c3">
+        <span class="s1">TWD</span>
+        <span class="s2">87,000</span>
+        <br>
+        <button type="">選擇</button>
+        <p>訂位艙等</p>
+        <p class="p1">{{ da }}-{{ aa }}: 頭等艙</p>
+        <p>預選座位</p>
+        <p class="p1">免費選位</p>
+        <p>托運行李</p>
+        <p class="p1">3件(每件32公斤)</p>
       </div>
     </div>
   </div>
@@ -128,20 +157,23 @@ export default {
 <style scoped lang="scss">
 .big {
   width: 100vw;
-  height: 81vh;
+  // height: 81vh;
   // background-color: cadetblue;
   background-color: #31304d;
+
   .top {
     text-align: justify;
     padding: 0px 40px 0px 40px;
     background-color: #31304d;
     color: white;
     font-size: 14px;
+
     .cc {
       font-size: 24px;
       color: #f8c68a;
     }
   }
+
   .date {
     width: 95vw;
     height: 10vh;
@@ -153,16 +185,19 @@ export default {
     padding: 0px 0px 0px 20px;
     font-size: 24px;
   }
+
   .mid {
     width: 95vw;
     height: 20vh;
     background-color: #ffeeda;
     margin: 15px auto;
     display: flex;
+
     .time {
       font-size: 28px;
       color: #794425;
     }
+
     .m1 {
       width: 70%;
       height: 100%;
@@ -172,6 +207,7 @@ export default {
       p {
         margin: 0;
       }
+
       .a1 {
         width: 20%;
         height: 100%;
@@ -182,10 +218,12 @@ export default {
         .nation {
           font-size: 24px;
         }
+
         .p1 {
           font-size: 16px;
         }
       }
+
       .a2 {
         width: 60%;
         height: 100%;
@@ -194,20 +232,24 @@ export default {
         align-items: center;
         font-size: 60px;
       }
+
       .a3 {
         width: 20%;
         height: 100%;
         text-align: right;
         padding: 5px 20px 5px 0px;
         background-color: #ffeeda;
+
         .nation {
           font-size: 24px;
         }
+
         .p1 {
           font-size: 16px;
         }
       }
     }
+
     .m2 {
       width: 30%;
       height: 100%;
@@ -215,20 +257,73 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
+
       h3 {
         margin: 0;
       }
+
       span {
         font-size: 16px;
         margin: 0;
       }
+
       .money {
         font-size: 28px;
         color: #794425;
       }
     }
   }
+
+  .choose {
+    width: 95vw;
+    height: 50vh;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eedfcd;
+
+    button {
+      margin-top: 10px;
+      width: 250px;
+      height: 40px;
+      border-radius: 7px;
+      font-size: 20px;
+    }
+
+    .s1 {}
+
+    .s2 {
+      font-size: 32px;
+      color: #794425;
+    }
+
+    .p1 {
+      font-size: 20px;
+      color: #794425;
+    }
+
+    .c1 {
+      width: 25%;
+      height: 100%;
+      background-color: cadetblue;
+    }
+
+    .c2 {
+      width: 25%;
+      height: 100%;
+      background-color: #796052;
+    }
+
+    .c3 {
+      width: 25%;
+      height: 100%;
+      background-color: blue;
+    }
+  }
 }
+
 .bottom {
   width: 100vw;
   height: 85vh;
@@ -238,6 +333,7 @@ export default {
   color: white;
   font-size: 14px;
 }
+
 .bottom1 {
   width: 100vw;
   height: 10vh;
@@ -246,12 +342,14 @@ export default {
   color: #794425;
   z-index: 2;
   position: fixed;
-  span{
+
+  span {
     position: absolute;
     font-size: 24px;
-    right: 280px;
-    top: 15px;
+    right: 340px;
+    top: 20px;
   }
+
   button {
     position: absolute;
     right: 50px;

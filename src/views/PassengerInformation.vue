@@ -4,13 +4,46 @@ export default {
   data() {
     return {
       planeArr: [1],
+      MemberInformation:[],
     };
   },
   methods: {
-    gogo() {
-            this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
+    user() {
+      axios({
+        url: "http://localhost:8080/user/search",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        back() {
+        data: {
+          // title: this.user.title, //缺少稱謂
+          // lastName: this.user.lastName,//缺少用戶姓氏
+          // name: this.user.name,//缺少用戶名字
+          birthday: this.user.birthday, //生日
+          age: this.user.age, //年齡
+          // contactPerson: this.user.contactPerson,//缺少聯絡人
+          phone: this.user.phone, //手機
+          // homePhone: this.user.homePhone,//缺少住家電話
+        },
+      }).then((res) => console.log(res.data));
+      console.log(this.user);
+      (this.user = {
+        // title: "", //稱謂
+        // lastName: "", //用戶姓氏
+        // name: "", //用戶名字
+        birthday: "", //生日
+        // age: "", //年齡
+        // contactPerson: "", //聯絡人
+        phone: "", //手機
+        // homePhone: "", //住家電話
+
+      }),
+        this.$router.push("/ProductDetailed");
+    },
+    gogo() {
+      this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
+    },
+    back() {
       this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
     },
   },
@@ -28,19 +61,19 @@ export default {
   <div class="big">
     <div class="top">
       <i class="fa-solid fa-arrow-left arrow cc" @click="back"></i>
-    <h2>旅客資訊</h2>
+      <h2>旅客資訊</h2>
     </div>
     <div class="mid" v-for="(item, index) in planeArr[0]" :key="index">
-      <div class="m1" >
+      <div class="m1">
         <h3>成人</h3>
       </div>
 
       <div class="m2">
         <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
-        <input type="checkbox">
+        <input type="checkbox" />
         <label>同會員資訊</label>
-        <br>
-        <br>
+        <br />
+        <br />
         <div class="form-floating mb-3">
           <select
             class="form-select aa"
@@ -122,7 +155,7 @@ export default {
     </p>
   </div>
   <div class="bottom1">
-    <button @click="gogo">送出</button>
+    <button @click="user">送出</button>
   </div>
 </template>
 
@@ -167,7 +200,7 @@ export default {
       text-align: justify;
       // display: flex;
       // justify-content: center;
-      span{
+      span {
         font-size: 24px;
       }
       .aa {

@@ -22,23 +22,23 @@ export default {
   },
   methods: {
     searchPlane() {
-      axios({
-        url: "http://localhost:8080/airplainInfo/search",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      // axios({
+      //   url: "http://localhost:8080/airplainInfo/search",
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   data: {},
+      // }).then((res) => {
+      //   this.planeArr = res.data.airplainInfoList; //planeArr裡面塞資料庫所有航班
+      //   console.log(this.planeArr);
+      //   // 在請求完成後執行路由導航
+      // });
+      this.$router.push({
+        name: "AirTime",
+        params: {
+          // 可以根據需要傳遞其他參數
         },
-        data: {},
-      }).then((res) => {
-        this.planeArr = res.data.airplainInfoList; //planeArr裡面塞資料庫所有航班
-        console.log(this.planeArr);
-        // 在請求完成後執行路由導航
-        this.$router.push({
-          name: "AirTime",
-          params: {
-            // 可以根據需要傳遞其他參數
-          },
-        });
       });
     },
     updateMinDate() {
