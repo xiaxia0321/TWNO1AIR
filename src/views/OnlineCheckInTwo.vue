@@ -7,7 +7,6 @@ export default {
         return {
             OrderArr: {
             },
-
             orderId:"",
             account:"",
             plainId:"",
@@ -16,7 +15,7 @@ export default {
             departureLocation:"",
             arrivalDate:"",
             arriveTime:"",
-            arrivalLocation:""
+            arrivalLocation:"",
         }
     },
     computed: {

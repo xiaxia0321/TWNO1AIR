@@ -28,7 +28,7 @@ export default {
             this.showPasswordTwo = !this.showPasswordTwo
         },
         signUpCheck() {
-            let inputName = document.getElementById("inputName")
+            let inputAccount = document.getElementById("inputAccount")
             let inputPhone = document.getElementById("inputPhone")
             let inputEmail = document.getElementById("inputEmail")
             let inputPassword = document.getElementById("inputPassword")
@@ -54,7 +54,7 @@ export default {
                 },
             }).then(res => {
                 if (inputPassword.value == "" || inputRepeatPassword.value == "" ||
-                    inputName.value == "" || inputPhone.value == "" || inputEmail.value == "" ||
+                    inputAccount.value == "" || inputPhone.value == "" || inputEmail.value == "" ||
                     inputBirthday == "" || inputAge == "") {
                     console.log("xxx")
                     Swal.fire({
@@ -76,7 +76,7 @@ export default {
                     })
                     this.$router.push('/User')
                 }
-                inputName.value = "";
+                inputAccount.value = "";
                 inputPhone.value = "";
                 inputEmail.value = "";
                 inputPassword.value = "";
@@ -97,9 +97,9 @@ export default {
             <h1>會員註冊</h1>
             <br>
             <div class="loginInputArea">
-                <label for="" style="font-size: 14pt;">姓名：</label>　　　
-                <input type="text" placeholder="請輸入正確的姓名" id="inputName" class="name" v-model="this.account"
-                    style="margin-left: 5px;">
+                <label for="" style="font-size: 14pt;">帳號：</label>　　　
+                <input type="text" placeholder="請輸入帳號，英數混合，至少8碼" id="inputAccount" class="name" v-model="this.account"
+                    style="margin-left: 5px;" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
                 <br><br>
                 <label for="" style="font-size: 14pt;">密碼：</label>　　　
                 <!-- <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
@@ -123,8 +123,8 @@ export default {
                 <input type="email" placeholder="請輸入信箱" id="inputEmail" class="email" v-model="this.emails"
                     style="margin-left: 5px;">
                 <br><br>
-                <label for="" style="font-size: 14pt;">使用者名稱：</label>
-                <input type="text" placeholder="請輸入使用者名稱(非必填)" id="inputUser" class="user" v-model="this.user_name">
+                <label for="" style="font-size: 14pt;">姓名：</label>
+                <input type="text" placeholder="請輸入正確姓名" id="inputUser" class="user" v-model="this.user_name" style="margin-left: 58px;">
                 <br><br>
                 <label for="" style="font-size: 14pt;">電話：</label>　　　
                 <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone" v-model="this.phone"

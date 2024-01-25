@@ -7,7 +7,7 @@ export default defineComponent({
     data() {
         return {
             start: "",
-            location:"",
+            location: "",
             options: [
                 // {
                 //     label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
@@ -16,43 +16,43 @@ export default defineComponent({
                 // },
                 {
                     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯",
                 },
                 {
                     label: "舊金山, 美國, SFO, San Francisco International Airport",
-                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                    key: "舊金山"
                 },
                 {
                     label: "函館, 日本, HKD, Hakodate Airport",
-                    key: "函館, 日本, HKD, Hakodate Airport"
+                    key: "函館"
                 },
                 {
                     label: "東京, 日本, NRT, Narita Internation",
-                    key: "東京, 日本, NRT, Narita Internation"
+                    key: "東京"
                 },
                 {
                     label: "大阪, 日本, KIX, Kansai International Airport",
-                    key: "大阪, 日本, KIX, Kansai International Airport"
+                    key: "大阪"
                 },
                 {
                     label: "沖繩, 日本, OKA, Naha Airport",
-                    key: "沖繩, 日本, OKA, Naha Airport"
+                    key: "沖繩"
                 },
                 {
                     label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
-                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                    key: "胡志明市"
                 },
                 {
                     label: "曼谷, 泰國, BKK, 素萬那普國際機場",
-                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                    key: "曼谷"
                 },
                 {
                     label: "新加坡, 新加坡, SIN, Changi Airport",
-                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                    key: "新加坡"
                 },
                 {
                     label: "澳門, 澳門, MFM, Macau International Airportn",
-                    key: "澳門, 澳門, MFM, Macau International Airport"
+                    key: "澳門"
                 },
             ],
         }
@@ -60,31 +60,31 @@ export default defineComponent({
     methods: {
         handleSelect(key) {
             this.start = key
-            if(key.includes ("洛杉磯, 美國, LA")){
+            if (key.includes("洛杉磯")) {
                 this.$router.push('/LocationLA')
             }
-            if(key.includes ("舊金山, 美國, SFO")){
+            if (key.includes("舊金山")) {
                 this.$router.push('/LocationSFO')
             }
-            if(key.includes ("函館, 日本, HKD")){
+            if (key.includes("函館")) {
                 this.$router.push('/LocationHakodate')
             }
-            if(key.includes ("大阪, 日本, KIX")){
+            if (key.includes("大阪")) {
                 this.$router.push('/LocationKyoto')
             }
-            if(key.includes ("沖繩, 日本, OKA")){
+            if (key.includes("沖繩")) {
                 this.$router.push('/LocationOkinawa')
             }
-            if(key.includes ("胡志明市, 越南, SGN")){
+            if (key.includes("胡志明市")) {
                 this.$router.push('/LocationHoChiMinh')
             }
-            if(key.includes ("曼谷, 泰國, BKK")){
+            if (key.includes("曼谷")) {
                 this.$router.push('/LocationBangkok')
             }
-            if(key.includes ("新加坡, 新加坡, SIN")){
+            if (key.includes("新加坡")) {
                 this.$router.push('/LocationSingapore')
             }
-            if(key.includes ("澳門, 澳門, MFM")){
+            if (key.includes("澳門")) {
                 this.$router.push('/LocationMacao')
             }
             console.log(key);
@@ -118,13 +118,13 @@ export default defineComponent({
                 console.log(data);
             })
         },
-        data(){
+        data() {
             this.$router.push('/AirTime')
         },
-        ...mapActions(counter,['setLocation'])
+        ...mapActions(counter, ['setLocation'])
     },
     computed: {
-        ...mapState(counter,['planeSearchArr'])
+        ...mapState(counter, ['planeSearchArr'])
     },
     components: {
         NDropdown,
@@ -141,19 +141,24 @@ export default defineComponent({
     <div class="search">
         <div class="searchFor">
             <br>
-            <h1>搭乘樂狗航空從台北飛往東京 ，自 TWD13,589* 起！</h1>
+            <h1 style="margin-left: 420px;">東京 繁華絢麗的東洋之城</h1>
         </div>
         <div class="condition">
             <n-dropdown trigger="hover" :options="options" @select="handleSelect">
-                <n-button>出發地：{{ start }}</n-button>
+                <n-button style="background-color: none; margin-right: 800px;">探索：{{ start }}</n-button>
             </n-dropdown>
         </div>
-
+        <button type="button" @click="data()">快速搜索東京機票</button>
     </div>
     <div class="content">
         <div class="ticket">
-            <span class="top">去程：臺北-東京</span>
-            <div class="go">
+            <div class="intro">
+                <p>東京有充滿未來感的摩天大樓、無與倫比的美食和狂野的夜生活，堪稱是座充滿刺激的城市。這座城市以創新而著稱，而城市裡的古老佛教寺廟、傳統茶館和寧靜的花園則可以讓人度過寧靜逍遙的時光，並宣示城市悠久的歷史。前往東京歷史悠久的淺草一日遊，參觀知名的淺草寺，然後沿著隅田川漫步
+                    (春天的時候這裡有櫻花盛開)。或者也可以去築地場外市場享用吃壽司早餐，狹窄的走道兩側有許多餐廳可供選擇 (由於此處大多數的餐廳會在中午時歇業，因此建議提早抵達)。如果喜歡熱鬧，也想要體驗 Cosplay
+                    的文化，那就去原宿，或去秋葉原選購電玩和動漫。夜間可以沿著橫丁 (巷弄的意思) 探索，沿途都可以找到氣氛悠閒的居酒屋和小酒吧。當然這裡還有更多精彩的體驗等您探索，請參考以下更多推薦。</p>
+            </div>
+            <!-- <span class="top">去程：臺北-東京</span> -->
+            <!-- <div class="go">
                 <p>　　經濟艙</p>
                 <p>　　JX800　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3小時</p>
                 <p>　　2024年2月18日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月18日</p>
@@ -162,10 +167,10 @@ export default defineComponent({
                 <div class="goBtn">
                     <button type="button">訂購</button>
                 </div>
-            </div>
+            </div> -->
             <br>
-            <span class="bottom">回程：東京-臺北</span>
-            <div class="back">
+            <!-- <span class="bottom">回程：東京-臺北</span> -->
+            <!-- <div class="back">
                 <p>　　經濟艙</p>
                 <p>　　JX801　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　4小時5分鐘</p>
                 <p>　　2024年2月26日　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2024年2月26日</p>
@@ -187,7 +192,7 @@ export default defineComponent({
                 <p>7、搭機前，務必先行確認目的地之檢疫和入境規範 (最新相關規定與法令仍應以各國政府公告為主) ，詳見「最新旅遊限制相關規定」。</p>
                 <p>8、機票折扣僅適用於機票票價，不適用於各項附加費(包含但不限於燃油附加費、兵險、指定日期加價、停留點加價等)、服務費(包含但不限於訂位服務費、機場服務費、旅客服務費等)、手續費(包含但不限於改票、退票、未登機手續費等)與各地機場稅金與政府規費等。
                 </p>
-            </div>
+            </div> -->
         </div>
         <div class="attraction">
             <br><br><br>
@@ -211,11 +216,20 @@ export default defineComponent({
     background-image: url("/sabrina/東京.webp");
     background-repeat: no-repeat;
     background-position: center;
+    button{
+        width: 160px;
+        height: 50px;
+        background-color: #a8a29e;
+        border: none;
+        border-radius: 10px;
+        position: absolute;
+        
+    }
 
     .searchFor {
         width: 70vw;
         height: 10vh;
-        background-color: rgb(7, 102, 7);
+        // background-color: rgb(7, 102, 7);
         opacity: 0.8;
         margin: 0 auto;
         margin-top: 30px;
@@ -232,7 +246,7 @@ export default defineComponent({
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        background-color: rgb(7, 102, 7);
+        // background-color: rgb(7, 102, 7);
 
         .n-button {
             width: 230px;
@@ -269,6 +283,13 @@ export default defineComponent({
         height: 80vh;
         box-sizing: border-box;
         padding-top: 20px;
+
+        .intro {
+            width: 70vw;
+            height: 100vh;
+            margin: 0 auto;
+            color: white;
+        }
 
         .top {
             font-size: 26px;

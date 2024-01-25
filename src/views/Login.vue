@@ -135,7 +135,7 @@ export default {
         <!-- <input type="password" class="input" id="password" :type="showPassword ? 'text' : 'password'" v-model="password"><br>
         <i class="fa-solid fa-eye eye" @click="show()" v-show="showPassword"></i>
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i> -->
-        <input type="password" class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
+        <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
         <button type="button" class="login" @click="login()">登入</button>
