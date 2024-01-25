@@ -11,8 +11,12 @@ export default {
       isEntityAccount: true,
       isEntityPassword: true,
       showPassword: false,
+      user:[]
     }
   },
+  computed: {
+        ...mapState(counter, ['user'])
+    },
   methods: {
     login() {
       //確認輸入帳號 + 密碼

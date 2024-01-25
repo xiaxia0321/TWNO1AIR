@@ -27,6 +27,9 @@ export default defineStore("counter", {
                 getArriveTime:'',
                 getDepatureTime:'',
             },
+            OrderSearchArrCheck:{
+                ccc:[],
+            },
             plane: {
                 departureDate: "", //出發日期
                 arrivalDate: "", //抵達日期
@@ -64,6 +67,12 @@ export default defineStore("counter", {
                 userName:'',
                 phone:'',
                 point:'',
+                age:'',
+                birthday:'',
+
+            },
+            userArr:{
+
             }
         }
 

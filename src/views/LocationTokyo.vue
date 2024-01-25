@@ -94,30 +94,30 @@ export default defineComponent({
             // }
             // console.log(this.data.option);
         },
-        search() {
-            let departureDate = document.getElementById("departureDate")
-            let arrivalDate = document.getElementById("arrivalDate")
-            let departureLocation = document.getElementById("departureLocation")
-            let arrivalLocation = document.getElementById("arrivalLocation")
-            let isOneway = document.getElementById("isOneway")
-            axios({
-                url: 'http://localhost:8080/airplainInfo/search',
-                methods: 'POST',
-                withCredentials: true,
-                headers: {
-                    'Contect-Type': 'applicatoin/json'
-                },
-                data: {
-                    departureDate: this.departureDate,
-                    arrivalDate: this.arrivalDate,
-                    departureLocation: this.departureLocation,
-                    arrivalLocation: this.arrivalLocation,
-                    isOneway: this.isOneway
-                },
-            }).then(res => {
-                console.log(data);
-            })
-        },
+        // search() {
+        //     let departureDate = document.getElementById("departureDate")
+        //     let arrivalDate = document.getElementById("arrivalDate")
+        //     let departureLocation = document.getElementById("departureLocation")
+        //     let arrivalLocation = document.getElementById("arrivalLocation")
+        //     let isOneway = document.getElementById("isOneway")
+        //     axios({
+        //         url: 'http://localhost:8080/airplainInfo/search',
+        //         methods: 'POST',
+        //         withCredentials: true,
+        //         headers: {
+        //             'Contect-Type': 'applicatoin/json'
+        //         },
+        //         data: {
+        //             departureDate: this.departureDate,
+        //             arrivalDate: this.arrivalDate,
+        //             departureLocation: this.departureLocation,
+        //             arrivalLocation: this.arrivalLocation,
+        //             isOneway: this.isOneway
+        //         },
+        //     }).then(res => {
+        //         console.log(data);
+        //     })
+        // },
         data() {
             this.$router.push('/AirTime')
         },
@@ -138,7 +138,12 @@ export default defineComponent({
 });
 </script>
 <template>
+    <div class="main">
+        <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button style="background-color: none; margin-right: 800px;">探索：{{ start }}</n-button>
+        </n-dropdown>
     <div class="search">
+        
         <div class="searchFor">
             <br>
             <h1 style="margin-left: 420px;">東京 繁華絢麗的東洋之城</h1>
@@ -203,11 +208,10 @@ export default defineComponent({
                 的文化，那就去原宿，或去秋葉原選購電玩和動漫。夜間可以沿著橫丁 (巷弄的意思) 探索，沿途都可以找到氣氛悠閒的居酒屋和小酒吧。當然這裡還有更多精彩的體驗等您探索，請參考以下更多推薦。</p>
         </div>
     </div>
-    <div class="footer">
-
-    </div>
+</div>
 </template>
 <style scoped lang="scss">
+.main{
 .search {
     width: 100vw;
     height: 40vh;
@@ -232,7 +236,7 @@ export default defineComponent({
         // background-color: rgb(7, 102, 7);
         opacity: 0.8;
         margin: 0 auto;
-        margin-top: 30px;
+        margin-top: 120px;
 
         h1 {
             color: white;
@@ -382,11 +386,5 @@ export default defineComponent({
         }
     }
 }
-
-.footer {
-    width: 100vw;
-    height: 30vh;
-    // border: 1px solid blue;
-    background-color: rgb(49, 48, 77);
 }
 </style>

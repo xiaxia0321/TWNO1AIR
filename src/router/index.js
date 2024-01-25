@@ -204,7 +204,11 @@ const router = createRouter({
       name:"FinalCheckIn",
       component:() => import('../views/FinalCheckIn.vue')
     },
-  
+    {
+      path:"/Test",
+      name:"Test",
+      component:() => import('../views/Test.vue')
+    },
     // {
     //   path:"/dynamicQuestionnaireBack",
     //   name:"dynamicQuestionnaireBack",

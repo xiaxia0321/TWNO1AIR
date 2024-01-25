@@ -1,4 +1,7 @@
 <script>
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -15,7 +18,7 @@ export default {
             userInfo: {
                 name: '',
                 birthday: null,
-                age:"",
+                age: "",
                 selectedOption: '',
                 nation: '',
                 phone: '',
@@ -34,14 +37,15 @@ export default {
             editedItemValue: "",
             editMode: false,
             selectedCity: "",
-            suggestedItems: []
+            suggestedItems: [],
+            userArr: []
         }
     },
     props: {
         flights: Array, // 機票數據陣列
     },
     computed: {
-        //表格部分
+        // 表格部分
         totalRows() {
             return this.flights.length;
         },
@@ -53,28 +57,53 @@ export default {
             const end = start + this.rowsPerPage;
             return this.flights.slice(start, end);
         },
+        ...mapState(counter, ['user'])
     },
     methods: {
-        search() {
-            console.log(this.searchData);
-            fetch('http://localhost:8080/user/search', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    quiz_name: this.searchData.quizName,
-                    startdate: this.searchData.startdate,
-                    enddate: this.searchData.enddate
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    this.quizList = data.quizList
-                    console.log(this.quizList)
-                })
-                .catch(error => console.log(error))
-        },
+        // searchUser() {
+        //     axios({
+        //         url: 'http://localhost:8080/user/search',
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         data: {
+        //             userName: this.user.userName,
+        //             birthday: this.user.birthday,
+        //             age: this.user.age,
+        //             phone: this.user.phone,
+        //             email: this.user.email,
+        //             order_id: this.OrderSearchArr.getOrderId,
+        //             arrival_date: this.OrderSearchArr.getArrivalDate,
+        //             departure_date: this.OrderSearchArr.getDepartureDate,
+        //             arrival_location: this.OrderSearchArr.getArrivalLocation,
+        //             departure_location: this.OrderSearchArr.getDepartureLocation,
+        //             account: this.OrderSearchArr.getAccount,
+        //         },
+        //     })
+        //         .then(res => this.uerArr = res.data.userList)
+        //     console.log(this.userArr);
+        // },
+        // search() {
+        //     console.log(this.searchData);
+        //     fetch('http://localhost:8080/user/search', {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify({
+        //             quiz_name: this.searchData.quizName,
+        //             startdate: this.searchData.startdate,
+        //             enddate: this.searchData.enddate
+        //         })
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             this.quizList = data.quizList
+        //             console.log(this.quizList)
+        //         })
+        //         .catch(error => console.log(error))
+        // },
         user(im) {
             if (im === '旅客資料') {
                 this.data = true
@@ -183,6 +212,9 @@ export default {
             this.checkedItems.push(false);
         }
     },
+    mounted() {
+        this.userSearch()
+    }
 }
 </script>
 
@@ -204,18 +236,24 @@ export default {
             <div class="bottom">
                 <div class="right" v-if="question">
                     <span>姓名</span>
-                    <input class="data" type="text" id="name" v-model="userInfo.name" ><br>
+                    <input class="data" type="text" id="name" v-model="userInfo.name"><br>
                     <span>生日</span>
-                    <input class="data D" type="date" id="birthday" v-model="userInfo.birthday"><br>
-                    <span>年齡</span>
+                    <input class="data D" type="date" id="age" v-model="userInfo.age"><br>
+                    <span>性別：</span>
+                    <label v-for="(option, index) in options" :key="index" class="option">
+                        <input type="radio" :value="option" v-model="userInfo.selectedOption" name="gender">
+                        {{ option }}
+                    </label>
                     <br>
-                    <input type="number" id="age" v-model="userInfo.age" style="border-radius: 10px;border: none;">
-                    <br>
+                    <span>國家</span>
+                    <select class="data" id="nation" v-model="userInfo.selectedCountry">
+                        <option v-for="country in countries" :key="country.code" :value="country.name">{{ country.name }}
+                        </option>
+                    </select><br>
                     <span>手機</span>
                     <input class="data" type="number" id="phone" v-model="userInfo.phone"><br>
                     <span>信箱</span>
                     <input class="data" type="email" id="email" v-model="userInfo.email"><br>
-                    <br><br>
                     <button type="button" @click="confirm('確認')">確認</button>
                 </div>
                 <div class="right" v-if="confirmationVisible">
@@ -277,7 +315,7 @@ export default {
             <div class="list">
                 <h1><img src="./圖片/calender_aseru_woman.png" class="forget">出發前檢查一下……有什麼東西忘了吧！<img
                         src="./圖片/jikan_tobu_man.png" class="forget"></h1><br>
-                        <i class="fa-solid fa-plus fa-2xl"></i>
+                <i class="fa-solid fa-plus fa-2xl"></i>
                 <select v-model="selectedCity" @change="updateSuggestedItems">
                     <option value="">請選擇您的目的地</option>
                     <option value="San Francisco">舊金山</option>
@@ -349,7 +387,7 @@ export default {
     height: 100px;
 }
 
-.age{
+.age {
     border-radius: 10px;
 }
 
