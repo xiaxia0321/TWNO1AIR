@@ -188,6 +188,7 @@ export default {
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-top: 1rem;
       // padding: 25px;
 
       th {

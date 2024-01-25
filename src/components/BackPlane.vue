@@ -74,15 +74,17 @@ export default {
     </div>
     <div class="content">
       <div class="search">
-        <div class="no">
-          <span>出發地 : </span>
-          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="plane.departureLocation">
-        </div>
-        <div class="no">
-          <span>目的地 : </span>
-          <label for="">
-            <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
-          </label>
+        <div class="searchBlock">
+          <div class="no">
+            <span>出發地 : </span>
+            <input type="text" name="" placeholder="請輸入出發地" id="" v-model="plane.departureLocation">
+          </div>
+          <div class="no">
+            <span>目的地 : </span>
+            <label for="">
+              <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
+            </label>
+          </div>
         </div>
         <!-- <div class="no">
           <span>目的地 : </span>
@@ -90,13 +92,15 @@ export default {
             <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
           </label>
         </div> -->
-        <div class="date">
-          <span>出發日期 : </span>
-          <input type="date" name="" id="" v-model="plane.departureDate">
-        </div>
-        <div class="date to">
-          <span>抵達日期 : </span>
-          <input type="date" name="" id="" v-model="plane.arrivalDate">
+        <div class="searchBlock">
+          <div class="date">
+            <span>出發日期 : </span>
+            <input type="date" name="" id="" v-model="plane.departureDate">
+          </div>
+          <div class="date to">
+            <span>抵達日期 : </span>
+            <input type="date" name="" id="" v-model="plane.arrivalDate">
+          </div>
         </div>
         <button type="submit" @click="searchPlane">搜尋</button>
         <button type="submit" @click="createFlight">創建</button>
@@ -157,50 +161,56 @@ export default {
 
     .search {
       position: relative;
+      display: flex;
       box-sizing: border-box;
       flex-wrap: wrap;
       width: 100%;
       // border: 1px solid red;
-      display: flex;
-      align-items: baseline;
-      justify-content: left;
+      align-items: start;
+      justify-content: center;
 
-      .no {
-        padding: 2px;
-        font-size: 2rem;
-        font-weight: 500;
+      .searchBlock {
+        width: 100%;
+        display: flex;
+        // justify-content: space-between;
 
-        span {
-          margin-left: 1rem;
+        .no {
+          padding: 2px;
+          font-size: 2rem;
+          font-weight: 500;
+
+          span {
+            margin-left: 1rem;
+          }
+
+          input {
+            width: 12rem;
+            height: 2rem;
+            font-size: 1.5rem;
+            border-radius: .7rem;
+          }
         }
 
-        input {
-          width: 15rem;
-          height: 2rem;
-          font-size: 1.5rem;
-          border-radius: .7rem;
+
+        .date {
+          margin-top: 10px;
+          margin-bottom: 5px;
+          font-weight: 500;
+          font-size: 1.4rem;
+
+          span {}
+
+          input {
+            width: 13rem;
+            height: 2rem;
+            border-radius: .5rem;
+          }
         }
-      }
 
-
-      .date {
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-weight: 500;
-        font-size: 1.4rem;
-        padding-left: 1.1rem;
-
-        span {}
-
-        input {
-          width: 11rem;
-          height: 2rem;
-          border-radius: .5rem;
+        .to {
+          // padding-left: 8.2rem;
         }
-      }
 
-      .to {
-        padding-left: 8.2rem;
       }
 
       button {
@@ -223,13 +233,13 @@ export default {
 
         }
       }
-
     }
 
     .inside {
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-top: 1rem;
       // padding: 25px;
 
       th {

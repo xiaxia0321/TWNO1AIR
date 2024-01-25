@@ -183,7 +183,7 @@ export default {
 
 
     <div class="bottom">
-      <span style="font-size: 3.5rem;" @click="searchPlane">注意事項 >點此顯示搜尋結果</span style="font-size: 4rem;">
+      <span style="font-size: 3.5rem;" @click="searchPlane">注意事項 >點此顯示搜尋結果</span >
       <br />
       <p>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</p>
       <p>

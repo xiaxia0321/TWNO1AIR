@@ -200,7 +200,7 @@ export default {
       width: 100%;
       display: flex;
       justify-content: center;
-      // padding: 25px;
+      margin-top: 1rem;
 
       th {
         background-color: rgb(90, 90, 90);
