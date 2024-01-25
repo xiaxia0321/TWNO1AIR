@@ -10,7 +10,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(counter, [ 'OrderSearchArr'])
+    ...mapState(counter, ['OrderSearchArr'])
   },
   methods: {
     ...mapActions(counter, ['setPP',]),
@@ -57,11 +57,38 @@ export default {
         </div>
         <div class="no">
           <span>出發地 : </span>
-          <input type="text" name="" placeholder="請輸入出發地" id="" v-model="OrderSearchArr.getDepartureLocation">
+          <select name="" id="" v-model="OrderSearchArr.getDepartureLocation">
+            <option value="">全部地區</option>
+            <option value="台北,臺灣">台北,臺灣</option>
+            <option value="澳門,澳門">澳門,澳門</option>
+            <option value="東京,日本">東京,日本</option>
+            <option value="大阪,日本">大阪,日本</option>
+            <option value="函館,日本">函館,日本</option>
+            <option value="沖繩,日本">沖繩,日本</option>
+            <option value="曼谷,泰國">曼谷,泰國</option>
+            <option value="胡志明市,越南">胡志明市,越南</option>
+            <option value="新加坡,新加坡">新加坡,新加坡</option>
+            <option value="洛杉磯,美國">洛杉磯,美國</option>
+            <option value="舊金山,美國">舊金山,美國</option>
+          </select>
         </div>
         <div class="no">
           <span>目的地 : </span>
-          <input type="text" name="" placeholder="請輸入目的地" id="" v-model="OrderSearchArr.getArrivalLocation">
+          <select name="" id="" v-model="OrderSearchArr.getArrivalLocation">
+            <!-- <option value="台北">台北</option> -->
+            <option value="">全部地區</option>
+            <option value="台北,臺灣">台北,臺灣</option>
+            <option value="澳門,澳門">澳門,澳門</option>
+            <option value="東京,日本">東京,日本</option>
+            <option value="大阪,日本">大阪,日本</option>
+            <option value="函館,日本">函館,日本</option>
+            <option value="沖繩,日本">沖繩,日本</option>
+            <option value="曼谷,泰國">曼谷,泰國</option>
+            <option value="胡志明市,越南">胡志明市,越南</option>
+            <option value="新加坡,新加坡">新加坡,新加坡</option>
+            <option value="洛杉磯,美國">洛杉磯,美國</option>
+            <option value="舊金山,美國">舊金山,美國</option>
+          </select>
         </div>
         <div class="date">
           <span>出發日期 : </span>
@@ -76,7 +103,7 @@ export default {
       <div class="inside">
         <table>
           <tr>
-            <th class="account bb">account</th>
+            <th class="account bb">帳戶名稱</th>
             <th class="no bb">編號</th>
             <th class="place bb">出發地</th>
             <th class="place bb">目的地</th>
@@ -110,6 +137,7 @@ export default {
   justify-content: center;
   flex-direction: column;
   overflow-y: auto;
+
   .header {
     width: 82%;
     height: 10vh;
@@ -123,6 +151,7 @@ export default {
     // border: 1px solid black;
     width: 82%;
     height: 90vh;
+    background-color: rgb(240, 240, 240);
 
     .search {
       position: relative;
@@ -148,13 +177,22 @@ export default {
           height: 2rem;
           font-size: 1.5rem;
           border-radius: .7rem;
+          text-align: center;
+        }
+
+        select {
+          width: 15rem;
+          height: 2rem;
+          font-size: 1.5rem;
+          border-radius: .7rem;
+          text-align: center;
         }
       }
 
 
       .date {
-        margin-top: 10px;
-        margin-bottom: 5px;
+        margin-top: .8rem;
+        margin-bottom: .8rem;
         font-weight: 500;
         font-size: 1.4rem;
         padding-left: 1.1rem;
@@ -162,6 +200,7 @@ export default {
         span {}
 
         input {
+          text-align: center;
           width: 11rem;
           height: 2rem;
           border-radius: .5rem;
@@ -174,9 +213,6 @@ export default {
 
 
       button {
-        // position: absolute;
-        right: 5rem;
-        bottom: .5rem;
         margin-left: 6rem;
         border-radius: .5rem;
         width: 5rem;
@@ -200,7 +236,8 @@ export default {
       width: 100%;
       display: flex;
       justify-content: center;
-      // padding: 25px;
+      padding-top: .8rem;
+      background-color: white;
 
       th {
         background-color: rgb(90, 90, 90);
@@ -220,7 +257,7 @@ export default {
         }
 
         .account {
-          width: 3rem;
+          width: 8rem;
         }
 
         .no {
@@ -249,7 +286,7 @@ export default {
         }
 
         td {
-          background-color: rgb(248, 246, 246);
+          background-color: rgb(248, 248, 246);
         }
       }
 

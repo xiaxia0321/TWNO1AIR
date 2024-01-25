@@ -14,87 +14,89 @@ export default {
       minDateHave: false,
       start: '',
       end: '',
-      options: [
-        {
-          label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
-          key: "TPE, 台北, 台灣",
-          disabled: false
-        },
-        {
-          label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-          key: "LAX , 洛杉磯 , 美國 ",
-        },
-        {
-          label: "舊金山, 美國, SFO, San Francisco International Airport",
-          key: "SFO , 舊金山 , 美國"
-        },
-        {
-          label: "函館, 日本, HKD, Hakodate Airport",
-          key: "HKD , 函館 , 日本  "
-        },
-        {
-          label: "東京, 日本, NRT, Narita Internation",
-          key: "NRT , 東京 , 日本   "
-        },
-        {
-          label: "大阪, 日本, KIX, Kansai International Airport",
-          key: " KIX , 大阪 , 日本 "
-        },
-        {
-          label: "沖繩, 日本, OKA, Naha Airport",
-          key: "OKA , 沖繩, 日本 "
-        },
-        {
-          label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
-          key: "SGN , 胡志明市 , 越南 "
-        },
-        {
-          label: "曼谷, 泰國, BKK, 素萬那普國際機場",
-          key: "BKK , 曼谷, 泰國 "
-        },
-        {
-          label: "新加坡, 新加坡, SIN, Changi Airport",
-          key: "SIN , 新加坡 , 新加坡 "
-        },
-        {
-          label: "澳門, 澳門, MFM, Macau International Airportn",
-          key: "MFM , 澳門 , 澳門 "
-        },
-      ],
+      // options: [
+      //   {
+      //     label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
+      //     key: "TPE, 台北, 台灣",
+      //     disabled: false
+      //   },
+      //   {
+      //     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+      //     key: "LAX , 洛杉磯 , 美國 ",
+      //   },
+      //   {
+      //     label: "舊金山, 美國, SFO, San Francisco International Airport",
+      //     key: "SFO , 舊金山 , 美國"
+      //   },
+      //   {
+      //     label: "函館, 日本, HKD, Hakodate Airport",
+      //     key: "HKD , 函館 , 日本  "
+      //   },
+      //   {
+      //     label: "東京, 日本, NRT, Narita Internation",
+      //     key: "NRT , 東京 , 日本   "
+      //   },
+      //   {
+      //     label: "大阪, 日本, KIX, Kansai International Airport",
+      //     key: " KIX , 大阪 , 日本 "
+      //   },
+      //   {
+      //     label: "沖繩, 日本, OKA, Naha Airport",
+      //     key: "OKA , 沖繩, 日本 "
+      //   },
+      //   {
+      //     label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
+      //     key: "SGN , 胡志明市 , 越南 "
+      //   },
+      //   {
+      //     label: "曼谷, 泰國, BKK, 素萬那普國際機場",
+      //     key: "BKK , 曼谷, 泰國 "
+      //   },
+      //   {
+      //     label: "新加坡, 新加坡, SIN, Changi Airport",
+      //     key: "SIN , 新加坡 , 新加坡 "
+      //   },
+      //   {
+      //     label: "澳門, 澳門, MFM, Macau International Airportn",
+      //     key: "MFM , 澳門 , 澳門 "
+      //   },
+      // ],
     }
   },
   methods: {
     goSearch() {
-      this.planeSearchArr.departureLocation = this.start
-      this.planeSearchArr.arrivalLocation = this.end
-
-      this.$router.push('/AirTimeSearch')
+      //去搜尋頁面
+      // this.planeSearchArr.departureLocation = this.start
+      // this.planeSearchArr.arrivalLocation = this.end
+      console.log(this.planeSearchArr.departureLocation);
+      console.log(this.planeSearchArr.arrivalLocation);
+      this.$router.push('/AirTime')
       this.$nextTick(() => {
-        '/AirTimeSearch'
+        '/AirTime'
         window.scrollTo(0, 0);
       });
     },
-    handleSelect(key) {
-      console.log(this.start)
-      this.start = key
-      if (this.start == "TPE, 台北, 台灣") {
-        this.start = key
-        this.end = "請選擇目的地"
-      } else {
-        this.start = key
-        this.end = "請選擇目的地 : 台灣"
-      }
-    },
-    handleSelectTwo(key) {
-      this.end = key
-      if (this.end != this.start) {
-        if (this.start != "TPE, 台北, 台灣") {
-          this.end = "TPE, 台北, 台灣"
-        }
-      } else {
-        this.end = "請重新選擇不同的城市"
-      }
-    },
+    // handleSelect(key) {
+    //   console.log(this.this.planeSearchArr.departureLocation)
+    //   this.planeSearchArr.departureLocation = key
+    //   if (this.this.planeSearchArr.departureLocation == "台北,臺灣") {
+    //     this.this.planeSearchArr.departureLocation = key
+    //     this.planeSearchArr.arrivalLocation = "請選擇目的地"
+    //   } else {
+    //     this.this.this.planeSearchArr.departureLocation = key
+    //     this.this.planeSearchArr.arrivalLocation = "請選擇目的地 : 台灣"
+    //   }
+    // },
+    // handleSelectTwo(key) {
+    //   this.end = key
+    //   if (this.end != this.start) {
+    //     if (this.start != "TPE, 台北, 台灣") {
+    //       this.end = "TPE, 台北, 台灣"
+    //     }
+    //   } else {
+    //     this.end = "請重新選擇不同的城市"
+    //   }
+    // },
     ...mapActions(counter, ['goBangkok', 'goHome', 'goKyoto', 'goLogin', 'goSFO', 'goSingapore', 'goSubmit',]),
     goLogin() {
       if (this.account == "A01" && this.pwd == "aaa") {
@@ -198,16 +200,46 @@ export default {
       <div class="search" style="width: 90%; height: 30%; ">
         <div class="place gogo" name="出發地" style="border-radius: 15px 0 0 15px ;">
           <label for="" class="lab">
-            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+            <select name="" id="" v-model="planeSearchArr.departureLocation">
+              <option value="">全部地區</option>
+              <option value="台北,臺灣">台北,臺灣</option>
+              <option value="澳門,澳門">澳門,澳門</option>
+              <option value="東京,日本">東京,日本</option>
+              <option value="大阪,日本">大阪,日本</option>
+              <option value="函館,日本">函館,日本</option>
+              <option value="沖繩,日本">沖繩,日本</option>
+              <option value="曼谷,泰國">曼谷,泰國</option>
+              <option value="胡志明市,越南">胡志明市,越南</option>
+              <option value="新加坡,新加坡">新加坡,新加坡</option>
+              <option value="洛杉磯,美國">洛杉磯,美國</option>
+              <option value="舊金山,美國">舊金山,美國</option>
+            </select>
+            <!-- <n-dropdown trigger="hover" :options="options" @select="handleSelect">
               <n-button style="font-size: 1.4rem;">出發地 : {{ this.start }}</n-button>
-            </n-dropdown>
+            </n-dropdown> -->
           </label>
         </div>
+        <i class="fa-solid fa-right-long"
+          style="position: absolute; left: 19rem; background-color: rgb(255, 255, 255); border-radius: 35%; border: 1px solid rgba(0, 0, 0, 0.357);  color: rgb(0, 0, 0); font-size: 2rem;"></i>
         <div class="place onon" name="目的地">
           <label for="" class="lab">
-            <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
+            <select name="" id="" v-model="planeSearchArr.arrivalLocation">
+              <option value="">全部地區</option>
+              <option value="台北,臺灣">台北,臺灣</option>
+              <option value="澳門,澳門">澳門,澳門</option>
+              <option value="東京,日本">東京,日本</option>
+              <option value="大阪,日本">大阪,日本</option>
+              <option value="函館,日本">函館,日本</option>
+              <option value="沖繩,日本">沖繩,日本</option>
+              <option value="曼谷,泰國">曼谷,泰國</option>
+              <option value="胡志明市,越南">胡志明市,越南</option>
+              <option value="新加坡,新加坡">新加坡,新加坡</option>
+              <option value="洛杉磯,美國">洛杉磯,美國</option>
+              <option value="舊金山,美國">舊金山,美國</option>
+            </select>
+            <!-- <n-dropdown trigger="hover" :options="options" @select="handleSelectTwo">
               <n-button style="font-size: 1.4rem;">目的地：{{ this.end }}</n-button>
-            </n-dropdown>
+            </n-dropdown> -->
           </label>
           <div class="meme">
             <ul></ul>
@@ -247,14 +279,14 @@ export default {
           <div class="carousel-item active">
             <img src="https://img.triplisher.com/PIC/908f/05a6/f9b1/c4c7/5283084_full.jpg" class="d-block w-100"
               alt="...">
-            <div class="carousel-caption d-none d-md-block wwc">
+            <div class="carousel-caption d-none d-md-block wwc" style="background-color: rgba(0, 0, 0, 0.7);">
               <h1>開拓自身眼界</h1>
               <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="https://www.kkday.com/zh-hk/blog/wp-content/uploads/jpg-39-5.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block wwc">
+            <div class="carousel-caption d-none d-md-block wwc" style="background-color: rgba(0, 0, 0, 0.7);">
               <h1>感受每個當下</h1>
               <p>Some representative placeholder content for the second slide.</p>
             </div>
@@ -263,7 +295,7 @@ export default {
             <img
               src="https://image.cdn-eztravel.com.tw/3sYW0R-LNq_O4QjEnyAjz97HzYw4CPMHKSmMdP8Ea9E/g:ce/aHR0cDovL3ZhY2F0aW9uLmNkbi1lenRyYXZlbC5jb20udHcvaW1nL1ZEUi9USF8xMDIzMjkxMTk2LmpwZw.jpg"
               class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block wwc">
+            <div class="carousel-caption d-none d-md-block wwc" style="background-color: rgba(0, 0, 0, 0.7);">
               <h1>體驗異國風情</h1>
               <p>漫步塞納河畔，和你的美，品嘗左岸的咖啡</p>
             </div>
@@ -554,26 +586,15 @@ export default {
           align-items: center;
           height: 100%;
           width: 100%;
-          // .placeIn {
-          //   span {
-          //     line-height: 1.2rem;
-          //     font-weight: 700;
-          //   }
 
-          //   .input {
-          //     width: 90%;
-          //     height: 1.3rem;
-          //     padding: 0 1rem 0 0;
-          //     font-size: 1.3rem;
-          //     border: none;
-          //     outline: none !important;
-          //     outline-offset: unset !important;
-          //     background-color: initial;
-          //     text-overflow: ellipsis;
-          //     white-space: nowrap;
-          //     overflow: hidden;
-          //   }
-          // }
+          select {
+            width: 80%;
+            height: 80%;
+            text-align: center;
+            font-size: 2rem;
+            border: 0px;
+            border-radius: .5rem;
+          }
 
         }
       }
@@ -616,11 +637,15 @@ export default {
             color: gray;
           }
         }
+
+        input {
+          border-radius: .4rem;
+          text-align: center;
+        }
       }
 
       .searchBu {
-        position: absolute;
-        right: 5rem;
+        margin-left: 5rem;
         width: 10rem;
         height: 100%;
         background-color: #0062e374;
@@ -679,7 +704,9 @@ export default {
 
         &:hover {
           // width: 70%;
-          background-color: rgb(250, 163, 146);
+          width: 300px;
+          height: 15vh;
+          background-color: rgb(218, 210, 255);
           box-shadow: 2px 1px 2px rgb(255, 212, 212);
         }
 
@@ -809,5 +836,4 @@ export default {
       }
     }
   }
-}
-</style>
+}</style>

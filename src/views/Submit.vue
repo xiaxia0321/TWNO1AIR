@@ -134,7 +134,7 @@ export default {
             .name {
                 width: 300px;
                 height: 35px;
-                background-color: rgb(240, 236, 229);
+                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -142,7 +142,7 @@ export default {
             .phone {
                 width: 300px;
                 height: 35px;
-                background-color: rgb(240, 236, 229);
+                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -150,7 +150,7 @@ export default {
             .email {
                 width: 300px;
                 height: 35px;
-                background-color: rgb(240, 236, 229);
+                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -158,7 +158,7 @@ export default {
             .password {
                 width: 300px;
                 height: 35px;
-                background-color: rgb(240, 236, 229);
+                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -166,7 +166,7 @@ export default {
             .repeatPassword {
                 width: 300px;
                 height: 35px;
-                background-color: rgb(240, 236, 229);
+                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }
@@ -174,7 +174,7 @@ export default {
             .user {
                 width: 300px;
                 height: 35px;
-                background-color: rgb(240, 236, 229);
+                // background-color: rgb(240, 236, 229);
                 border: 2px gray solid;
                 border-radius: 5px;
             }

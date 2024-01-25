@@ -6,13 +6,72 @@ export default {
   data() {
     return {
       planeArr: [],
+      ccc: [],
 
     };
   },
   computed: {
-    ...mapState(counter, ["plane", "planeSearchArr", 'planeSearchCheack']),
+    ...mapState(counter, ['planeSearchCheack', "planeSearchArr", 'plane']),
   },
   methods: {
+
+    bookFlight(num) {
+      this.ccc = this.planeArr[num];
+      this.planeSearchCheack.ccc = this.ccc;
+      console.log(this.planeArr[num]);
+      console.log(this.ccc);
+      console.log(this.planeSearchCheack);
+      console.log('ccc = ' + this.planeSearchCheack.ccc);
+      // this.planeSearchCheack = {
+      //   departureLocation: selectedFlight.departureLocation,
+      //   arrivalLocation: selectedFlight.arrivalLocation,
+      //   departureDate: selectedFlight.departureDate,
+      //   arriveDate: selectedFlight.arriveDate,
+      //   da: selectedFlight.da,
+      //   aa: selectedFlight.aa,
+      //   depatureTime: selectedFlight.depatureTime,
+      //   arriveTime: selectedFlight.arriveTime,
+      //   classType: selectedFlight.classType,
+      //   isOneway: selectedFlight.isOneway,
+      //   depatureTerminal: selectedFlight.depatureTerminal,
+      //   arriveTerminal:selectedFlight.arriveTerminal,
+      //   depatureTime:selectedFlight.depatureTime,
+      //   arriveTime:selectedFlight.arriveTime,
+      //   price:selectedFlight.price,
+      //   seat:selectedFlight.seat,
+
+      // };
+
+      // 導航至下一頁
+      this.$router.push("/OutboundConfirm");
+    },
+    //抓航班當天是否有飛，有的話就顯示圖案
+    isToday(date) {
+      const today = new Date().toISOString().split("T")[0]; // 獲取當天日期，格式為 "YYYY-MM-DD"
+      return date === today;
+    },
+    searchPlane() {
+      axios({
+        url: "http://localhost:8080/airplainInfo/search",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          departureDate: this.planeSearchArr.departureDate,
+          arriveDate: this.planeSearchArr.arrivalDate,
+          departureLocation: this.planeSearchArr.departureLocation,
+          arrivalLocation: this.planeSearchArr.arrivalLocation,
+          classType: this.planeSearchArr.classType,
+          isOneway: this.planeSearchArr.isOneway,
+        },
+      }).then((res) => (this.planeArr = res.data.airplainInfoList));
+      console.log(this.planeArr);
+      console.log(this.planeSearchArr);
+    },
+    back() {
+      this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
+    },
     //時間
     calculateDuration(depatureTime, arriveTime) {
       const [depatureHour, depatureMinute] = depatureTime.split(":").map(Number);
@@ -51,61 +110,6 @@ export default {
       const date = new Date(calculateDate(dateString, days));
       const dayIndex = date.getDay();
       return weekdays[dayIndex];
-    },
-    //抓航班當天是否有飛，有的話就顯示圖案
-    isToday(date) {
-      const today = new Date().toISOString().split("T")[0]; // 獲取當天日期，格式為 "YYYY-MM-DD"
-      return date === today;
-    },
-    searchPlane() {
-      axios({
-        url: "http://localhost:8080/airplainInfo/search",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          departureDate: this.planeSearchArr.departureDate,
-          arriveDate: this.planeSearchArr.arrivalDate,
-          departureLocation: this.planeSearchArr.departureLocation,
-          arrivalLocation: this.planeSearchArr.arrivalLocation,
-          classType: this.planeSearchArr.classType,
-          isOneway: this.planeSearchArr.isOneway,
-        },
-      }).then((res) => (this.planeArr = res.data.airplainInfoList));
-      console.log(this.planeArr);
-      console.log(this.planeSearchArr);
-    },
-    back() {
-      this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
-    },
-
-    bookFlight(num) {
-      // 將選定的航班信息放進 planeSearchCheack
-      this.planeSearchCheack = this.planeArr[num];
-      // this.planeSearchCheack = {
-      //   departureLocation: selectedFlight.departureLocation,
-      //   arrivalLocation: selectedFlight.arrivalLocation,
-      //   departureDate: selectedFlight.departureDate,
-      //   arriveDate: selectedFlight.arriveDate,
-      //   da: selectedFlight.da,
-      //   aa: selectedFlight.aa,
-      //   depatureTime: selectedFlight.depatureTime,
-      //   arriveTime: selectedFlight.arriveTime,
-      //   classType: selectedFlight.classType,
-      //   isOneway: selectedFlight.isOneway,
-      //   depatureTerminal: selectedFlight.depatureTerminal,
-      //   arriveTerminal:selectedFlight.arriveTerminal,
-      //   depatureTime:selectedFlight.depatureTime,
-      //   arriveTime:selectedFlight.arriveTime,
-      //   price:selectedFlight.price,
-      //   seat:selectedFlight.seat,
-
-      // };
-      console.log(this.planeArr[num]);
-      console.log(this.planeSearchCheack);
-      // 導航至下一頁
-      this.$router.push("/OutboundConfirm");
     },
   },
 };

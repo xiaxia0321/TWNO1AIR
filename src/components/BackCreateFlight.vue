@@ -65,6 +65,9 @@ export default {
           arrive_terminal: this.plane.arriveTerminal, //抵達航廈
           depature_time: this.plane.depatureTime, //出發時間
           arrive_time: this.plane.arriveTime, //抵達時間
+          depature_airport: this.plane.departureAirport,
+          arrive_airport: this.plane.arrivalAirport,
+          airplain_type: this.plane.airplain_type,
         },
       }).then(res => console.log(res.data),)
       console.log(this.plane);
@@ -127,7 +130,7 @@ export default {
     </select>
     <span>抵達地</span>
     <select name="" id="" v-model="plane.arrivalLocation">
-      <!-- <option value="台北">台北</option> -->
+      <!-- <option value="台北,臺灣">台北,臺灣</option> -->
       <option value="澳門,澳門">澳門,澳門</option>
       <option value="東京,日本">東京,日本</option>
       <option value="大阪,日本">大阪,日本</option>

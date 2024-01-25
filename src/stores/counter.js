@@ -40,7 +40,7 @@ export default defineStore("counter", {
                 arriveTime: "", //抵達時間
                 price: "", //價錢
                 seat: "", //座位
-
+                airplain_type: ""
             },
             planeArr: {
 
@@ -54,6 +54,7 @@ export default defineStore("counter", {
                 isOneway: false, //單程
             },
             planeSearchCheack: {
+                ccc:[],
             },
             MemberInformation: {
 

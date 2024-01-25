@@ -5,8 +5,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      user:[],
-      accountININ:'',
+      user: [],
+      accountININ: '',
     }
   },
   methods: {
@@ -46,8 +46,7 @@ export default {
       <div class="search">
         <div class="no">
           <span>會員帳號 : </span>
-          <input type="text" name="" placeholder="請輸入帳號" id=""
-          v-model="accountININ">
+          <input type="text" name="" placeholder="請輸入帳號" id="" v-model="accountININ">
         </div>
         <!-- <div class="no">
           <span>會員編號 : </span>
@@ -98,6 +97,7 @@ export default {
   justify-content: center;
   flex-direction: column;
   overflow-y: auto;
+
   .header {
     width: 82%;
     height: 10vh;
@@ -111,6 +111,7 @@ export default {
     // border: 1px solid black;
     width: 82%;
     height: 90vh;
+    background-color: rgb(240, 240, 240);
 
     .search {
       position: relative;
@@ -120,7 +121,7 @@ export default {
       // border: 1px solid red;
       display: flex;
       align-items: baseline;
-      justify-content: left;
+      justify-content: center;
 
       .no {
         padding: 2px;
@@ -136,23 +137,7 @@ export default {
           height: 2rem;
           font-size: 1.5rem;
           border-radius: .7rem;
-        }
-      }
-
-
-      .date {
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-weight: 500;
-        font-size: 1.4rem;
-        padding-left: 1.1rem;
-
-        span {}
-
-        input {
-          width: 11rem;
-          height: 2rem;
-          border-radius: .5rem;
+          text-align: center;
         }
       }
 
@@ -162,10 +147,8 @@ export default {
 
 
       button {
-        // position: absolute;
-        right: 5rem;
-        bottom: .5rem;
         margin-left: 6rem;
+        margin-bottom: .6rem;
         border-radius: .5rem;
         width: 5rem;
         height: 2rem;
@@ -188,6 +171,8 @@ export default {
       width: 100%;
       display: flex;
       justify-content: center;
+      padding-top: .8rem;
+      background-color: white;
       // padding: 25px;
 
       th {
