@@ -154,6 +154,11 @@ const router = createRouter({
       component:() => import('../components/BackCreateFlight.vue')
     },
     {
+      path:"/BackUpdate",
+      name:"BackUpdate",
+      component:() => import('../components/BackUpdate.vue')
+    },
+    {
       path: '/Backstage',
       name: 'Backstage',
       component: () => import('../views/Backstage.vue'),
