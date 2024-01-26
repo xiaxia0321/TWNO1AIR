@@ -54,26 +54,29 @@ export default defineStore("counter", {
                 isOneway: false, //單程
             },
             planeSearchCheack: {
-                ccc:[],
+                ccc: [],
             },
             MemberInformation: {
 
+            },
+            userDate: {
+                uuu:[],
             },
             user: {
                 userId: 0,
                 account: '',
                 password: '',
-                email: '',
                 userName: '', //用戶名稱
-                // title:'', //缺少稱謂
-                // lastName:'',//缺少用戶姓氏
-                // name:'',//缺少用戶名字
                 birthday: '',//生日
-                // contactPerson:'',//缺少聯絡人 可能不一定是自己
                 age: '',//年齡
                 phone: '', //手機
-                // homePhone:'',//缺少住家電話
+                email: '', //信箱
                 point: '', //點數
+                // title:'', //缺少稱謂
+                // lastName:'',//缺少用戶姓氏(先不用)
+                // name:'',//缺少用戶名字(先不用)
+                // contactPerson:'',//缺少聯絡人 可能不一定是自己
+                // homePhone:'',//缺少住家電話(先不用)
             }
         }
 

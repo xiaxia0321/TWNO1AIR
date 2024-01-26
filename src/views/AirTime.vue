@@ -111,6 +111,43 @@ export default {
       const dayIndex = date.getDay();
       return weekdays[dayIndex];
     },
+    //抓航班當天是否有飛，有的話就顯示圖案
+    isToday(date) {
+      const today = new Date().toISOString().split("T")[0]; // 獲取當天日期，格式為 "YYYY-MM-DD"
+      return date === today;
+    },
+    searchPlane() {
+      axios({
+        url: "http://localhost:8080/airplainInfo/search",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          departureDate: this.planeSearchArr.departureDate,
+          arriveDate: this.planeSearchArr.arrivalDate,
+          departureLocation: this.planeSearchArr.departureLocation,
+          arrivalLocation: this.planeSearchArr.arrivalLocation,
+          classType: this.planeSearchArr.classType,
+          isOneway: this.planeSearchArr.isOneway,
+        },
+      }).then((res) => (this.planeArr = res.data.airplainInfoList));
+      console.log(this.planeArr);
+      console.log(this.planeSearchArr);
+    },
+    back() {
+      this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
+    },
+
+    bookFlight(num) {
+      this.aaa = this.planeArr[num];
+      this.planeSearchCheack.ccc = this.aaa;
+      console.log(this.planeArr[num]);
+      console.log(this.aaa);
+      console.log(this.planeSearchCheack);
+      console.log('ccc = ' + this.planeSearchCheack.ccc);
+      this.$router.push("/OutboundConfirm");
+    },
   },
 };
 // mounted() {
@@ -141,11 +178,11 @@ export default {
         <div class="a2">
           <div class="a21">
             <h3>{{ item.da }}</h3>
-            <span>{{ item.departureLocation }}</span>
+            <span>{{ item.depatureAirport }}</span>
           </div>
           <div class="a22">
             <h3>{{ item.aa }}</h3>
-            <span>{{ item.arrivalLocation }}</span>
+            <span>{{ item.arriveAirport }}</span>
           </div>
         </div>
         <div class="a3 aa">

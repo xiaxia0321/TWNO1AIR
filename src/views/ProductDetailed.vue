@@ -1,32 +1,55 @@
 //產品明細最終確認頁
 <script>
+import { mapState, mapActions } from "pinia";
+import counter from "../stores/counter";
 export default {
   data() {
     return {
-      DA:"",//出發機場縮寫
-      AA:"",//抵達機場縮寫
-      departureAirport:"",//出發機場
-      arrivalAirport:"",//抵達機場 
-      classType:"",//艙等
-      aircraftNumber:"",//機號
-      aircraftType:"",//飛機型號
-      departureDate:"",//出發日期
-      arrivalDate:"",//抵達日期
-      departureTime:"",//出發時間
-      arrivalTime:"",//抵達時間
-      totalTime:"",//總花費時間
-      departureTerminal:"",//出發航廈
-      arriveTerminal:"",//抵達航廈
-      price:"",//價錢
-
+      DA: "", //出發機場縮寫
+      AA: "", //抵達機場縮寫
+      departureAirport: "", //出發機場
+      arrivalAirport: "", //抵達機場
+      classType: "", //艙等
+      aircraftNumber: "", //機號
+      aircraftType: "", //飛機型號
+      departureDate: "", //出發日期
+      arrivalDate: "", //抵達日期
+      departureTime: "", //出發時間
+      arrivalTime: "", //抵達時間
+      totalTime: "", //總花費時間
+      departureTerminal: "", //出發航廈
+      arriveTerminal: "", //抵達航廈
+      price: "", //價錢
     };
   },
+  computed: {
+    ...mapState(counter, ["plane", "planeSearchCheack"]),
+  },
   methods: {
+    calculateDuration(depatureTime, arriveTime) {
+      const [depatureHour, depatureMinute] = depatureTime.split(":").map(Number);
+      const [arriveHour, arriveMinute] = arriveTime.split(":").map(Number);
+      
+      // 轉換成分鐘
+      const depatureTotalMinutes = depatureHour * 60 + depatureMinute;
+      const arriveTotalMinutes = arriveHour * 60 + arriveMinute;
+
+      // 計算差距，考慮跨越午夜的情況
+      let durationMinutes = arriveTotalMinutes - depatureTotalMinutes;
+      if (durationMinutes < 0) {
+        durationMinutes += 24 * 60; // 一天的分鐘數
+      }
+
+      // 轉換成小時和分鐘
+      const hours = Math.floor(durationMinutes / 60);
+      const minutes = durationMinutes % 60;
+
+      return `${hours}小時${minutes}分`;
+    },
     back() {
       this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
-      
     },
-  }
+  },
 };
 </script>
 
@@ -38,46 +61,45 @@ export default {
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-  
+
   <div class="big">
     <div class="top">
       <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
-    <h2>產品明細</h2>
-    <h3>航班資訊</h3>
+      <h2>產品明細</h2>
+      <h3>航班資訊</h3>
     </div>
     <div class="mt1"><span>經濟艙</span></div>
     <div class="mid1">
-    <div class="m1">
-    <p>JX840　<i class="fa-solid fa-plane"></i>AIRBUS A321NEO</p>
-    <p>2024年1月17號</p>
-    <p class="time">14:45</p>
-    <p class="nationbk">TPE</p>
-    <p>臺灣桃園國際機場</p>
-    <p>第{{}}航廈</p>
-    <p>座位: {{  }}</p>
+      <div class="m1">
+        <p>JX840　<i class="fa-solid fa-plane"></i>AIRBUS A321NEO</p>
+        <p>{{ planeSearchCheack.ccc.departureDate }}</p>
+        <p class="time">{{ planeSearchCheack.ccc.depatureTime }}</p>
+        <p class="nationbk">{{ planeSearchCheack.ccc.da }}</p>
+        <p>桃園國際機場</p>
+        <p>第{{ planeSearchCheack.ccc.depatureTerminal }}航廈</p>
+        <p>座位: {{}}</p>
+      </div>
+      <div class="m2"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="m3">
+        <p>{{ calculateDuration(planeSearchCheack.ccc.depatureTime, planeSearchCheack.ccc.arriveTime) }}</p>
+        <p>{{ planeSearchCheack.ccc.arriveDate }}</p>
+        <p class="time">{{ planeSearchCheack.ccc.arriveTime }}</p>
+        <p class="nationbk">{{ planeSearchCheack.ccc.aa }}</p>
+        <p>福岡機場</p>
+        <p>第{{ planeSearchCheack.ccc.arriveTerminal }}航廈</p>
+      </div>
     </div>
-    <div class="m2"><i class="fa-solid fa-arrow-right"></i></div>
-    <div class="m3">
-      <p>2小時10分鐘</p>
-    <p>2024年1月17號</p>
-    <p class="time">17:55</p>
-    <p class="nationbk">FUK</p>
-    <p>福岡機場</p>
-    <p>第{{}}航廈</p>
-    </div>
-    </div>
-
-    </div>
-    <div class="big1">
-      <div class="d1">
+  </div>
+  <div class="big1">
+    <div class="d1">
       <h3>票價資訊</h3>
     </div>
     <div class="mid2">
-    <div class="m1"><h4>成人</h4></div>
-    <div class="m2"></div>
+      <div class="m1"><h4>成人</h4></div>
+      <div class="m2"></div>
     </div>
-    </div>
-    <div class="bottom">
+  </div>
+  <div class="bottom">
     <h2>注意事項</h2>
     <br />
     <p>
@@ -114,153 +136,147 @@ export default {
       相關連結
     </p>
   </div>
-    <div class="bottom1">
+  <div class="bottom1">
     <span>TWD 20,680</span>
     <button>前往付款</button>
   </div>
 </template>
 
 <style scoped lang="scss">
-
-.big{
+.big {
   width: 100vw;
   height: 100vh;
   background-color: #161a30;
-  .top{
-  width: 100vw;
-  height: 20vh;
-  background-color: #31304d;
-  text-align: justify;
-  color: white;
-  padding-left: 40px;
-  .arrow{
-    font-size: 24px;
-    color: #f8c68a;
-    margin-bottom: 10px;
-  }
-}
-//第一張票區
-.mt1{
-  width: 80vw;
-  height: 5vh;
-  background-color: rgb(90, 90, 90);
-  margin: 0 auto;
-  margin-top: 10vh;
-
-  text-align: justify;
-  color: white;
-  padding-top: 5px;
-  border-top-left-radius: 10px; /* 設置左上角為圓形導角 */
-  border-top-right-radius: 10px; /* 設置右上角為圓形導角 */
-  span{
-    margin-left: 40px;
-  }
-}
-.mid1{
-  width: 80vw;
-  // height: 25vh;
-  height: 50vh;
-  background-color: salmon;
-  margin: 0 auto;
-  display: flex;
-  
-  .m1{
-    width: 40%;
-    height: 110%;
+  .top {
+    width: 100vw;
+    height: 20vh;
+    background-color: #31304d;
     text-align: justify;
-    background-color: #ffeeda;
-    .time{
-      font-size: 36px;
-      letter-spacing: 2px;
-      color: #794425;
-
+    color: white;
+    padding-left: 40px;
+    .arrow {
+      font-size: 24px;
+      color: #f8c68a;
+      margin-bottom: 10px;
     }
-    .nationbk{
-      font-size: 36px;
-      letter-spacing: 2px;  
-    }
-    p{
-  margin: 0;
-  line-height: 1.1;
-  margin-top: 20px;
-    margin-bottom: 15px;
-    margin-left: 40px;
-    font-size: 24px;
-}
   }
-  .m2{
-    width: 20%;
-    height: 110%;
-    background-color: #ffeeda;
+  //第一張票區
+  .mt1 {
+    width: 80vw;
+    height: 5vh;
+    background-color: rgb(90, 90, 90);
+    margin: 0 auto;
+    margin-top: 10vh;
+
+    text-align: justify;
+    color: white;
+    padding-top: 5px;
+    border-top-left-radius: 10px; /* 設置左上角為圓形導角 */
+    border-top-right-radius: 10px; /* 設置右上角為圓形導角 */
+    span {
+      margin-left: 40px;
+    }
+  }
+  .mid1 {
+    width: 80vw;
+    // height: 25vh;
+    height: 50vh;
+    background-color: salmon;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 120px;
-    // background-color: #161a30;
-    }
-  .m3{
-    width: 40%;
-    height: 110%;
-    text-align: right;
-    background-color: #ffeeda;
-    .time{
-      font-size: 36px;
-      letter-spacing: 2px;
-      color: #794425;
 
+    .m1 {
+      width: 40%;
+      height: 110%;
+      text-align: justify;
+      background-color: #ffeeda;
+      .time {
+        font-size: 36px;
+        letter-spacing: 2px;
+        color: #794425;
+      }
+      .nationbk {
+        font-size: 36px;
+        letter-spacing: 2px;
+      }
+      p {
+        margin: 0;
+        line-height: 1.1;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        margin-left: 40px;
+        font-size: 24px;
+      }
     }
-    .nationbk{
-      font-size: 36px;
-      letter-spacing: 2px;  
+    .m2 {
+      width: 20%;
+      height: 110%;
+      background-color: #ffeeda;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 120px;
+      // background-color: #161a30;
     }
-    p{
-  margin: 0;
-  line-height: 1.1;
-  margin-top: 20px;
-    margin-bottom: 15px;
-    margin-right: 40px;
-    font-size: 24px;
+    .m3 {
+      width: 40%;
+      height: 110%;
+      text-align: right;
+      background-color: #ffeeda;
+      .time {
+        font-size: 36px;
+        letter-spacing: 2px;
+        color: #794425;
+      }
+      .nationbk {
+        font-size: 36px;
+        letter-spacing: 2px;
+      }
+      p {
+        margin: 0;
+        line-height: 1.1;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        margin-right: 40px;
+        font-size: 24px;
+      }
     }
   }
+  //第一張票區
 }
-//第一張票區
-
-
-}
-.big1{
+.big1 {
   width: 100vw;
   height: 100vh;
   background-color: #31304d;
   // margin-top: 20vh;
-  .d1{
-  color: white;
-  text-align: justify;
-  padding-left: 20px;
-  width: 100vw;
-  height: 15vh;
-  padding-top: 5vh;
-}
-.mid2{
-  width: 95vw;
-  height: 80vh;
-  display: flex;
-  margin: 0 auto;
-  .m1{
-    width: 25%;
-    height: 100%;
-    background-color: #3b2641;
+  .d1 {
     color: white;
     text-align: justify;
-    padding-left: 50px;
-    padding-top: 50px;
-
+    padding-left: 20px;
+    width: 100vw;
+    height: 15vh;
+    padding-top: 5vh;
   }
-  .m2{
-    width: 75%;
-    height: 100%;
-    background-color: #ffeeda;
+  .mid2 {
+    width: 95vw;
+    height: 80vh;
+    display: flex;
+    margin: 0 auto;
+    .m1 {
+      width: 25%;
+      height: 100%;
+      background-color: #3b2641;
+      color: white;
+      text-align: justify;
+      padding-left: 50px;
+      padding-top: 50px;
+    }
+    .m2 {
+      width: 75%;
+      height: 100%;
+      background-color: #ffeeda;
+    }
   }
-}
 }
 .bottom {
   width: 100vw;
@@ -279,7 +295,7 @@ export default {
   color: #794425;
   z-index: 2;
   position: fixed;
-  span{
+  span {
     position: absolute;
     font-size: 24px;
     right: 280px;

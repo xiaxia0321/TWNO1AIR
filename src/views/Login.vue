@@ -10,7 +10,12 @@ export default {
       password: "",
       isEntityAccount: true,
       isEntityPassword: true,
+      showPassword: false,
+      user: []
     }
+  },
+  computed: {
+    ...mapState(counter, ['user', 'userDate'])
   },
   methods: {
     login() {
@@ -33,194 +38,96 @@ export default {
           }).then(response => response.json())
           .then(res => {
             console.log(res)
-            if (res.rtncode == "SUCCESSFUL") {
+            if (res.code == "200") {
               console.log("登入成功");
-              Swal.fire({
-                icon: "error",
-                text: "你有資料尚未填寫",
-                // showConfirmButton: true,
-              })
-              // this.$router.push('/User');
-              // $cookies.set("account", this.account)
-            } else {
               Swal.fire({
                 icon: "success",
                 text: "登入成功",
                 showConfirmButton: true,
               })
+              console.log(res.userList);
+              this.userDate.uuu = res.userList,
+                console.log(this.userDate);
+                console.log(this.userDate.uuu);
               this.$router.push('/User');
+              // $cookies.set("account", this.account)
+            }
+            else {
+              Swal.fire({
+                icon: "error",
+                text: "帳號或密碼有誤",
+              })
             }
           })
       }
-    },
-    search() {
-      console.log(this.userData);
-      fetch('http://localhost:8080/user/search', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          account: this.userData.account,
-          password: this.userData.password,
+      else {
+        Swal.fire({
+          icon: "error",
+          text: "帳號或密碼未輸入",
         })
-      })
-        .then(response => response.json())
-        .then(data => {
-          this.userList = data.userList
-          console.log(this.userList)
-        })
-        .catch(error => console.log(error))
+      }
     },
-    toLogin() {
-      this.search();
-      axios({
-        url: 'http://localhost:8080/api/login',
-        method: 'POST',
-        withCredentials: true,
-        headers: {
-          'Contect-Type': 'applicatoin/json'
-        },
-        data: {
-          account: this.account,
-          password: this.password,
-        },
-      }).then(res => {
-        // console.log(this.data);
-        let account = document.getElementById("account")
-        let password = document.getElementById("password")
-        if (account.value == "" || password.value == "") {
-          Swal.fire({
-            icon: "error",
-            text: "你有資料尚未填寫"
-          })
-          return
-        }
-        else {
-          Swal.fire({
-            icon: "success",
-            text: "登入成功",
-            showConfirmButton: true,
-          })
-          this.$router.push('/User')
-        }
-      })
+    show() {
+      this.showPassword = !this.showPassword
     },
-    // mounted() {
-    //   this.search()
+    // search() {
+    //   console.log(this.userData);
+    //   fetch('http://localhost:8080/user/search', {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       account: this.userData.account,
+    //       password: this.userData.password,
+    //     })
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.userList = data.userList
+    //       console.log(this.userList)
+    //     })
+    //     .catch(error => console.log(error))
     // },
-    // methods: {
-    //     toLogin() {
-    //         this.$router.push('/Submit')
+    // toLogin() {
+    //   this.search();
+    //   axios({
+    //     url: 'http://localhost:8080/api/login',
+    //     method: 'POST',
+    //     withCredentials: true,
+    //     headers: {
+    //       'Contect-Type': 'applicatoin/json'
     //     },
-    //     signUpCheck() {
-    //         let inputAccount = document.getElementById("inputAccount")
-    //         let inputPassword = document.getElementById("inputPassword")
-    //         let inputRepeatPassword = document.getElementById("inputRepeatPassword")
-    //         if (!inputAccount.value || !inputPassword.value || !inputRepeatPassword.value) {
-    //             console.log("xxx")
-    //             Swal.fire({
-    //                 icon: "error",
-    //                 text: "你有資料尚未填寫"
-    //             })
-    //             return
-    //         }
-    //         if (inputPassword.value !== inputRepeatPassword.value) {
-    //             Swal.fire({
-    //                 icon: "error",
-    //                 text: "你輸入的密碼與確認的密碼不相符"
-    //             })
-    //         } else {
-    //             Swal.fire({
-    //                 icon: "success",
-    //                 text: "你已經註冊成功",
-    //                 showConfirmButton: true,
-    //             })
-    //         }
-    //         inputAccount.value = "";
-    //         inputPassword.value = "";
-    //         inputRepeatPassword.value = "";
+    //     data: {
+    //       account: this.account,
+    //       password: this.password,
     //     },
+    //   }).then(res => {
+    //     // console.log(this.data);
+    //     let account = document.getElementById("account")
+    //     let password = document.getElementById("password")
+    //     if (account.value == "" || password.value == "") {
+    //       Swal.fire({
+    //         icon: "error",
+    //         text: "你有資料尚未填寫"
+    //       })
+    //       return
+    //     }
+    //     else {
+    //       Swal.fire({
+    //         icon: "success",
+    //         text: "登入成功",
+    //         showConfirmButton: true,
+    //       })
+    //       this.$router.push('/User')
+    //     }
+    //   })
     // },
   }
 }
 </script>
 
 <template>
-  <!-- ==========登入頁=========== -->
-  <!-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel">登入已獲得更多資訊</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-        <div class="modal-body">
-          <div class="loginArea">
-            <div class="loginInput">
-              <div class="loginInputArea">
-                <h1>會員登入</h1>
-                <br /><br />
-                <label for="">帳號：</label>
-                <input type="text" placeholder="請輸入帳號" id="account">
-                <br /><br /><br />
-                <label for="">密碼：</label>
-                <input type="text" placeholder="請輸入密碼" id="password">
-                <br /><br /><br /><br />
-                <button class="buttonLoginIn" id="buttonLoginIn" @click="letLogin()" data-bs-dismiss="modal">登入</button>
-                <button class="buttonForgotPassword" id="buttonForgotPassword">
-                  忘記密碼
-                </button> -->
-  <!-- 增加data-bs-dismiss="modal"代表跳轉頁面後不會灰畫面 -->
-  <!-- </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" @click="goSubmit()" data-bs-dismiss="modal">尚未註冊</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-  <!-- ==========註冊頁========== -->
-  <!-- <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel2">加入樂狗</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="loginArea">
-        <div class="loginInput">
-            <h1>會員註冊</h1>
-            <div class="loginInputArea">
-                <br><br> -->
-  <!-- <label for="">信箱：</label> -->
-  <!-- <p>信箱</p>
-                <input type="email" placeholder="請輸入信箱" id="inputAccount">
-                <br><br><br> -->
-  <!-- <label for="">密碼：</label> -->
-  <!-- <p>密碼</p>
-                <input type="text" placeholder="請輸入密碼" id="inputPassword">
-                <br><br><br> -->
-  <!-- <label for="">確認密碼：</label> -->
-  <!-- <p>確認密碼</p>
-                <input type="text" placeholder="請再次輸入密碼" id="inputRepeatPassword">
-                <br><br><br><br><br>
-                <button class="buttonSubmit" @click="signUpCheck()">註冊</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">返回登入</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">登入</a> -->
   <div class="screen">
     <div class="main">
       <div class="left">
@@ -228,11 +135,17 @@ export default {
         <img src="./圖片/Lovepik_com-610599676-Cartoon hand drawn air travel around the world.png" class="img">
       </div>
       <div class="right">
-        <h3><b>登入</b></h3>
-        <span><b>姓名：</b></span><br>
+        <h2><b>登入</b></h2>
+        <br>
+        <span><b>會員帳號：</b></span><br>
         <input type="text" class="input" id="account" v-model="this.account"><br>
         <span><b>密碼：</b></span><br>
-        <input type="text" class="input" id="password" v-model="this.password"><br>
+        <!-- <input type="password" class="input" id="password" :type="showPassword ? 'text' : 'password'" v-model="password"><br>
+        <i class="fa-solid fa-eye eye" @click="show()" v-show="showPassword"></i>
+        <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i> -->
+        <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
+        <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
+        <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
         <button type="button" class="login" @click="login()">登入</button>
       </div>
     </div>
@@ -243,7 +156,9 @@ export default {
 .screen {
   width: 100%;
   height: 100%;
-  background-color: rgb(49, 48, 77);
+  background-color: rgb(22, 26, 48);
+  box-sizing: border-box;
+  padding-top: 90px;
 }
 
 .main {
@@ -285,9 +200,28 @@ export default {
 }
 
 .login {
-  margin-left: 250px;
+  margin-left: 220px;
   margin-top: 50px;
   background-color: rgb(49, 48, 77);
   color: white;
+  box-shadow: none;
+  border-radius: 15px;
+  width: 80px;
+  height: 40px;
+  border: none;
+}
+
+.fa-eye {
+  position: absolute;
+  left: 75%;
+  top: 59%;
+  color: rgb(49, 48, 77);
+}
+
+.fa-eye-slash {
+  position: absolute;
+  left: 75%;
+  top: 59%;
+  color: rgb(49, 48, 77);
 }
 </style>

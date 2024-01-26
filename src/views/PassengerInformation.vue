@@ -5,6 +5,10 @@ export default {
     return {
       planeArr: [1],
       MemberInformation:[],
+      members: [
+        // 初始一筆會員資料
+        { title: "1", name: "", birthday: "", contact: "", phone: "" },
+      ],
     };
   },
   methods: {
@@ -46,6 +50,14 @@ export default {
     back() {
       this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
     },
+    addMember() {
+      if (this.members.length < 4) {
+        this.members.push({ title: "1", name: "", birthday: "", contact: "", phone: "" });
+      }
+    },
+    removeMember(index) {
+      this.members.splice(index, 1);
+    },
   },
 };
 </script>
@@ -65,15 +77,28 @@ export default {
     </div>
     <div class="mid" v-for="(item, index) in planeArr[0]" :key="index">
       <div class="m1">
-        <h3>成人</h3>
-      </div>
+        <span>{{ "人數 " + this.members.length + "人"}}</span>
+        <!-- <h3>成人</h3> -->
+        <br>
+        <button  @click="addMember" :disabled="members.length >= 4">新增</button>
+        <br>
+        <button @click="removeMember(index)">刪除</button>
 
+        <br>
+        <!-- <i style="font-size: 2rem; transform: rotate(40deg);  position: relative;" class="fa-solid fa-voicemail">
+                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-wand-magic"></i>
+                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-spoon"></i>
+                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-thermometer"></i>
+                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-phone-flip"></i>
+              </i> -->
+      </div>
       <div class="m2">
-        <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
+      <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
         <input type="checkbox" />
         <label>同會員資訊</label>
         <br />
         <br />
+        <div v-for="(member, index) in members" :key="index">
         <div class="form-floating mb-3">
           <select
             class="form-select aa"
@@ -89,12 +114,9 @@ export default {
 
         <div class="form-floating mb-3 bb">
           <input type="text" class="form-control" placeholder="" />
-          <label>姓氏</label>
+          <label>姓名</label>
         </div>
-        <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>名字</label>
-        </div>
+      
         <div class="form-floating mb-3 bb">
           <input type="date" class="form-control" placeholder="" />
           <label>生日</label>
@@ -107,11 +129,16 @@ export default {
           <input type="text" class="form-control" placeholder="" />
           <label>手機</label>
         </div>
-        <div class="form-floating mb-3 bb">
+          <!-- <div class="form-floating mb-3 bb">
+          <input type="text" class="form-control" placeholder="" />
+          <label>名字</label>
+        </div> -->
+        <!-- <div class="form-floating mb-3 bb">
           <input type="text" class="form-control" placeholder="" />
           <label>住家電話</label>
-        </div>
+        </div> -->
         <br />
+      </div>
       </div>
     </div>
   </div>
@@ -162,7 +189,7 @@ export default {
 <style scoped lang="scss">
 .big {
   width: 100vw;
-  height: 115vh;
+  height: 100vh;
   background-color: #161a30;
   .top {
     width: 100vw;
@@ -179,13 +206,16 @@ export default {
   }
   .mid {
     width: 90vw;
-    height: 95vh;
+    // height: 95vh;
     display: flex;
-    margin: 5vh auto;
-
+    margin: 10vh auto 0 auto;
+    button{
+      width: 100px;
+      height: 50px;
+    }
     .m1 {
       width: 25%;
-      height: 100%;
+      // height: 100%;
       color: white;
       // background-color: #3b2641;
       background-color: #0f2d3c;
@@ -194,10 +224,12 @@ export default {
     }
     .m2 {
       width: 75%;
-      height: 100%;
+      height: 70vh;
+      overflow: auto;
       background-color: #ffeeda;
       padding: 5vh 5vw 5vh 5vw;
       text-align: justify;
+      font-size: 18px;
       // display: flex;
       // justify-content: center;
       span {
@@ -209,16 +241,12 @@ export default {
       .bb {
         width: 60%;
       }
-      .Birthday {
-        width: 60%;
-        height: 8vh;
-      }
     }
   }
 }
 .bottom {
   width: 100vw;
-  height: 92vh;
+  height: 85vh;
   text-align: justify;
   padding: 0px 40px 0px 40px;
   background-color: #31304d;
