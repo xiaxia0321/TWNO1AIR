@@ -81,30 +81,12 @@ export default {
     },
 
     bookFlight(num) {
-      // 將選定的航班信息放進 planeSearchCheack
-      this.planeSearchCheack = this.planeArr[num];
-      // this.planeSearchCheack = {
-      //   departureLocation: selectedFlight.departureLocation,
-      //   arrivalLocation: selectedFlight.arrivalLocation,
-      //   departureDate: selectedFlight.departureDate,
-      //   arriveDate: selectedFlight.arriveDate,
-      //   da: selectedFlight.da,
-      //   aa: selectedFlight.aa,
-      //   depatureTime: selectedFlight.depatureTime,
-      //   arriveTime: selectedFlight.arriveTime,
-      //   classType: selectedFlight.classType,
-      //   isOneway: selectedFlight.isOneway,
-      //   depatureTerminal: selectedFlight.depatureTerminal,
-      //   arriveTerminal:selectedFlight.arriveTerminal,
-      //   depatureTime:selectedFlight.depatureTime,
-      //   arriveTime:selectedFlight.arriveTime,
-      //   price:selectedFlight.price,
-      //   seat:selectedFlight.seat,
-
-      // };
+      this.aaa = this.planeArr[num];
+      this.planeSearchCheack.ccc = this.aaa;
       console.log(this.planeArr[num]);
+      console.log(this.aaa);
       console.log(this.planeSearchCheack);
-      // 導航至下一頁
+      console.log('ccc = ' + this.planeSearchCheack.ccc);
       this.$router.push("/OutboundConfirm");
     },
   },
@@ -137,11 +119,11 @@ export default {
         <div class="a2">
           <div class="a21">
             <h3>{{ item.da }}</h3>
-            <span>{{ item.departureLocation }}</span>
+            <span>{{ item.depatureAirport }}</span>
           </div>
           <div class="a22">
             <h3>{{ item.aa }}</h3>
-            <span>{{ item.arrivalLocation }}</span>
+            <span>{{ item.arriveAirport }}</span>
           </div>
         </div>
         <div class="a3 aa">

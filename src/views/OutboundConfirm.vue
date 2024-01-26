@@ -1,14 +1,38 @@
 // 去程訂票確認頁
 <script>
-import { mapState, mapActions } from 'pinia'
-import counter from '../stores/counter'
+import { mapState, mapActions } from "pinia";
+import counter from "../stores/counter";
 export default {
   data() {
     return {
-      planeSearchCheack: [],
+      selectedPrice: 0,
+
     };
   },
   methods: {
+    calculateDuration(depatureTime, arriveTime) {
+      const [depatureHour, depatureMinute] = depatureTime.split(":").map(Number);
+      const [arriveHour, arriveMinute] = arriveTime.split(":").map(Number);
+      
+      // 轉換成分鐘
+      const depatureTotalMinutes = depatureHour * 60 + depatureMinute;
+      const arriveTotalMinutes = arriveHour * 60 + arriveMinute;
+
+      // 計算差距，考慮跨越午夜的情況
+      let durationMinutes = arriveTotalMinutes - depatureTotalMinutes;
+      if (durationMinutes < 0) {
+        durationMinutes += 24 * 60; // 一天的分鐘數
+      }
+
+      // 轉換成小時和分鐘
+      const hours = Math.floor(durationMinutes / 60);
+      const minutes = durationMinutes % 60;
+
+      return `${hours}小時${minutes}分`;
+    },
+    chooseSeat(price) {
+      this.selectedPrice = price;
+    },
     back() {
       this.$router.push("/AirTime"); //推送至下一頁的路徑
     },
@@ -17,10 +41,10 @@ export default {
     },
     consslog() {
       console.log(this.planeSearchCheack);
-    }
+    },
   },
   computed: {
-    ...mapState(counter, ["plane", 'planeSearchCheack'])
+    ...mapState(counter, ["plane", "planeSearchCheack"]),
   },
 };
 </script>
@@ -41,31 +65,34 @@ export default {
       <p>
         5.如於班機起飛前24小時內購買頭等艙票價產品，餐點可能無法完全滿足，我們仍將盡力協助提供完整之頭等艙餐食。
       </p>
-      <h2>去程： <span>{{ departureLocation }}</span> - <span>{{ arrivalLocation }}</span></h2>
+      <h2>
+        去程： <span>{{ planeSearchCheack.ccc.departureLocation }}</span> -
+        <span>{{ planeSearchCheack.ccc.arrivalLocation }}</span>
+      </h2>
     </div>
     <div class="date">
-      <span>{{ departureDate }}</span>
+      <span>{{ planeSearchCheack.ccc.departureDate }}</span>
     </div>
     <div class="mid">
       <div class="m1">
         <div class="a1">
           <p class="p1">JX0840</p>
-          <p class="p1">{{ departureDate }}</p>
-          <p class="time">{{ depatureTime }}</p>
-          <p class="nation">{{ da }}</p>
+          <p class="p2">{{ planeSearchCheack.ccc.departureDate }}</p>
+          <p class="time">{{ planeSearchCheack.ccc.depatureTime }}</p>
+          <p class="nation">{{ planeSearchCheack.ccc.da }}</p>
         </div>
         <div class="a2"><i class="fa-solid fa-arrow-right"></i></div>
         <div class="a3">
-          <p class="p1">2 小時 30 分鐘</p>
-          <p class="p1">{{ arrivalDate }}</p>
-          <p class="time">{{ arriveTime }}</p>
-          <p class="nation">{{ aa }}</p>
+          <p class="p1">{{ calculateDuration(planeSearchCheack.ccc.depatureTime, planeSearchCheack.ccc.arriveTime) }}</p>
+          <p class="p2">{{ planeSearchCheack.ccc.arriveDate }}</p>
+          <p class="time">{{ planeSearchCheack.ccc.arriveTime }}</p>
+          <p class="nation">{{ planeSearchCheack.ccc.aa }}</p>
         </div>
       </div>
       <div class="m2">
         <h3>經濟艙</h3>
         <span>TWD</span>
-        <span class="money">{{ 19, 608 }}</span>
+        <span class="money">{{ planeSearchCheack.ccc.price }}</span>
         <span>起</span>
       </div>
     </div>
@@ -73,11 +100,13 @@ export default {
       <div class="c1">
         <!-- <br> -->
         <span class="s1">TWD</span>
-        <span class="s2">7,000</span>
-        <br>
-        <button type="">選擇</button>
+        <span class="s2">{{ planeSearchCheack.ccc.price }}</span>
+        <br />
+        <button type=""  @click="chooseSeat(planeSearchCheack.ccc.price)">選擇</button>
         <p>訂位艙等</p>
-        <p class="p1">{{ da }}-{{ aa }}: 經濟艙</p>
+        <p class="p1">
+          {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: 經濟艙
+        </p>
         <p>預選座位</p>
         <p class="p1">收費選位</p>
         <p>托運行李</p>
@@ -85,11 +114,13 @@ export default {
       </div>
       <div class="c2">
         <span class="s1">TWD</span>
-        <span class="s2">14,000</span>
-        <br>
-        <button type="">選擇</button>
+        <span class="s2">{{ planeSearchCheack.ccc.price *3 }}</span>
+        <br />
+        <button type=""  @click="chooseSeat(planeSearchCheack.ccc.price * 3)">選擇</button>
         <p>訂位艙等</p>
-        <p class="p1">{{ da }}-{{ aa }}: 商務艙</p>
+        <p class="p1">
+          {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: 商務艙
+        </p>
         <p>預選座位</p>
         <p class="p1">免費選位</p>
         <p>托運行李</p>
@@ -97,11 +128,13 @@ export default {
       </div>
       <div class="c3">
         <span class="s1">TWD</span>
-        <span class="s2">87,000</span>
-        <br>
-        <button type="">選擇</button>
+        <span class="s2">{{ planeSearchCheack.ccc.price*10 }}</span>
+        <br />
+        <button type=""  @click="chooseSeat(planeSearchCheack.ccc.price * 10)">選擇</button>
         <p>訂位艙等</p>
-        <p class="p1">{{ da }}-{{ aa }}: 頭等艙</p>
+        <p class="p1">
+          {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: 頭等艙
+        </p>
         <p>預選座位</p>
         <p class="p1">免費選位</p>
         <p>托運行李</p>
@@ -148,7 +181,7 @@ export default {
     </p>
   </div>
   <div class="bottom1">
-    <span>TWD 20,680</span>
+    <span>TWD {{ selectedPrice }}</span>
     <button @click="gogo">下一步</button>
   </div>
   <!-- 底部 -->
@@ -183,21 +216,26 @@ export default {
     display: flex;
     align-items: center;
     padding: 0px 0px 0px 20px;
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .mid {
     width: 95vw;
-    height: 20vh;
+    height: 27vh;
     background-color: #ffeeda;
     margin: 15px auto;
     display: flex;
 
     .time {
-      font-size: 28px;
+      font-size: 36px;
       color: #794425;
     }
-
+    .p1{
+      font-size: 28px;
+    }
+    .p2{
+      font-size: 32px;
+    }
     .m1 {
       width: 70%;
       height: 100%;
@@ -209,23 +247,20 @@ export default {
       }
 
       .a1 {
-        width: 20%;
+        width: 30%;
         height: 100%;
         text-align: justify;
-        padding: 5px 0px 5px 20px;
+        padding: 10px 0px 10px 20px;
         background-color: #ffeeda;
-
+// background-color: #794425;
         .nation {
-          font-size: 24px;
+          font-size: 32px;
         }
 
-        .p1 {
-          font-size: 16px;
-        }
       }
 
       .a2 {
-        width: 60%;
+        width: 40%;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -234,18 +269,14 @@ export default {
       }
 
       .a3 {
-        width: 20%;
+        width: 30%;
         height: 100%;
         text-align: right;
         padding: 5px 20px 5px 0px;
         background-color: #ffeeda;
 
         .nation {
-          font-size: 24px;
-        }
-
-        .p1 {
-          font-size: 16px;
+          font-size: 32px;
         }
       }
     }
@@ -292,7 +323,8 @@ export default {
       font-size: 20px;
     }
 
-    .s1 {}
+    .s1 {
+    }
 
     .s2 {
       font-size: 32px;
