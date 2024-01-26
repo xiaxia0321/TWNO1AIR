@@ -14,6 +14,14 @@ export default {
   },
   methods: {
     ...mapActions(counter, ['setPP',]),
+    re0() {
+      this.OrderSearchArr.getOrderId = "",
+        this.OrderSearchArr.getArrivalDate = "",
+        this.OrderSearchArr.getDepartureDate = "",
+        this.OrderSearchArr.getArrivalLocation = "",
+        this.OrderSearchArr.getDepartureLocation = "",
+        this.OrderSearchArr.getAccount = "";
+    },
     searchOrder() {
       axios({
         url: 'http://localhost:8080/order/search',
@@ -51,54 +59,65 @@ export default {
     </div>
     <div class="content">
       <div class="search">
-        <div class="no">
-          <span>訂單ID : </span>
-          <input type="text" name="" placeholder="請輸入訂單ID" id="" v-model="OrderSearchArr.getOrderId">
+        <div class="bbc">
+          <div class="no">
+            <span>訂單ID : </span>
+            <input type="text" name="" placeholder="請輸入訂單ID" id="" v-model="OrderSearchArr.getOrderId">
+          </div>
+          <div class="no">
+            <span>出發地 : </span>
+            <select name="" id="" v-model="OrderSearchArr.getDepartureLocation">
+              <option value="">全部地區</option>
+              <option value="台北,臺灣">台北,臺灣</option>
+              <option value="澳門,澳門">澳門,澳門</option>
+              <option value="東京,日本">東京,日本</option>
+              <option value="大阪,日本">大阪,日本</option>
+              <option value="函館,日本">函館,日本</option>
+              <option value="沖繩,日本">沖繩,日本</option>
+              <option value="曼谷,泰國">曼谷,泰國</option>
+              <option value="胡志明市,越南">胡志明市,越南</option>
+              <option value="新加坡,新加坡">新加坡,新加坡</option>
+              <option value="洛杉磯,美國">洛杉磯,美國</option>
+              <option value="舊金山,美國">舊金山,美國</option>
+            </select>
+          </div>
+          <div class="no">
+            <span>目的地 : </span>
+            <select name="" id="" v-model="OrderSearchArr.getArrivalLocation">
+              <!-- <option value="台北">台北</option> -->
+              <option value="">全部地區</option>
+              <option value="台北,臺灣">台北,臺灣</option>
+              <option value="澳門,澳門">澳門,澳門</option>
+              <option value="東京,日本">東京,日本</option>
+              <option value="大阪,日本">大阪,日本</option>
+              <option value="函館,日本">函館,日本</option>
+              <option value="沖繩,日本">沖繩,日本</option>
+              <option value="曼谷,泰國">曼谷,泰國</option>
+              <option value="胡志明市,越南">胡志明市,越南</option>
+              <option value="新加坡,新加坡">新加坡,新加坡</option>
+              <option value="洛杉磯,美國">洛杉磯,美國</option>
+              <option value="舊金山,美國">舊金山,美國</option>
+            </select>
+          </div>
         </div>
-        <div class="no">
-          <span>出發地 : </span>
-          <select name="" id="" v-model="OrderSearchArr.getDepartureLocation">
-            <option value="">全部地區</option>
-            <option value="台北,臺灣">台北,臺灣</option>
-            <option value="澳門,澳門">澳門,澳門</option>
-            <option value="東京,日本">東京,日本</option>
-            <option value="大阪,日本">大阪,日本</option>
-            <option value="函館,日本">函館,日本</option>
-            <option value="沖繩,日本">沖繩,日本</option>
-            <option value="曼谷,泰國">曼谷,泰國</option>
-            <option value="胡志明市,越南">胡志明市,越南</option>
-            <option value="新加坡,新加坡">新加坡,新加坡</option>
-            <option value="洛杉磯,美國">洛杉磯,美國</option>
-            <option value="舊金山,美國">舊金山,美國</option>
-          </select>
+        <div class="bbc">
+          <div class="no">
+            <span>帳戶 : </span>
+            <input type="text" name="" placeholder="請輸入帳號" id="" v-model="OrderSearchArr.getAccount">
+          </div>
+          <div class="date">
+            <span>出發日期 : </span>
+            <input type="date" name="" id="" v-model="OrderSearchArr.getDepartureDate">
+          </div>
+          <div class="date to">
+            <span>抵達日期 : </span>
+            <input type="date" name="" id="" v-model="OrderSearchArr.getArrivalDate">
+          </div>
         </div>
-        <div class="no">
-          <span>目的地 : </span>
-          <select name="" id="" v-model="OrderSearchArr.getArrivalLocation">
-            <!-- <option value="台北">台北</option> -->
-            <option value="">全部地區</option>
-            <option value="台北,臺灣">台北,臺灣</option>
-            <option value="澳門,澳門">澳門,澳門</option>
-            <option value="東京,日本">東京,日本</option>
-            <option value="大阪,日本">大阪,日本</option>
-            <option value="函館,日本">函館,日本</option>
-            <option value="沖繩,日本">沖繩,日本</option>
-            <option value="曼谷,泰國">曼谷,泰國</option>
-            <option value="胡志明市,越南">胡志明市,越南</option>
-            <option value="新加坡,新加坡">新加坡,新加坡</option>
-            <option value="洛杉磯,美國">洛杉磯,美國</option>
-            <option value="舊金山,美國">舊金山,美國</option>
-          </select>
+        <div class="bbc" style="justify-content: center;">
+          <button type="submit" @click="re0">清空搜尋</button>
+          <button type="submit" @click="searchOrder">搜尋</button>
         </div>
-        <div class="date">
-          <span>出發日期 : </span>
-          <input type="date" name="" id="" v-model="OrderSearchArr.getDepartureDate">
-        </div>
-        <div class="date to">
-          <span>抵達日期 : </span>
-          <input type="date" name="" id="" v-model="OrderSearchArr.getArrivalDate">
-        </div>
-        <button type="submit" @click="searchOrder">搜尋</button>
       </div>
       <div class="inside">
         <table>
@@ -163,73 +182,79 @@ export default {
       align-items: baseline;
       justify-content: left;
 
-      .no {
-        padding: 2px;
-        font-size: 2rem;
-        font-weight: 500;
+      .bbc {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: row;
+        // justify-content: center;
+        .no {
+          padding: 2px;
+          font-size: 2rem;
+          font-weight: 500;
 
-        span {
-          margin-left: 1rem;
+          span {
+            margin-left: 1rem;
+          }
+
+          input {
+            width: 15rem;
+            height: 2rem;
+            font-size: 1.5rem;
+            border-radius: .7rem;
+            text-align: center;
+          }
+
+          select {
+            width: 15rem;
+            height: 2rem;
+            font-size: 1.5rem;
+            border-radius: .7rem;
+            text-align: center;
+          }
         }
 
-        input {
-          width: 15rem;
-          height: 2rem;
-          font-size: 1.5rem;
-          border-radius: .7rem;
-          text-align: center;
+
+        .date {
+          margin-top: .8rem;
+          margin-bottom: .8rem;
+          font-weight: 500;
+          font-size: 1.4rem;
+          padding-left: 1.1rem;
+
+          span {}
+
+          input {
+            text-align: center;
+            width: 11rem;
+            height: 2rem;
+            border-radius: .5rem;
+          }
         }
 
-        select {
-          width: 15rem;
-          height: 2rem;
-          font-size: 1.5rem;
-          border-radius: .7rem;
-          text-align: center;
-        }
-      }
+        // .to {
+        //   padding-left: 2.2rem;
+        // }
 
 
-      .date {
-        margin-top: .8rem;
-        margin-bottom: .8rem;
-        font-weight: 500;
-        font-size: 1.4rem;
-        padding-left: 1.1rem;
-
-        span {}
-
-        input {
-          text-align: center;
-          width: 11rem;
-          height: 2rem;
+        button {
+          margin-left: 6rem;
           border-radius: .5rem;
+          width: 5rem;
+          height: 2rem;
+          background-color: #3472c2;
+          color: white;
+
+          &:hover {
+            background-color: rgba(144, 27, 27, 0.499);
+          }
+
+          &:active {
+            background-color: rgba(144, 27, 27, 0.811);
+
+          }
         }
       }
-
-      .to {
-        padding-left: 8.2rem;
-      }
-
-
-      button {
-        margin-left: 6rem;
-        border-radius: .5rem;
-        width: 5rem;
-        height: 2rem;
-        background-color: #3472c2;
-        color: white;
-
-        &:hover {
-          background-color: rgba(144, 27, 27, 0.499);
-        }
-
-        &:active {
-          background-color: rgba(144, 27, 27, 0.811);
-
-        }
-      }
-
     }
 
     .inside {

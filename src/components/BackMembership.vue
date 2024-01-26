@@ -26,6 +26,9 @@ export default {
         .then(res => this.user = res.data.userList)
       console.log(this.user);
     },
+    re0(){
+      this.accountININ = "";
+    }
   },
   components: {
   },
@@ -64,6 +67,7 @@ export default {
           <span>手機號碼 : </span>
           <input type="text" name="" placeholder="請輸入手機號碼" id="" v-model="userPhone">
         </div> -->
+        <button type="submit" @click="re0()">清空搜尋</button>
         <button type="submit" @click="searchUser()">搜尋</button>
       </div>
       <div class="inside">
@@ -171,8 +175,6 @@ export default {
       width: 100%;
       display: flex;
       justify-content: center;
-      padding-top: .8rem;
-      background-color: white;
       // padding: 25px;
 
       th {

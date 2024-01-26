@@ -11,6 +11,13 @@ export default {
   },
   methods: {
     ...mapActions(counter, ['setPP',]),
+    re0() {
+      this.planeSearchArr.departureDate = "",
+        this.planeSearchArr.arrivalDate = "",
+        this.planeSearchArr.departureLocation = "",
+        this.planeSearchArr.arrivalLocation = "",
+        this.planeSearchArr.classType = "";
+    },
     searchPlaneAA() {
       axios({
         url: 'http://localhost:8080/airplainInfo/search',
@@ -129,8 +136,8 @@ export default {
             <span>目的地 : </span>
             <label for="">
               <select name="" id="" v-model="planeSearchArr.arrivalLocation">
-                <!-- <option value="台北">台北</option> -->
                 <option value="">全部地區</option>
+                <option value="台北">台北,臺灣</option>
                 <option value="澳門,澳門">澳門,澳門</option>
                 <option value="東京,日本">東京,日本</option>
                 <option value="大阪,日本">大阪,日本</option>
@@ -162,6 +169,7 @@ export default {
             <input type="date" name="" id="" v-model="planeSearchArr.arrivalDate">
           </div>
         </div>
+        <button type="submit" @click="re0">清空搜尋</button>
         <button type="submit" @click="searchPlane">搜尋</button>
         <button type="submit" @click="createFlight">創建</button>
       </div>
@@ -337,7 +345,7 @@ export default {
         }
 
         .no {
-          width: 9rem;
+          width: 7rem;
         }
 
         .place {

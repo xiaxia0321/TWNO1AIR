@@ -704,10 +704,8 @@ export default {
 
         &:hover {
           // width: 70%;
-          width: 300px;
-          height: 15vh;
-          background-color: rgb(218, 210, 255);
-          box-shadow: 2px 1px 2px rgb(255, 212, 212);
+          background-color: rgb(178, 197, 255);
+          box-shadow: 2px 1px 2px black;
         }
 
         &:active {
@@ -731,7 +729,7 @@ export default {
           margin-left: 10px;
 
           p {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin: 12px 0 5px 0;
             font-weight: 600;
           }
