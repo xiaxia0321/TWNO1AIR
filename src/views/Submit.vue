@@ -91,7 +91,7 @@ export default {
           //   console.log(this.planeSearchCheack);
           //   console.log("ccc = " + this.planeSearchCheack.ccc);
           console.log(this.user);
-          this.$router.push("/User"); //先註解
+          this.$router.push("/Login"); //先註解
         }
         //新增ㄉ
         // (this.user = {

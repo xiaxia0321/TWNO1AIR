@@ -74,14 +74,25 @@ export default {
         ProductDetailed() {
             this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
         },
-        Refund(){
+        Refund() {
             this.$router.push("/Refund");
         },
-        search(){
+        search() {
             this.$router.push("/AirTimeSearch");
         },
-
-
+        goLogin() {
+            if (this.account == "A01" && this.pwd == "aaa") {
+                this.$router.push('/Backstage')
+            } else {
+                this.$router.push('/Login')
+            }
+        },
+        goUser() {
+            this.$router.push('/User')
+            this.$nextTick(() => {
+                window.scrollTo(0, 0);
+            });
+        },
     }
 
 }
@@ -90,9 +101,13 @@ export default {
 <template>
     <div class="headerShow">
         <div class="happydog" @click="home"></div>
+        <div class="icon">
+            <i class="fa-solid fa-power-off ii" ii @click="goLogin"></i>
+            <i class="fa-solid fa-user ii" @click="goUser"></i>
+        </div>
         <ul class="drop-down-menu">
             <li>
-                <a href="#" style="color: white;font-size: 26pt;">預訂行程</a>
+                <a href="#" style="color: white;font-size: 20pt;">預訂行程</a>
                 <ul>
                     <li>
                         <div class="reservation">
@@ -102,10 +117,6 @@ export default {
                                 <button @click="search()">搜尋航班</button>
                                 <br><br>
                                 <h5>行程內容更改</h5>
-                                <button>行程管理</button>
-                                <br>
-                                <button>更改航班</button>
-                                <br>
                                 <button @click="Refund()">線上退票</button>
                             </div>
                             <div class="hot">
@@ -131,10 +142,10 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 26pt;" @click="AirTimeSearch">班機時刻</a>
+                <a href="#" style="color: white;font-size: 20pt;" @click="AirTimeSearch">班機時刻</a>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 26pt;">準備啟程</a>
+                <a href="#" style="color: white;font-size: 20pt;">準備啟程</a>
                 <ul>
                     <li>
                         <div class="prepare">
@@ -158,7 +169,7 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 26pt;">樂狗會員</a>
+                <a href="#" style="color: white;font-size: 20pt;">樂狗會員</a>
                 <ul>
                     <li>
                         <div class="happyDogMember">
@@ -197,22 +208,19 @@ export default {
 
 <style scoped lang="scss">
 .headerShow {
-    position: relative;
+    position: absolute;
     width: 100vw;
-    height: 20vh;
+    height: 15vh;
     background-color: rgb(49, 48, 77);
     box-sizing: border-box;
     padding-left: 500px;
     padding-top: 20px;
-    // display: flex;
-    // justify-content: center;
-    // align-content: center;
     letter-spacing: 2px;
 
     .happydog {
         position: absolute;
-        left: 50px;
-        top: 20px;
+        left: 10%;
+        top: 25%;
         background-image: url(/noBack.png);
         background-size: contain;
         background-repeat: no-repeat;
@@ -231,15 +239,27 @@ export default {
         }
     }
 
+    .icon{
+        .fa-power-off{
+            font-size: 25pt;
+            color: white;
+            position: absolute;
+            left: 83%;
+            top: 33%;
+        }
+        .fa-user{
+            font-size: 25pt;
+            color: white;
+            position: absolute;
+            left: 87%;
+            top: 33%;
+        }
+    }
     ul {
         /* 取消ul預設的內縮及樣式 */
         margin: 0;
         padding: 0;
         list-style: none;
-        box-sizing: border-box;
-        // padding-top: 60px;
-        // padding-left: 200px;
-
         .reservation {
             width: 60vw;
             height: 40vh;
@@ -296,7 +316,7 @@ export default {
             height: 40vh;
             background-color: rgb(240, 240, 240);
             position: absolute;
-            left: -70px;
+            left: -34%;
             border-radius: 20px;
             text-align: center;
 
@@ -313,6 +333,7 @@ export default {
                 box-shadow: none;
                 border: 0px;
                 font-size: 12pt;
+
                 &:hover {
                     transition: .3s;
                     background-color: rgba(0, 0, 0, 0.128);
@@ -326,7 +347,7 @@ export default {
             height: 30vh;
             background-color: rgb(240, 240, 240);
             position: absolute;
-            left: -70px;
+            left: -36%;
             border-radius: 20px;
             text-align: center;
 
@@ -344,6 +365,7 @@ export default {
                 border: 0px;
                 font-size: 12pt;
                 border-radius: 3rem;
+
                 &:hover {
                     transition: .3s;
                     background-color: rgb(154, 154, 154);
@@ -356,8 +378,8 @@ export default {
         display: inline-block;
         font-size: 16px;
         color: rgb(49, 48, 77);
-        position: absolute;
-        left: 400px;
+        margin-top: 20px;
+        margin-left: -120px;
     }
 
     ul.drop-down-menu li {
@@ -475,4 +497,5 @@ export default {
     //         background-color: rgba(0, 0, 0, 0.344);
     //     }
     // }
-}</style>
+}
+</style>

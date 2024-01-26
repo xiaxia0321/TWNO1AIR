@@ -58,12 +58,15 @@ export default {
             const end = start + this.rowsPerPage;
             return this.flights.slice(start, end);
         },
-        ...mapState(counter, ['user','userDate'])
-    },
-    created(){
-        this.searchUser
+        ...mapState(counter, ['user', 'userDate'])
     },
     methods: {
+        // isLogin() {
+        //     console.log(this.userDate.uuu);
+        //     if (this.userDate.uuu[0].name == '') {
+
+        //     }
+        // },
         searchUser() {
             axios({
                 url: 'http://localhost:8080/user/search',
@@ -73,7 +76,7 @@ export default {
                 },
                 data: {
                     account: this.userDate.account,
-                    password:this.userDate.password,
+                    password: this.userDate.password,
                 },
             })
                 .then(res => this.uerArr = res.data.userList)
@@ -219,9 +222,6 @@ export default {
             this.checkedItems.push(false);
         },
     },
-    mounted() {
-        // this.userSearch()
-    }
 }
 </script>
 
@@ -324,6 +324,7 @@ export default {
                 <button @click="toggleEditMode">修改選項</button>
                 <button @click="clearChecked">清除勾選</button><br>
                 <select v-model="selectedCity" @change="updateSuggestedItems" class="lo">
+                    <!-- <i class="fa-solid fa-plus fa-2xl"></i> -->
                     <option value="">請選擇您的目的地</option>
                     <option value="San Francisco">舊金山</option>
                     <option value="Los Angeles">洛杉磯</option>

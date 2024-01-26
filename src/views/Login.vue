@@ -224,4 +224,18 @@ export default {
   top: 59%;
   color: rgb(49, 48, 77);
 }
+
+.fa-eye {
+  position: absolute;
+  left: 75%;
+  top: 59%;
+  color: rgb(49, 48, 77);
+}
+
+.fa-eye-slash {
+  position: absolute;
+  left: 75%;
+  top: 59%;
+  color: rgb(49, 48, 77);
+}
 </style>
