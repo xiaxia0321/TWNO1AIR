@@ -7,19 +7,19 @@ export default {
         return {
             OrderArr: {
             },
-            orderId:"",
-            account:"",
-            plainId:"",
-            departureDate:"",
-            depatureTime:"",
-            departureLocation:"",
-            arrivalDate:"",
-            arriveTime:"",
-            arrivalLocation:"",
+            orderId: "",
+            account: "",
+            plainId: "",
+            departureDate: "",
+            depatureTime: "",
+            departureLocation: "",
+            arrivalDate: "",
+            arriveTime: "",
+            arrivalLocation: "",
         }
     },
     computed: {
-        ...mapState(counter, ['OrderSearchArr'])
+        ...mapState(counter, ['OrderSearchArr', 'plane'])
     },
     methods: {
         goDagerous() {
@@ -45,11 +45,26 @@ export default {
                 },
             })
                 .then(res => this.OrderArr = res.data.orderList)
-                console.log(this.OrderArr);
+            console.log(this.OrderArr);
         },
+        searchPlane(){
+            axios({
+                url: 'http://localhost:8080/airplainInfo/search',
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    airplain_Id: this.planeArr.airplain_Id
+                },
+            })
+                .then(res => this.planeArr = res.data.planeList)
+                console.log(this.planeArr);
+        }
     },
     mounted() {
         this.searchOrder()
+        this.searchPlane()
     }
 }
 </script>
@@ -61,19 +76,19 @@ export default {
                     <th>訂位代號</th>
                     <th>姓名</th>
                     <!-- <th>報到地點</th> -->
-                    <th>班機編號</th>
+                    <!-- <th>班機編號</th> -->
                     <th>出發日期</th>
                     <th>出發時間</th>
                     <th>出發地</th>
-                    <th>抵達日期</th>
-                    <th>抵達時間</th>
+                    <th>回程日期</th>
+                    <th>回程時間</th>
                     <th>目的地</th>
                 </tr>
                 <tr v-for="(item, index) in OrderArr" :key="index">
                     <td>{{ item.orderId }}</td>
                     <td>{{ item.account }}</td>
-                    <!-- <td>TPE-臺北(桃園)</td> -->
-                    <td>{{ item.plainId }}</td>
+                    <!-- <td>TPE-臺北(桃園)</td>
+                    <td>{{ item.airplain_Id }}</td> -->
                     <td>{{ item.departureDate }}</td>
                     <td>{{ item.depatureTime }}</td>
                     <td>{{ item.departureLocation }}</td>

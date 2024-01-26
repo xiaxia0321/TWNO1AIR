@@ -31,7 +31,7 @@ export default {
     <div class="screen">
         <h1>線上退票</h1>
         <div class="refund">
-            <span>機票號碼：</span><input v-model="ticket.id" type="number" class="input"><br>
+            <span>訂單編號：</span><input v-model="ticket.id" type="number" class="input"><br>
             <span>會員名稱：</span><input v-model="userInfo.name" type="text" class="input">
             <input v-model="agreementChecked" type="checkbox"><span>本人已詳閱樂狗航空相關退票規定</span><br>
             <button type="button" @click="concel" class="comfirm">確認</button>

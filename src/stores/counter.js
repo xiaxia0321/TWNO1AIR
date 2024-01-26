@@ -47,7 +47,8 @@ export default defineStore("counter", {
                 arriveTime: "", //抵達時間
                 price: "", //價錢
                 seat: "", //座位
-                airplain_type: ""
+                airplain_type: "",
+                airplain_Id:""
             },
             planeArr: {
 
@@ -59,6 +60,7 @@ export default defineStore("counter", {
                 arrivalLocation: "", //抵達地
                 classType: "經濟艙;商務艙;頭等艙",
                 isOneway: false, //單程
+
             },
             planeSearchCheack: {
                 ccc: [],

@@ -5,9 +5,63 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            userArr: [],
+            plaineArr:[]
         }
     },
-
+    computed: {
+        ...mapState(counter, ['user','plane'])
+    },
+    methods: {
+        ...mapActions(counter, ['setPP',]),
+        searchUser() {
+            axios({
+                url: 'http://localhost:8080/user/search',
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    userId: this.user.userId,
+                },
+            })
+                .then(res => this.userArr = res.data.userList)
+            console.log(this.userArr);
+        },
+        plain() {
+            axios({
+                url: 'http://localhost:8080/airplainInfo/search',
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    departureDate: this.plane.departureDate,
+                    arrivalDate: this.plane.arrivalDate, 
+                    departureLocation: this.plane.departureLocation, 
+                    arrivalLocation: this.plane.arrivalLocation, //抵達地
+                    departureAirport: this.plane.departureAirport, //出發機場
+                    arrivalAirport: this.plane.arrivalAirport, //抵達機場
+                    da: '', //出發機場縮寫
+                    aa: "", //抵達機場縮寫
+                    classType: "經濟艙;商務艙;頭等艙",
+                    isOneway: false, //單程
+                    depatureTerminal: 0, //出發航廈
+                    arriveTerminal: 0,  //抵達航廈
+                    depatureTime: "", //出發時間
+                    arriveTime: "", //抵達時間
+                    price: "", //價錢
+                    seat: "", //座位
+                    userId: this.user.userId,
+                },
+            })
+                .then(res => this.userArr = res.data.userList)
+            console.log(this.userArr);
+        }
+    },
+    mounted() {
+        this.searchUser()
+    }
 }
 </script>
 <template>
@@ -17,7 +71,7 @@ export default {
             <img src="../../public/01.png" alt="">
             <span style="color: gray;font-size: 14pt;">HappyDog Airline</span>
             <img src="../../public/sabrina/登機證.png" alt="" style="width: 280px;height: 260px;" class="scan">
-            <p>CHOU/COOKIE MR</p>
+            <p v-for="(item, index) in userArr" :key="index">{{ item.userId }}</p>
             <h3>A321</h3>
             <p>06APR　　　　TPE->BKK</p>
             <div class="gate">
@@ -118,4 +172,5 @@ export default {
             top: 58.9%;
         }
     }
-}</style>
+}
+</style>
