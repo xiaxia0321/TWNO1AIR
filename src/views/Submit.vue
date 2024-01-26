@@ -82,7 +82,6 @@ export default {
             icon: "success",
             text: "你已經註冊成功",
             showConfirmButton: true,
-
           });
           //   this.aaa = this.planeArr[num];
           //   this.planeSearchCheack.ccc = this.aaa;
