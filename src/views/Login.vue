@@ -128,7 +128,7 @@ export default {
         <span><b>姓名：</b></span><br>
         <input type="text" class="input"><br>
         <span><b>密碼：</b></span><br>
-        <input type="text" class="input"><br>
+        <input type="password" class="input"><br>
         <button type="button" class="login">登入</button>
       </div>
     </div>
