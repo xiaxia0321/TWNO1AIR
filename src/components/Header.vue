@@ -1,5 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
 export default {
     data() {
         return {
@@ -93,7 +95,16 @@ export default {
                 window.scrollTo(0, 0);
             });
         },
-    }
+        isLogin(){
+            if (condition) {
+                
+            }
+        }
+        
+    },
+    computed: {
+        ...mapState(counter,['userDate'])
+    },
 
 }
 </script>
@@ -228,6 +239,9 @@ export default {
         height: 4rem;
         border-radius: 1rem;
         transition: .2s;
+        .ii{
+            
+        }
 
         &:hover {
             box-shadow: 2px 2px 5px 0 black;
@@ -253,7 +267,15 @@ export default {
             position: absolute;
             left: 87%;
             top: 33%;
+            
         }
+        .ii{
+            border-radius: 5px;
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.354);
+            }
+        }
+        
     }
     ul {
         /* 取消ul預設的內縮及樣式 */

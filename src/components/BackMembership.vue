@@ -43,7 +43,7 @@ export default {
 <template>
   <div class="body">
     <div class="header">
-      <span>BackMembership</span>
+      <span>會員管理</span>
     </div>
     <div class="content">
       <div class="search">

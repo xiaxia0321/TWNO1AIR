@@ -10,7 +10,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(counter, ['OrderSearchArr'])
+    ...mapState(counter, ['OrderSearchArr', 'OrderDelete'])
   },
   methods: {
     ...mapActions(counter, ['setPP',]),
@@ -41,6 +41,19 @@ export default {
         .then(res => this.OrderArr = res.data.orderList)
       console.log(this.OrderArr);
     },
+    delete() {
+      axios({
+        url: 'http://localhost:8080/order/delete',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          order_id: this.OrderArr.orderId,
+        },
+      })
+        .then(res => console.log(this.OrderArr))
+    }
   },
   components: {
   },
@@ -55,7 +68,7 @@ export default {
 <template>
   <div class="body">
     <div class="header">
-      <span>BackOrder</span>
+      <span>訂單管理</span>
     </div>
     <div class="content">
       <div class="search">
@@ -141,7 +154,7 @@ export default {
             <td>{{ item.arrivalDate }}</td>
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
-            <td class="bb"><span href="">修改&刪除</span></td>
+            <td class="bb"><span href="" @click="delect">{{ item.orderId }}刪除</span></td>
           </tr>
         </table>
       </div>
@@ -187,6 +200,7 @@ export default {
         height: 30%;
         display: flex;
         flex-direction: row;
+
         // justify-content: center;
         .no {
           padding: 2px;

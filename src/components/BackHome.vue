@@ -91,7 +91,7 @@ export default {
 <template>
   <div class="body">
     <div class="header">
-      <span>Home</span>
+      <span>首頁</span>
     </div>
     <div class="content">
       <div class="block member" @click="goMember">

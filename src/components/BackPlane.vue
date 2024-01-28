@@ -18,6 +18,36 @@ export default {
         this.planeSearchArr.arrivalLocation = "",
         this.planeSearchArr.classType = "";
     },
+    updatePlane() {
+      axios({
+        url: 'http://localhost:8080/airplainInfo/update',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          departureDate: this.planeUpdate.departureDate, //出發日期
+          arrivalDate: this.planeUpdate.arrivalDate, //抵達日期
+          departureLocation: this.planeUpdate.departureLocation, //出發地
+          arrivalLocation: this.planeUpdate.arrivalLocation, //抵達地
+          departureAirport: this.planeUpdate.departureAirport, //出發機場
+          arrivalAirport: this.planeUpdate.arrivalAirport, //抵達機場
+          da: this.planeUpdate.da, //出發機場縮寫
+          aa: this.planeUpdate.aa, //抵達機場縮寫
+          classType: this.planeUpdate.classType,
+          isOneway: this.planeUpdate.isOneway, //單程
+          depatureTerminal: this.planeUpdate.depatureTerminal, //出發航廈
+          arriveTerminal: this.planeUpdate.arriveTerminal,  //抵達航廈
+          depatureTime: this.planeUpdate.depatureTime, //出發時間
+          arriveTime: this.planeUpdate.arriveTime, //抵達時間
+          price: this.planeUpdate.price, //價錢
+          seat: this.planeUpdate.seat, //座位
+          airplain_type: this.planeUpdate.airplain_type,
+          airplain_Id: this.planeUpdate.airplain_Id,
+        },
+      })
+        .then(res => console.log(res));
+    },
     searchPlaneAA() {
       axios({
         url: 'http://localhost:8080/airplainInfo/search',
@@ -95,7 +125,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(counter, ['plane', 'planeSearchArr'])
+    ...mapState(counter, ['plane', 'planeSearchArr', 'planeUpdate'])
   },
   components: {
   },
@@ -110,7 +140,7 @@ export default {
 <template>
   <div class="body">
     <div class="header">
-      <span id="start">BackPlane</span>
+      <span id="start">航班管理</span>
     </div>
     <div class="content">
       <div class="search">

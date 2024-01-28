@@ -183,15 +183,13 @@ export default {
     <div class="header" style="width: 100%;height: 40vh;">
       <div class="top">
         <span>Happy Dog 樂狗航空</span>
-        <div class="user">
+        <!-- <div class="user">
           <div class="oo">
-            <!--    右上角     -->
-            <!-- <i class="fa-solid fa-earth-americas ii"></i> -->
+               右上角    
             <i class="fa-solid fa-power-off ii" ii @click="goLogin"></i>
             <i class="fa-solid fa-user ii" @click="goUser"></i>
-            <!-- <i class="fa-solid fa-bars ii"></i> -->
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="title">
         <p style="margin: 0; font-size: 2.5em; color: white;
