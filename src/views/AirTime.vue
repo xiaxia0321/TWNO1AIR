@@ -71,8 +71,20 @@ export default {
           arrivalLocation: this.planeSearchArr.arrivalLocation,
           classType: this.planeSearchArr.classType,
           isOneway: this.planeSearchArr.isOneway,
+          
         },
-      }).then((res) => (this.planeArr = res.data.airplainInfoList));
+      })
+      .then((res) => (this.planeArr = res.data.airplainInfoList));
+    //   const allFlights = res.data.airplainInfoList;
+    //   if (this.planeSearchArr.isOneway) {
+    //   // 如果是单程航班，只显示出发日期后的航班
+    //   this.planeArr = allFlights.filter((flight) => flight.departureDate >= this.planeSearchArr.departureDate);
+    // } else {
+    //   // 如果是往返航班，显示出发日期和回程日期之间的航班
+    //   this.planeArr = allFlights.filter(
+    //     (flight) => flight.departureDate >= this.planeSearchArr.departureDate && flight.arriveDate >= this.planeSearchArr.returnDate
+    //   );
+    // }
       console.log(this.planeArr);
       console.log(this.planeSearchArr);
     },

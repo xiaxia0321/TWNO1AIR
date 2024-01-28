@@ -140,7 +140,7 @@ export default {
       <option value="舊金山,美國">舊金山,美國</option>
     </select>
     <br>
-    <!-- <span>出發機場</span>
+    <span>出發機場</span>
     <select name="" id="">
       <option value="桃園國際機場">桃園國際機場</option>
       <option value="澳門國際機場">澳門國際機場</option>
@@ -167,7 +167,7 @@ export default {
       <option value="樟宜機場">樟宜機場</option>
       <option value="洛杉磯國際機場">洛杉磯國際機場</option>
       <option value="舊金山國際機場">舊金山國際機場</option>
-    </select> -->
+    </select>
     <br>
     <span>出發機場縮寫</span>
     <select name="" id="" v-model="plane.da">

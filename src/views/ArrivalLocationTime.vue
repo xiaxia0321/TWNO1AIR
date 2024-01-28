@@ -21,10 +21,9 @@ export default {
       this.planeSearchArr.aa = this.AA
       this.planeSearchArr.arrivalLocation = this.arrivalLocation
       this.planeSearchArr.arrivalAirport = this.arrivalAirport
-      console.log('aa ='+ this.planeSearchArr.aa);
-      console.log('arrivalLocation ='+ this.planeSearchArr.arrivalLocation);
-      console.log('arrivalAirport ='+ this.planeSearchArr.arrivalAirport);
-      // this.$emit('arrival-selected', this.arrivalLocation);
+      // console.log('aa ='+ this.planeSearchArr.aa);
+      // console.log('arrivalLocation ='+ this.planeSearchArr.arrivalLocation);
+      // console.log('arrivalAirport ='+ this.planeSearchArr.arrivalAirport);
     },
   }
 };

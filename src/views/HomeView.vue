@@ -249,14 +249,14 @@ export default {
               alt="...">
             <div class="carousel-caption d-none d-md-block wwc">
               <h1>開拓自身眼界</h1>
-              <p>Some representative placeholder content for the first slide.</p>
+              <p>塞納河畔，左岸的咖啡，我手一杯，品嘗你的美</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="https://www.kkday.com/zh-hk/blog/wp-content/uploads/jpg-39-5.jpeg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block wwc">
               <h1>感受每個當下</h1>
-              <p>Some representative placeholder content for the second slide.</p>
+              <p>雄偉壯麗自然景觀，給自己不一樣的視野</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -265,7 +265,7 @@ export default {
               class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block wwc">
               <h1>體驗異國風情</h1>
-              <p>漫步塞納河畔，和你的美，品嘗左岸的咖啡</p>
+              <p>將曾經書上影片上的畫面，親自體驗一遍</p>
             </div>
           </div>
         </div>
