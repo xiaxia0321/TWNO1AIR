@@ -154,7 +154,8 @@ export default {
             <td>{{ item.arrivalDate }}</td>
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
-            <td class="bb"><span href="" @click="delect">{{ item.orderId }}刪除</span></td>
+            <!-- <td class="bb"><span href="" @click="delect">刪除</span></td> -->
+            <!-- {{ item.orderId } -->
           </tr>
         </table>
       </div>

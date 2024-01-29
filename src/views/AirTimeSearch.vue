@@ -9,6 +9,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      returnDate: "", // 新增回程日期属性
       // 定義變數，表示今天的日期，格式為 "YYYY-MM-DD"
       today: new Date().toISOString().split("T")[0],
       // 使用 v-model 綁定選擇的日期
@@ -34,6 +35,11 @@ export default {
       //   console.log(this.planeArr);
       //   // 在請求完成後執行路由導航
       // });
+      this.planeSearchArr.departureDate = this.selectedDate
+      this.planeSearchArr.arrivalDate = this.returnDate
+
+      console.log("出发日期:", this.selectedDate);
+      console.log("回程日期:", this.returnDate);
       this.$router.push({
         name: "AirTime",
         params: {
@@ -110,6 +116,7 @@ export default {
             name="trip-start"
             max="2050-12-31"
             :min="this.today"
+            v-model="selectedDate"
             @click="updateMinDate"
           />
           <label>出發日期</label>
@@ -125,6 +132,7 @@ export default {
               name="trip-start"
               max="2050-12-31"
               :min="this.today"
+              v-model="selectedDate"
               @click="updateMinDate"
             />
             <label>出發日期</label>
@@ -138,6 +146,7 @@ export default {
               name="trip-start"
               max="2050-12-31"
               :min="this.today"
+              v-model="returnDate"
               @click="updateMinDate"
             />
             <label>回程日期</label>

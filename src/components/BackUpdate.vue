@@ -65,9 +65,6 @@ export default {
           arrive_terminal: this.plane.arriveTerminal, //抵達航廈
           depature_time: this.plane.depatureTime, //出發時間
           arrive_time: this.plane.arriveTime, //抵達時間
-          depature_airport: this.plane.departureAirport,
-          arrive_airport: this.plane.arrivalAirport,
-          airplain_type: this.plane.airplain_type,
         },
       }).then(res => console.log(res.data),)
       console.log(this.plane);
@@ -130,7 +127,7 @@ export default {
     </select>
     <span>抵達地</span>
     <select name="" id="" v-model="plane.arrivalLocation">
-      <!-- <option value="台北,臺灣">台北,臺灣</option> -->
+      <!-- <option value="台北">台北</option> -->
       <option value="澳門,澳門">澳門,澳門</option>
       <option value="東京,日本">東京,日本</option>
       <option value="大阪,日本">大阪,日本</option>
@@ -143,7 +140,7 @@ export default {
       <option value="舊金山,美國">舊金山,美國</option>
     </select>
     <br>
-    <span>出發機場</span>
+    <!-- <span>出發機場</span>
     <select name="" id="">
       <option value="桃園國際機場">桃園國際機場</option>
       <option value="澳門國際機場">澳門國際機場</option>
@@ -170,7 +167,7 @@ export default {
       <option value="樟宜機場">樟宜機場</option>
       <option value="洛杉磯國際機場">洛杉磯國際機場</option>
       <option value="舊金山國際機場">舊金山國際機場</option>
-    </select>
+    </select> -->
     <br>
     <span>出發機場縮寫</span>
     <select name="" id="" v-model="plane.da">
@@ -273,7 +270,7 @@ export default {
     <br>
     <!-- onclick="alert('這是警告文字');" -->
     <button @click="goBackPlane">上一頁</button>
-    <button @click="createPlane">創建</button>
+    <button @click="createPlane">修改</button>
   </div>
 </template>
 

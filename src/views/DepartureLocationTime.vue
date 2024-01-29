@@ -23,9 +23,9 @@ export default {
       this.planeSearchArr.da = this.DA
       this.planeSearchArr.departureLocation = this.departureLocation
       this.planeSearchArr.departureAirport = this.departureAirport
-      console.log('da :' + this.planeSearchArr.da);
-      console.log('departureLocation :' + this.planeSearchArr.departureLocation);
-      console.log('departureAirport :' +this.planeSearchArr.departureAirport);
+      // console.log('da :' + this.planeSearchArr.da);
+      // console.log('departureLocation :' + this.planeSearchArr.departureLocation);
+      // console.log('departureAirport :' +this.planeSearchArr.departureAirport);
     },
 },
 };
