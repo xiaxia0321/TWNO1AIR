@@ -4,6 +4,7 @@ export default defineStore("counter", {
     //data(){}
     state() {
         return {
+            LoginIng: false,
             pp: 1,
             Order: {
                 getOrderId: '',
@@ -11,11 +12,12 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
-                getAccount:'',
-                getArriveTime:'',
-                getDepatureTime:'',
+                getAccount: '',
+                getArriveTime: '',
+                getDepatureTime: '',
             },
             OrderArr: {
+                ccc: [],
             },
             OrderSearchArr: {
                 getOrderId: '',
@@ -23,15 +25,15 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
-                getAccount:'',
-                getArriveTime:'',
-                getDepatureTime:'',
+                getAccount: '',
+                getArriveTime: '',
+                getDepatureTime: '',
             },
-            OrderSearchArrCheck:{
-                ccc:[],
+            OrderSearchArrCheck: {
+                ccc: [],
             },
-            OrderDelete:{
-                getOrderId:''
+            OrderDelete: {
+                getOrderId: ''
             },
             plane: {
                 departureDate: "", //出發日期
@@ -51,7 +53,7 @@ export default defineStore("counter", {
                 price: "", //價錢
                 seat: "", //座位
                 airplain_type: "",
-                airplain_Id:""
+                airplain_Id: ""
             },
             planeUpdate: {
                 departureDate: "", //出發日期
@@ -71,9 +73,9 @@ export default defineStore("counter", {
                 price: "", //價錢
                 seat: "", //座位
                 airplain_type: "",
-                airplain_Id:""
+                airplain_Id: ""
             },
-            planeUpdateArr:{
+            planeUpdateArr: {
 
             },
             planeArr: {
@@ -95,7 +97,7 @@ export default defineStore("counter", {
 
             },
             userDate: {
-                uuu:[],
+                uuu: [],
             },
             user: {
                 userId: 0,
@@ -113,15 +115,15 @@ export default defineStore("counter", {
                 // contactPerson:'',//缺少聯絡人 可能不一定是自己
                 // homePhone:'',//缺少住家電話(先不用)
             },
-            userArr:{
+            userArr: {
 
             },
-            deleteArr:{
-                orderId:"",
-                account:"",
+            deleteArr: {
+                orderId: "",
+                account: "",
             },
-            delete:{
-                
+            delete: {
+
             }
         }
 
@@ -161,9 +163,16 @@ export default defineStore("counter", {
         goSFO() {
             this.$router.push('/LocationSFO')
         },
-        setLocation(num){
-            this.planeSearchArr.departureLocation = num ;
-        }
+        setLocation(num) {
+            this.planeSearchArr.departureLocation = num;
+        },
+        isLogin() {
+            if (this.userDate.uuu != []) {
+                this.LoginIng = true;
+            } else {
+                this.LoginIng = false;
+            }
+        },
 
     }
 }

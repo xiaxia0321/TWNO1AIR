@@ -135,7 +135,7 @@ export default {
       <div class="inside">
         <table>
           <tr>
-            <th class="account bb">帳戶名稱</th>
+            <th class="account bb">帳戶帳號</th>
             <th class="no bb">編號</th>
             <th class="place bb">出發地</th>
             <th class="place bb">目的地</th>

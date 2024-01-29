@@ -58,50 +58,55 @@ export default {
             const end = start + this.rowsPerPage;
             return this.flights.slice(start, end);
         },
-        ...mapState(counter, ['user', 'userDate'])
+        ...mapState(counter, ['user', 'userDate', 'OrderSearchArr', 'OrderArr'])
     },
     methods: {
+        ordershow() {
+            console.log(this.OrderArr);
+        },
         // isLogin() {
         //     console.log(this.userDate.uuu);
         //     if (this.userDate.uuu[0].name == '') {
 
         //     }
         // },
-        searchUser() {
+        ////////////////////////////
+        // searchUser() {
+        //     axios({
+        //         url: 'http://localhost:8080/user/search',
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         data: {
+        //             account: this.userDate.account,
+        //             password: this.userDate.password,
+        //         },
+        //     })
+        //         .then(res => this.uerArr = res.data.userList)
+        //     console.log(this.userArr);
+        // },
+        searchOrder() {
+            console.log(this.userDate.uuu.account);
             axios({
-                url: 'http://localhost:8080/user/search',
+                url: 'http://localhost:8080/order/search',
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 data: {
-                    account: this.userDate.account,
-                    password: this.userDate.password,
+                    order_id: "",
+                    arrival_date: "",
+                    departure_date: "",
+                    arrival_location: "",
+                    departure_location: "",
+                    account: this.userDate.uuu.account,
                 },
             })
-                .then(res => this.uerArr = res.data.userList)
-            console.log(this.userArr);
+                .then(res => this.OrderArr.ccc = res.data.orderList)
+            console.log(this.OrderArr.ccc);
         },
-        // search() {
-        //     console.log(this.searchData);
-        //     fetch('http://localhost:8080/user/search', {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //             quiz_name: this.searchData.quizName,
-        //             startdate: this.searchData.startdate,
-        //             enddate: this.searchData.enddate
-        //         })
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             this.quizList = data.quizList
-        //             console.log(this.quizList)
-        //         })
-        //         .catch(error => console.log(error))
-        // },
+
         userblock(im) {
             if (im === '旅客資料') {
                 this.data = true
@@ -232,7 +237,7 @@ export default {
             <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="userblock('旅客資料')">旅客資料</button><br>
             <button type="button" class="record" @click="userblock('旅行紀錄')">行程管理</button><br>
-            <button type="button" class="record" @click="userblock('關注城市')">紅利優惠</button><br>
+            <button type="button" class="record" @click="userblock('關注城市'), searchOrder">紅利優惠</button><br>
             <button type="button" class="record" @click="userblock('旅遊通知')">行李清單</button><br>
             <button type="button" class="out">登出</button>
         </div>
@@ -242,22 +247,20 @@ export default {
             </div>
             <div class="bottom">
                 <div class="right" v-if="question">
-                    <span>姓名</span>
+                    <p>姓名</p>
                     <input disabled class="data" type="text" id="name" v-model="userDate.uuu[0].name" placeholder="請輸入姓名">
                     <!-- <p>{{ userList.name }}</p> -->
-                    <br>
-                    <span>生日</span>
+                    <p>生日</p>
                     <input disabled class="data D" type="text" id="birthday" v-model="userDate.uuu[0].birthday"><br>
-                    <span>年齡</span>
-                    <br>
-                    <input disabled type="number" id="age" v-model="userDate.uuu[0].age" style="border-radius: 10px;border: none;">
-                    <br>
-                    <span>手機</span>
+                    <p>年齡</p>
+                    <input disabled type="number" id="age" v-model="userDate.uuu[0].age"
+                        style="border-radius: 10px;border: none;">
+                    <p>手機</p>
                     <input disabled class="data" type="number" id="phone" v-model="userDate.uuu[0].phone"><br>
-                    <span>信箱</span>
+                    <p>信箱</p>
                     <input disabled class="data" type="email" id="email" v-model="userDate.uuu[0].email"><br>
                     <br><br>
-                    <button type="button" @click="confirm('確認')">確認</button>
+                    <!-- <button type="button" @click="confirm('確認')">確認</button> -->
                 </div>
                 <!-- <div class="right" v-if="confirmationVisible">
                     <span>姓名：</span><span class="option">{{ userInfo.name }}</span><br>
@@ -282,18 +285,33 @@ export default {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>訂位編號</th>
+                        <th>訂單編號</th>
                         <th>價格</th>
+                        <th>出發日期</th>
                         <th>出發時間</th>
                         <th>出發地點</th>
+                        <th>抵達日期</th>
                         <th>抵達時間</th>
                         <th>抵達地點</th>
                         <th>人數</th>
                         <th>旅程</th>
                         <th>其他操作</th>
                     </tr>
+                    <tr v-for="(item, index) in OrderArr.ccc" :key="index">
+                        <td>{{ item.orderId }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.departureDate }}</td>
+                        <td>{{ item.depatureTime }}</td>
+                        <td>{{ item.departureLocation }}</td>
+                        <td>{{ item.arrivalDate }}</td>
+                        <td>{{ item.arriveTime }}</td>
+                        <td>{{ item.arrivalLocation }}</td>
+                        <td>{{ item.numberOfPeople }}</td>
+                        <td>{{ item.oneway }}</td>
+                        <td>{{ item.oneway }}其他操作</td>
+                    </tr>
                 </thead>
-                <tbody>
+                <!-- <tbody>
                     <tr v-for="ticket in paginatedTickets" :key="ticket.id">
                         <td>{{ ticket.id }}</td>
                         <td>{{ ticket.price }}</td>
@@ -305,7 +323,7 @@ export default {
                         <td>{{ ticket.oneway }}</td>
                         <td><button @click="cancelBooking(ticket.id)">取消</button><button @click="">修改</button></td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
         <div class="in" v-if="city">
@@ -369,6 +387,13 @@ export default {
     height: 100%;
     display: flex;
     background-color: rgb(49, 48, 77);
+
+    .in {
+        width: 1100px;
+        height: 600px;
+
+        margin: 10px;
+    }
 }
 
 
@@ -400,12 +425,6 @@ export default {
 
 
 
-.in {
-    width: 1100px;
-    height: 600px;
-
-    margin: 10px;
-}
 
 .up {
     width: 1100px;
@@ -432,6 +451,17 @@ export default {
     border-radius: 10px;
     text-align: left;
     padding: 10px;
+
+    p {
+        margin: 0;
+    }
+
+    input {
+        width: 25rem;
+        height: 3rem;
+        padding-left: 2rem;
+        font-size: 1.5rem;
+    }
 }
 
 .data {
@@ -468,22 +498,28 @@ h1 {
 .table {
     border: 1px solid black;
     width: 1100px;
-    height: 550px;
     overflow-y: auto;
     border-collapse: collapse;
     color: white;
-}
 
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
+    th {
+        height: 1rem;
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
 
-tr {
-    background-color: white;
-    border: 2px solid black;
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    tr {
+        height: 3rem;
+        background-color: white;
+        border: 2px solid black;
+    }
 }
 
 .white {

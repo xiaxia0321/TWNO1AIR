@@ -87,7 +87,7 @@ export default {
       .img {
         width: 50px;
         height: 3rem;
-        background-image: url(/02B.png);
+        background-image: url(/01.png);
         background-size: contain;
         background-repeat: no-repeat;
       }

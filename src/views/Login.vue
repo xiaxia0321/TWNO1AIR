@@ -11,13 +11,32 @@ export default {
       isEntityAccount: true,
       isEntityPassword: true,
       showPassword: false,
-      user: []
+      user: [],
     }
   },
   computed: {
-    ...mapState(counter, ['user', 'userDate'])
+    ...mapState(counter, ['user', 'userDate', 'OrderArr', 'LoginIng'])
   },
   methods: {
+    loginOrder() {
+      axios({
+        url: 'http://localhost:8080/order/search',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          order_id: "",
+          arrival_date: "",
+          departure_date: "",
+          arrival_location: "",
+          departure_location: "",
+          account: this.account,
+        },
+      })
+        .then(res => this.OrderArr.ccc = res.data.orderList)
+      console.log(this.OrderArr.ccc);
+    },
     login() {
       //確認輸入帳號 + 密碼
       this.isEntityAccount = !!this.account
@@ -51,10 +70,11 @@ export default {
               })
               console.log(res.userList);
               this.userDate.uuu = res.userList,
+                this.LoginIng = true,
                 console.log(this.userDate);
               console.log(this.userDate.uuu);
-              this.$router.push('/User');
               // $cookies.set("account", this.account)
+              this.$router.push('/User');
             }
             else {
               Swal.fire({
@@ -150,7 +170,7 @@ export default {
         <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
-        <button type="button" class="login" @click="login()">登入</button>
+        <button type="button" class="login" @click="login(), loginOrder()">登入</button>
       </div>
     </div>
   </div>

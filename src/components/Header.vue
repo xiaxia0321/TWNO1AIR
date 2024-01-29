@@ -103,7 +103,7 @@ export default {
         
     },
     computed: {
-        ...mapState(counter,['userDate'])
+        ...mapState(counter,['userDate','LoginIng'])
     },
 
 }
@@ -114,7 +114,7 @@ export default {
         <div class="happydog" @click="home"></div>
         <div class="icon">
             <i class="fa-solid fa-power-off ii" ii @click="goLogin"></i>
-            <i class="fa-solid fa-user ii" @click="goUser"></i>
+            <i class="fa-solid fa-user ii" v-show="LoginIng" @click="goUser"></i>
         </div>
         <ul class="drop-down-menu">
             <li>
@@ -232,7 +232,7 @@ export default {
         position: absolute;
         left: 10%;
         top: 25%;
-        background-image: url(/noBack.png);
+        background-image: url(/02G.png);
         background-size: contain;
         background-repeat: no-repeat;
         width: 4rem;
