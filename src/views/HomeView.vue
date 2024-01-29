@@ -393,35 +393,29 @@ export default {
     <div class="foot">
       <div class="footBlock">
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
-            style="padding-left: 10px;">瞭解樂狗</span></h2>
+            style="padding-left: 10px;">旅遊相關</span></h2>
         <ul>
-          <li><a href="">認識樂狗</a></li>
-          <li><a href="">團隊成員</a></li>
-          <li><a href="">加入團隊</a></li>
-          <li><a href="">加入團隊</a></li>
-          <li><a href="">加入團隊</a></li>
+          <li><a href="https://news.goldtravel.com.tw/seeworld/tranote/data/holiday.htm"  target="_blank">各國節慶</a></li>
+          <li><a href="https://www.tva.org.tw/MessageSpread"  target="_blank">推廣活動</a></li>
+          <li><a href="https://www.bbc.com/zhongwen/trad/topics/c83plve5vmjt"  target="_blank">國際新聞</a></li>
         </ul>
       </div>
       <div class="footBlock">
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
-            style="padding-left: 10px;">接觸樂狗</span></h2>
+            style="padding-left: 10px;">安全資訊</span></h2>
         <ul>
-          <li><a href="">認識樂狗</a></li>
-          <li><a href="">團隊成員</a></li>
-          <li><a href="">加入團隊</a></li>
-          <li><a href="">加入團隊</a></li>
-          <li><a href="">加入團隊</a></li>
+          <li><a href="https://www.cdc.gov.tw/Category/List/tRbpXpZM7EO3-dkc4RYZuQ"  target="_blank">疫情相關</a></li>
+          <li><a href="https://www.boca.gov.tw/sp-trwa-list-1.html"  target="_blank">旅遊警示</a></li>
+          <li><a href="https://www.boca.gov.tw/np-49-1.html"  target="_blank">急難救助</a></li>
         </ul>
       </div>
       <div class="footBlock">
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
             style="padding-left: 10px;">加入樂狗</span></h2>
         <ul>
-          <li><a href="">加入我們</a></li>
-          <li><a href="">加入我們</a></li>
-          <li><a href="">加入我們</a></li>
-          <li><a href="">加入我們</a></li>
-          <li><a href="">加入{{ '樂狗' }}團隊</a></li>
+          <li><a href="">回頂端</a></li>
+          <li><a href="">會員優惠</a></li>
+          <li><a href="">退款規定</a></li>
         </ul>
       </div>
 
