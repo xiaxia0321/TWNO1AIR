@@ -702,7 +702,7 @@ export default {
 
         &:hover {
           // width: 70%;
-          background-color: rgb(178, 197, 255);
+          background-color: rgb(188, 205, 255);
           box-shadow: 2px 1px 2px black;
         }
 
