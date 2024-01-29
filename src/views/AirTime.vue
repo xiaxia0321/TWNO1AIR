@@ -256,7 +256,7 @@ export default {
           <!-- 當天如果沒飛 -->
         </div>
         <div class="b7 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+          <span><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b8 bb">
           <span><i class="fa-solid fa-plane"></i></span>
@@ -266,7 +266,7 @@ export default {
         </div>
       </div>
       <!-- <div class="mid3 mm"></div> -->
-      <button @click="bookFlight(index)">{{ index }}預定行程</button>
+      <button @click="bookFlight(index)">預定行程</button>
     </div>
 
     <div class="bottom">

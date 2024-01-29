@@ -124,7 +124,7 @@ export default {
       <br />
       <div class="loginInputArea">
         <label for="" style="font-size: 14pt">帳號：</label>　　　
-        <input type="text" placeholder="請輸入帳號，英數混合，至少8碼" id="inputAccount" class="name" v-model="user.account"
+        <input type="text" placeholder="請輸入帳號" id="inputAccount" class="name" v-model="user.account"
           style="margin-left: 5px" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
         <br /><br />
         <label for="" style="font-size: 14pt">密碼：</label>　　　

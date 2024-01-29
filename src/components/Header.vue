@@ -192,7 +192,7 @@ export default {
                                 <button @click="this.join()">加入會員</button>
                                 <br>
                                 <br>
-                                <h5>測試</h5>
+                                <!-- <h5>測試</h5>
                                 <button @click="AirTime">飛機時刻</button>
                                 <br>
                                 <button @click="OutboundConfirm">去程訂票確認</button>
@@ -201,7 +201,7 @@ export default {
                                 <br>
                                 <button @click="PassengerInformation">旅客資訊聯絡方式輸入頁面</button>
                                 <br>
-                                <button @click="ProductDetailed">最終訂票確認頁面</button>
+                                <button @click="ProductDetailed">最終訂票確認頁面</button> -->
                             </div>
                         </div>
                     </li>

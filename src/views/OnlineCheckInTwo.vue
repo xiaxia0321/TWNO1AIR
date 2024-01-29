@@ -47,24 +47,24 @@ export default {
                 .then(res => this.OrderArr = res.data.orderList)
             console.log(this.OrderArr);
         },
-        searchPlane(){
-            axios({
-                url: 'http://localhost:8080/airplainInfo/search',
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                data: {
-                    airplain_Id: this.planeArr.airplain_Id
-                },
-            })
-                .then(res => this.planeArr = res.data.planeList)
-                console.log(this.planeArr);
-        }
+        // searchPlane(){
+        //     axios({
+        //         url: 'http://localhost:8080/airplainInfo/search',
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         data: {
+        //             airplain_Id: this.planeArr.airplain_Id
+        //         },
+        //     })
+        //         .then(res => this.planeArr = res.data.planeList)
+        //         console.log(this.planeArr);
+        // }
     },
     mounted() {
         this.searchOrder()
-        this.searchPlane()
+        // this.searchPlane()
     }
 }
 </script>
@@ -73,7 +73,7 @@ export default {
         <div class="tableOne">
             <table>
                 <tr>
-                    <th>訂位代號</th>
+                    <th>訂單編號</th>
                     <th>姓名</th>
                     <!-- <th>報到地點</th> -->
                     <!-- <th>班機編號</th> -->
@@ -141,7 +141,7 @@ export default {
             background-color: rgb(108, 95, 91);
             position: absolute;
             left: 66%;
-            top: 100%;
+            top: 60%;
             // margin-left: 770px;
             // margin-top: 200px;
             font-size: 14pt;

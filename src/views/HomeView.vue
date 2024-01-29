@@ -253,8 +253,9 @@ export default {
         <div class="program" name="抵達日期">
           <label type="button" style="border-radius:0 15px 15px 0;">
             <span class="span1">抵達日期</span>
-            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" :disabled="!minDateHave" class="span2"
+            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate"  class="span2"
               :v-model="planeSearchArr.arrivalDate">
+              <!-- :disabled="!minDateHave" -->
           </label>
         </div>
         <button class="searchBu" @click="goSearch">前往搜尋</button>

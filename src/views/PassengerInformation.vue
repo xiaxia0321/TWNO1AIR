@@ -44,7 +44,7 @@ export default {
       }),
         this.$router.push("/ProductDetailed");
     },
-    gogo() {
+    user() {
       this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
     },
     back() {
