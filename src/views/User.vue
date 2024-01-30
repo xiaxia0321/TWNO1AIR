@@ -232,7 +232,7 @@ export default {
             <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="userblock('旅客資料')">旅客資料</button><br>
             <button type="button" class="record" @click="userblock('旅行紀錄')">行程管理</button><br>
-            <button type="button" class="record" @click="userblock('關注城市')">紅利優惠</button><br>
+            <!-- <button type="button" class="record" @click="userblock('關注城市')">紅利優惠</button><br> -->
             <button type="button" class="record" @click="userblock('旅遊通知')">行李清單</button><br>
             <button type="button" class="out">登出</button>
         </div>
