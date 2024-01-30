@@ -95,15 +95,15 @@ export default {
                 window.scrollTo(0, 0);
             });
         },
-        isLogin(){
+        isLogin() {
             if (condition) {
-                
+
             }
         }
-        
+
     },
     computed: {
-        ...mapState(counter,['userDate'])
+        ...mapState(counter, ['userDate'])
     },
 
 }
@@ -239,9 +239,8 @@ export default {
         height: 4rem;
         border-radius: 1rem;
         transition: .2s;
-        .ii{
-            
-        }
+
+        .ii {}
 
         &:hover {
             box-shadow: 2px 2px 5px 0 black;
@@ -253,35 +252,40 @@ export default {
         }
     }
 
-    .icon{
-        .fa-power-off{
+    .icon {
+        .fa-power-off {
             font-size: 25pt;
             color: white;
             position: absolute;
             left: 83%;
             top: 33%;
         }
-        .fa-user{
+
+        .fa-user {
             font-size: 25pt;
             color: white;
             position: absolute;
             left: 87%;
             top: 33%;
-            
+
         }
-        .ii{
+
+        .ii {
             border-radius: 5px;
+
             &:hover {
-              background-color: rgba(255, 255, 255, 0.354);
+                background-color: rgba(255, 255, 255, 0.354);
             }
         }
-        
+
     }
+
     ul {
         /* 取消ul預設的內縮及樣式 */
         margin: 0;
         padding: 0;
         list-style: none;
+
         .reservation {
             width: 60vw;
             height: 40vh;
@@ -449,9 +453,9 @@ export default {
     ul.drop-down-menu ul {
         border: #ccc 1px solid;
         position: absolute;
-        z-index: 99;
+        z-index: 9;
         left: -1px;
-        top: 100%;
+        // top: 100%;
         min-width: 180px;
     }
 
@@ -465,17 +469,17 @@ export default {
 
     ul.drop-down-menu ul ul {
         /*第三層以後的選單出現位置與第二層不同*/
-        z-index: 999;
+        z-index: 9;
         top: 10px;
         left: 90%;
     }
 
     ul.drop-down-menu ul {
         /*隱藏次選單*/
-        left: 2000px;
+        left: 1200px;
         opacity: 0;
-        -webkit-transition: opacity 0.3s;
-        transition: opacity 1s;
+        -webkit-transition: opacity 0.1s;
+        transition: opacity 0.01s;
     }
 
     ul.drop-down-menu li:hover>ul {
@@ -519,5 +523,4 @@ export default {
     //         background-color: rgba(0, 0, 0, 0.344);
     //     }
     // }
-}
-</style>
+}</style>
