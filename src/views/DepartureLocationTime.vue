@@ -131,7 +131,7 @@ export default {
           <div class="sa">
             <span>東南亞</span>
           </div>
-          <div class="saAll">
+          <div class="saAll"> 
             <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('BKK　','曼谷,泰國','蘇凡納布國際機場')">
               <span>曼谷，泰國　　　　　　　　　　　　　　　　　　　　　　BKK</span>
               <br />

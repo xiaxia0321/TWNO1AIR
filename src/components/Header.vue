@@ -124,7 +124,7 @@ export default {
                 window.scrollTo(0, 0);
             });
         },
-        goBackStage(){
+        goBackStage() {
             this.$router.push('/BackStage')
             this.$nextTick(() => {
                 window.scrollTo(0, 0);
@@ -149,7 +149,7 @@ export default {
         <div class="happydog" @click="home"></div>
         <div class="icon">
             <i class="fa-solid fa-power-off ii" ii @click="goLogin"></i>
-            <i class="fa-solid fa-user ii" v-if="this.logingDesuga.backStage"  @click="goBackStage">後臺管理</i>
+            <i class="fa-solid fa-user ii" v-if="this.logingDesuga.backStage" @click="goBackStage">後臺管理</i>
             <i class="fa-solid fa-user ii" v-if="this.logingDesuga.loginIng" @click="goUser">{{ userDate.uuu[0].name }}</i>
         </div>
         <ul class="drop-down-menu">
@@ -221,8 +221,8 @@ export default {
                     <li>
                         <div class="happyDogMember">
                             <div class="member">
-                                <h5 v-show ="this.logingDesuga.loginIng">樂GO會員</h5>
-                                <button v-show ="this.logingDesuga.loginIng" @click="this.login()">會員登入</button>
+                                <h5 v-show="this.logingDesuga.loginIng">樂GO會員</h5>
+                                <button v-show="this.logingDesuga.loginIng" @click="this.login()">會員登入</button>
                                 <button v-show="this.logingDesuga.loginIng" @click="this.join()">加入會員</button>
                                 <br>
                                 <!-- <h5>測試</h5>
@@ -305,6 +305,7 @@ export default {
 
         .ii {
             border-radius: 5px;
+
             &:hover {
                 background-color: rgba(255, 255, 255, 0.354);
             }
@@ -555,4 +556,5 @@ export default {
     //         background-color: rgba(0, 0, 0, 0.344);
     //     }
     // }
-}</style>
+}
+</style>

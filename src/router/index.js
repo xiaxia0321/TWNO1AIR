@@ -94,6 +94,16 @@ const router = createRouter({
       component: () => import('../views/A321Seat.vue')
     },
     {
+      path: "/A321Test",
+      name: "A321Test",
+      component: () => import('../views/A321Test.vue')
+    },
+    {
+      path: "/seatAAA",
+      name: "seatAAA",
+      component: () => import('../views/seatAAA.vue')
+    },
+    {
       path:"/LocationHakodate",
       name:"LocationHakodate",
       component:() => import('../views/LocationHakodate.vue')

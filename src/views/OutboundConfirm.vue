@@ -13,7 +13,7 @@ export default {
     calculateDuration(depatureTime, arriveTime) {
       const [depatureHour, depatureMinute] = depatureTime.split(":").map(Number);
       const [arriveHour, arriveMinute] = arriveTime.split(":").map(Number);
-      
+
       // 轉換成分鐘
       const depatureTotalMinutes = depatureHour * 60 + depatureMinute;
       const arriveTotalMinutes = arriveHour * 60 + arriveMinute;
@@ -30,13 +30,15 @@ export default {
 
       return `${hours}小時${minutes}分`;
     },
-    chooseSeat(price) {
-      this.selectedPrice = price;
+    chooseSeat(xxx) {
+      this.selectedPrice = xxx;
+      console.log(this.selectedPrice);
     },
     back() {
       this.$router.push("/AirTime"); //推送至下一頁的路徑
     },
     gogo() {
+      this.Order.getPrice = this.selectedPrice;
       this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
     },
     consslog() {
@@ -44,7 +46,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(counter, ["plane", "planeSearchCheack"]),
+    ...mapState(counter, ["plane", "planeSearchCheack", 'Order']),
   },
 };
 </script>
@@ -102,7 +104,7 @@ export default {
         <span class="s1">TWD</span>
         <span class="s2">{{ planeSearchCheack.ccc.price }}</span>
         <br />
-        <button type=""  @click="chooseSeat(planeSearchCheack.ccc.price)">選擇</button>
+        <button type="" @click="chooseSeat(planeSearchCheack.ccc.price)">選擇</button>
         <p>訂位艙等</p>
         <p class="p1">
           {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: 經濟艙
@@ -114,9 +116,9 @@ export default {
       </div>
       <div class="c2">
         <span class="s1">TWD</span>
-        <span class="s2">{{ planeSearchCheack.ccc.price *3 }}</span>
+        <span class="s2">{{ planeSearchCheack.ccc.price * 3 }}</span>
         <br />
-        <button type=""  @click="chooseSeat(planeSearchCheack.ccc.price * 3)">選擇</button>
+        <button type="" @click="chooseSeat(planeSearchCheack.ccc.price * 3)">選擇</button>
         <p>訂位艙等</p>
         <p class="p1">
           {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: 商務艙
@@ -126,7 +128,7 @@ export default {
         <p>托運行李</p>
         <p class="p1">2件(每件32公斤)</p>
       </div>
-      <div class="c3">
+      <!-- <div class="c3">
         <span class="s1">TWD</span>
         <span class="s2">{{ planeSearchCheack.ccc.price*10 }}</span>
         <br />
@@ -139,7 +141,7 @@ export default {
         <p class="p1">免費選位</p>
         <p>托運行李</p>
         <p class="p1">3件(每件32公斤)</p>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- 底部 -->
@@ -230,12 +232,15 @@ export default {
       font-size: 36px;
       color: #794425;
     }
-    .p1{
+
+    .p1 {
       font-size: 28px;
     }
-    .p2{
+
+    .p2 {
       font-size: 32px;
     }
+
     .m1 {
       width: 70%;
       height: 100%;
@@ -252,7 +257,8 @@ export default {
         text-align: justify;
         padding: 10px 0px 10px 20px;
         background-color: #ffeeda;
-// background-color: #794425;
+
+        // background-color: #794425;
         .nation {
           font-size: 32px;
         }
@@ -323,8 +329,7 @@ export default {
       font-size: 20px;
     }
 
-    .s1 {
-    }
+    .s1 {}
 
     .s2 {
       font-size: 32px;
@@ -391,5 +396,4 @@ export default {
     background-color: #3b2641;
     color: white;
   }
-}
-</style>
+}</style>

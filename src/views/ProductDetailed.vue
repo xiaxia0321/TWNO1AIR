@@ -77,7 +77,7 @@ export default {
         <p class="nationbk">{{ planeSearchCheack.ccc.da }}</p>
         <p>{{ planeSearchCheack.ccc.depatureAirport }}</p>
         <p>第{{ planeSearchCheack.ccc.depatureTerminal }}航廈</p>
-        <p>座位: {{}}</p>
+        <p>座位: {{planeSearchCheack.ccc.seat}}</p>
       </div>
       <div class="m2"><i class="fa-solid fa-arrow-right"></i></div>
       <div class="m3">
@@ -95,8 +95,13 @@ export default {
       <h3>票價資訊</h3>
     </div>
     <div class="mid2">
-      <div class="m1"><h4>成人</h4></div>
-      <div class="m2"></div>
+      <!-- <div class="m1"><h4>成人</h4></div> -->
+      <div class="m2">
+      <p>產品票價: </p>
+      <p>人數: </p>
+      <p>總計:</p>
+      
+      </div>
     </div>
   </div>
   <div class="bottom">
@@ -246,7 +251,7 @@ export default {
 }
 .big1 {
   width: 100vw;
-  height: 100vh;
+  height: 45vh;
   background-color: #31304d;
   // margin-top: 20vh;
   .d1 {
@@ -258,9 +263,10 @@ export default {
     padding-top: 5vh;
   }
   .mid2 {
-    width: 95vw;
-    height: 80vh;
+    width: 90vw;
+    height: 25vh;
     display: flex;
+
     margin: 0 auto;
     .m1 {
       width: 25%;
@@ -272,15 +278,21 @@ export default {
       padding-top: 50px;
     }
     .m2 {
-      width: 75%;
+      width: 100%;
       height: 100%;
+      text-align: justify;
+      font-size: 24px;
       background-color: #ffeeda;
+      p{
+        margin-left: 40px;
+        margin-top: 20px;
+      }
     }
   }
 }
 .bottom {
   width: 100vw;
-  height: 85vh;
+  height: 75vh;
   text-align: justify;
   padding: 0px 40px 0px 40px;
   background-color: #31304d;

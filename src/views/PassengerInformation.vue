@@ -1,75 +1,92 @@
 //旅客資訊及聯絡方式輸入頁
 <script>
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
+import Swal from 'sweetalert2'
+import axios from 'axios';
 export default {
   data() {
     return {
       planeArr: [1],
-      MemberInformation:[],
+      MemberInformation: [],
       members: [
         // 初始一筆會員資料
         { title: "1", name: "", birthday: "", contact: "", phone: "" },
       ],
     };
   },
+  computed: {
+    ...mapState(counter, ["Order"])
+  },
   methods: {
-    user() {
-      axios({
-        url: "http://localhost:8080/user/search",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          // title: this.user.title, //缺少稱謂
-          // lastName: this.user.lastName,//缺少用戶姓氏
-          // name: this.user.name,//缺少用戶名字
-          birthday: this.user.birthday, //生日
-          age: this.user.age, //年齡
-          // contactPerson: this.user.contactPerson,//缺少聯絡人
-          phone: this.user.phone, //手機
-          // homePhone: this.user.homePhone,//缺少住家電話
-        },
-      }).then((res) => console.log(res.data));
-      console.log(this.user);
-      (this.user = {
-        // title: "", //稱謂
-        // lastName: "", //用戶姓氏
-        // name: "", //用戶名字
-        birthday: "", //生日
-        // age: "", //年齡
-        // contactPerson: "", //聯絡人
-        phone: "", //手機
-        // homePhone: "", //住家電話
 
-      }),
+
+
+    // 送出
+    userOrder() {
+      if (this.validateFormData()) {
+        const newMemberData = this.members.map(member => ({
+          selectedTitle: member.title,
+          enteredName: member.name,
+          enteredBirthday: member.birthday,
+          enteredContact: member.contact,
+          enteredPhone: member.phone,
+        }));
+        console.log('人數:', this.members.length); //這個也要存進去
+        console.log('所有組數據:', newMemberData);
+        // 存入 Pinia 中的 Order store 的 getAddPeople 中
+        this.Order.getAddPeople = newMemberData;
         this.$router.push("/ProductDetailed");
+        // 這裡可以選擇將 MemberInformation 也更新
+        // this.MemberInformation = newMemberData;
+      }
     },
-    user() {
-      this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
+
+    // 驗證表單資料
+    validateFormData() {
+      for (const member of this.members) {
+        if (!member.title || !member.name || !member.birthday || !member.contact || !member.phone) {
+          console.log("你有資料尚未填寫");
+          Swal.fire({
+            icon: "error",
+            text: "你有資料尚未填寫",
+          });
+          return false;
+        }
+      }
+      return true;
     },
+
     back() {
       this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
     },
+
+
+    //新增
     addMember() {
-      if (this.members.length < 4) {
-        this.members.push({ title: "1", name: "", birthday: "", contact: "", phone: "" });
+      if (this.validateFormData()) {
+        if (this.members.length < 4) {
+          this.members.push({ title: "1", name: "", birthday: "", contact: "", phone: "" });
+        }
       }
     },
+
+
+    //刪除
     removeMember(index) {
-      this.members.splice(index, 1);
+      if (this.members.length > 1) {
+        this.members.splice(index, 1);
+      }
     },
+
   },
 };
 </script>
 
 <template>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <div class="big">
     <div class="top">
       <i class="fa-solid fa-arrow-left arrow cc" @click="back"></i>
@@ -77,68 +94,50 @@ export default {
     </div>
     <div class="mid" v-for="(item, index) in planeArr[0]" :key="index">
       <div class="m1">
-        <span>{{ "人數 " + this.members.length + "人"}}</span>
-        <!-- <h3>成人</h3> -->
-        <br>
-        <button  @click="addMember" :disabled="members.length >= 4">新增</button>
-        <br>
+        <span>{{ "人數 " + this.members.length + "人" }}</span>
+        <br />
+        <button @click="addMember" :disabled="members.length >= 4">新增</button>
+        <br />
         <button @click="removeMember(index)">刪除</button>
 
-        <br>
-        <!-- <i style="font-size: 2rem; transform: rotate(40deg);  position: relative;" class="fa-solid fa-voicemail">
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-wand-magic"></i>
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-spoon"></i>
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-thermometer"></i>
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-phone-flip"></i>
-              </i> -->
+        <br />
       </div>
       <div class="m2">
-      <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
+        <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
         <input type="checkbox" />
         <label>同會員資訊</label>
         <br />
         <br />
         <div v-for="(member, index) in members" :key="index">
-        <div class="form-floating mb-3">
-          <select
-            class="form-select aa"
-            id="floatingSelect"
-            aria-label="Floating label select example"
-          >
-            <option value="1">先生</option>
-            <option value="2">女士</option>
-            <option value="3">博士</option>
-          </select>
-          <label for="floatingSelect">稱謂</label>
-        </div>
+          <div class="form-floating mb-3">
+            <select class="form-select aa" id="titleSelect" aria-label="Floating label select example"
+              v-model="member.title">
+              <option value="1">先生</option>
+              <option value="2">女士</option>
+              <option value="3">博士</option>
+            </select>
+            <label for="titleSelect">稱謂</label>
+          </div>
+          <!-- v-model="Order.getAddPeople" -->
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="nameInput" placeholder="" v-model="member.name" />
+            <label>姓名</label>
+          </div>
 
-        <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>姓名</label>
+          <div class="form-floating mb-3 bb">
+            <input type="date" class="form-control" id="birthdayInput" placeholder="" v-model="member.birthday" />
+            <label>生日</label>
+          </div>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.contact" />
+            <label>聯絡人</label>
+          </div>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="phoneInput" placeholder="" v-model="member.phone" />
+            <label>手機</label>
+          </div>
+          <br />
         </div>
-      
-        <div class="form-floating mb-3 bb">
-          <input type="date" class="form-control" placeholder="" />
-          <label>生日</label>
-        </div>
-        <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>聯絡人</label>
-        </div>
-        <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>手機</label>
-        </div>
-          <!-- <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>名字</label>
-        </div> -->
-        <!-- <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>住家電話</label>
-        </div> -->
-        <br />
-      </div>
       </div>
     </div>
   </div>
@@ -182,7 +181,7 @@ export default {
     </p>
   </div>
   <div class="bottom1">
-    <button @click="user">送出</button>
+    <button @click="userOrder">送出</button>
   </div>
 </template>
 
@@ -191,6 +190,7 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: #161a30;
+
   .top {
     width: 100vw;
     height: 10vh;
@@ -199,20 +199,24 @@ export default {
     background-color: #31304d;
     color: white;
     text-align: justify;
+
     .cc {
       font-size: 24px;
       color: #f8c68a;
     }
   }
+
   .mid {
     width: 90vw;
     // height: 95vh;
     display: flex;
     margin: 10vh auto 0 auto;
-    button{
+
+    button {
       width: 100px;
       height: 50px;
     }
+
     .m1 {
       width: 25%;
       // height: 100%;
@@ -222,6 +226,7 @@ export default {
       text-align: justify;
       padding: 30px 0px 0px 30px;
     }
+
     .m2 {
       width: 75%;
       height: 70vh;
@@ -230,20 +235,24 @@ export default {
       padding: 5vh 5vw 5vh 5vw;
       text-align: justify;
       font-size: 18px;
+
       // display: flex;
       // justify-content: center;
       span {
         font-size: 24px;
       }
+
       .aa {
         width: 30%;
       }
+
       .bb {
         width: 60%;
       }
     }
   }
 }
+
 .bottom {
   width: 100vw;
   height: 85vh;
@@ -253,14 +262,17 @@ export default {
   color: white;
   font-size: 14px;
 }
+
 .bottom1 {
   width: 100vw;
   height: 10vh;
   background-color: #a79b8d;
   bottom: 0;
-  color: white; /* 自行調整文字顏色 */
+  color: white;
+  /* 自行調整文字顏色 */
   z-index: 2;
   position: fixed;
+
   button {
     position: absolute;
     right: 50px;
@@ -270,5 +282,4 @@ export default {
     background-color: #3b2641;
     color: white;
   }
-}
-</style>
+}</style>

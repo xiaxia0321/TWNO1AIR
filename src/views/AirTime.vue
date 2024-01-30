@@ -12,67 +12,9 @@ export default {
     };
   },
   computed: {
-    ...mapState(counter, ['planeSearchCheack', "planeSearchArr", 'plane','logingDesuga']),
+    ...mapState(counter, ['planeSearchCheack', "planeSearchArr", 'plane', 'logingDesuga']),
   },
   methods: {
-
-    bookFlight(num) {
-      this.ccc = this.planeArr[num];
-      this.planeSearchCheack.ccc = this.ccc;
-      console.log(this.planeArr[num]);
-      console.log(this.ccc);
-      console.log(this.planeSearchCheack);
-      console.log('ccc = ' + this.planeSearchCheack.ccc);
-      // this.planeSearchCheack = {
-      //   departureLocation: selectedFlight.departureLocation,
-      //   arrivalLocation: selectedFlight.arrivalLocation,
-      //   departureDate: selectedFlight.departureDate,
-      //   arriveDate: selectedFlight.arriveDate,
-      //   da: selectedFlight.da,
-      //   aa: selectedFlight.aa,
-      //   depatureTime: selectedFlight.depatureTime,
-      //   arriveTime: selectedFlight.arriveTime,
-      //   classType: selectedFlight.classType,
-      //   isOneway: selectedFlight.isOneway,
-      //   depatureTerminal: selectedFlight.depatureTerminal,
-      //   arriveTerminal:selectedFlight.arriveTerminal,
-      //   depatureTime:selectedFlight.depatureTime,
-      //   arriveTime:selectedFlight.arriveTime,
-      //   price:selectedFlight.price,
-      //   seat:selectedFlight.seat,
-
-      // };
-
-      // 導航至下一頁
-      this.$router.push("/OutboundConfirm");
-    },
-    //抓航班當天是否有飛，有的話就顯示圖案
-    isToday(date) {
-      const today = new Date().toISOString().split("T")[0]; // 獲取當天日期，格式為 "YYYY-MM-DD"
-      return date === today;
-    },
-    searchPlane() {
-      axios({
-        url: "http://localhost:8080/airplainInfo/search",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          departureDate: this.planeSearchArr.departureDate,
-          arriveDate: this.planeSearchArr.arrivalDate,
-          departureLocation: this.planeSearchArr.departureLocation,
-          arrivalLocation: this.planeSearchArr.arrivalLocation,
-          classType: this.planeSearchArr.classType,
-          isOneway: this.planeSearchArr.isOneway,
-        },
-      }).then((res) => (this.planeArr = res.data.airplainInfoList));
-      console.log(this.planeArr);
-      console.log(this.planeSearchArr);
-    },
-    back() {
-      this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
-    },
     //時間
     calculateDuration(depatureTime, arriveTime) {
       const [depatureHour, depatureMinute] = depatureTime.split(":").map(Number);
@@ -112,10 +54,12 @@ export default {
       const dayIndex = date.getDay();
       return weekdays[dayIndex];
     },
-    //抓航班當天是否有飛，有的話就顯示圖案
-    isToday(date) {
-      const today = new Date().toISOString().split("T")[0]; // 獲取當天日期，格式為 "YYYY-MM-DD"
-      return date === today;
+    // 抓航班當天是否有飛，有的話就顯示圖案
+    isFlightAvailable(dateString, daysOffset) {
+      // 實現你的邏輯，判斷該日期是否有航班
+      const targetDate = addDays(dateString, daysOffset);
+      // 假設航班數據存儲在 planeArr 中
+      return this.planeArr.some(item => item.departureDate === targetDate);
     },
     searchPlane() {
       axios({
@@ -131,20 +75,15 @@ export default {
           arrivalLocation: this.planeSearchArr.arrivalLocation,
           classType: this.planeSearchArr.classType,
           isOneway: this.planeSearchArr.isOneway,
-          
+
         },
       })
-      .then((res) => (this.planeArr = res.data.airplainInfoList));
-    //   const allFlights = res.data.airplainInfoList;
-    //   if (this.planeSearchArr.isOneway) {
-    //   // 如果是单程航班，只显示出发日期后的航班
-    //   this.planeArr = allFlights.filter((flight) => flight.departureDate >= this.planeSearchArr.departureDate);
-    // } else {
-    //   // 如果是往返航班，显示出发日期和回程日期之间的航班
-    //   this.planeArr = allFlights.filter(
-    //     (flight) => flight.departureDate >= this.planeSearchArr.departureDate && flight.arriveDate >= this.planeSearchArr.returnDate
-    //   );
-    // }
+        .then((res) => (this.planeArr = res.data.airplainInfoList));
+      if (this.planeSearchArr.isOneway) {
+        this.planeArr = res.data.airplainInfoList.filter((flight) => flight.isOneway === true);
+      } else {
+        this.planeArr = res.data.airplainInfoList;
+      }
       console.log(this.planeArr);
       console.log(this.planeSearchArr);
     },
@@ -155,13 +94,28 @@ export default {
     bookFlight(num) {
       this.aaa = this.planeArr[num];
       this.planeSearchCheack.ccc = this.aaa;
-      // console.log(this.planeArr[num]);
-      // console.log(this.aaa);
-      // console.log(this.planeSearchCheack);
-      // console.log('ccc = ' + this.planeSearchCheack.ccc);
+      console.log(this.planeArr[num]);
+      console.log(this.aaa);
+      console.log(this.planeSearchCheack);
+      console.log('ccc = ' + this.planeSearchCheack.ccc);
       if (this.logingDesuga.loginIng == false) {
-        
-      }else{
+        //登出logout
+        Swal.fire({
+          title: "請先登入",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          cancelButtonText: "取消",
+          confirmButtonText: "登入"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$router.push('/Login')
+            this.logingDesuga.backStage = false;
+            this.logingDesuga.loginIng = false;
+          }
+        });
+      } else {
         this.$router.push("/OutboundConfirm");
       }
     },
@@ -180,6 +134,17 @@ export default {
     <div class="header1">
       <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
       <h2 @click="searchPlane">查詢結果</h2>
+    </div>
+    <div class="bottom">
+      <span style="font-size: 3.5rem">注意事項</span>
+
+      <br />
+      <span>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</span>
+      <br />
+      <span>
+        樂狗航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂狗航空客服中心。
+      </span>
+      <p class="show" @click="searchPlane" style="font-size: 2.5rem">點此顯示搜尋結果</p>
     </div>
     <div class="big" v-for="(item, index) in planeArr" :key="index">
       <!-- <div class="header1">
@@ -248,17 +213,14 @@ export default {
           <span><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b4 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+          <span><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b5 bb">
           <span><i class="fa-solid fa-plane"></i></span>
         </div>
-        <div class="b6 bb" v-if="isToday(item.departureDate)">
-          <!-- 當天如果有飛 -->
+        <div class="b6 bb">
+          <!-- 當天 -->
           <span><i class="fa-solid fa-plane"></i></span>
-        </div>
-        <div class="b6 bb" v-else>
-          <!-- 當天如果沒飛 -->
         </div>
         <div class="b7 bb">
           <span><i class="fa-solid fa-plane"></i></span>
@@ -270,32 +232,17 @@ export default {
           <span><i class="fa-solid fa-plane"></i></span>
         </div>
       </div>
-      <!-- <div class="mid3 mm"></div> -->
-      <button @click="bookFlight(index)">預定行程</button>
-    </div>
-
-    <div class="bottom">
-      <span style="font-size: 3.5rem">注意事項</span>
-
-      <br />
-      <span>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</span>
-      <br />
-      <span>
-        樂狗航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂狗航空客服中心。
-      </span>
-      <span class="show" @click="searchPlane" style="font-size: 2.5rem">點此顯示搜尋結果</span>
+      <button @click="bookFlight(index)">{{ index }}預定行程</button>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .body {
-  height: 100vh;
-  overflow-y: auto;
 
   .header1 {
     width: 100%;
-    height: 15vh;
+    height: 9vh;
     text-align: justify;
     color: white;
     background-color: #31304d;
@@ -309,7 +256,6 @@ export default {
 
   .big {
     width: 100vw;
-    height: 90vh;
     background-color: #161a30;
 
     button {
@@ -478,7 +424,6 @@ export default {
   text-align: justify;
 
   .show {
-    margin: 0 0 0 60px;
     cursor: pointer;
 
     &:hover {

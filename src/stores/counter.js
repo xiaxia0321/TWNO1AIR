@@ -6,7 +6,7 @@ export default defineStore("counter", {
         return {
             logingDesuga: {
                 loginIng: false,
-                backStage:false,
+                backStage: false,
             },
             pp: 1,
             Order: {
@@ -15,6 +15,8 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
+                getClassType: '',
+                getPrice: '',
                 getClassType: '',
                 getPrice: '',
                 getAccount: '',
@@ -131,21 +133,21 @@ export default defineStore("counter", {
                 orderId: "",
                 account: "",
             },
-            delete:{
-                
+            delete: {
+
             },
-            ticket:{
+            ticket: {
                 userName: "",
-                airplain_Id:"",
+                airplain_Id: "",
                 departureDate: "",
-                da:"",
-                aa:"",
+                da: "",
+                aa: "",
                 depatureTime: "",
                 depatureTerminal: 0,
                 seat: "",
             },
-            ticketArr:{
-                
+            ticketArr: {
+
             }
         }
 

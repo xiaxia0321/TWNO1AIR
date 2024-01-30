@@ -10,7 +10,7 @@ export default {
 
 <template>
   <fieldset class="ui-cinema">
-  <legend>A321-neo座位選擇表</legend>
+  <legend>A321-neo經濟艙座位選擇表</legend>
   <ol>
     <li>
       <label><input type="checkbox"></label>

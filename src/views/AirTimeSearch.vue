@@ -35,8 +35,8 @@ export default {
       //   console.log(this.planeArr);
       //   // 在請求完成後執行路由導航
       // });
-      this.planeSearchArr.departureDate = this.selectedDate
-      this.planeSearchArr.arrivalDate = this.returnDate
+      this.planeSearchArr.departureDate = this.selectedDate;
+      this.planeSearchArr.arrivalDate = this.returnDate;
 
       console.log("出发日期:", this.selectedDate);
       console.log("回程日期:", this.returnDate);
@@ -114,8 +114,8 @@ export default {
           />
           單程
         </label>
-        <br /> -->
-        <!-- <label>
+        <br />
+        <label>
           <input type="radio" name="option" value="option2" @click="setRoundTrip(true)" />
           來回
         </label> -->
@@ -281,8 +281,7 @@ export default {
         width: 15vw;
         height: 7vh;
       }
-      .bb{
-        
+      .bb {
       }
     }
     .b5 {
