@@ -15,13 +15,12 @@ export default {
       ],
     };
   },
+
   computed: {
-    ...mapState(counter, ["Order"])
+    ...mapState(counter, ["Order", 'userDate'])
   },
+
   methods: {
-
-
-
     // 送出
     userOrder() {
       if (this.validateFormData()) {
@@ -31,6 +30,7 @@ export default {
           enteredBirthday: member.birthday,
           enteredContact: member.contact,
           enteredPhone: member.phone,
+          enteredPeople: this.members.length,
         }));
         console.log('人數:', this.members.length); //這個也要存進去
         console.log('所有組數據:', newMemberData);
@@ -61,6 +61,12 @@ export default {
       this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
     },
 
+    sameDate() {
+      this.members[0].name = this.userDate.uuu[0].name;
+      this.members[0].birthday = this.userDate.uuu[0].birthday;
+      // this.members[0].age = this.userDate.uuu[0].age;
+      this.members[0].phone = this.userDate.uuu[0].phone;
+    },
 
     //新增
     addMember() {
@@ -104,8 +110,7 @@ export default {
       </div>
       <div class="m2">
         <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
-        <input type="checkbox" />
-        <label>同會員資訊</label>
+        <button @click="sameDate">同會員資訊</button>
         <br />
         <br />
         <div v-for="(member, index) in members" :key="index">
@@ -125,7 +130,8 @@ export default {
           </div>
 
           <div class="form-floating mb-3 bb">
-            <input type="date" class="form-control" id="birthdayInput" placeholder="" v-model="member.birthday" />
+            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.birthday" />
+            <!-- <input type="date" class="form-control" id="birthdayInput" placeholder="" v-model="member.birthday" /> -->
             <label>生日</label>
           </div>
           <div class="form-floating mb-3 bb">

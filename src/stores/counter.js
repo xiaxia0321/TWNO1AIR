@@ -17,8 +17,6 @@ export default defineStore("counter", {
                 getDepartureLocation: '',
                 getClassType: '',
                 getPrice: '',
-                getClassType: '',
-                getPrice: '',
                 getAccount: '',
                 getArriveTime: '',
                 getDepatureTime: '',

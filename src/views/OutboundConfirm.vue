@@ -107,7 +107,7 @@ export default {
         <button type="" @click="chooseSeat(planeSearchCheack.ccc.price)">選擇</button>
         <p>訂位艙等</p>
         <p class="p1">
-          {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: 經濟艙
+          {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: {{ planeSearchCheack.ccc.classType }}經濟艙
         </p>
         <p>預選座位</p>
         <p class="p1">收費選位</p>

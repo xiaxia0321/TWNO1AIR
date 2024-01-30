@@ -23,7 +23,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(counter, ["plane", "planeSearchCheack"]),
+    ...mapState(counter, ["plane", "planeSearchCheack", "Order"]),
   },
   methods: {
     calculateDuration(depatureTime, arriveTime) {
@@ -97,9 +97,9 @@ export default {
     <div class="mid2">
       <!-- <div class="m1"><h4>成人</h4></div> -->
       <div class="m2">
-      <p>產品票價: </p>
-      <p>人數: </p>
-      <p>總計:</p>
+      <p>產品票價:{{this.Order.getPrice}}</p>
+      <p>人數:{{ this.Order.getAddPeople[0].enteredPeople }}</p>
+      <p>總計:{{ this.Order.getPrice * this.Order.getAddPeople[0].enteredPeople }}</p>
       
       </div>
     </div>
@@ -142,7 +142,7 @@ export default {
     </p>
   </div>
   <div class="bottom1">
-    <span>TWD 20,680</span>
+    <span>TWD {{ this.Order.getPrice * this.Order.getAddPeople[0].enteredPeople }}</span>
     <button>前往付款</button>
   </div>
 </template>
