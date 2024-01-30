@@ -220,7 +220,7 @@ export default {
           </label>
         </div>
         <i class="fa-solid fa-right-long"
-          style="position: absolute; left: 19rem; background-color: rgb(255, 255, 255); border-radius: 35%; border: 1px solid rgba(0, 0, 0, 0.357);  color: rgb(0, 0, 0); font-size: 2rem;"></i>
+          style="position: absolute; left: 19rem; background-color: whitesmoke; border-radius: 50%;   color: rgb(0, 0, 0); font-size: 2rem;"></i>
         <div class="place onon" name="目的地">
           <label for="" class="lab">
             <select name="" id="" v-model="planeSearchArr.arrivalLocation">
@@ -456,9 +456,9 @@ export default {
       </div>
 
       <div class="under">
-        <a href=""><i class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
-        <a href=""><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
-        <a href=""><i class="fa-brands fa-square-youtube ii" style="color: #161a30;"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61555758314488&mibextid=JRoKGi" target="_blank"><i class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
+        <a href="https://www.instagram.com/happy_go.2024/"  target="_blank"><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
+        <a href="" target="_blank"><i class="fa-brands fa-square-youtube ii"  style="color: #161a30;" ></i></a>
       </div>
     </div>
   </div>
@@ -849,7 +849,7 @@ export default {
         font-size: 50px;
         width: 50px;
         height: 50px;
-
+        targ
         &:hover {
           box-shadow: 2px 2px 5px 0 black;
           background-color: rgba(255, 255, 255, 0.2);

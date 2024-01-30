@@ -77,18 +77,23 @@ export default {
             icon: "error",
             text: "你輸入的密碼與確認的密碼不相符",
           });
-        } else {
+          return;
+        }
+        if (res.data.rtnCode = "ACCOUNT_EXISTED") {
+          Swal.fire({
+            icon: "question",
+            text: "帳號已重複，請使用其他帳號進行註冊",
+            showConfirmButton: true,
+          });
+          return;
+        }
+        else {
           Swal.fire({
             icon: "success",
             text: "你已經註冊成功",
             showConfirmButton: true,
           });
-          //   this.aaa = this.planeArr[num];
-          //   this.planeSearchCheack.ccc = this.aaa;
-          //   console.log(this.planeArr[num]);
-          //   console.log(this.aaa);
-          //   console.log(this.planeSearchCheack);
-          //   console.log("ccc = " + this.planeSearchCheack.ccc);
+          console.log(res.data.rtnCode);
           console.log(this.user);
           this.$router.push("/Login"); //先註解
         }
