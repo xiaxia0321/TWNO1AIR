@@ -122,6 +122,19 @@ export default defineStore("counter", {
             },
             delete:{
                 
+            },
+            ticket:{
+                userName: "",
+                airplain_Id:"",
+                departureDate: "",
+                da:"",
+                aa:"",
+                depatureTime: "",
+                depatureTerminal: 0,
+                seat: "",
+            },
+            ticketArr:{
+                
             }
         }
 
