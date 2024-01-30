@@ -102,6 +102,9 @@ export default {
     show() {
       this.showPassword = !this.showPassword
     },
+    goSubmit(){
+      this.$router.push('/Submit');
+    }
     // search() {
     //   console.log(this.userData);
     //   fetch('http://localhost:8080/user/search', {
@@ -178,6 +181,7 @@ export default {
         <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
+        <button type="button" class="login" @click="goSubmit()">註冊</button>
         <button type="button" class="login" @click="loginOrder()">登入</button>
       </div>
     </div>
@@ -232,7 +236,7 @@ export default {
 }
 
 .login {
-  margin-left: 220px;
+  margin-left: 4rem;
   margin-top: 50px;
   background-color: rgb(49, 48, 77);
   color: white;
