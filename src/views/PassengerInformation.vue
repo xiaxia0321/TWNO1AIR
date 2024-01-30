@@ -36,7 +36,9 @@ export default {
         console.log('所有組數據:', newMemberData);
         // 存入 Pinia 中的 Order store 的 getAddPeople 中
         this.Order.getAddPeople = newMemberData;
-        this.$router.push("/ProductDetailed");
+        console.log('pinia數據:', this.Order.getAddPeople);
+        // this.$router.push("/ProductDetailed");
+        this.$router.push("/seatAAA");
         // 這裡可以選擇將 MemberInformation 也更新
         // this.MemberInformation = newMemberData;
       }
@@ -66,6 +68,9 @@ export default {
       this.members[0].birthday = this.userDate.uuu[0].birthday;
       // this.members[0].age = this.userDate.uuu[0].age;
       this.members[0].phone = this.userDate.uuu[0].phone;
+    },
+    test() {
+      console.log(this.userDate.uuu[0].name);
     },
 
     //新增
@@ -111,6 +116,7 @@ export default {
       <div class="m2">
         <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
         <button @click="sameDate">同會員資訊</button>
+        <button @click="test">測試</button>
         <br />
         <br />
         <div v-for="(member, index) in members" :key="index">
@@ -241,7 +247,9 @@ export default {
       padding: 5vh 5vw 5vh 5vw;
       text-align: justify;
       font-size: 18px;
-
+      button{
+        width: 120px;
+      }
       // display: flex;
       // justify-content: center;
       span {

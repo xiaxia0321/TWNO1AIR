@@ -2,6 +2,7 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import counter from "../stores/counter";
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -23,9 +24,76 @@ export default {
     };
   },
   computed: {
-    ...mapState(counter, ["plane", "planeSearchCheack", "Order"]),
+    ...mapState(counter, ["plane", "planeSearchCheack", "Order", "userDate"]),
   },
   methods: {
+    test() {
+      console.log(this.userDate.uuu[0]);
+   
+    },
+    login() {
+ axios({
+            url: "http://localhost:8080/api/login",
+            method: "POST",
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+            },
+            data: {
+              account: "yoyo",
+              password: "yoyo",
+            },
+          }).then(res => {
+    // 登录成功后的处理逻辑
+    console.log(res.data.rtnCode);
+   
+  }).catch(error => {
+    // 登录失败后的处理逻辑
+    console.error("Login failed:", error);
+  });
+    },
+   
+    Ordergogo() {
+      axios({
+        url: 'http://localhost:8080/order/create',
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          is_oneway: this.planeSearchCheack.ccc.isOneway, //單程
+          numberOfPeople: this.Order.getAddPeople[0].enteredPeople, //人數
+          departureDate: this.planeSearchCheack.ccc.departureDate, //出發日期
+          arrivalDate: this.planeSearchCheack.ccc.arriveDate, //抵達日期
+          departureLocation: this.planeSearchCheack.ccc.departureLocation, //出發地
+          arrivalLocation: this.planeSearchCheack.ccc.arrivalLocation, //抵達地
+          classType: this.planeSearchCheack.ccc.classType, //艙等
+          price: this.Order.getPrice * this.Order.getAddPeople[0].enteredPeople , //價錢
+          account: this.userDate.uuu[0].name, //帳戶名稱有問題
+          depatureTime: this.planeSearchCheack.ccc.depatureTime, //出發時間
+          arriveTime: this.planeSearchCheack.ccc.arriveTime, //抵達時間
+          add_people: this.Order.getAddPeople, //打包人數資料
+        },
+      }).then(res => console.log(res.data),)
+      console.log(this.Order);
+      this.Order = {
+        is_oneway: "", 
+        numberOfPeople: 0, 
+        departureDate: "", 
+        arrivalDate: "",
+        departureLocation: "", 
+        arrivalLocation: "",
+        classType: "",
+        price: false,
+        account: "",
+        depatureTime: "",
+        arriveTime: "",
+        add_people: "",
+
+      }
+        // this.$router.push('/Backstage/BackPlane')
+    },
+
     calculateDuration(depatureTime, arriveTime) {
       const [depatureHour, depatureMinute] = depatureTime.split(":").map(Number);
       const [arriveHour, arriveMinute] = arriveTime.split(":").map(Number);
@@ -67,6 +135,8 @@ export default {
       <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
       <h2>產品明細</h2>
       <h3>航班資訊</h3>
+      <button @click="login">登入</button>
+      <button @click="test">測試</button>
     </div>
     <div class="mt1"><span>經濟艙</span></div>
     <div class="mid1">
@@ -77,7 +147,7 @@ export default {
         <p class="nationbk">{{ planeSearchCheack.ccc.da }}</p>
         <p>{{ planeSearchCheack.ccc.depatureAirport }}</p>
         <p>第{{ planeSearchCheack.ccc.depatureTerminal }}航廈</p>
-        <p>座位: {{planeSearchCheack.ccc.seat}}</p>
+        <p>座位: {{this.planeSearchCheack.seat}}</p>
       </div>
       <div class="m2"><i class="fa-solid fa-arrow-right"></i></div>
       <div class="m3">
@@ -143,7 +213,7 @@ export default {
   </div>
   <div class="bottom1">
     <span>TWD {{ this.Order.getPrice * this.Order.getAddPeople[0].enteredPeople }}</span>
-    <button>前往付款</button>
+    <button @click="Ordergogo">前往付款</button>
   </div>
 </template>
 
