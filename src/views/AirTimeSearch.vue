@@ -103,8 +103,22 @@ export default {
     </div>
     <div class="mid3">
       <div class="b3">
-        <button @click="setRoundTrip(false)">單程</button>
-        <button @click="setRoundTrip(true)">來回</button>
+        <!-- <button @click="setRoundTrip(false)">單程</button>
+        <button @click="setRoundTrip(true)">來回</button> -->
+        <!-- <label>
+          <input
+            type="radio"
+            name="option"
+            value="option1"
+            @click="setRoundTrip(false)"
+          />
+          單程
+        </label>
+        <br /> -->
+        <!-- <label>
+          <input type="radio" name="option" value="option2" @click="setRoundTrip(true)" />
+          來回
+        </label> -->
       </div>
       <div class="b4">
         <div class="form-floating mb-3 bb" v-if="!isRoundTrip">

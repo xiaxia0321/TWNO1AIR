@@ -75,7 +75,7 @@ export default {
         <p>{{ planeSearchCheack.ccc.departureDate }}</p>
         <p class="time">{{ planeSearchCheack.ccc.depatureTime }}</p>
         <p class="nationbk">{{ planeSearchCheack.ccc.da }}</p>
-        <p>桃園國際機場</p>
+        <p>{{ planeSearchCheack.ccc.depatureAirport }}</p>
         <p>第{{ planeSearchCheack.ccc.depatureTerminal }}航廈</p>
         <p>座位: {{}}</p>
       </div>
@@ -85,7 +85,7 @@ export default {
         <p>{{ planeSearchCheack.ccc.arriveDate }}</p>
         <p class="time">{{ planeSearchCheack.ccc.arriveTime }}</p>
         <p class="nationbk">{{ planeSearchCheack.ccc.aa }}</p>
-        <p>福岡機場</p>
+        <p>{{ planeSearchCheack.ccc.arriveAirport }}</p>
         <p>第{{ planeSearchCheack.ccc.arriveTerminal }}航廈</p>
       </div>
     </div>

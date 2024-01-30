@@ -131,8 +131,21 @@ export default defineStore("counter", {
                 orderId: "",
                 account: "",
             },
-            delete: {
-
+            delete:{
+                
+            },
+            ticket:{
+                userName: "",
+                airplain_Id:"",
+                departureDate: "",
+                da:"",
+                aa:"",
+                depatureTime: "",
+                depatureTerminal: 0,
+                seat: "",
+            },
+            ticketArr:{
+                
             }
         }
 

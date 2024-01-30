@@ -98,6 +98,8 @@ export default {
           text: "帳號或密碼未輸入",
         })
       }
+      account = "";
+      password = "";
     },
     show() {
       this.showPassword = !this.showPassword
@@ -224,6 +226,7 @@ export default {
   border-radius: 5%;
   color: white;
   text-align: left;
+  position: relative;
 }
 
 .input {
@@ -236,8 +239,24 @@ export default {
 }
 
 .login {
-  margin-left: 4rem;
-  margin-top: 50px;
+  // position: absolute;
+  // left: 67%;
+  // top: 75%;
+  
+  margin:0 2.1rem 0 2.1rem;
+  background-color: rgb(49, 48, 77);
+  color: white;
+  box-shadow: none;
+  border-radius: 15px;
+  width: 80px;
+  height: 40px;
+  border: none;
+}
+
+.submit{
+  position: absolute;
+  left: 13%;
+  top: 75%;
   background-color: rgb(49, 48, 77);
   color: white;
   box-shadow: none;
@@ -249,29 +268,15 @@ export default {
 
 .fa-eye {
   position: absolute;
-  left: 75%;
-  top: 59%;
+  left: 78%;
+  top: 56%;
   color: rgb(49, 48, 77);
 }
 
 .fa-eye-slash {
   position: absolute;
-  left: 75%;
-  top: 59%;
-  color: rgb(49, 48, 77);
-}
-
-.fa-eye {
-  position: absolute;
-  left: 75%;
-  top: 59%;
-  color: rgb(49, 48, 77);
-}
-
-.fa-eye-slash {
-  position: absolute;
-  left: 75%;
-  top: 59%;
+  left: 78%;
+  top: 56%;
   color: rgb(49, 48, 77);
 }
 </style>

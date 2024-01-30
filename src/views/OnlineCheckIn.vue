@@ -107,10 +107,34 @@ export default {
                 <br><br>
                 <hr style="border: 2px solid gray;width: 900px;margin-left: 140px;">
                 <br>
-                <input type="checkbox" style="width: 20px;height: 20px;position: absolute;top: 62.7%;left: 34%;"
+                <input type="checkbox" style="width: 20px;height: 20px;position: absolute;top: 65%;left: 22%;"
                     id="checkbox">
-                <span>提供本人資訊，代表本人確認且接受樂狗航空隱私保護政策</span>
-                <button type="button" @click="goOnlineCheckInTwo">確認</button>
+                <!-- <span>提供本人資訊，代表本人確認且接受樂狗航空隱私保護政策</span> -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal" id="gg">
+                    提供本人資訊，代表本人確認且接受樂go航空隱私保護政策
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">隱私權保護政策</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="text-align: left;">
+                                樂go為落實個人資料保護及遵循中華民國個人資料保護法、歐盟一般資料保護規則（GDPR）及其他相關之個人資料保護法令之規定，制定本隱私保護政策，以達成個人資料隱私與安全之管理。
+                                我們將於授權之特定目的範圍內，以合理安全的方式蒐集和使用您的個人資料，並確保您有查詢、修改、刪除、限制個人資料的利用及撤回您的同意等權利。此外，我們針對個人資料被竊取、竄改、洩漏或毀損等事故，設有資料外洩事故應變策略與計畫，並透過建立與維護完善的個人資料保護機制，承諾保障您個人資料之正確性和安全性。
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">了解</button>
+                                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="check" @click="goOnlineCheckInTwo">確認</button>
             </div>
         </div>
     </div>
@@ -143,12 +167,19 @@ export default {
             box-sizing: border-box;
             padding-top: 90px;
             border: 2px solid gray;
-            .selectOne{
+            position: relative;
+
+            #gg{
+            margin-top: -9px;
+            margin-right: 180px;
+            }
+            .selectOne {
                 width: 200px;
                 height: 40px;
                 border-radius: 5px;
             }
-            .selectTwo{
+
+            .selectTwo {
                 width: 200px;
                 height: 40px;
             }
@@ -164,7 +195,7 @@ export default {
                 border: 2px solid gray;
             }
 
-            button {
+            .check {
                 box-shadow: none;
                 border-radius: 15px;
                 width: 120px;
@@ -172,8 +203,8 @@ export default {
                 border: none;
                 background-color: rgb(108, 95, 91);
                 position: absolute;
-                left: 75%;
-                top: 68%;
+                left: 78%;
+                top: 63%;
                 color: white;
             }
         }

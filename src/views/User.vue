@@ -40,6 +40,7 @@ export default {
             suggestedItems: [],
             sensitiveWords: ["刀", "knife", "槍", "gun", "rifle", "火", "lighter", "酒", "棒", "桿", "棍", "架", "彈", "油", "殺", "毒", "酸", "鹼", "炸", "肉", "果", "魚", "蛋", "盜"],
             userArr: [],
+            isLogIn: true
         }
     },
     props: {
@@ -166,7 +167,6 @@ export default {
                         return;
                     }
                 }
-
                 // 如果不包含敏感詞，加入清單
                 this.checklist.push(this.newItem);
                 this.checkedItems.push(false);
@@ -226,6 +226,25 @@ export default {
             this.checklist.push(item);
             this.checkedItems.push(false);
         },
+        signOut() {
+            fetch('http://localhost:8080/api/logout', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.rtnCode == "SUCCESSFUL") {
+                        $cookies.remove("account");
+                        this.$router.push('/');
+                            counter().isLogIn = false
+                    }
+                })
+                .catch(error => console.log(error))
+        },
         logininin() {
             console.log('old ' + this.logingDesuga.loginIng);
         }
@@ -249,7 +268,7 @@ export default {
             <button type="button" class="record" @click="userblock('旅行紀錄'), searchOrder">行程管理</button><br>
             <button type="button" class="record" @click="userblock('關注城市')">紅利優惠</button><br>
             <button type="button" class="record" @click="userblock('旅遊通知')">行李清單</button><br>
-            <button type="button" class="out">登出</button>
+            <button type="button" class="out" @click="signOut()">登出</button>
         </div>
         <div class="in" v-if="data">
             <div class="up">
