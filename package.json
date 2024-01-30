@@ -12,11 +12,14 @@
     "axios": "^1.6.5",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.2",
+    "emailjs-com": "^3.2.0",
+    "js-cookie": "^3.0.5",
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
     "scss": "^0.2.4",
     "sweetalert2": "^11.10.3",
     "vue": "^3.4.15",
+    "vue-cookies": "^1.8.3",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
