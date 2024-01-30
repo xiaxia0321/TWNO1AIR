@@ -98,10 +98,13 @@ export default {
           text: "帳號或密碼未輸入",
         })
       }
+      account = "";
+      password = "";
     },
     show() {
       this.showPassword = !this.showPassword
     },
+<<<<<<< HEAD
     goSubmit(){
       this.$router.push('/Submit');
     }
@@ -158,6 +161,11 @@ export default {
     //     }
     //   })
     // },
+=======
+    submit(){
+      this.$router.push('/Submit')
+    },
+>>>>>>> origin/sabrinaQQ
   }
 }
 </script>
@@ -181,8 +189,13 @@ export default {
         <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
+<<<<<<< HEAD
         <button type="button" class="login" @click="goSubmit()">註冊</button>
         <button type="button" class="login" @click="loginOrder()">登入</button>
+=======
+        <button type="button" class="submit" @click="submit()">註冊</button>
+        <button type="button" class="login" @click="login()">登入</button>
+>>>>>>> origin/sabrinaQQ
       </div>
     </div>
   </div>
@@ -224,6 +237,7 @@ export default {
   border-radius: 5%;
   color: white;
   text-align: left;
+  position: relative;
 }
 
 .input {
@@ -236,8 +250,27 @@ export default {
 }
 
 .login {
+<<<<<<< HEAD
   margin-left: 4rem;
   margin-top: 50px;
+=======
+  position: absolute;
+  left: 67%;
+  top: 75%;
+  background-color: rgb(49, 48, 77);
+  color: white;
+  box-shadow: none;
+  border-radius: 15px;
+  width: 80px;
+  height: 40px;
+  border: none;
+}
+
+.submit{
+  position: absolute;
+  left: 13%;
+  top: 75%;
+>>>>>>> origin/sabrinaQQ
   background-color: rgb(49, 48, 77);
   color: white;
   box-shadow: none;
@@ -249,29 +282,15 @@ export default {
 
 .fa-eye {
   position: absolute;
-  left: 75%;
-  top: 59%;
+  left: 78%;
+  top: 56%;
   color: rgb(49, 48, 77);
 }
 
 .fa-eye-slash {
   position: absolute;
-  left: 75%;
-  top: 59%;
-  color: rgb(49, 48, 77);
-}
-
-.fa-eye {
-  position: absolute;
-  left: 75%;
-  top: 59%;
-  color: rgb(49, 48, 77);
-}
-
-.fa-eye-slash {
-  position: absolute;
-  left: 75%;
-  top: 59%;
+  left: 78%;
+  top: 56%;
   color: rgb(49, 48, 77);
 }
 </style>

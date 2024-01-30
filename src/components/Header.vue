@@ -225,7 +225,7 @@ export default {
                                 <button v-show ="this.logingDesuga.loginIng" @click="this.login()">會員登入</button>
                                 <button v-show="this.logingDesuga.loginIng" @click="this.join()">加入會員</button>
                                 <br>
-                                <h5>測試</h5>
+                                <!-- <h5>測試</h5>
                                 <button @click="AirTime">飛機時刻</button>
                                 <br>
                                 <button @click="OutboundConfirm">去程訂票確認</button>
@@ -234,7 +234,7 @@ export default {
                                 <br>
                                 <button @click="PassengerInformation">旅客資訊聯絡方式輸入頁面</button>
                                 <br>
-                                <button @click="ProductDetailed">最終訂票確認頁面</button>
+                                <button @click="ProductDetailed">最終訂票確認頁面</button> -->
                             </div>
                         </div>
                     </li>
@@ -487,9 +487,9 @@ export default {
     ul.drop-down-menu ul {
         border: #ccc 1px solid;
         position: absolute;
-        z-index: 99;
+        z-index: 9;
         left: -1px;
-        top: 100%;
+        // top: 100%;
         min-width: 180px;
     }
 
@@ -503,17 +503,17 @@ export default {
 
     ul.drop-down-menu ul ul {
         /*第三層以後的選單出現位置與第二層不同*/
-        z-index: 999;
+        z-index: 9;
         top: 10px;
         left: 90%;
     }
 
     ul.drop-down-menu ul {
         /*隱藏次選單*/
-        left: 2000px;
+        left: 1200px;
         opacity: 0;
-        -webkit-transition: opacity 0.3s;
-        transition: opacity 1s;
+        -webkit-transition: opacity 0.1s;
+        transition: opacity 0.01s;
     }
 
     ul.drop-down-menu li:hover>ul {
@@ -557,5 +557,4 @@ export default {
     //         background-color: rgba(0, 0, 0, 0.344);
     //     }
     // }
-}
-</style>
+}</style>

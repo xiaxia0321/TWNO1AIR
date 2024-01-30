@@ -339,19 +339,19 @@ export default {
     .c1 {
       width: 25%;
       height: 100%;
-      background-color: cadetblue;
+      // background-color: cadetblue;
     }
 
     .c2 {
       width: 25%;
       height: 100%;
-      background-color: #796052;
+      // background-color: #796052;
     }
 
     .c3 {
       width: 25%;
       height: 100%;
-      background-color: blue;
+      // background-color: blue;
     }
   }
 }

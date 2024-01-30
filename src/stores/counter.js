@@ -6,7 +6,7 @@ export default defineStore("counter", {
         return {
             logingDesuga: {
                 loginIng: false,
-                backStage:false,
+                backStage: false,
             },
             pp: 1,
             Order: {
@@ -132,6 +132,19 @@ export default defineStore("counter", {
                 account: "",
             },
             delete: {
+
+            },
+            ticket: {
+                userName: "",
+                airplain_Id: "",
+                departureDate: "",
+                da: "",
+                aa: "",
+                depatureTime: "",
+                depatureTerminal: 0,
+                seat: "",
+            },
+            ticketArr: {
 
             }
         }
