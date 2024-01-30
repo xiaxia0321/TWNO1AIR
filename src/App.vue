@@ -21,6 +21,7 @@ import Header from './components/Header.vue';
 .content {
   width: fill;
   height: 90vh;
+  overflow-y: auto;
   text-align: center;
   background-color: #161a30;
 }

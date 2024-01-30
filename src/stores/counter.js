@@ -11,7 +11,14 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
+                getClassType: '',
+                getPrice: '',
                 getAccount: '',
+                getArriveTime: '',
+                getDepatureTime: '',
+                // getAddPeople: '',
+                getAddPeople: {
+                  },
             },
             OrderArr: {
             },
@@ -21,7 +28,12 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
+                getClassType: '',
+                getPrice: '',
                 getAccount: '',
+                getArriveTime: '',
+                getDepatureTime: '',
+                getAddPeople: '',
             },
             plane: {
                 departureDate: "", //出發日期
@@ -61,7 +73,6 @@ export default defineStore("counter", {
             },
             user: {
                 uuu:[],
-                addPeople:[],
                 userId: 0,
                 account: '',
                 password: '',

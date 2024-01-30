@@ -88,7 +88,7 @@ export default {
             </button>
           </div>
 
-          <!-- <div class="ma">
+          <div class="ma">
             <span>港澳大陸地區</span>
           </div>
           <div class="maAll">
@@ -131,7 +131,7 @@ export default {
           <div class="sa">
             <span>東南亞</span>
           </div>
-          <div class="saAll">
+          <div class="saAll"> 
             <button class="cc" data-bs-dismiss="modal" @click="selectDeparture('BKK　','曼谷,泰國','蘇凡納布國際機場')">
               <span>曼谷，泰國　　　　　　　　　　　　　　　　　　　　　　BKK</span>
               <br />
@@ -166,7 +166,7 @@ export default {
               <br />
               <small>舊金山國際機場</small>
             </button>
-          </div> -->
+          </div>
         </div>
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
