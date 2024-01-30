@@ -44,7 +44,7 @@ export default defineStore("counter", {
                 ccc: [],
             },
             OrderDelete: {
-                getOrderId: ''
+                ccc:[],
             },
             plane: {
                 departureDate: "", //出發日期

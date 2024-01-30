@@ -344,7 +344,6 @@ export default {
                         <th>抵達地點</th>
                         <th>人數</th>
                         <th>旅程</th>
-                        <th>其他操作</th>
                     </tr>
                     <tr v-for="(item, index) in OrderArr.ccc" :key="index">
                         <td>{{ item.orderId }}</td>
@@ -356,7 +355,6 @@ export default {
                         <td>{{ item.numberOfPeople }}</td>
                         <td v-show="!item.oneway">來回</td>
                         <td v-show="item.oneway">單程</td>
-                        <td>其他操作</td>
                     </tr>
                 </thead>
                 <!-- <tbody>

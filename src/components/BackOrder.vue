@@ -1,6 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import Swal from "sweetalert2/dist/sweetalert2.js";
 import axios from 'axios';
 export default {
   data() {
@@ -41,18 +42,45 @@ export default {
         .then(res => this.OrderArr = res.data.orderList)
       console.log(this.OrderArr);
     },
-    delete() {
-      axios({
-        url: 'http://localhost:8080/order/delete',
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        data: {
-          order_id: this.OrderArr.orderId,
-        },
+    goDelete(num) {
+      this.OrderDelete.ccc = this.OrderArr[num];
+      console.log(this.OrderDelete.ccc);
+      Swal.fire({
+        title: "請問是否刪除?",
+        text: "資料將被刪除?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "取消",
+        confirmButtonText: "刪除!!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "已刪除!!",
+            icon: "success"
+          })
+          console.log(this.OrderDelete.ccc.orderId);
+          console.log(this.OrderDelete.ccc.account);
+          axios({
+            url: 'http://localhost:8080/order/delete',
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            data: {
+              orderId: this.OrderDelete.ccc.orderId,
+              account: this.OrderDelete.ccc.account,
+            },
+          })
+            .then(res => { console.log(this.res) },
+            );
+          setTimeout(this.reLoad, 3000);
+        }
       })
-        .then(res => console.log(this.OrderArr))
+    },
+    reLoad() {
+      this.$router.go(0);
     }
   },
   components: {
@@ -154,6 +182,9 @@ export default {
             <td>{{ item.arrivalDate }}</td>
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
+            <td>
+              <p @click="goDelete(index)">刪除</p>
+            </td>
             <!-- <td class="bb"><span href="" @click="delect">刪除</span></td> -->
             <!-- {{ item.orderId } -->
           </tr>
