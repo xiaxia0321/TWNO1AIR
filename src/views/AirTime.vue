@@ -142,7 +142,7 @@ export default {
       <span>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</span>
       <br />
       <span>
-        樂狗航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂狗航空客服中心。
+        樂GO航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂GO航空客服中心。
       </span>
       <p class="show" @click="searchPlane" style="font-size: 2.5rem">點此顯示搜尋結果</p>
     </div>

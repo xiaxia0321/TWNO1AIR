@@ -91,7 +91,7 @@ export default {
                 class="input"><br>
             <span style="font-size: 14pt;">會員名稱：</span><input id="account" v-model="this.account" type="text" class="input">
             <input type="checkbox" id="checkbox">
-            <!-- <span class="sure">本人已詳閱樂狗航空相關退票規定</span> -->
+            <!-- <span class="sure">本人已詳閱樂GO航空相關退票規定</span> -->
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal" id="gg">
                 本人確認且接受星宇航空隱私保護政策

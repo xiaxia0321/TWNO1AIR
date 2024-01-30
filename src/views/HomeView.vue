@@ -396,9 +396,9 @@ export default {
     <!-- <div class="foot">
       <div class="footBlock">
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
-            style="padding-left: 10px;">瞭解樂狗</span></h2>
+            style="padding-left: 10px;">瞭解樂GO</span></h2>
         <ul>
-          <li><a href="">認識樂狗</a></li>
+          <li><a href="">認識樂GO</a></li>
           <li><a href="">團隊成員</a></li>
           <li><a href="">加入團隊</a></li>
           <li><a href="">加入團隊</a></li>
@@ -407,9 +407,9 @@ export default {
       </div>
       <div class="footBlock">
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
-            style="padding-left: 10px;">接觸樂狗</span></h2>
+            style="padding-left: 10px;">接觸樂GO</span></h2>
         <ul>
-          <li><a href="">認識樂狗</a></li>
+          <li><a href="">認識樂GO</a></li>
           <li><a href="">團隊成員</a></li>
           <li><a href="">加入團隊</a></li>
           <li><a href="">加入團隊</a></li>
@@ -418,13 +418,13 @@ export default {
       </div>
       <div class="footBlock">
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
-            style="padding-left: 10px;">加入樂狗</span></h2>
+            style="padding-left: 10px;">加入樂GO</span></h2>
         <ul>
           <li><a href="">加入我們</a></li>
           <li><a href="">加入我們</a></li>
           <li><a href="">加入我們</a></li>
           <li><a href="">加入我們</a></li>
-          <li><a href="">加入{{ '樂狗' }}團隊</a></li>
+          <li><a href="">加入{{ '樂GO' }}團隊</a></li>
         </ul>
       </div> -->
     <div class="foot">
@@ -448,7 +448,7 @@ export default {
       </div>
       <div class="footBlock">
         <h2 style="text-align: left; padding-bottom: 30px; border-bottom: .2px solid white; font-weight: 600;"><span
-            style="padding-left: 10px;">加入樂狗</span></h2>
+            style="padding-left: 10px;">加入樂GO</span></h2>
         <ul>
           <li><a href="">回頂端</a></li>
           <li><a href="">會員優惠</a></li>
@@ -459,7 +459,7 @@ export default {
       <div class="under">
         <a href="https://www.facebook.com/profile.php?id=61555758314488&mibextid=JRoKGi" target="_blank"><i class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
         <a href="https://www.instagram.com/happy_go.2024/"  target="_blank"><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
-        <a href="" target="_blank"><i class="fa-brands fa-square-youtube ii"  style="color: #161a30;" ></i></a>
+        <!-- <a href="" target="_blank"><i class="fa-brands fa-square-youtube ii"  style="color: #161a30;" ></i></a> -->
       </div>
     </div>
   </div>
@@ -550,7 +550,7 @@ export default {
         //     background: none;
         // }
         .oo {
-          //樂狗航空右側 使用者圖示
+          //樂GO航空右側 使用者圖示
           display: flex;
           align-items: center;
           // justify-content: space-between;

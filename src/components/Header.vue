@@ -223,7 +223,7 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 20pt;" v-if="!this.logingDesuga.loginIng">樂GO會員</a>
+                <a href="#" style="color: white;font-size: 20pt;" v-if="this.logingDesuga.loginIng">樂GO會員</a>
                 <ul>
                     <li>
                         <div class="happyDogMember">

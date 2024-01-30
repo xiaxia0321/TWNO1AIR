@@ -109,7 +109,7 @@ export default {
                 <br>
                 <input type="checkbox" style="width: 20px;height: 20px;position: absolute;top: 65%;left: 22%;"
                     id="checkbox">
-                <!-- <span>提供本人資訊，代表本人確認且接受樂狗航空隱私保護政策</span> -->
+                <!-- <span>提供本人資訊，代表本人確認且接受樂GO航空隱私保護政策</span> -->
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal" id="gg">
                     提供本人資訊，代表本人確認且接受樂go航空隱私保護政策
