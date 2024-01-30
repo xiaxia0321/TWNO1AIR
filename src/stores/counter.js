@@ -61,6 +61,7 @@ export default defineStore("counter", {
             },
             user: {
                 uuu:[],
+                addPeople:[],
                 userId: 0,
                 account: '',
                 password: '',

@@ -35,8 +35,8 @@ export default {
       //   console.log(this.planeArr);
       //   // 在請求完成後執行路由導航
       // });
-      this.planeSearchArr.departureDate = this.selectedDate
-      this.planeSearchArr.arrivalDate = this.returnDate
+      this.planeSearchArr.departureDate = this.selectedDate;
+      this.planeSearchArr.arrivalDate = this.returnDate;
 
       console.log("出发日期:", this.selectedDate);
       console.log("回程日期:", this.returnDate);
@@ -103,8 +103,22 @@ export default {
     </div>
     <div class="mid3">
       <div class="b3">
-        <button @click="setRoundTrip(false)">單程</button>
-        <button @click="setRoundTrip(true)">來回</button>
+        <!-- <button @click="setRoundTrip(false)">單程</button>
+        <button @click="setRoundTrip(true)">來回</button> -->
+        <!-- <label>
+          <input
+            type="radio"
+            name="option"
+            value="option1"
+            @click="setRoundTrip(false)"
+          />
+          單程
+        </label>
+        <br />
+        <label>
+          <input type="radio" name="option" value="option2" @click="setRoundTrip(true)" />
+          來回
+        </label> -->
       </div>
       <div class="b4">
         <div class="form-floating mb-3 bb" v-if="!isRoundTrip">
@@ -267,8 +281,7 @@ export default {
         width: 15vw;
         height: 7vh;
       }
-      .bb{
-        
+      .bb {
       }
     }
     .b5 {

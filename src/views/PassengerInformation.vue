@@ -1,10 +1,14 @@
 //旅客資訊及聯絡方式輸入頁
 <script>
+import { mapState, mapActions } from 'pinia'
+import counter from '../stores/counter'
+import Swal from 'sweetalert2'
+import axios from 'axios';
 export default {
   data() {
     return {
       planeArr: [1],
-      MemberInformation:[],
+      MemberInformation: [],
       members: [
         // 初始一筆會員資料
         { title: "1", name: "", birthday: "", contact: "", phone: "" },
@@ -12,52 +16,77 @@ export default {
     };
   },
   methods: {
+    components: {
+    ...mapState(counter, ["user"])
+  },
+
     user() {
+      let titleSelect = document.getElementById("titleSelect");
+      let nameInput = document.getElementById("nameInput");
+      let birthdayInput = document.getElementById("birthdayInput");
+      let contactInput = document.getElementById("contactInput");
+      let phoneInput = document.getElementById("phoneInput");
+
+      // 獲取值的例子
+      let selectedTitle = titleSelect.value;
+      let enteredName = nameInput.value;
+      let enteredBirthday = birthdayInput.value;
+      let enteredContact = contactInput.value;
+      let enteredPhone = phoneInput.value;
+
+      // 將值打印到控制台
+      console.log("選擇的稱謂:", selectedTitle);
+      console.log("輸入的姓名:", enteredName);
+      console.log("輸入的生日:", enteredBirthday);
+      console.log("輸入的聯絡人:", enteredContact);
+      console.log("輸入的手機:", enteredPhone);
+
+      if (selectedTitle === "" || enteredName === "" || enteredBirthday === "" || enteredContact === "" || enteredPhone === "") {
+  console.log("你有資料尚未填寫");
+  Swal.fire({
+    icon: "error",
+    text: "你有資料尚未填寫",
+  });
+  return;
+}
       axios({
-        url: "http://localhost:8080/user/search",
+        url: "http://localhost:8080/order/create",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         data: {
-          // title: this.user.title, //缺少稱謂
-          // lastName: this.user.lastName,//缺少用戶姓氏
-          // name: this.user.name,//缺少用戶名字
-          birthday: this.user.birthday, //生日
-          age: this.user.age, //年齡
-          // contactPerson: this.user.contactPerson,//缺少聯絡人
-          phone: this.user.phone, //手機
-          // homePhone: this.user.homePhone,//缺少住家電話
+          addPeople: this.user.addPeople,
+         
         },
       }).then((res) => console.log(res.data));
       console.log(this.user);
       (this.user = {
-        // title: "", //稱謂
-        // lastName: "", //用戶姓氏
-        // name: "", //用戶名字
-        birthday: "", //生日
-        // age: "", //年齡
-        // contactPerson: "", //聯絡人
-        phone: "", //手機
-        // homePhone: "", //住家電話
-
+      
       }),
         this.$router.push("/ProductDetailed");
     },
-    gogo() {
-      this.$router.push("/ProductDetailed"); //推送至下一頁的路徑
-    },
+ // title: this.user.title, //缺少稱謂
+          // birthday: this.user.birthday, //生日
+          // age: this.user.age, //年齡
+          // contactPerson: this.user.contactPerson,//缺少聯絡人
+          // phone: this.user.phone, //手機
     back() {
       this.$router.push("/OutboundConfirm"); //推送至下一頁的路徑
     },
+
     addMember() {
       if (this.members.length < 4) {
         this.members.push({ title: "1", name: "", birthday: "", contact: "", phone: "" });
       }
     },
+
     removeMember(index) {
-      this.members.splice(index, 1);
+      if (this.members.length > 1) {
+        this.members.splice(index, 1);
+      }
     },
+
   },
 };
 </script>
@@ -77,68 +106,55 @@ export default {
     </div>
     <div class="mid" v-for="(item, index) in planeArr[0]" :key="index">
       <div class="m1">
-        <span>{{ "人數 " + this.members.length + "人"}}</span>
+        <span>{{ "人數 " + this.members.length + "人" }}</span>
         <!-- <h3>成人</h3> -->
-        <br>
-        <button  @click="addMember" :disabled="members.length >= 4">新增</button>
-        <br>
+        <br />
+        <button @click="addMember" :disabled="members.length >= 4">新增</button>
+        <br />
         <button @click="removeMember(index)">刪除</button>
 
-        <br>
-        <!-- <i style="font-size: 2rem; transform: rotate(40deg);  position: relative;" class="fa-solid fa-voicemail">
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-wand-magic"></i>
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-spoon"></i>
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-thermometer"></i>
-                <i style="position: absolute; left: -2px;bottom: 16px; transform: rotate(-40deg); font-size: 3rem;" class="fa-solid fa-phone-flip"></i>
-              </i> -->
+        <br />
       </div>
       <div class="m2">
-      <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
+        <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
         <input type="checkbox" />
         <label>同會員資訊</label>
         <br />
         <br />
         <div v-for="(member, index) in members" :key="index">
-        <div class="form-floating mb-3">
-          <select
-            class="form-select aa"
-            id="floatingSelect"
-            aria-label="Floating label select example"
-          >
-            <option value="1">先生</option>
-            <option value="2">女士</option>
-            <option value="3">博士</option>
-          </select>
-          <label for="floatingSelect">稱謂</label>
-        </div>
+          <div class="form-floating mb-3">
+            <select
+              class="form-select aa"
+              id="titleSelect"
+              aria-label="Floating label select example"
+              v-model="user.title"
+            >
+              <option value="1">先生</option>
+              <option value="2">女士</option>
+              <option value="3">博士</option>
+            </select>
+            <label for="titleSelect">稱謂</label>
+          </div>
 
-        <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>姓名</label>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="nameInput" placeholder=""  v-model="user.name"/>
+            <label>姓名</label>
+          </div>
+
+          <div class="form-floating mb-3 bb">
+            <input type="date" class="form-control" id="birthdayInput" placeholder=""  v-model="user.birthday"/>
+            <label>生日</label>
+          </div>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="contactInput" placeholder=""  v-model="user.contact"/>
+            <label>聯絡人</label>
+          </div>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="phoneInput" placeholder=""  v-model="user.phone"/>
+            <label>手機</label>
+          </div>
+          <br />
         </div>
-      
-        <div class="form-floating mb-3 bb">
-          <input type="date" class="form-control" placeholder="" />
-          <label>生日</label>
-        </div>
-        <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>聯絡人</label>
-        </div>
-        <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>手機</label>
-        </div>
-          <!-- <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>名字</label>
-        </div> -->
-        <!-- <div class="form-floating mb-3 bb">
-          <input type="text" class="form-control" placeholder="" />
-          <label>住家電話</label>
-        </div> -->
-        <br />
-      </div>
       </div>
     </div>
   </div>
@@ -209,7 +225,7 @@ export default {
     // height: 95vh;
     display: flex;
     margin: 10vh auto 0 auto;
-    button{
+    button {
       width: 100px;
       height: 50px;
     }
