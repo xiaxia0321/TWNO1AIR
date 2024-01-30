@@ -2,6 +2,7 @@
 import { mapState, mapActions } from "pinia";
 import counter from "../stores/counter";
 import axios from "axios";
+import Swal from 'sweetalert2'
 export default {
   data() {
     return {
@@ -11,7 +12,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(counter, ['planeSearchCheack', "planeSearchArr", 'plane']),
+    ...mapState(counter, ['planeSearchCheack', "planeSearchArr", 'plane','logingDesuga']),
   },
   methods: {
 
@@ -154,11 +155,15 @@ export default {
     bookFlight(num) {
       this.aaa = this.planeArr[num];
       this.planeSearchCheack.ccc = this.aaa;
-      console.log(this.planeArr[num]);
-      console.log(this.aaa);
-      console.log(this.planeSearchCheack);
-      console.log('ccc = ' + this.planeSearchCheack.ccc);
-      this.$router.push("/OutboundConfirm");
+      // console.log(this.planeArr[num]);
+      // console.log(this.aaa);
+      // console.log(this.planeSearchCheack);
+      // console.log('ccc = ' + this.planeSearchCheack.ccc);
+      if (this.logingDesuga.loginIng == false) {
+        
+      }else{
+        this.$router.push("/OutboundConfirm");
+      }
     },
   },
 };

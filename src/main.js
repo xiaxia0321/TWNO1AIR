@@ -8,8 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap"
 import axios from 'axios';
 
-const pinia = createPinia();
 const app = createApp(App);
+const pinia = createPinia();
 
 app.use(router)
 app.use(pinia)

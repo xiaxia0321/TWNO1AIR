@@ -79,6 +79,8 @@ export default {
             <th class="date bb">帳戶名稱</th>
             <th class="date bb">手機號碼</th>
             <th class="b7 bb">點數</th>
+            <th class="b7 bb">年紀</th>
+            <th class="b7 bb">生日</th>
           </tr>
           <tr v-for="(item, index) in user" :key="index">
             <td class="bb">{{ item.userId }}</td>
@@ -87,6 +89,8 @@ export default {
             <td class="bb">{{ item.name }}</td>
             <td class="bb">{{ item.phone }}</td>
             <td class="bb">{{ item.point }}</td>
+            <td class="bb">{{ item.age }}</td>
+            <td class="bb">{{ item.birthday }}</td>
           </tr>
         </table>
       </div>

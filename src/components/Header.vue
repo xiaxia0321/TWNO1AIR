@@ -2,18 +2,25 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import Swal from 'sweetalert2'
 export default {
     data() {
         return {
+            aaa: false,
         }
     },
-    methods: {
+    setup() {
     },
     components: {
         RouterLink,
     },
+    computed: {
+        ...mapState(counter, ['userDate', 'logingDesuga'])
+    },
     methods: {
         home() {
+            // this.loginIng = !this.loginIng;
+            console.log(this.logingDesuga);
             this.$router.push('/')
         },
         join() {
@@ -83,8 +90,30 @@ export default {
             this.$router.push("/AirTimeSearch");
         },
         goLogin() {
-            if (this.account == "A01" && this.pwd == "aaa") {
-                this.$router.push('/Backstage')
+            if (this.logingDesuga.loginIng == true || this.logingDesuga.backStage == true) {
+                //登出logout
+                Swal.fire({
+                    title: "請問是否登出?",
+                    text: "真的要登出了嗎?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "登出!!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "已登出!!",
+                            text: "將回到首頁",
+                            icon: "success"
+                        });
+                        //放登出logout的api
+                        this.$router.push('/')
+                        this.logingDesuga.backStage = false;
+                        this.logingDesuga.loginIng = false;
+                    }
+                });
             } else {
                 this.$router.push('/Login')
             }
@@ -95,16 +124,22 @@ export default {
                 window.scrollTo(0, 0);
             });
         },
-        isLogin(){
-            if (condition) {
-                
-            }
+        goBackStage(){
+            this.$router.push('/BackStage')
+            this.$nextTick(() => {
+                window.scrollTo(0, 0);
+            });
         }
-        
+        // isLogin(){
+        //     if (this.LoginIng = true) {
+        //         //登出
+        //     }else {
+
+        //     }
+        // }
+
     },
-    computed: {
-        ...mapState(counter,['userDate','LoginIng'])
-    },
+
 
 }
 </script>
@@ -114,7 +149,8 @@ export default {
         <div class="happydog" @click="home"></div>
         <div class="icon">
             <i class="fa-solid fa-power-off ii" ii @click="goLogin"></i>
-            <i class="fa-solid fa-user ii" v-show="LoginIng" @click="goUser"></i>
+            <i class="fa-solid fa-user ii" v-if="this.logingDesuga.backStage"  @click="goBackStage">後臺管理</i>
+            <i class="fa-solid fa-user ii" v-if="this.logingDesuga.loginIng" @click="goUser">{{ userDate.uuu[0].name }}</i>
         </div>
         <ul class="drop-down-menu">
             <li>
@@ -180,17 +216,14 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 20pt;">樂狗會員</a>
+                <a href="#" style="color: white;font-size: 20pt;" v-if="!this.logingDesuga.loginIng">樂GO會員</a>
                 <ul>
                     <li>
                         <div class="happyDogMember">
                             <div class="member">
-                                <br>
-                                <h5>樂狗會員</h5>
-                                <button @click="this.login()">會員登入</button>
-                                <br>
-                                <button @click="this.join()">加入會員</button>
-                                <br>
+                                <h5 v-show ="this.logingDesuga.loginIng">樂GO會員</h5>
+                                <button v-show ="this.logingDesuga.loginIng" @click="this.login()">會員登入</button>
+                                <button v-show="this.logingDesuga.loginIng" @click="this.join()">加入會員</button>
                                 <br>
                                 <h5>測試</h5>
                                 <button @click="AirTime">飛機時刻</button>
@@ -239,9 +272,8 @@ export default {
         height: 4rem;
         border-radius: 1rem;
         transition: .2s;
-        .ii{
-            
-        }
+
+        .ii {}
 
         &:hover {
             box-shadow: 2px 2px 5px 0 black;
@@ -253,35 +285,41 @@ export default {
         }
     }
 
-    .icon{
-        .fa-power-off{
+    .icon {
+        .fa-power-off {
             font-size: 25pt;
             color: white;
             position: absolute;
             left: 83%;
             top: 33%;
         }
-        .fa-user{
+
+        .fa-user {
             font-size: 25pt;
             color: white;
             position: absolute;
             left: 87%;
             top: 33%;
-            
+
         }
-        .ii{
+
+        .ii {
             border-radius: 5px;
+            z-index: inherit;
+
             &:hover {
-              background-color: rgba(255, 255, 255, 0.354);
+                background-color: rgba(255, 255, 255, 0.354);
             }
         }
-        
+
     }
+
     ul {
         /* 取消ul預設的內縮及樣式 */
         margin: 0;
         padding: 0;
         list-style: none;
+
         .reservation {
             width: 60vw;
             height: 40vh;

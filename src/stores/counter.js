@@ -4,7 +4,10 @@ export default defineStore("counter", {
     //data(){}
     state() {
         return {
-            LoginIng: false,
+            logingDesuga: {
+                loginIng: false,
+                backStage:false,
+            },
             pp: 1,
             Order: {
                 getOrderId: '',
@@ -12,9 +15,12 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
+                getClassType: '',
+                getPrice: '',
                 getAccount: '',
                 getArriveTime: '',
                 getDepatureTime: '',
+                getAddPeople: '',
             },
             OrderArr: {
                 ccc: [],
@@ -25,9 +31,12 @@ export default defineStore("counter", {
                 getDepartureDate: '',
                 getArrivalLocation: '',
                 getDepartureLocation: '',
+                getClassType: '',
+                getPrice: '',
                 getAccount: '',
                 getArriveTime: '',
                 getDepatureTime: '',
+                getAddPeople: '',
             },
             OrderSearchArrCheck: {
                 ccc: [],
@@ -165,13 +174,6 @@ export default defineStore("counter", {
         },
         setLocation(num) {
             this.planeSearchArr.departureLocation = num;
-        },
-        isLogin() {
-            if (this.userDate.uuu != []) {
-                this.LoginIng = true;
-            } else {
-                this.LoginIng = false;
-            }
         },
 
     }

@@ -15,7 +15,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(counter, ['user', 'userDate', 'OrderArr', 'LoginIng'])
+    ...mapState(counter, ['user', 'userDate', 'OrderArr', 'logingDesuga'])
   },
   methods: {
     loginOrder() {
@@ -36,6 +36,7 @@ export default {
       })
         .then(res => this.OrderArr.ccc = res.data.orderList)
       console.log(this.OrderArr.ccc);
+      this.login()
     },
     login() {
       //確認輸入帳號 + 密碼
@@ -44,6 +45,12 @@ export default {
       //確認輸入正確帳號 + 密碼
       if (this.account && this.password) {
         if (this.account == "a789521" && this.password == "789521") {
+          Swal.fire({
+            icon: "success",
+            text: "後台登入成功",
+            showConfirmButton: true,
+          })
+          this.logingDesuga.backStage = true;
           this.$router.push('/Backstage');
           return;
         }
@@ -62,6 +69,7 @@ export default {
           .then(res => {
             console.log(res)
             if (res.code == "200") {
+              this.logingDesuga.loginIng = true;
               console.log("登入成功");
               Swal.fire({
                 icon: "success",
@@ -70,10 +78,10 @@ export default {
               })
               console.log(res.userList);
               this.userDate.uuu = res.userList,
-                this.LoginIng = true,
                 console.log(this.userDate);
               console.log(this.userDate.uuu);
               // $cookies.set("account", this.account)
+              console.log('loginIng = ' + this.logingDesuga.loginIng);
               this.$router.push('/User');
             }
             else {
@@ -170,7 +178,7 @@ export default {
         <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
-        <button type="button" class="login" @click="login(), loginOrder()">登入</button>
+        <button type="button" class="login" @click="loginOrder()">登入</button>
       </div>
     </div>
   </div>

@@ -47,6 +47,7 @@ export default {
     },
     computed: {
         //表格部分
+        ...mapState(counter, ['user', 'userDate', 'OrderSearchArr', 'OrderArr', 'logingDesuga']),
         totalRows() {
             return this.flights.length;
         },
@@ -58,7 +59,6 @@ export default {
             const end = start + this.rowsPerPage;
             return this.flights.slice(start, end);
         },
-        ...mapState(counter, ['user', 'userDate', 'OrderSearchArr', 'OrderArr'])
     },
     methods: {
         ordershow() {
@@ -87,7 +87,7 @@ export default {
         //     console.log(this.userArr);
         // },
         searchOrder() {
-            console.log(this.userDate.uuu.account);
+            console.log(this.userDate.ccc.account);
             axios({
                 url: 'http://localhost:8080/order/search',
                 method: "POST",
@@ -150,7 +150,7 @@ export default {
         updateFlightList(newFlightData) {
             this.flightData.push(newFlightData);
         },
-        cancelBooking(flightId) {
+        cancelBookingEmitter(flightId) {
             this.flightData = this.flightData.filter(flight => flight.id !== flightId);
         },
         //清單
@@ -226,18 +226,28 @@ export default {
             this.checklist.push(item);
             this.checkedItems.push(false);
         },
+        logininin() {
+            console.log('old ' + this.logingDesuga.loginIng);
+        }
     },
+    // mounted() {
+    //     if (!this.userDate.uuu || !this.userDate.uuu[0]) {
+    //         // 可以在這裡觸發一個動作，例如重新導向到登入頁面
+    //         Swal.fire("請返回登入");
+    //         this.$router.push('/Login')
+    //     }
+    // },
 }
 </script>
 
 <template>
     <div class="screen">
         <div class="user">
-            <p>旅途愉快</p>
+            <p @click="logininin">旅途愉快</p>
             <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="userblock('旅客資料')">旅客資料</button><br>
-            <button type="button" class="record" @click="userblock('旅行紀錄')">行程管理</button><br>
-            <button type="button" class="record" @click="userblock('關注城市'), searchOrder">紅利優惠</button><br>
+            <button type="button" class="record" @click="userblock('旅行紀錄'), searchOrder">行程管理</button><br>
+            <button type="button" class="record" @click="userblock('關注城市')">紅利優惠</button><br>
             <button type="button" class="record" @click="userblock('旅遊通知')">行李清單</button><br>
             <button type="button" class="out">登出</button>
         </div>
@@ -287,11 +297,9 @@ export default {
                     <tr>
                         <th>訂單編號</th>
                         <th>價格</th>
-                        <th>出發日期</th>
-                        <th>出發時間</th>
+                        <th>出發日期、時間</th>
                         <th>出發地點</th>
-                        <th>抵達日期</th>
-                        <th>抵達時間</th>
+                        <th>抵達日期、時間</th>
                         <th>抵達地點</th>
                         <th>人數</th>
                         <th>旅程</th>
@@ -300,15 +308,14 @@ export default {
                     <tr v-for="(item, index) in OrderArr.ccc" :key="index">
                         <td>{{ item.orderId }}</td>
                         <td>{{ item.price }}</td>
-                        <td>{{ item.departureDate }}</td>
-                        <td>{{ item.depatureTime }}</td>
+                        <td>{{ item.departureDate }} - Time_{{ item.depatureTime }}</td>
                         <td>{{ item.departureLocation }}</td>
-                        <td>{{ item.arrivalDate }}</td>
-                        <td>{{ item.arriveTime }}</td>
+                        <td>{{ item.arrivalDate }} - Time_{{ item.arriveTime }}</td>
                         <td>{{ item.arrivalLocation }}</td>
                         <td>{{ item.numberOfPeople }}</td>
-                        <td>{{ item.oneway }}</td>
-                        <td>{{ item.oneway }}其他操作</td>
+                        <td v-show="!item.oneway">來回</td>
+                        <td v-show="item.oneway">單程</td>
+                        <td>其他操作</td>
                     </tr>
                 </thead>
                 <!-- <tbody>
@@ -391,7 +398,6 @@ export default {
     .in {
         width: 1100px;
         height: 600px;
-
         margin: 10px;
     }
 }
