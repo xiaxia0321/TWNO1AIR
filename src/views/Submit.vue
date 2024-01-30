@@ -31,6 +31,18 @@ export default {
       this.showPasswordTwo = !this.showPasswordTwo;
     },
     signUpCheck() {
+      // emailjs.init("WwrJtSPq41O0qW95I");
+      // let params = {
+      //   senderName: document.getElementById,
+      //   getterName: document.getElementById,
+      // }
+      // let serviceID = "service_lgfrq4q";
+      // let templateID = "template_7k5oz09";
+      // emailjs.send(serviceID, templateID, params)
+      // .then( res => {
+      //   alert("註冊成功")
+      // })
+      // .catch();
       let inputAccount = document.getElementById("inputAccount");
       let inputPhone = document.getElementById("inputPhone");
       let inputEmail = document.getElementById("inputEmail");

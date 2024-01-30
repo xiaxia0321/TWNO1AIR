@@ -70,66 +70,15 @@ export default {
           text: "帳號或密碼未輸入",
         })
       }
+      account = "";
+      password = "";
     },
     show() {
       this.showPassword = !this.showPassword
     },
     submit(){
       this.$router.push('/Submit')
-    }
-    // search() {
-    //   console.log(this.userData);
-    //   fetch('http://localhost:8080/user/search', {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       account: this.userData.account,
-    //       password: this.userData.password,
-    //     })
-    //   })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.userList = data.userList
-    //       console.log(this.userList)
-    //     })
-    //     .catch(error => console.log(error))
-    // },
-    // toLogin() {
-    //   this.search();
-    //   axios({
-    //     url: 'http://localhost:8080/api/login',
-    //     method: 'POST',
-    //     withCredentials: true,
-    //     headers: {
-    //       'Contect-Type': 'applicatoin/json'
-    //     },
-    //     data: {
-    //       account: this.account,
-    //       password: this.password,
-    //     },
-    //   }).then(res => {
-    //     // console.log(this.data);
-    //     let account = document.getElementById("account")
-    //     let password = document.getElementById("password")
-    //     if (account.value == "" || password.value == "") {
-    //       Swal.fire({
-    //         icon: "error",
-    //         text: "你有資料尚未填寫"
-    //       })
-    //       return
-    //     }
-    //     else {
-    //       Swal.fire({
-    //         icon: "success",
-    //         text: "登入成功",
-    //         showConfirmButton: true,
-    //       })
-    //       this.$router.push('/User')
-    //     }
-    //   })
-    // },
+    },
   }
 }
 </script>
