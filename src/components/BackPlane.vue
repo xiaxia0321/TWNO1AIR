@@ -12,182 +12,13 @@ export default {
     }
   },
   methods: {
-    openSweetAlert(item, index) {
-      Swal.fire({
-        title: "修改航班資料",
-        html: `
-        <span>出發日期:</span>
-        <input type="date" id="departureDate" class="swal2-input" value="${item.airplainId}">
-        <br>
-
-        <span>抵達日期:</span>
-        <input type="date" id="arrivalDate" class="swal2-input">
-        <br>
-        <br>
-        
-        <span>出發地:</span>
-    <select name="" id="" v-model="plane.arrivalLocation" class="swal2-input">
-      <option value="台北,臺灣">台北,臺灣</option>
-      <!-- <option value="澳門">澳門</option>
-      <option value="東京">東京</option>
-      <option value="大阪">大阪</option>
-      <option value="函館">函館</option>
-      <option value="沖繩">沖繩</option>
-      <option value="曼谷">曼谷</option>
-      <option value="胡志明市">胡志明市</option>
-      <option value="新加坡">新加坡</option>
-      <option value="洛杉磯">洛杉磯</option>
-      <option value="舊金山">舊金山</option> -->
-    </select>
-    <br>
-    <br>
-
-        <span>抵達地:</span>
-    <select name="" id="" v-model="plane.arrivalLocation" class="swal2-input">
-      <!-- <option value="台北,臺灣">台北,臺灣</option> -->
-      <option value="澳門,澳門">澳門,澳門</option>
-      <option value="東京,日本">東京,日本</option>
-      <option value="大阪,日本">大阪,日本</option>
-      <option value="函館,日本">函館,日本</option>
-      <option value="沖繩,日本">沖繩,日本</option>
-      <option value="曼谷,泰國">曼谷,泰國</option>
-      <option value="胡志明市,越南">胡志明市,越南</option>
-      <option value="新加坡,新加坡">新加坡,新加坡</option>
-      <option value="洛杉磯,美國">洛杉磯,美國</option>
-      <option value="舊金山,美國">舊金山,美國</option>
-    </select>
-    <br>
-    <br>
-        
-    <span>出發機場:</span>
-    <select name="" id="" class="swal2-input">
-      <option value="桃園國際機場">桃園國際機場</option>
-      <option value="澳門國際機場">澳門國際機場</option>
-      <option value="成田國際機場">成田國際機場</option>
-      <option value="關西國際機場">關西國際機場</option>
-      <option value="函館機場">函館機場</option>
-      <option value="那霸國際機場">那霸國際機場</option>
-      <option value="蘇凡納布國際機場">蘇凡納布國際機場</option>
-      <option value="新山一國際機場">新山一國際機場</option>
-      <option value="樟宜機場">樟宜機場</option>
-      <option value="洛杉磯國際機場">洛杉磯國際機場</option>
-      <option value="舊金山國際機場">舊金山國際機場</option>
-    </select>
-    <br>
-    <br>
-        
-    <span>抵達機場</span>
-    <select name="" id="" class="swal2-input">
-      <option value="桃園國際機場">桃園國際機場</option>
-      <option value="澳門國際機場">澳門國際機場</option>
-      <option value="成田國際機場">成田國際機場</option>
-      <option value="關西國際機場">關西國際機場</option>
-      <option value="函館機場">函館機場</option>
-      <option value="那霸國際機場">那霸國際機場</option>
-      <option value="蘇凡納布國際機場">蘇凡納布國際機場</option>
-      <option value="新山一國際機場">新山一國際機場</option>
-      <option value="樟宜機場">樟宜機場</option>
-      <option value="洛杉磯國際機場">洛杉磯國際機場</option>
-      <option value="舊金山國際機場">舊金山國際機場</option>
-    </select>
-    <br>
-    <br>
-        
-    <span>出發機場縮寫</span>
-    <select name="" id="" v-model="plane.da" class="swal2-input">
-      <option value="TPE">TPE</option>
-      <!-- <option value="MFM">MFM</option>
-      <option value="NRT">NRT</option>
-      <option value="KIX">KIX</option>
-      <option value="HKD">HKD</option>
-      <option value="OKA">OKA</option>
-      <option value="BKK">BKK</option>
-      <option value="SGN">SGN</option>
-      <option value="SIN">SIN</option>
-      <option value="LAX">LAX</option>
-      <option value="SFO">SFO</option> -->
-    </select>
-    <br>
-    <br>
-        
-    <span>抵達機場縮寫</span>
-    <select name="" id="" v-model="plane.aa" class="swal2-input">
-      <!-- <option value="TPE">TPE</option> -->
-      <option value="MFM">MFM</option>
-      <option value="NRT">NRT</option>
-      <option value="KIX">KIX</option>
-      <option value="HKD">HKD</option>
-      <option value="OKA">OKA</option>
-      <option value="BKK">BKK</option>
-      <option value="SGN">SGN</option>
-      <option value="SIN">SIN</option>
-      <option value="LAX">LAX</option>
-      <option value="SFO">SFO</option>
-    </select>
-    <br>
-    <br>
-        
-    <span>艙等</span>
-    <select name="" id="" v-model="plane.classType" class="swal2-input">
-      <option value="經濟艙">經濟艙</option>
-      <option value="商務艙">商務艙</option>
-      <option value="頭等艙">頭等艙</option>
-    </select>
-    <br>
-    <br>
-        
-    <span>是否單程</span>
-    <input type="checkbox" style="width: 1rem; height: 1rem;" v-model="plane.isOneway" class="swal2-input">
-    <br>
-    <br>
-        
-    <span>出發航廈</span>
-    <input type="number" style="width: 4rem;" name="" v-model="plane.depatureTerminal" min="1" max="5" placeholder="1~5"
-      id="" class="swal2-input">
-      <br>
-      <br>
-        
-    <span>抵達航廈</span>
-    <input type="number" style="width: 4rem;" name="" v-model="plane.arriveTerminal" min="1" max="5" placeholder="1~5"
-      id="" class="swal2-input">
-      <br>
-      <br>
-        
-    <span>出發時間</span>
-    <select v-model="plane.depatureTime" class="swal2-input">
-      <option v-for="time in timeOptions" :key="time" :value="time">{{ time }}</option>
-    </select>
-    <br>
-    <br>
-        
-    <span>抵達時間</span>
-    <select v-model="plane.arriveTime" class="swal2-input">
-      <option v-for="time in timeOptions" :key="time" :value="time">{{ time }}</option>
-    </select>
-    <br>
-    <br>
-        
-    <span>價錢</span>
-    <input type="number" v-model="plane.price" class="swal2-input">
-    <br>
-    <br>
-        
-    <span>座位</span>
-    <input type="text" v-model="plane.seat" class="swal2-input">
-    <br>
-    <br>
-        `,
-        showCancelButton: true,
-        confirmButtonText: "確定修改",
-        cancelButtonText: "取消",
-        preConfirm: () => {
-          const newData = document.getElementById("swal-input1").value;
-          // 在這裡處理資料更新的邏輯，例如使用 API 請求更新後端資料
-          console.log("新的資料:", newData);
-        },
-      });
-    },
     ...mapActions(counter, ["setPP"]),
+    goUpdata(num) {
+      this.planeUpdateArr.ccc = this.planeArr[num];
+      console.log(this.planeArr[num]);
+      console.log(this.planeUpdateArr.ccc);
+      this.$router.push("/BackUpdatePlane");
+    },
     re0() {
       this.planeSearchArr.departureDate = "",
         this.planeSearchArr.arrivalDate = "",
@@ -302,9 +133,8 @@ export default {
     },
   },
   computed: {
-    ...mapState(counter, ['plane', 'planeSearchArr', 'planeUpdate'])
+    ...mapState(counter, ['plane', 'planeSearchArr', 'planeUpdateArr'])
   },
-  components: {},
   mounted() {
     this.setPP(3);
     this.searchPlaneAA();
@@ -356,7 +186,6 @@ export default {
               </select>
             </label>
           </div>
-          <input type="checkbox" name="" v-model="planeSearchArr.isOneway" id="">
         </div>
         <!-- <div class="no">
           <span>目的地 : </span>
@@ -403,7 +232,7 @@ export default {
             <td class="bb" v-show="!item.isOneway">來回</td>
             <td class="bb" v-show="item.isOneway">單程</td>
             <td class="bb">
-              <button @click="openSweetAlert(item, index)">修改</button>
+              <button @click="goUpdata(index)" style="border-radius: 10px;">修改</button>
             </td>
           </tr>
           <tr><a href="http://localhost:5173/Backstage/BackPlane#start">BackToTop</a></tr>
@@ -539,6 +368,23 @@ export default {
 
           a {
             text-decoration: none;
+          }
+
+          button {
+            border-radius: 0.5rem;
+            width: 5rem;
+            height: 2rem;
+            background-color: #3472c2;
+            font-weight: 600;
+            color: white;
+
+            &:hover {
+              background-color: rgba(144, 27, 27, 0.499);
+            }
+
+            &:active {
+              background-color: rgba(144, 27, 27, 0.811);
+            }
           }
         }
 

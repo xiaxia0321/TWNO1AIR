@@ -87,10 +87,9 @@ export default defineStore("counter", {
                 airplain_Id: ""
             },
             planeUpdateArr: {
-
+                ccc: [],
             },
             planeArr: {
-
             },
             planeSearchArr: {
                 departureDate: "", //出發日期

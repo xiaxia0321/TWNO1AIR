@@ -9,6 +9,10 @@ export default {
     return {
       planeArr: [1],
       MemberInformation: [],
+      all: [
+
+      ],
+
       members: [
         // 初始一筆會員資料
         { title: "1", name: "", birthday: "", contact: "", phone: "" },
@@ -16,7 +20,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(counter, ["Order"])
+    ...mapState(counter, ["Order", 'userDate'])
   },
   methods: {
 
@@ -36,6 +40,7 @@ export default {
         console.log('所有組數據:', newMemberData);
         // 存入 Pinia 中的 Order store 的 getAddPeople 中
         this.Order.getAddPeople = newMemberData;
+        console.log(this.Order.getAddPeople);
         this.$router.push("/ProductDetailed");
         // 這裡可以選擇將 MemberInformation 也更新
         // this.MemberInformation = newMemberData;
@@ -78,6 +83,9 @@ export default {
         this.members.splice(index, 1);
       }
     },
+    sameDate() {
+      this.members[0].name = this.userDate.uuu[0].name;
+    }
 
   },
 };
@@ -104,7 +112,7 @@ export default {
       </div>
       <div class="m2">
         <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
-        <input type="checkbox" />
+        <button @click="sameDate">v</button>
         <label>同會員資訊</label>
         <br />
         <br />
@@ -282,4 +290,5 @@ export default {
     background-color: #3b2641;
     color: white;
   }
-}</style>
+}
+</style>

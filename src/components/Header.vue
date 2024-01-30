@@ -108,6 +108,13 @@ export default {
                             text: "將回到首頁",
                             icon: "success"
                         });
+                        fetch('http://localhost:8080/api/logout', {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            credentials: 'include'
+                        })
                         //放登出logout的api
                         this.$router.push('/')
                         this.logingDesuga.backStage = false;

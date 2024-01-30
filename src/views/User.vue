@@ -2,6 +2,7 @@
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 export default {
     data() {
         return {
@@ -227,23 +228,44 @@ export default {
             this.checkedItems.push(false);
         },
         signOut() {
-            fetch('http://localhost:8080/api/logout', {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: 'include'
+            Swal.fire({
+                title: "請問是否登出?",
+                text: "真的要登出了嗎?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "取消",
+                confirmButtonText: "登出!!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "已登出!!",
+                        text: "將回到首頁",
+                        icon: "success"
+                    });
+                    //放登出logout的api
+                    this.logingDesuga.backStage = false;
+                    this.logingDesuga.loginIng = false;
+                    fetch('http://localhost:8080/api/logout', {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        credentials: 'include'
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            if (data.rtnCode == "SUCCESSFUL") {
+                                $cookies.remove("account");
+                                this.$router.push('/');
+                                console.log("logout!");
+                            }
+                        })
+                        .catch(error => console.log(error))
+                }
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.rtnCode == "SUCCESSFUL") {
-                        $cookies.remove("account");
-                        this.$router.push('/');
-                            counter().isLogIn = false
-                    }
-                })
-                .catch(error => console.log(error))
         },
         logininin() {
             console.log('old ' + this.logingDesuga.loginIng);
