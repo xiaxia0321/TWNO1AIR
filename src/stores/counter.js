@@ -11,17 +11,17 @@ export default defineStore("counter", {
             pp: 1,
             Order: {
                 getOrderId: '',
-                getArrivalDate: '',
+                getOneway: false,
+                getNumberOfPeople: 0,
                 getDepartureDate: '',
-                getArrivalLocation: '',
+                getArrivalDate: '',
                 getDepartureLocation: '',
-                getClassType: '',
-                getPrice: '',
+                getArrivalLocation: '',
                 getClassType: '',
                 getPrice: '',
                 getAccount: '',
-                getArriveTime: '',
                 getDepatureTime: '',
+                getArriveTime: '',
                 getAddPeople: '',
             },
             OrderArr: {
@@ -101,6 +101,7 @@ export default defineStore("counter", {
 
             },
             planeSearchCheack: {
+                seat:"",
                 ccc: [],
             },
             MemberInformation: {

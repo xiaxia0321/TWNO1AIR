@@ -210,29 +210,29 @@ export default {
           </div>
         </div>
         <div class="b3 bb">
-          <span><i class="fa-solid fa-plane"></i></span>
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
         </div>
         <div class="b4 bb">
-          <span><i class="fa-solid fa-plane"></i></span>
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
         </div>
         <div class="b5 bb">
-          <span><i class="fa-solid fa-plane"></i></span>
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
         </div>
         <div class="b6 bb">
           <!-- 當天 -->
           <span><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b7 bb">
-          <span><i class="fa-solid fa-plane"></i></span>
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
         </div>
         <div class="b8 bb">
-          <span><i class="fa-solid fa-plane"></i></span>
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
         </div>
         <div class="b9 bb">
-          <span><i class="fa-solid fa-plane"></i></span>
+          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
         </div>
       </div>
-      <button @click="bookFlight(index)">{{ index }}預定行程</button>
+      <button @click="bookFlight(index)">預定行程</button>
     </div>
   </div>
 </template>
