@@ -95,15 +95,15 @@ export default defineComponent({
         <div class="attractions">
             <div class="attractionsOne">
                 <div class="card" style="width: 24rem;height: 32rem;">
-                    <img src="../../public/sabrina/東京鐵塔.jpeg" class="card-img-top" alt="...">
+                    <img src="../../public/sabrina/大三巴牌坊.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">
-                            1958年誕生的東京鐵塔，高333m，當時超過了巴黎的艾菲爾鐵塔，是世界第一高的自立式鐵塔。因為位於東京中心部分的港區，能夠從展望台一覽東京的景色，至今仍然深受東京民眾喜愛的東京地標。令人印象深刻的紅白搭配是依據法律制定的配色，為了讓飛機駕駛在白天能夠清楚地看見鐵塔。而這具有影響力的存在，作為東京地標深受東京民眾喜愛。在2012年東京鐵塔將幾個電波塔機能轉交給東京晴空塔，現在還是有在發送廣播等電波。
+                            澳門地標性建築大三巴牌坊，前身是聖保祿大教堂，經歷三次大火後只剩下前壁和石階，因此被稱為牌坊。2005年成功申報為聯合國世界文化遺產，是旅客遊澳門的必去景點之一。牌坊後方是天主教藝術博物館與墓室，不少澳門教會的珍貴文物都會在此展出。牌坊前方的一整條斜路則是著名的手信街和美食街，不僅買齊澳門必買伴手禮，還提供試吃！葡撻、雞蛋仔、木糠布丁等澳葡小吃也可以在這裏找到唷！
                         </p>
                     </div>
                 </div>
                 <div class="card" style="width: 24rem;height: 32rem;">
-                    <img src="../../public/sabrina/明治神宮.jpeg" class="card-img-top" alt="...">
+                    <img src="../../public/sabrina/玫瑰聖母堂.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">
                             在新宿與澀谷之間，有一片綠樹林立的明治神宮占地。循著林木間的步道前進，便可抵達位於中央的神社。走在煙霧瀰漫的森林小道上，必能讓您忘卻自己正置身於東京最紛擾的兩個區域之間。明治神宮是為了供奉於19世紀後半，領導日本現代化的明治天皇與其皇后昭憲太后所建。相當於15個東京巨蛋那麼大的森林裡中種植著日本各地捐贈的10萬棵樹。明治神宮將於2020年迎接鎮座百年。
