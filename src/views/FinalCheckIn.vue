@@ -125,6 +125,9 @@ export default {
             <img src="../../public/01.png" alt="">
             <span style="color: gray;font-size: 14pt;">HappyGo Airline</span>
             <img src="../../public/sabrina/登機證.png" alt="" style="width: 280px;height: 260px;" class="scan">
+            <p>YO/YO MR</p>
+            <h3>A321</h3>
+            <p>2024-01-27　　TPE-BKK</p>
             <p v-for="(item, index) in userArr" :key="index">{{ item.account }}</p>
             <h3 v-for="(item, index) in planeArr" :key="index">{{ item.airplain_Id }}</h3>
             <p v-for="(item, index) in planeArr" :key="index">{{ item.departureDate }}</p>
@@ -133,8 +136,10 @@ export default {
             <!-- <p>06APR　　　　TPE->BKK</p> -->
             <div class="gate">
                 <p>BOARDING TIME</p>
+                <h3>20:00</h3>
                 <h3 v-for="(item, index) in planeArr" :key="index">{{ item.depatureTime }}</h3>
                 <p>TERMINAL</p>
+                <h4>3</h4>
                 <h3 v-for="(item, index) in planeArr" :key="index">{{ item.depatureTerminal }}></h3>
                 <!-- <p>GATE　　　　BOARDING TIME　　　　ZONE</p>
                 <br>
@@ -144,8 +149,8 @@ export default {
         <div class="right">
             <img src="../../public/01.png" alt="">
             <span style="color: gray;font-size: 14pt;">HappyGo Airline</span>
-            <p>CHOU/COOKIE MR</p>
-            <p>A321　　06APR</p>
+            <p>YO/YO MR</p>
+            <p>A321　　2024-01-27</p>
             <div class="seat">
                 <p>SEAT</p>
                 <br>
@@ -164,11 +169,12 @@ export default {
     box-sizing: border-box;
     padding-top: 200px;
     padding-left: 230px;
+    position: relative;
 
     h2 {
         position: absolute;
         left: 45%;
-        top: 30%;
+        top: 10%;
         color: white;
     }
 
@@ -177,6 +183,7 @@ export default {
         width: 45vw;
         background-color: rgb(240, 236, 229);
         border-radius: 13px 0px 0px 13px;
+        position: relative;
 
         img {
             width: 40px;
@@ -193,17 +200,18 @@ export default {
 
         .scan {
             position: absolute;
-            left: 8%;
-            top: 50%;
+            left: -20%;
+            top: 28%;
         }
 
         .gate {
             width: 400px;
-            height: 100px;
+            height: 150px;
             background-color: white;
             border-radius: 10px;
             position: absolute;
-            left: 27%;
+            top: 50%;
+            left: 25%;
         }
     }
 
@@ -213,6 +221,7 @@ export default {
         background-color: rgb(240, 236, 229);
         border-radius: 0px 13px 13px 0px;
         border-left: 2px dotted black;
+        position: relative;
 
         img {
             width: 40px;
@@ -229,8 +238,8 @@ export default {
             background-color: white;
             border-radius: 10px;
             position: absolute;
-            left: 62.5%;
-            top: 58.9%;
+            left: 10%;
+            top: 50%;
         }
     }
 }

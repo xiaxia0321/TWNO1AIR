@@ -16,39 +16,43 @@ export default defineComponent({
                 // },
                 {
                     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯",
                 },
                 {
                     label: "舊金山, 美國, SFO, San Francisco International Airport",
-                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                    key: "舊金山"
                 },
                 {
-                    label: "東京, 日本, NRT, Narita Internation",
-                    key: "東京, 日本, NRT, Narita Internation"
+                    label: "函館, 日本, HKD, Hakodate Airport",
+                    key: "函館"
                 },
                 {
                     label: "大阪, 日本, KIX, Kansai International Airport",
-                    key: "大阪, 日本, KIX, Kansai International Airport"
+                    key: "大阪"
                 },
                 {
                     label: "沖繩, 日本, OKA, Naha Airport",
-                    key: "沖繩, 日本, OKA, Naha Airport"
+                    key: "沖繩"
                 },
                 {
                     label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
-                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                    key: "胡志明市"
                 },
                 {
                     label: "曼谷, 泰國, BKK, 素萬那普國際機場",
-                    key: "曼谷, 泰國, BKK, 素萬那普國際機場"
+                    key: "曼谷"
                 },
                 {
                     label: "新加坡, 新加坡, SIN, Changi Airport",
-                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                    key: "新加坡"
                 },
                 {
                     label: "澳門, 澳門, MFM, Macau International Airportn",
-                    key: "澳門, 澳門, MFM, Macau International Airport"
+                    key: "澳門"
+                },
+                {
+                    label: "東京, 日本, NRT, Narita Internation",
+                    key: "東京"
                 },
             ],
             range: ""
@@ -63,8 +67,8 @@ export default defineComponent({
             if (key.includes("舊金山")) {
                 this.$router.push('/LocationSFO')
             }
-            if (key.includes("函館")) {
-                this.$router.push('/LocationHakodate')
+            if (key.includes("東京")) {
+                this.$router.push('/LocationTokyo')
             }
             if (key.includes("大阪")) {
                 this.$router.push('/LocationKyoto')

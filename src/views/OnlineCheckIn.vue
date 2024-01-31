@@ -149,14 +149,13 @@ export default {
         height: 100vh;
         background-color: rgb(22, 26, 48);
         box-sizing: border-box;
-        padding-top: 180px;
+        padding-top: 80px;
         padding-left: 150px;
 
         h2 {
             color: white;
-            position: absolute;
-            left: 11%;
-            top: 26%;
+            margin-right: 1150px;
+            margin-bottom: 60px;
         }
 
         .checkInBox {
