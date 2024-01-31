@@ -233,6 +233,7 @@ export default defineComponent({
         background-repeat: no-repeat;
         background-position: center;
         background-color: rgb(22, 26, 48);
+        position: relative;
 
         h1 {
             margin-top: 60px;
