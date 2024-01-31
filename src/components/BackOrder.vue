@@ -154,8 +154,6 @@ export default {
             <span>抵達日期 : </span>
             <input type="date" name="" id="" v-model="OrderSearchArr.getArrivalDate">
           </div>
-        </div>
-        <div class="bbc" style="justify-content: center;">
           <button type="submit" @click="re0">清空搜尋</button>
           <button type="submit" @click="searchOrder">搜尋</button>
         </div>
@@ -183,7 +181,7 @@ export default {
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
             <td>
-              <p @click="goDelete(index)">刪除</p>
+              <button @click="goDelete(index)">刪除</button>
             </td>
             <!-- <td class="bb"><span href="" @click="delect">刪除</span></td> -->
             <!-- {{ item.orderId } -->
@@ -232,11 +230,11 @@ export default {
         height: 30%;
         display: flex;
         flex-direction: row;
+        justify-content: center;
 
-        // justify-content: center;
         .no {
           padding: 2px;
-          font-size: 2rem;
+          font-size: 1.4rem;
           font-weight: 500;
 
           span {
@@ -246,7 +244,7 @@ export default {
           input {
             width: 15rem;
             height: 2rem;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             border-radius: .7rem;
             text-align: center;
           }
@@ -284,7 +282,8 @@ export default {
 
 
         button {
-          margin-left: 6rem;
+          margin-top: .8rem;
+          margin-left: 1rem;
           border-radius: .5rem;
           width: 5rem;
           height: 2rem;
@@ -308,7 +307,9 @@ export default {
       display: flex;
       justify-content: center;
       padding-top: .8rem;
+      padding-bottom: .5rem;
       background-color: white;
+      overflow-y: auto;
 
       th {
         background-color: rgb(90, 90, 90);
@@ -358,6 +359,23 @@ export default {
 
         td {
           background-color: rgb(248, 248, 246);
+
+          button {
+            border-radius: 0.5rem;
+            width: 5rem;
+            height: 2rem;
+            background-color: #3472c2;
+            font-weight: 600;
+            color: white;
+
+            &:hover {
+              background-color: rgba(144, 27, 27, 0.499);
+            }
+
+            &:active {
+              background-color: rgba(144, 27, 27, 0.811);
+            }
+          }
         }
       }
 

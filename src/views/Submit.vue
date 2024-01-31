@@ -152,7 +152,7 @@ export default {
         <br /><br />
         <label for="" style="font-size: 14pt">確認密碼：</label>　
         <input :type="showPasswordTwo ? 'text' : 'password'" placeholder="請再次輸入密碼" id="inputRepeatPassword"
-          class="repeatPassword" style="width: 298px" />
+          class="repeatPassword" style="width: 298px;" />
         <i class="fa-solid fa-eye-slash eye" v-show="!showPasswordTwo" @click="showTwo()"
           style="position: absolute; left: 43%; top: 26%"></i>
         <i class="fa-solid fa-eye eye" v-show="showPasswordTwo" @click="showTwo()"
@@ -167,10 +167,10 @@ export default {
         <br /><br />
         <label for="" style="font-size: 14pt">出生年月日：</label>　　　
         <input type="date" @change="calculateAge" placeholder="請輸入西元生日(ex:20000101)" id="inputBirthday" class="birthday"
-          v-model="user.birthday" />
-        <br /><br />
-        <label for="" style="font-size: 14pt">年齡：</label>　　　
-        <input type="number" placeholder="請輸入實際年齡" id="inputAge" class="age" v-model="user.age" disabled />
+          v-model="user.birthday" style="margin-right: 3rem;" />
+        <label for="" style="font-size: 14pt">年齡 :</label>　　　
+        <input type="number" style="width: 3rem; text-align: center;" placeholder="請輸入實際年齡" id="inputAge" class="age"
+          v-model="user.age" disabled />
         <br /><br />
         <label for="" style="font-size: 14pt">電話：</label>　　　
         <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone" v-model="user.phone"
@@ -208,7 +208,7 @@ export default {
 
     .loginInputArea {
       text-align: left;
-      margin-top: 10px;
+      margin-top: 5px;
       margin-left: 10vw;
       position: relative;
 

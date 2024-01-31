@@ -186,11 +186,11 @@ export default {
                                 <br>
                                 <button @click="goSFO()">前往舊金山</button>
                             </div>
-                            <div class="seat">
+                            <!-- <div class="seat">
                                 <br>
                                 <h5>預選座位</h5>
                                 <img src="/sabrina/機艙座位.jpeg" alt="">
-                            </div>
+                            </div> -->
                         </div>
                     </li>
                 </ul>
@@ -353,28 +353,28 @@ export default {
             }
 
             .booking {
-                width: 15vw;
+                width: 30%;
                 height: 40vh;
             }
 
             .hot {
-                width: 15vw;
+                width: 30%;
                 height: 40vh;
                 border-left: 2px solid rgb(118, 69, 59);
-                border-right: 2px solid rgb(118, 69, 59);
+                // border-right: 2px solid rgb(118, 69, 59);
 
             }
 
-            .seat {
-                width: 30vw;
-                height: 40vh;
+            // .seat {
+            //     width: 30vw;
+            //     height: 40vh;
 
-                img {
-                    width: 300px;
-                    height: 200px;
-                    border-radius: 10px;
-                }
-            }
+            //     img {
+            //         width: 300px;
+            //         height: 200px;
+            //         border-radius: 10px;
+            //     }
+            // }
         }
 
         .prepare {

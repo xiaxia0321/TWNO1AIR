@@ -69,13 +69,9 @@ export default {
 </script>
 
 <template>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- <div class="push"></div> -->
   <div class="big">
     <div class="header">
@@ -83,9 +79,7 @@ export default {
       <span>提供前後3天可預訂機位的班機時刻</span>
     </div>
     <div class="mid1">
-      <span
-        >使用班機查詢功能，查詢您要的日期以及前後和未來兩天樂GO航空最新的班機資訊</span
-      >
+      <span>使用班機查詢功能，查詢您要的日期以及前後和未來兩天樂GO航空最新的班機資訊</span>
     </div>
     <div class="mid2">
       <!-- 裡面塞出發地目的地的按鈕 -->
@@ -122,47 +116,20 @@ export default {
       </div>
       <div class="b4">
         <div class="form-floating mb-3 bb" v-if="!isRoundTrip">
-          <input
-            type="date"
-            class="form-control"
-            placeholder=""
-            id="start"
-            name="trip-start"
-            max="2050-12-31"
-            :min="this.today"
-            v-model="selectedDate"
-            @click="updateMinDate"
-          />
+          <input type="date" class="form-control" placeholder="" id="start" name="trip-start" max="2050-12-31"
+            :min="this.today" v-model="selectedDate" @click="updateMinDate" />
           <label>出發日期</label>
         </div>
 
         <div v-else style="display: flex">
           <div class="form-floating mb-3 bb">
-            <input
-              type="date"
-              class="form-control"
-              placeholder=""
-              id="start"
-              name="trip-start"
-              max="2050-12-31"
-              :min="this.today"
-              v-model="selectedDate"
-              @click="updateMinDate"
-            />
+            <input type="date" class="form-control" placeholder="" id="start" name="trip-start" max="2050-12-31"
+              :min="this.today" v-model="selectedDate" @click="updateMinDate" />
             <label>出發日期</label>
           </div>
           <div class="form-floating mb-3 bb">
-            <input
-              type="date"
-              class="form-control"
-              placeholder=""
-              id="start"
-              name="trip-start"
-              max="2050-12-31"
-              :min="this.today"
-              v-model="returnDate"
-              @click="updateMinDate"
-            />
+            <input type="date" class="form-control" placeholder="" id="start" name="trip-start" max="2050-12-31"
+              :min="this.today" v-model="returnDate" @click="updateMinDate" />
             <label>回程日期</label>
           </div>
         </div>
@@ -243,8 +210,8 @@ export default {
     align-items: center;
     background-color: #ffeeda;
 
-    .bb {
-    }
+    .bb {}
+
     .bu {
       width: 10vw;
       height: 7vh;
@@ -255,6 +222,7 @@ export default {
       letter-spacing: 5px;
       border-radius: 7px;
     }
+
     .b3 {
       // background-color: red;
       width: 25%;
@@ -262,13 +230,16 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+
       button {
-        margin-right: 20px; /* 調整按鈕之間的間距 */
+        margin-right: 20px;
+        /* 調整按鈕之間的間距 */
         width: 60px;
         letter-spacing: 3px;
         border-radius: 7px;
       }
     }
+
     .b4 {
       // margin: 0 30px 0 400px;
       width: 50%;
@@ -276,14 +247,16 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+
       // background-color: #31304d;
       input {
         width: 15vw;
         height: 7vh;
       }
-      .bb {
-      }
+
+      .bb {}
     }
+
     .b5 {
       width: 25%;
       height: 100%;

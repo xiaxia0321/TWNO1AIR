@@ -15,53 +15,7 @@ export default {
       minDateHave: false,
       start: '',
       end: '',
-      // options: [
-      //   {
-      //     label: "台北, 台灣, TPE, Taiwan Taoyuan International Airport",
-      //     key: "TPE, 台北, 台灣",
-      //     disabled: false
-      //   },
-      //   {
-      //     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-      //     key: "LAX , 洛杉磯 , 美國 ",
-      //   },
-      //   {
-      //     label: "舊金山, 美國, SFO, San Francisco International Airport",
-      //     key: "SFO , 舊金山 , 美國"
-      //   },
-      //   {
-      //     label: "函館, 日本, HKD, Hakodate Airport",
-      //     key: "HKD , 函館 , 日本  "
-      //   },
-      //   {
-      //     label: "東京, 日本, NRT, Narita Internation",
-      //     key: "NRT , 東京 , 日本   "
-      //   },
-      //   {
-      //     label: "大阪, 日本, KIX, Kansai International Airport",
-      //     key: " KIX , 大阪 , 日本 "
-      //   },
-      //   {
-      //     label: "沖繩, 日本, OKA, Naha Airport",
-      //     key: "OKA , 沖繩, 日本 "
-      //   },
-      //   {
-      //     label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
-      //     key: "SGN , 胡志明市 , 越南 "
-      //   },
-      //   {
-      //     label: "曼谷, 泰國, BKK, 素萬那普國際機場",
-      //     key: "BKK , 曼谷, 泰國 "
-      //   },
-      //   {
-      //     label: "新加坡, 新加坡, SIN, Changi Airport",
-      //     key: "SIN , 新加坡 , 新加坡 "
-      //   },
-      //   {
-      //     label: "澳門, 澳門, MFM, Macau International Airportn",
-      //     key: "MFM , 澳門 , 澳門 "
-      //   },
-      // ],
+
     }
   },
 
@@ -81,27 +35,6 @@ export default {
         window.scrollTo(0, 0);
       });
     },
-    // handleSelect(key) {
-    //   console.log(this.this.planeSearchArr.departureLocation)
-    //   this.planeSearchArr.departureLocation = key
-    //   if (this.this.planeSearchArr.departureLocation == "台北,臺灣") {
-    //     this.this.planeSearchArr.departureLocation = key
-    //     this.planeSearchArr.arrivalLocation = "請選擇目的地"
-    //   } else {
-    //     this.this.this.planeSearchArr.departureLocation = key
-    //     this.this.planeSearchArr.arrivalLocation = "請選擇目的地 : 台灣"
-    //   }
-    // },
-    // handleSelectTwo(key) {
-    //   this.end = key
-    //   if (this.end != this.start) {
-    //     if (this.start != "TPE, 台北, 台灣") {
-    //       this.end = "TPE, 台北, 台灣"
-    //     }
-    //   } else {
-    //     this.end = "請重新選擇不同的城市"
-    //   }
-    // },
     ...mapActions(counter, ['goBangkok', 'goHome', 'goKyoto', 'goLogin', 'goSFO', 'goSingapore', 'goSubmit', 'isLogin']),
     goLogin() {
       if (this.account == "A01" && this.pwd == "aaa") {
@@ -161,14 +94,13 @@ export default {
         window.scrollTo(0, 0);
       });
     },
-    // updateMinDate() {
-    //   const selected = new Date(this.selectedDate);
-    //   selected.setDate(selected.getDate() + 1);
-    //   this.minDate = selected.toISOString().split('T')[0];
-    //   this.minDateHave = true;
-    // },
 
   },
+  // beforeRouteEnter(to, from, next) {
+  //   // 在進入新頁面之前滾動到頂部
+  //   window.scrollTo(0, 0);
+  //   next();
+  // },
   computed: {
     ...mapState(counter, ['planeSearchArr', 'userDate', 'LoginIng'])
   },
@@ -255,9 +187,9 @@ export default {
         <div class="program" name="抵達日期">
           <label type="button" style="border-radius:0 15px 15px 0;">
             <span class="span1">抵達日期</span>
-            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate"  class="span2"
+            <input type="date" name="" v-model="tomorrowDate" :min="this.minDate" class="span2"
               :v-model="planeSearchArr.arrivalDate">
-              <!-- :disabled="!minDateHave" -->
+            <!-- :disabled="!minDateHave" -->
           </label>
         </div>
         <button class="searchBu" @click="goSearch">前往搜尋</button>
@@ -457,8 +389,10 @@ export default {
       </div>
 
       <div class="under">
-        <a href="https://www.facebook.com/profile.php?id=61555758314488&mibextid=JRoKGi" target="_blank"><i class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
-        <a href="https://www.instagram.com/happy_go.2024/"  target="_blank"><i class="fa-brands fa-square-instagram ii" style="color: #161a30;"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61555758314488&mibextid=JRoKGi" target="_blank"><i
+            class="fa-brands fa-square-facebook ii" style="color: #161a30;"></i></a>
+        <a href="https://www.instagram.com/happy_go.2024/" target="_blank"><i class="fa-brands fa-square-instagram ii"
+            style="color: #161a30;"></i></a>
         <!-- <a href="" target="_blank"><i class="fa-brands fa-square-youtube ii"  style="color: #161a30;" ></i></a> -->
       </div>
     </div>
@@ -735,6 +669,8 @@ export default {
           // width: 70%;
           background-color: rgb(188, 205, 255);
           box-shadow: 2px 1px 2px black;
+          transition: .25s;
+          transform: scale(1.1) translate(0%, 0%);
         }
 
         &:active {
@@ -758,13 +694,13 @@ export default {
           margin-left: 10px;
 
           p {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin: 12px 0 5px 0;
             font-weight: 600;
           }
 
           span {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
           }
         }
 
@@ -850,8 +786,8 @@ export default {
         font-size: 50px;
         width: 50px;
         height: 50px;
-        targ
-        &:hover {
+
+        targ &:hover {
           box-shadow: 2px 2px 5px 0 black;
           background-color: rgba(255, 255, 255, 0.2);
           border-radius: .5rem;

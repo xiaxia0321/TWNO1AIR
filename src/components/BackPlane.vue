@@ -186,14 +186,6 @@ export default {
               </select>
             </label>
           </div>
-        </div>
-        <!-- <div class="no">
-          <span>目的地 : </span>
-          <label for="">
-            <input type="text" name="" placeholder="請輸入目的地" id="" v-model="plane.arrivalLocation">
-          </label>
-        </div> -->
-        <div class="searchBlock">
           <div class="date">
             <span>出發日期 : </span>
             <input type="date" name="" id="" v-model="planeSearchArr.departureDate">
@@ -210,7 +202,7 @@ export default {
       <div class="inside">
         <table>
           <tr>
-            <th class="b1 bb">/</th>
+            <!-- <th class="b1 bb">/</th> -->
             <th class="no bb">航班編號</th>
             <th class="place bb">出發地</th>
             <th class="place bb">目的地</th>
@@ -220,7 +212,7 @@ export default {
             <th class="b7 bb">預計操作</th>
           </tr>
           <tr v-for="(item, index) in planeArr" :key="index">
-            <td class="bb"><input type="checkbox" /></td>
+            <!-- <td class="bb"><input type="checkbox" /></td> -->
             <td class="bb">No.{{ item.airplainId }}</td>
             <td class="bb">{{ item.departureLocation }}</td>
             <td class="bb">{{ item.arrivalLocation }}</td>
@@ -283,26 +275,25 @@ export default {
 
         .no {
           padding: 2px;
-          font-size: 2rem;
           font-weight: 500;
+          font-size: 1.4rem;
 
           span {
             margin-left: 1rem;
           }
 
           select {
+            margin-top: 1rem;
             width: 12rem;
             height: 2rem;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             border-radius: .7rem;
           }
         }
 
 
         .date {
-          margin-top: .8rem;
-          margin-bottom: .8rem;
           font-weight: 500;
           font-size: 1.4rem;
 
@@ -311,7 +302,8 @@ export default {
           }
 
           input {
-            width: 13rem;
+            margin-top: 1rem;
+            width: 11rem;
             height: 2rem;
             border-radius: .5rem;
             text-align: center;
@@ -325,10 +317,7 @@ export default {
       }
 
       button {
-        // position: absolute;
-        right: 5rem;
-        bottom: 0.5rem;
-        margin-left: 6rem;
+        margin: 1rem 0 .8rem 6rem ;
         border-radius: 0.5rem;
         width: 5rem;
         height: 2rem;

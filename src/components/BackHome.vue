@@ -147,7 +147,7 @@ export default {
 
     :active {
       background-color: rgb(182, 187, 196);
-      box-shadow:0px 0px  5px black;
+      box-shadow: 0px 0px 5px black;
     }
 
     .block {
@@ -170,9 +170,8 @@ export default {
         height: 5rem;
         background-size: contain;
         background-repeat: no-repeat;
-        &:active{
-          
-        }
+
+        &:active {}
       }
 
     }
