@@ -196,7 +196,7 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 20pt;" @click="AirTimeSearch">班機時刻</a>
+                <a href="#" style="color: white;font-size: 20pt;" @click="AirTimeSearch">搜尋航班</a>
             </li>
             <li>
                 <a href="#" style="color: white;font-size: 20pt;">準備啟程</a>

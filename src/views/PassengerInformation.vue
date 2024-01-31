@@ -10,7 +10,6 @@ export default {
       planeArr: [1],
       MemberInformation: [],
       all: [
-
       ],
 
       members: [
@@ -79,6 +78,7 @@ export default {
 
     //新增
     addMember() {
+      console.log(this.members);
       if (this.validateFormData()) {
         if (this.members.length < 4) {
           this.members.push({ title: "1", name: "", birthday: "", contact: "", phone: "" });
@@ -94,6 +94,9 @@ export default {
       }
     },
     sameDate() {
+      this.members[0].name = this.userDate.uuu[0].name;
+      this.members[0].birthday = this.userDate.uuu[0].birthday;
+      this.members[0].phone = this.userDate.uuu[0].phone;
       this.members[0].name = this.userDate.uuu[0].name;
     }
 
@@ -143,17 +146,17 @@ export default {
           </div>
 
           <div class="form-floating mb-3 bb">
-            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.birthday" />
+            <input type="date" class="form-control" id="contactInput" placeholder="" v-model="member.birthday" />
             <!-- <input type="date" class="form-control" id="birthdayInput" placeholder="" v-model="member.birthday" /> -->
             <label>生日</label>
           </div>
           <div class="form-floating mb-3 bb">
-            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.contact" />
-            <label>聯絡人</label>
-          </div>
-          <div class="form-floating mb-3 bb">
             <input type="text" class="form-control" id="phoneInput" placeholder="" v-model="member.phone" />
             <label>手機</label>
+          </div>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.contact" />
+            <label>聯絡人</label>
           </div>
           <br />
         </div>
@@ -254,9 +257,11 @@ export default {
       padding: 5vh 5vw 5vh 5vw;
       text-align: justify;
       font-size: 18px;
-      button{
+
+      button {
         width: 120px;
       }
+
       // display: flex;
       // justify-content: center;
       span {
