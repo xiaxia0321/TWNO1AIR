@@ -357,8 +357,8 @@ export default {
                 </ul>
 
                 <h5>想知道有那些東西是違禁品或需要申報請參考以下文章：</h5>
-                <a href="https://www.callcarbar.com.tw/10290/departure_0218" target="_blank">違禁品</a>、<a
-                    href="https://www.edh.tw/lohas/article/31229" target="_blank">申報</a>
+                <a href="https://www.caa.gov.tw/Article.aspx?a=1273&lang=1" target="_blank">違禁品</a>、<a
+                    href="https://www.aphia.gov.tw/ws.php?id=10719" target="_blank">申報</a>
             </div>
         </div>
     </div>
