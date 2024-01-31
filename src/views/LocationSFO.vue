@@ -242,7 +242,7 @@ export default defineComponent({
         button {
             width: 160px;
             height: 50px;
-            background-color: #a8a29e;
+            background-color: rgb(230, 164, 180);
             border: 1px solid black;
             border-radius: 10px;
             position: absolute;
@@ -250,7 +250,7 @@ export default defineComponent({
             top: 45%;
 
             &:hover {
-                background-color: #94a3b8;
+                background-color: rgb(255, 248, 227);
             }
         }
     }
