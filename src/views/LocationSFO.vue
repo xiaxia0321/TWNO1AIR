@@ -142,7 +142,7 @@ export default defineComponent({
         </div>
         <div class="ticket">
             <h1>舊金山 反主流文化與高科技的交會之所</h1>
-            <button type="button" @click="data()">快速搜索東京機票</button>
+            <button type="button" @click="data()">快速搜索舊金山機票</button>
         </div>
         <div class="intro">
             <br>
