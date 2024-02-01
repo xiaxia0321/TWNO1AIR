@@ -250,6 +250,11 @@ const router = createRouter({
       component:() => import('../views/Refund.vue')
     },
     {
+      path:"/BackstageMemberInformation",
+      name:"BackstageMemberInformation",
+      component:() => import('../views/BackstageMemberInformation.vue')
+    },
+    {
       //要加在最後一個 若路徑錯誤則會跳出error404
       path:"/:pathMatch(.*)*",
       name:"NotFound",
