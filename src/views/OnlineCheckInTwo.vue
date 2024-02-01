@@ -5,17 +5,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            OrderArr: {
-            },
-            orderId: "",
-            account: "",
-            plainId: "",
-            departureDate: "",
-            depatureTime: "",
-            departureLocation: "",
-            arrivalDate: "",
-            arriveTime: "",
-            arrivalLocation: "",
+            OrderArr: {},
         }
     },
     computed: {
@@ -65,7 +55,6 @@ export default {
     },
     mounted() {
         this.searchOrder()
-        // this.searchPlane()
     }
 }
 </script>
@@ -81,8 +70,8 @@ export default {
                     <th>出發日期</th>
                     <th>出發時間</th>
                     <th>出發地</th>
-                    <th>回程日期</th>
-                    <th>回程時間</th>
+                    <th>抵達日期</th>
+                    <th>抵達時間</th>
                     <th>目的地</th>
                 </tr>
                 <tr v-for="(item, index) in OrderArr" :key="index">

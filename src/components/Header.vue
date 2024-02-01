@@ -280,8 +280,6 @@ export default {
         border-radius: 1rem;
         transition: .2s;
 
-        .ii {}
-
         &:hover {
             box-shadow: 2px 2px 5px 0 black;
             background-color: rgba(255, 255, 255, 0.063);
@@ -327,7 +325,7 @@ export default {
         list-style: none;
 
         .reservation {
-            width: 40vw;
+            width: 30vw;
             height: 40vh;
             display: flex;
             background-color: rgb(240, 240, 240);
@@ -353,12 +351,12 @@ export default {
             }
 
             .booking {
-                width: 30%;
+                width: 50%;
                 height: 40vh;
             }
 
             .hot {
-                width: 30%;
+                width: 50%;
                 height: 40vh;
                 border-left: 2px solid rgb(118, 69, 59);
                 // border-right: 2px solid rgb(118, 69, 59);

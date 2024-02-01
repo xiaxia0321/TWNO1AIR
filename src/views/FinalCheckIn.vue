@@ -5,8 +5,8 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            userArr: {},
-            planeArr: {},
+            userArr: [],
+            planeArr: [],
             airplain_Id: "",
             departureDate: "",
             da: "",
@@ -29,26 +29,26 @@ export default {
                 },
                 data: {
                     departureDate: this.plane.departureDate,
-                    arrivalDate: this.plane.arrivalDate,
-                    departureLocation: this.plane.departureLocation,
-                    arrivalLocation: this.plane.arrivalLocation, //抵達地
-                    departureAirport: this.plane.departureAirport, //出發機場
-                    arrivalAirport: this.plane.arrivalAirport, //抵達機場
+                    // arrivalDate: this.plane.arrivalDate,
+                    // departureLocation: this.plane.departureLocation,
+                    // arrivalLocation: this.plane.arrivalLocation, //抵達地
+                    // departureAirport: this.plane.departureAirport, //出發機場
+                    // arrivalAirport: this.plane.arrivalAirport, //抵達機場
                     da: this.plane.da, //出發機場縮寫
                     aa: this.plane.aa, //抵達機場縮寫
-                    classType: "經濟艙;商務艙;頭等艙",
-                    isOneway: false, //單程
+                    // classType: "經濟艙;商務艙;頭等艙",
+                    // isOneway: false, //單程
                     depatureTerminal: this.plane.depatureTerminal, //出發航廈
-                    arriveTerminal: this.plane.arriveTerminal,  //抵達航廈
+                    // arriveTerminal: this.plane.arriveTerminal,  //抵達航廈
                     depatureTime: this.plane.depatureTime, //出發時間
-                    arriveTime: this.plane.arriveTime, //抵達時間
-                    price: this.plane.price, //價錢
+                    // arriveTime: this.plane.arriveTime, //抵達時間
+                    // price: this.plane.price, //價錢
                     seat: this.plane.seat, //座位
                     airplain_Id: this.plane.airplain_Id
                 },
             })
-                .then(res => this.planeArr = res.data.planeList)
-            console.log(this.planeArr);
+                .then(res => this.planeArr = res.data.airplainInfoList)
+            console.log(this.plane);
         },
         // combinedSearch() {
         //     // User search
@@ -64,7 +64,7 @@ export default {
         //     })
         //         .then(res => {
         //             this.userArr = res.data.userList;
-        //             console.log("User search result:", this.userArr);
+        //             console.log("User search result:", this.user);
         //             // Plain search
         //             return axios({
         //                 url: 'http://localhost:8080/airplainInfo/search',
@@ -96,7 +96,7 @@ export default {
         //         })
         //         .then(res => {
         //             this.planeArr = res.data.planeList;
-        //             console.log("Plane search result:", this.planeArr);
+        //             console.log("Plane search result:", this.plane);
         //         })
         //         .catch(error => {
         //             console.error("Error:", error);
@@ -148,7 +148,6 @@ export default {
         // }
     },
     mounted() {
-        // this.searchUser()
         this.search()
     }
 }
@@ -162,21 +161,21 @@ export default {
             <img src="../../public/sabrina/登機證.png" alt="" style="width: 280px;height: 260px;" class="scan">
             <p>楊右檸 MR</p>
             <h3>A321</h3>
-            <p style="font-size: 2rem;">SEAT :　　2C</p>
+            <p style="font-size: 2rem;">SEAT　　2C</p>
             <p>2024-01-27　　TPE-BKK</p>
-            <p v-for="(item, index) in userArr" :key="index">{{ item.account }}</p>
+            <!-- <p v-for="(item, index) in userArr" :key="index">{{ item.account }}</p>
             <h3 v-for="(item, index) in planeArr" :key="index">{{ item.airplain_Id }}</h3>
             <p v-for="(item, index) in planeArr" :key="index">{{ item.departureDate }}</p>
             <p v-for="(item, index) in planeArr" :key="index">{{ item.da }}</p>
-            <p v-for="(item, index) in planeArr" :key="index">{{ item.aa }}</p>
+            <p v-for="(item, index) in planeArr" :key="index">{{ item.aa }}</p> -->
             <!-- <p>06APR　　　　TPE->BKK</p> -->
             <div class="gate">
                 <p>BOARDING TIME</p>
                 <h3>20:00</h3>
-                <h3 v-for="(item, index) in planeArr" :key="index">{{ item.depatureTime }}</h3>
+                <!-- <h3 v-for="(item, index) in planeArr" :key="index">{{ item.depatureTime }}</h3> -->
                 <p>TERMINAL</p>
                 <h4>3</h4>
-                <h3 v-for="(item, index) in planeArr" :key="index">{{ item.depatureTerminal }}></h3>
+                <!-- <h3 v-for="(item, index) in planeArr" :key="index">{{ item.depatureTerminal }}></h3> -->
                 <!-- <p>GATE　　　　BOARDING TIME　　　　ZONE</p>
                 <br>
                 <h3>B1R　　　　08:50　　　　1</h3> -->
