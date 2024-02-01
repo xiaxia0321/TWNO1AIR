@@ -6,140 +6,64 @@ import Swal from 'sweetalert2'
 export default {
     data() {
         return {
-            account: "",
+            passwordCheck: "",
             password: "",
-            isEntityAccount: true,
-            isEntityPassword: true,
-            showPassword: false,
-            user: [],
         }
     },
     computed: {
-        ...mapState(counter, ['user', 'userDate', 'OrderArr', 'logingDesuga'])
+        ...mapState(counter, ['userPassword'])
     },
     methods: {
-        loginOrder() {
-            axios({
-                url: 'http://localhost:8080/order/search',
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                data: {
-                    order_id: "",
-                    arrival_date: "",
-                    departure_date: "",
-                    arrival_location: "",
-                    departure_location: "",
-                    account: this.account,
-                },
-            })
-                .then(res => this.OrderArr.ccc = res.data.orderList)
-            console.log(this.OrderArr.ccc);
-            this.login()
+        show() {
+            this.showPassword = !this.showPassword
         },
-        login() {
-            //確認輸入帳號 + 密碼
-            this.isEntityAccount = !!this.account
-            this.isEntityPassword = !!this.password
-            //確認輸入正確帳號 + 密碼
-            if (this.account && this.password) {
-
-                if (this.account == "a789521" && this.password == "789521") {
+        goLogin() {
+            this.$router.push('/Login');
+        },
+        revise() {
+            console.log("run");
+            if (this.password != "" && this.passwordCheck != "") {
+                if (this.password == this.passwordCheck) {
                     axios({
-                        url: "http://localhost:8080/api/login",
-                        method: "POST",
-                        withCredentials: true,
-                        headers: {
-                            "Contect-Type": "applicatoin/json",
-                        },
-                        data: {
-                            account: "a789521",
-                            password: "789521",
-                        },
-                    }).then(res => {
-                        console.log(res.rtnCode);
-                    })
-                    Swal.fire({
-                        icon: "success",
-                        text: "後台登入成功",
-                        showConfirmButton: true,
-                    })
-                    this.logingDesuga.backStage = true;
-                    this.$router.push('/Backstage');
-                    return;
-                }
-                fetch('http://localhost:8080/user/search',
-                    {
+                        url: 'http://localhost:8080/user/update',
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        credentials: 'include',
-                        body: JSON.stringify({
-                            account: this.account,
+                        data: {
+                            userId: this.userPassword.uuu[0].userId,
+                            account: this.userPassword.uuu[0].account,
                             password: this.password,
-                        })
-                    }).then(response => response.json())
-                    .then(res => {
-                        console.log(res)
-                        if (res.code == "200") {
-                            this.logingDesuga.loginIng = true;
-                            console.log("登入成功");
-                            Swal.fire({
-                                icon: "success",
-                                text: "登入成功",
-                                showConfirmButton: true,
-                            })
-                            axios({
-                                url: "http://localhost:8080/api/login",
-                                method: "POST",
-                                withCredentials: true,
-                                headers: {
-                                    "Contect-Type": "applicatoin/json",
-                                },
-                                data: {
-                                    account: this.account,
-                                    password: this.password,
-                                },
-                            }).then(res => {
-                                console.log(res.rtnCode);
-                            }),
-                                console.log(res.userList);
-                            this.userDate.uuu = res.userList,
-                                console.log(this.userDate);
-                            console.log(this.userDate.uuu);
-                            // $cookies.set("account", this.account)
-                            console.log('loginIng = ' + this.logingDesuga.loginIng);
-                            this.$router.push('/User');
-                        }
-                        else {
-                            Swal.fire({
-                                icon: "error",
-                                text: "帳號或密碼有誤",
-                            })
-                        }
+                            email: this.userPassword.uuu[0].email,
+                            name: this.userPassword.uuu[0].name,
+                            phone: this.userPassword.uuu[0].phone,
+                            age: this.userPassword.uuu[0].age,
+                            birthday: this.userPassword.uuu[0].birthday,
+                        },
                     })
-            }
-            else {
+                    Swal.fire({
+                        icon: "success",
+                        text: "修改成功，將跳轉至登入頁面",
+                        showConfirmButton: true,
+                    })
+                    this.$router.push('/Login');
+                    // if (this.email == this.userPassword.uuu[0].email) {
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        text: "兩次輸入的密碼不一樣",
+                        showConfirmButton: true,
+                    })
+                }
+            } else {
                 Swal.fire({
                     icon: "error",
-                    text: "帳號或密碼未輸入",
+                    text: "有資料未填寫",
+                    showConfirmButton: true,
                 })
             }
-            this.account = "";
-            this.password = "";
-        },
-        show() {
-            this.showPassword = !this.showPassword
-        },
-        goSubmit() {
-            this.$router.push('/Submit');
-        },
-        revise() {
-            this.$router.push('/RevisePassword');
         }
-    }
+    },
 }
 </script>
 <template>
@@ -152,11 +76,12 @@ export default {
             <div class="right">
                 <h2><b>修改密碼</b></h2>
                 <br>
-                <span><b>會員帳號：</b></span><br>
-                <input type="text" class="input" id="account" v-model="this.account"><br>
-                <span><b>修改密碼：</b></span><br>
-                <input type="password" class="input" v-model="password">
-                <button type="button" class="login" @click="revise()">確認</button>
+                <span><b>新密碼：</b></span><br>
+                <input type="text" class="input" id="account" v-model="this.password"><br>
+                <span><b>確認密碼：</b></span><br>
+                <input type="password" class="input" v-model="this.passwordCheck">
+                <button type="button" class="login" @click="goLogin()">取消</button>
+                <button type="button" class="login" @click="revise()">修改</button>
             </div>
         </div>
     </div>
@@ -210,9 +135,7 @@ export default {
 }
 
 .login {
-    position: absolute;
-    left: 67%;
-    top: 70%;
+    margin: 0 2rem 0 2rem;
     background-color: rgb(49, 48, 77);
     color: white;
     box-shadow: none;

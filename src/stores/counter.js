@@ -131,6 +131,9 @@ export default defineStore("counter", {
             userArr: {
 
             },
+            userPassword:{
+                uuu:[]
+            },
             deleteArr: {
                 orderId: "",
                 account: "",
