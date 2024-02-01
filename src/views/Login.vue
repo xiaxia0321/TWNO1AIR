@@ -136,7 +136,7 @@ export default {
     goSubmit() {
       this.$router.push('/Submit');
     },
-    forget(){
+    forget() {
       this.$router.push('/ForgetPassword');
     }
   }
@@ -164,7 +164,7 @@ export default {
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
         <button type="button" class="submit" @click="goSubmit()">註冊</button>
         <button type="button" class="login" @click="loginOrder()">登入</button>
-        <p @click="forget()">忘記密碼</p>
+        <p style="color: rgb(41, 26, 183);" @click="forget()">忘記密碼</p>
         <!-- <button type="button" class="forget" @click="loginOrder()">忘記密碼</button> -->
       </div>
     </div>
@@ -245,7 +245,7 @@ export default {
   border: none;
 }
 
-p{
+p {
   margin-left: 225px;
   margin-top: 80px;
   font-size: 14pt;

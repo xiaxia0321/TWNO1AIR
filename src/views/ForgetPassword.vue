@@ -26,7 +26,7 @@ export default {
         },
         revise() {
             console.log("run");
-            if (this.account != "" || this.email != "") {
+            if (this.account != "" && this.email != "") {
                 axios({
                     url: 'http://localhost:8080/user/search',
                     method: "POST",
