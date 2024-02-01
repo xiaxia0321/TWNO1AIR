@@ -18,7 +18,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(counter, ["plane", "planeSearchCheack", "Order"]),
+    ...mapState(counter, ["plane", "planeSearchCheack", "Order", 'OrderSearchArr']),
 
     test() {
       console.log(this.planeSearchCheack.ccc.departureLocation);
@@ -61,32 +61,32 @@ export default {
     },
 
     selectSeat(row, col) {
-  // 检查座位是否已锁定
-  if (this.isSeatLocked(row, col)) {
-  return;
-}
+      // 检查座位是否已锁定
+      if (this.isSeatLocked(row, col)) {
+        return;
+      }
 
-// 检查座位是否已经被选择
-const existingSeatIndex = this.selectedSeats.findIndex(
-  (seat) => seat.row === row && seat.col === col
-);
+      // 检查座位是否已经被选择
+      const existingSeatIndex = this.selectedSeats.findIndex(
+        (seat) => seat.row === row && seat.col === col
+      );
 
-if (existingSeatIndex !== -1) {
-  // 如果座位已经被选择，则取消选择
-  this.selectedSeats.splice(existingSeatIndex, 1);
-} else {
-  // 如果座位未被选择，且未达到最大选择人数，则添加到已选择的座位列表中
-  if (this.selectedSeats.length < this.Order.getAddPeople[0].enteredPeople) {
-    this.selectedSeats.push({ row, col });
-  }
-}
-},
+      if (existingSeatIndex !== -1) {
+        // 如果座位已经被选择，则取消选择
+        this.selectedSeats.splice(existingSeatIndex, 1);
+      } else {
+        // 如果座位未被选择，且未达到最大选择人数，则添加到已选择的座位列表中
+        if (this.selectedSeats.length < this.Order.getAddPeople[0].enteredPeople) {
+          this.selectedSeats.push({ row, col });
+        }
+      }
+    },
 
     goinTicket() {
       this.$router.push("/ticket");
     },
     gogo() {
-    this.planeSearchCheack.seat = this.formattedSelectedSeatsString
+      this.planeSearchCheack.seat = this.formattedSelectedSeatsString;
       this.$router.push("/ProductDetailed");
     },
     // buyTicket() {
@@ -116,32 +116,35 @@ if (existingSeatIndex !== -1) {
     //     }
     //   });
     // },
-    // ticketSearch() { //搜尋此航班已購票位置去進行鎖定
-    //     axios({
-    //         url: 'http://localhost:8080/movie/buyinfo/searchseat',
-    //         method: 'POST',
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         data: {
-    //             movieId: this.movieInfo.movieId,
-    //             cinema: this.movieInfo.cinema,
-    //             area: this.movieInfo.area,
-    //             onDate: this.movieInfo.playDate,
-    //             onTime: this.movieInfo.playTime,
-    //         },
-    //     }).then(res => {
-    //         const seats = res.data.buyInfoList.map(item => item.seat);
-    //         console.log(seats); // 这里是包含所有座位的数组
+    ticketSearch() {
+      //搜尋此航班已購票位置去進行鎖定
+      axios({
+        url: "http://localhost:8080/order/search",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          seat: this.OrderSearchArr.getSeat,
+          order_id: this.OrderSearchArr.getOrderId,
+          arrival_date: this.OrderSearchArr.getArrivalDate,
+          departure_date: this.OrderSearchArr.getDepartureDate,
+          arrival_location: this.OrderSearchArr.getArrivalLocation,
+          departure_location: this.OrderSearchArr.getDepartureLocation,
+          account: this.OrderSearchArr.getAccount,
+        },
+      }).then((res) => {
+        const purchasedSeats = res.data.orderList.map((item) => item.seat);
+        console.log(purchasedSeats); // 这里是包含所有座位的数组
 
-    //         // 如果座位信息是以逗号分隔的，你可以使用 split 方法进行拆分
-    //         const splitSeats = seats.flatMap(seat => seat.split(','));
+        // 如果座位信息是以逗号分隔的，你可以使用 split 方法进行拆分
+        const splitSeats = purchasedSeats.flatMap((seat) => seat.split(",").map(s => s.trim()));
 
-    //         console.log(splitSeats); // 这里是包含所有座位的数组（每个座位分开）
-    //         this.lockedSeats = splitSeats
-    //     }
-    //     )
-    // },
+
+        console.log(splitSeats); // 这里是包含所有座位的数组（每个座位分开）
+        this.lockedSeats = splitSeats;
+      });
+    },
     logincheck() {
       this.userLoggedIn = Cookies.get("userLoggedIn");
       if (this.userLoggedIn) {
@@ -182,7 +185,9 @@ if (existingSeatIndex !== -1) {
         <div class="rowTitle">
           <ul v-for="i in row" :key="i">
             <ol>
-              {{ i }}
+              {{
+                i
+              }}
             </ol>
           </ul>
         </div>

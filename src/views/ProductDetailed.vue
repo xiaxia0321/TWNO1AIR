@@ -110,7 +110,7 @@ export default {
             arriveTime: this.planeSearchCheack.ccc.arriveTime, //抵達時間
             addPeople: JSON.stringify(this.Order.getAddPeople),
             seat: this.planeSearchCheack.seat, //座位編號
-            airplainId: this.Order.getAddPeople[0].enteredPeople,
+            airplainId: this.planeSearchCheack.ccc.airplainId,
           },
         })
           .then(res => {

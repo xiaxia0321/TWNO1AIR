@@ -41,6 +41,7 @@ export default defineStore("counter", {
                 getDepatureTime: '',
                 getAddPeople: '',
                 getAirplainId:'',
+                getSeat:'',
             },
             OrderSearchArrCheck: {
                 ccc: [],
@@ -91,7 +92,8 @@ export default defineStore("counter", {
             planeUpdateArr: {
                 ccc: [],
             },
-            planeArr: {
+            planeOrderArr: {
+                ccc:[]
             },
             planeSearchArr: {
                 departureDate: "", //出發日期

@@ -159,6 +159,11 @@ const router = createRouter({
       component:() => import('../views/User.vue')
     },
     {
+      path:"/BackstageMemberInformation",
+      name:"BackstageMemberInformation",
+      component:() => import('../views/BackstageMemberInformation.vue')
+    },
+    {
       path:"/BackCreateFlight",
       name:"BackCreateFlight",
       component:() => import('../components/BackCreateFlight.vue')
