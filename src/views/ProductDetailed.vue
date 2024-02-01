@@ -96,6 +96,7 @@ export default {
             depatureTime: this.planeSearchCheack.ccc.depatureTime, //出發時間
             arriveTime: this.planeSearchCheack.ccc.arriveTime, //抵達時間
             add_people: this.Order.getAddPeople, //打包人數資料
+            seat: this.planeSearchCheack.seat, //座位編號
           },
         })
           .then(res => {
@@ -169,14 +170,14 @@ export default {
       <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
       <h2>產品明細</h2>
       <h3>航班資訊</h3>
-      <button @click="loginDD">登入</button>
+      <!-- <button @click="loginDD">登入</button>
       <button @click="logoutDD">登出</button>
-      <button @click="test">測試</button>
+      <button @click="test">測試</button> -->
     </div>
     <div class="mt1"><span>經濟艙</span></div>
     <div class="mid1">
       <div class="m1">
-        <p>JX840　<i class="fa-solid fa-plane"></i>AIRBUS A321NEO</p>
+        <p>JX840　<i class="fa-solid fa-plane"></i>　AIRBUS A321NEO</p>
         <p>{{ planeSearchCheack.ccc.departureDate }}</p>
         <p class="time">{{ planeSearchCheack.ccc.depatureTime }}</p>
         <p class="nationbk">{{ planeSearchCheack.ccc.da }}</p>

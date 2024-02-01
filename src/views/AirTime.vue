@@ -150,12 +150,13 @@ export default {
       <span style="font-size: 3.5rem">注意事項</span>
 
       <br />
+      <br />
       <span>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</span>
       <br />
       <span>
         樂GO航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂GO航空客服中心。
       </span>
-      <p class="show" @click="searchPlane" style="font-size: 2.5rem">點此顯示搜尋結果</p>
+      <p class="show" @click="searchPlane" style="font-size: 2rem">點此顯示搜尋結果</p>
     </div>
     <div class="big" v-for="( item, index ) in  planeArr.slice(0, 10) " :key="index">
       <!-- <div class="header1">
@@ -456,6 +457,7 @@ export default {
 
   .show {
     cursor: pointer;
+    color: #f8c68a;
 
     &:hover {
       color: #f8c68a;

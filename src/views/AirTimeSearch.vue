@@ -5,6 +5,8 @@ import ArrivalLocationTime from "./ArrivalLocationTime.vue";
 import { mapState, mapActions } from "pinia";
 import counter from "../stores/counter";
 import axios from "axios";
+import Swal from 'sweetalert2'
+
 
 export default {
   data() {
@@ -23,18 +25,40 @@ export default {
   },
   methods: {
     searchPlane() {
-      // axios({
-      //   url: "http://localhost:8080/airplainInfo/search",
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   data: {},
-      // }).then((res) => {
-      //   this.planeArr = res.data.airplainInfoList; //planeArr裡面塞資料庫所有航班
-      //   console.log(this.planeArr);
-      //   // 在請求完成後執行路由導航
-      // });
+    // 檢查是否已經選擇了出發地、目的地和日期
+  if (!this.planeSearchArr.departureLocation && !this.planeSearchArr.arrivalLocation && !this.selectedDate) {
+    // 使用SweetAlert2提醒使用者選擇出發地、目的地和日期
+    Swal.fire({
+      icon: 'error',
+      title: '請選擇出發地、目的地和日期',
+      text: '請確保您已經選擇了出發地、目的地和日期。',
+    });
+    return; // 如果缺少其中一項，不執行後續的查詢操作
+  }
+
+  // 檢查是否已經選擇了出發地和目的地
+  if (!this.planeSearchArr.departureLocation && !this.planeSearchArr.arrivalLocation) {
+    // 使用SweetAlert2提醒使用者選擇出發地和目的地
+    Swal.fire({
+      icon: 'error',
+      title: '請選擇出發地和目的地',
+      text: '請確保您已經選擇了出發地和目的地。',
+    });
+    return; // 如果缺少其中一項，不執行後續的查詢操作
+  }
+
+  // 檢查是否已經選擇了日期
+  if (!this.selectedDate) {
+    // 使用SweetAlert2提醒使用者選擇日期
+    Swal.fire({
+      icon: 'error',
+      title: '請選擇日期',
+      text: '請確保您已經選擇了日期。',
+    });
+    return; // 如果缺少日期，不執行後續的查詢操作
+  }
+
+
       this.planeSearchArr.departureDate = this.selectedDate;
       this.planeSearchArr.arrivalDate = this.returnDate;
 

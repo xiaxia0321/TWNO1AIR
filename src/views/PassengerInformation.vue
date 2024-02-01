@@ -126,7 +126,7 @@ export default {
       <div class="m2">
         <p>請確認輸入的資料與旅客護照上所示資料完全相同</p>
         <button @click="sameDate">同會員資訊</button>
-        <button @click="test">測試</button>
+        <!-- <button @click="test">測試</button> -->
         <br />
         <br />
         <div v-for="(member, index) in members" :key="index">
@@ -144,10 +144,8 @@ export default {
             <input type="text" class="form-control" id="nameInput" placeholder="" v-model="member.name" />
             <label>姓名</label>
           </div>
-
           <div class="form-floating mb-3 bb">
             <input type="date" class="form-control" id="contactInput" placeholder="" v-model="member.birthday" />
-            <!-- <input type="date" class="form-control" id="birthdayInput" placeholder="" v-model="member.birthday" /> -->
             <label>生日</label>
           </div>
           <div class="form-floating mb-3 bb">

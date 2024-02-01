@@ -8,7 +8,7 @@ export default {
     return {
       row: 30,
       col: 6,
-      selectedSeats: [],
+      selectedSeats: [], //你用来保存已选座位信息的数组，要帶到每筆訂單資料庫
       movieInfo: {},
       userLoggedIn: false,
       account: "",
@@ -175,14 +175,12 @@ if (existingSeatIndex !== -1) {
                     </div>
                 </div>
             </div> -->
-      <button @click="test">測試</button>
+      <!-- <button @click="test">測試</button> -->
       <div class="postion">
         <div class="rowTitle">
           <ul v-for="i in row" :key="i">
             <ol>
-              {{
-                i
-              }}
+              {{ i }}
             </ol>
           </ul>
         </div>
