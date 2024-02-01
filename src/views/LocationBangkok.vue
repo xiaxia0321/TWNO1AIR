@@ -16,39 +16,39 @@ export default defineComponent({
                 // },
                 {
                     label: "洛杉磯 (美國), LAX, Los Angeles International Airport",
-                    key: "洛杉磯 (美國), LAX, Los Angeles International Airport",
+                    key: "洛杉磯",
                 },
                 {
                     label: "舊金山, 美國, SFO, San Francisco International Airport",
-                    key: "舊金山, 美國, SFO, San Francisco International Airport"
+                    key: "舊金山"
                 },
                 {
                     label: "函館, 日本, HKD, Hakodate Airport",
-                    key: "函館, 日本, HKD, Hakodate Airport"
-                },
-                {
-                    label: "東京, 日本, NRT, Narita Internation",
-                    key: "東京, 日本, NRT, Narita Internation"
+                    key: "函館"
                 },
                 {
                     label: "大阪, 日本, KIX, Kansai International Airport",
-                    key: "大阪, 日本, KIX, Kansai International Airport"
+                    key: "大阪"
                 },
                 {
                     label: "沖繩, 日本, OKA, Naha Airport",
-                    key: "沖繩, 日本, OKA, Naha Airport"
+                    key: "沖繩"
                 },
                 {
                     label: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport",
-                    key: "胡志明市, 越南, SGN, Tan Son Nhat Int'l Airport"
+                    key: "胡志明市"
+                },
+                {
+                    label: "東京, 日本, NRT, Narita Internation",
+                    key: "東京"
                 },
                 {
                     label: "新加坡, 新加坡, SIN, Changi Airport",
-                    key: "新加坡, 新加坡, SIN, Changi Airport"
+                    key: "新加坡"
                 },
                 {
                     label: "澳門, 澳門, MFM, Macau International Airportn",
-                    key: "澳門, 澳門, MFM, Macau International Airport"
+                    key: "澳門"
                 },
             ],
             range: ""
@@ -75,8 +75,8 @@ export default defineComponent({
             if (key.includes("胡志明市")) {
                 this.$router.push('/LocationHoChiMinh')
             }
-            if (key.includes("曼谷")) {
-                this.$router.push('/LocationBangkok')
+            if (key.includes("東京")) {
+                this.$router.push('/LocationTokyo')
             }
             if (key.includes("新加坡")) {
                 this.$router.push('/LocationSingapore')
@@ -212,6 +212,7 @@ export default defineComponent({
         background-repeat: no-repeat;
         background-position: center;
         background-size: 1600px;
+        position: relative;
 
         h1 {
             margin-top: 60px;

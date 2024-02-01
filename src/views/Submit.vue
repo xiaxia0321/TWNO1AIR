@@ -6,13 +6,6 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      account: "",
-      password: "",
-      emails: "",
-      user_name: "",
-      phone: "",
-      birthday: "",
-      age: "",
       showPassword: false,
       showPasswordTwo: false,
     };
@@ -21,28 +14,19 @@ export default {
     ...mapState(counter, ["user", 'userDate']),
   },
   methods: {
+    //返回登入頁面
     login() {
       this.$router.push("/");
     },
+
     show() {
       this.showPassword = !this.showPassword;
     },
     showTwo() {
       this.showPasswordTwo = !this.showPasswordTwo;
     },
+    //創建帳號用
     signUpCheck() {
-      // emailjs.init("WwrJtSPq41O0qW95I");
-      // let params = {
-      //   senderName: document.getElementById,
-      //   getterName: document.getElementById,
-      // }
-      // let serviceID = "service_lgfrq4q";
-      // let templateID = "template_7k5oz09";
-      // emailjs.send(serviceID, templateID, params)
-      // .then( res => {
-      //   alert("註冊成功")
-      // })
-      // .catch();
       let inputAccount = document.getElementById("inputAccount");
       let inputPhone = document.getElementById("inputPhone");
       let inputEmail = document.getElementById("inputEmail");
@@ -69,13 +53,13 @@ export default {
         },
       }).then((res) => {
         if (
-          inputPassword.value == "" ||
+          this.user.account == "" ||
+          this.user.password == "" ||
           inputRepeatPassword.value == "" ||
-          inputAccount.value == "" ||
-          inputPhone.value == "" ||
-          inputEmail.value == "" ||
-          inputBirthday == "" ||
-          inputAge == ""
+          this.user.phone == "" ||
+          this.user.email == "" ||
+          this.user.birthday == "" ||
+          this.user.age == ""
         ) {
           console.log("xxx");
           Swal.fire({
@@ -91,15 +75,19 @@ export default {
           });
           return;
         }
-        if (res.data.rtnCode = "ACCOUNT_EXISTED") {
+        if (res.data.rtnCode === "ACCOUNT_EXISTED") {
           Swal.fire({
             icon: "question",
             text: "帳號已重複，請使用其他帳號進行註冊",
             showConfirmButton: true,
           });
+          console.log("user");
+          console.log(this.user);
+          console.log("rtnCode");
+          console.log(res.data.rtnCode);
           return;
         }
-        else {
+        if (res.data.rtnCode === "SUCCESSFUL") {
           Swal.fire({
             icon: "success",
             text: "你已經註冊成功",
@@ -109,25 +97,31 @@ export default {
           console.log(this.user);
           this.$router.push("/Login"); //先註解
         }
-        //新增ㄉ
-        // (this.user = {
-        //   account: "",
-        //   password: "",
-        //   userName: "", //用戶名稱
-        //   birthday: "", //生日
-        //   age: "", //年齡
-        //   phone: "", //手機
-        //   email: "", //信箱
-        // }),
-        (inputAccount.value = "");
-        inputPhone.value = "";
-        inputEmail.value = "";
-        inputPassword.value = "";
-        inputRepeatPassword.value = "";
-        inputUser.value = "";
-        inputBirthday.value = "";
-        inputAge.value = "";
+        this.user.account = "",
+          this.user.password = "",
+          this.user.userName = "",
+          inputRepeatPassword.value = "",
+          this.user.phone = "",
+          this.user.email = "",
+          this.user.birthday = "",
+          this.user.age = ""
       });
+    },
+    calculateAge() {
+      const birthDate = new Date(this.user.birthday);
+      const currentDate = new Date();
+
+      let age = currentDate.getFullYear() - birthDate.getFullYear();
+
+      if (
+        currentDate.getMonth() < birthDate.getMonth() ||
+        (currentDate.getMonth() === birthDate.getMonth() &&
+          currentDate.getDate() < birthDate.getDate())
+      ) {
+        age--;
+      }
+
+      this.user.age = age;
     },
   },
 };
@@ -152,17 +146,17 @@ export default {
         <input :type="showPassword ? 'text' : 'password'" placeholder="請輸入密碼" id="inputPassword" class="password"
           style="margin-left: 5px; width: 298px" v-model="user.password" />
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"
-          style="position: absolute; left: 51%; top: 49.5%"></i>
+          style="position: absolute; left: 43%; top: 14%"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"
-          style="position: absolute; left: 51%; top: 49.5%"></i>
+          style="position: absolute; left: 43%; top: 14%"></i>
         <br /><br />
         <label for="" style="font-size: 14pt">確認密碼：</label>　
         <input :type="showPasswordTwo ? 'text' : 'password'" placeholder="請再次輸入密碼" id="inputRepeatPassword"
-          class="repeatPassword" style="width: 298px" />
+          class="repeatPassword" style="width: 298px;" />
         <i class="fa-solid fa-eye-slash eye" v-show="!showPasswordTwo" @click="showTwo()"
-          style="position: absolute; left: 51%; top: 56.5%"></i>
+          style="position: absolute; left: 43%; top: 26%"></i>
         <i class="fa-solid fa-eye eye" v-show="showPasswordTwo" @click="showTwo()"
-          style="position: absolute; left: 51%; top: 56.5%"></i>
+          style="position: absolute; left: 43%; top: 26%"></i>
         <!-- <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 56.5%;"></i>
                 <input type="password" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword"
                     style="width: 298px;"> -->
@@ -172,11 +166,11 @@ export default {
           style="margin-left: 58px" />
         <br /><br />
         <label for="" style="font-size: 14pt">出生年月日：</label>　　　
-        <input type="text" placeholder="請輸入西元生日(ex:20000101)" id="inputBirthday" class="birthday"
-          v-model="user.birthday" />
-        <br /><br />
-        <label for="" style="font-size: 14pt">年齡：</label>　　　
-        <input type="text" placeholder="請輸入實際年齡" id="inputAge" class="age" v-model="user.age" />
+        <input type="date" @change="calculateAge" placeholder="請輸入西元生日(ex:20000101)" id="inputBirthday" class="birthday"
+          v-model="user.birthday" style="margin-right: 3rem;" />
+        <label for="" style="font-size: 14pt">年齡 :</label>　　　
+        <input type="number" style="width: 3rem; text-align: center;" placeholder="請輸入實際年齡" id="inputAge" class="age"
+          v-model="user.age" disabled />
         <br /><br />
         <label for="" style="font-size: 14pt">電話：</label>　　　
         <input type="number" placeholder="請輸入手機號碼" id="inputPhone" class="phone" v-model="user.phone"
@@ -214,8 +208,9 @@ export default {
 
     .loginInputArea {
       text-align: left;
-      margin-top: 10px;
+      margin-top: 5px;
       margin-left: 10vw;
+      position: relative;
 
       .name {
         width: 300px;

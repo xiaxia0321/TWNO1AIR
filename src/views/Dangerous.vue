@@ -80,6 +80,7 @@ export default {
             border: none;
             background-color: rgb(108, 95, 91);
             margin-top: 40px;
+            color: white;
         }
     }
 }</style>

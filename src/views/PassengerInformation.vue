@@ -9,6 +9,9 @@ export default {
     return {
       planeArr: [1],
       MemberInformation: [],
+      all: [
+      ],
+
       members: [
         // 初始一筆會員資料
         { title: "1", name: "", birthday: "", contact: "", phone: "" },
@@ -75,6 +78,7 @@ export default {
 
     //新增
     addMember() {
+      console.log(this.members);
       if (this.validateFormData()) {
         if (this.members.length < 4) {
           this.members.push({ title: "1", name: "", birthday: "", contact: "", phone: "" });
@@ -89,6 +93,12 @@ export default {
         this.members.splice(index, 1);
       }
     },
+    sameDate() {
+      this.members[0].name = this.userDate.uuu[0].name;
+      this.members[0].birthday = this.userDate.uuu[0].birthday;
+      this.members[0].phone = this.userDate.uuu[0].phone;
+      this.members[0].name = this.userDate.uuu[0].name;
+    }
 
   },
 };
@@ -136,17 +146,17 @@ export default {
           </div>
 
           <div class="form-floating mb-3 bb">
-            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.birthday" />
+            <input type="date" class="form-control" id="contactInput" placeholder="" v-model="member.birthday" />
             <!-- <input type="date" class="form-control" id="birthdayInput" placeholder="" v-model="member.birthday" /> -->
             <label>生日</label>
           </div>
           <div class="form-floating mb-3 bb">
-            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.contact" />
-            <label>聯絡人</label>
-          </div>
-          <div class="form-floating mb-3 bb">
             <input type="text" class="form-control" id="phoneInput" placeholder="" v-model="member.phone" />
             <label>手機</label>
+          </div>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.contact" />
+            <label>聯絡人</label>
           </div>
           <br />
         </div>
@@ -169,19 +179,19 @@ export default {
       3.兒童旅客的改票/退票/未登機手續費為成人旅客收費的75%；嬰兒旅客的改票/退票手續費為成人旅客收費的10%。
     </p>
     <p>
-      4.依據臺灣消費者保護法第19條第2項但書所訂之「通訊交易解除權合理例外情事適用準則」規定，網路購買國際航空機票不適用七天解除權。如消費者購買機票後欲退票，將依樂狗航空退票規定辦理。於樂狗航空官方網站/App
+      4.依據臺灣消費者保護法第19條第2項但書所訂之「通訊交易解除權合理例外情事適用準則」規定，網路購買國際航空機票不適用七天解除權。如消費者購買機票後欲退票，將依樂GO航空退票規定辦理。於樂GO航空官方網站/App
       購買機票後，欲辦理機票退費，將按實際已搭乘行程之適用票價計算，相關退票申請條款與規定，詳見「線上退票」。當日購買、申請退票時間點為原訂航班起飛後4小時內或以
       COSMILE 哩程支付之機票不適用此線上退票功能，請透過「退票申請」頁面辦理。
     </p>
     <p>
-      5.樂狗航空保留隨時修訂或終止各種票價產品、優惠及相關規則之權利，詳見「運送條款」。
+      5.樂GO航空保留隨時修訂或終止各種票價產品、優惠及相關規則之權利，詳見「運送條款」。
     </p>
-    <p>6.以上規定僅適用於搭乘樂狗航空實際營運之航班。</p>
+    <p>6.以上規定僅適用於搭乘樂GO航空實際營運之航班。</p>
     <p>
-      7.因應新型冠狀病毒影響，調整樂狗航空國際航線班機服務內容，詳見「樂狗航空安心防疫措施及服務調整」。
+      7.因應新型冠狀病毒影響，調整樂GO航空國際航線班機服務內容，詳見「樂GO航空安心防疫措施及服務調整」。
     </p>
     <p>
-      8.樂狗航空關心每位旅客的健康，如有發燒、咳嗽、呼吸急促等身體不適，請暫緩搭機。各國入境相關規定及簽證須知，請參考「外交部領事事務局」。
+      8.樂GO航空關心每位旅客的健康，如有發燒、咳嗽、呼吸急促等身體不適，請暫緩搭機。各國入境相關規定及簽證須知，請參考「外交部領事事務局」。
     </p>
     <p>
       9.搭機前，務必先行確認目的地之檢疫和入境規範
@@ -247,9 +257,11 @@ export default {
       padding: 5vh 5vw 5vh 5vw;
       text-align: justify;
       font-size: 18px;
-      button{
+
+      button {
         width: 120px;
       }
+
       // display: flex;
       // justify-content: center;
       span {
@@ -296,4 +308,5 @@ export default {
     background-color: #3b2641;
     color: white;
   }
-}</style>
+}
+</style>

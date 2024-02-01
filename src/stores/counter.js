@@ -44,7 +44,7 @@ export default defineStore("counter", {
                 ccc: [],
             },
             OrderDelete: {
-                getOrderId: ''
+                ccc:[],
             },
             plane: {
                 departureDate: "", //出發日期
@@ -87,10 +87,9 @@ export default defineStore("counter", {
                 airplain_Id: ""
             },
             planeUpdateArr: {
-
+                ccc: [],
             },
             planeArr: {
-
             },
             planeSearchArr: {
                 departureDate: "", //出發日期
@@ -117,7 +116,7 @@ export default defineStore("counter", {
                 password: '',
                 userName: '', //用戶名稱
                 birthday: '',//生日
-                age: '',//年齡
+                age: 0,//年齡
                 phone: '', //手機
                 email: '', //信箱
                 point: '', //點數

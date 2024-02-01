@@ -20,7 +20,7 @@ export default {
 <template>
   <div class="top">
     <h1>璀璨光芒．蓄勢待發</h1>
-    <h5>樂狗航空．空中巴士 A330neo</h5>
+    <h5>樂GO航空．空中巴士 A330neo</h5>
   </div>
   <div class="menu">
     <h3 @click="A321">A321neo</h3>

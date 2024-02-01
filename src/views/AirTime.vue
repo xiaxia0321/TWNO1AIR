@@ -9,6 +9,7 @@ export default {
       planeArr: [],
       ccc: [],
 
+      today: new Date().toISOString().split("T")[0],
     };
   },
   computed: {
@@ -62,6 +63,14 @@ export default {
       return this.planeArr.some(item => item.departureDate === targetDate);
     },
     searchPlane() {
+      console.log("未變更", this.planeSearchArr.departureDate);
+      // 比較日期
+      if (this.planeSearchArr.departureDate < this.today || !this.planeSearchArr.departureDate) {
+        // 如果起飛日期小於今天，將其設為今天的日期
+        this.planeSearchArr.departureDate = this.today // 轉換成 ISO 8601 格式的日期字串
+        console.log("已變更", this.planeSearchArr.departureDate);
+        return;
+      }
       axios({
         url: "http://localhost:8080/airplainInfo/search",
         method: "POST",
@@ -78,14 +87,16 @@ export default {
 
         },
       })
-        .then((res) => (this.planeArr = res.data.airplainInfoList));
-      if (this.planeSearchArr.isOneway) {
-        this.planeArr = res.data.airplainInfoList.filter((flight) => flight.isOneway === true);
-      } else {
-        this.planeArr = res.data.airplainInfoList;
-      }
-      console.log(this.planeArr);
-      console.log(this.planeSearchArr);
+        .then((res) => {
+          (this.planeArr = res.data.airplainInfoList)
+          if (this.planeSearchArr.isOneway) {
+            this.planeArr = res.data.airplainInfoList.filter((flight) => flight.isOneway === true);
+          } else {
+            this.planeArr = res.data.airplainInfoList;
+          }
+          console.log(this.planeArr);
+          console.log(this.planeSearchArr);
+        });
     },
     back() {
       this.$router.push("/AirTimeSearch"); //推送至下一頁的路徑
@@ -142,11 +153,11 @@ export default {
       <span>航廈資訊以查詢之"搭乘日期"有飛航班機為主。</span>
       <br />
       <span>
-        樂狗航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂狗航空客服中心。
+        樂GO航空保留對此班機時刻表之時間、機型更新的權利，如有異動恕不另行通知，更多資訊請聯絡樂GO航空客服中心。
       </span>
       <p class="show" @click="searchPlane" style="font-size: 2.5rem">點此顯示搜尋結果</p>
     </div>
-    <div class="big" v-for="(item, index) in planeArr" :key="index">
+    <div class="big" v-for="( item, index ) in  planeArr.slice(0, 10) " :key="index">
       <!-- <div class="header1">
         <i class="fa-solid fa-arrow-left arrow" @click="back"></i>
         <h2 @click="searchPlane">查詢結果</h2>

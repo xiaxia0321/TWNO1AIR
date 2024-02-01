@@ -32,7 +32,7 @@ export default {
 </div>
   <!-- ======================================================================= -->
 
-  <h1>旅程由樂狗航空帶你輕鬆旅行</h1>
+  <h1>旅程由樂GO航空帶你輕鬆旅行</h1>
 <div class="row">
 
   <div class="card" style="width: 18rem;">
@@ -99,10 +99,10 @@ export default {
 
   </div> <!-- ======================================================================= -->
 <div class="bottom">
-<div class="b1"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
-<div class="b2"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
-<div class="b3"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
-<div class="b4"><h3>關於樂狗</h3><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p><p>認識樂狗</p></div>
+<div class="b1"><h3>關於樂GO</h3><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p></div>
+<div class="b2"><h3>關於樂GO</h3><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p></div>
+<div class="b3"><h3>關於樂GO</h3><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p></div>
+<div class="b4"><h3>關於樂GO</h3><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p><p>認識樂GO</p></div>
 </div>
 
 </template>

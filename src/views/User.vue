@@ -2,6 +2,7 @@
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 export default {
     data() {
         return {
@@ -227,23 +228,44 @@ export default {
             this.checkedItems.push(false);
         },
         signOut() {
-            fetch('http://localhost:8080/api/logout', {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: 'include'
+            Swal.fire({
+                title: "請問是否登出?",
+                text: "真的要登出了嗎?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "取消",
+                confirmButtonText: "登出!!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "已登出!!",
+                        text: "將回到首頁",
+                        icon: "success"
+                    });
+                    //放登出logout的api
+                    this.logingDesuga.backStage = false;
+                    this.logingDesuga.loginIng = false;
+                    fetch('http://localhost:8080/api/logout', {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        credentials: 'include'
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            if (data.rtnCode == "SUCCESSFUL") {
+                                $cookies.remove("account");
+                                this.$router.push('/');
+                                console.log("logout!");
+                            }
+                        })
+                        .catch(error => console.log(error))
+                }
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.rtnCode == "SUCCESSFUL") {
-                        $cookies.remove("account");
-                        this.$router.push('/');
-                            counter().isLogIn = false
-                    }
-                })
-                .catch(error => console.log(error))
         },
         logininin() {
             console.log('old ' + this.logingDesuga.loginIng);
@@ -266,7 +288,7 @@ export default {
             <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="userblock('旅客資料')">旅客資料</button><br>
             <button type="button" class="record" @click="userblock('旅行紀錄'), searchOrder">行程管理</button><br>
-            <button type="button" class="record" @click="userblock('關注城市')">紅利優惠</button><br>
+            <!-- <button type="button" class="record" @click="userblock('關注城市')">紅利優惠</button><br> -->
             <button type="button" class="record" @click="userblock('旅遊通知')">行李清單</button><br>
             <button type="button" class="out" @click="signOut()">登出</button>
         </div>
@@ -322,7 +344,6 @@ export default {
                         <th>抵達地點</th>
                         <th>人數</th>
                         <th>旅程</th>
-                        <th>其他操作</th>
                     </tr>
                     <tr v-for="(item, index) in OrderArr.ccc" :key="index">
                         <td>{{ item.orderId }}</td>
@@ -334,7 +355,6 @@ export default {
                         <td>{{ item.numberOfPeople }}</td>
                         <td v-show="!item.oneway">來回</td>
                         <td v-show="item.oneway">單程</td>
-                        <td>其他操作</td>
                     </tr>
                 </thead>
                 <!-- <tbody>

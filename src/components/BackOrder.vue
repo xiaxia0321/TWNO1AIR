@@ -1,6 +1,7 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import counter from '../stores/counter'
+import Swal from "sweetalert2/dist/sweetalert2.js";
 import axios from 'axios';
 export default {
   data() {
@@ -41,18 +42,45 @@ export default {
         .then(res => this.OrderArr = res.data.orderList)
       console.log(this.OrderArr);
     },
-    delete() {
-      axios({
-        url: 'http://localhost:8080/order/delete',
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        data: {
-          order_id: this.OrderArr.orderId,
-        },
+    goDelete(num) {
+      this.OrderDelete.ccc = this.OrderArr[num];
+      console.log(this.OrderDelete.ccc);
+      Swal.fire({
+        title: "請問是否刪除?",
+        text: "資料將被刪除?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "取消",
+        confirmButtonText: "刪除!!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "已刪除!!",
+            icon: "success"
+          })
+          console.log(this.OrderDelete.ccc.orderId);
+          console.log(this.OrderDelete.ccc.account);
+          axios({
+            url: 'http://localhost:8080/order/delete',
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            data: {
+              orderId: this.OrderDelete.ccc.orderId,
+              account: this.OrderDelete.ccc.account,
+            },
+          })
+            .then(res => { console.log(this.res) },
+            );
+          setTimeout(this.reLoad, 3000);
+        }
       })
-        .then(res => console.log(this.OrderArr))
+    },
+    reLoad() {
+      this.$router.go(0);
     }
   },
   components: {
@@ -126,8 +154,6 @@ export default {
             <span>抵達日期 : </span>
             <input type="date" name="" id="" v-model="OrderSearchArr.getArrivalDate">
           </div>
-        </div>
-        <div class="bbc" style="justify-content: center;">
           <button type="submit" @click="re0">清空搜尋</button>
           <button type="submit" @click="searchOrder">搜尋</button>
         </div>
@@ -154,6 +180,9 @@ export default {
             <td>{{ item.arrivalDate }}</td>
             <td>{{ item.numberOfPeople }}</td>
             <td>{{ item.price }}</td>
+            <td>
+              <button @click="goDelete(index)">刪除</button>
+            </td>
             <!-- <td class="bb"><span href="" @click="delect">刪除</span></td> -->
             <!-- {{ item.orderId } -->
           </tr>
@@ -201,11 +230,11 @@ export default {
         height: 30%;
         display: flex;
         flex-direction: row;
+        justify-content: center;
 
-        // justify-content: center;
         .no {
           padding: 2px;
-          font-size: 2rem;
+          font-size: 1.4rem;
           font-weight: 500;
 
           span {
@@ -215,7 +244,7 @@ export default {
           input {
             width: 15rem;
             height: 2rem;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             border-radius: .7rem;
             text-align: center;
           }
@@ -253,7 +282,8 @@ export default {
 
 
         button {
-          margin-left: 6rem;
+          margin-top: .8rem;
+          margin-left: 1rem;
           border-radius: .5rem;
           width: 5rem;
           height: 2rem;
@@ -277,7 +307,9 @@ export default {
       display: flex;
       justify-content: center;
       padding-top: .8rem;
+      padding-bottom: .5rem;
       background-color: white;
+      overflow-y: auto;
 
       th {
         background-color: rgb(90, 90, 90);
@@ -327,6 +359,23 @@ export default {
 
         td {
           background-color: rgb(248, 248, 246);
+
+          button {
+            border-radius: 0.5rem;
+            width: 5rem;
+            height: 2rem;
+            background-color: #3472c2;
+            font-weight: 600;
+            color: white;
+
+            &:hover {
+              background-color: rgba(144, 27, 27, 0.499);
+            }
+
+            &:active {
+              background-color: rgba(144, 27, 27, 0.811);
+            }
+          }
         }
       }
 

@@ -44,7 +44,22 @@ export default {
       this.isEntityPassword = !!this.password
       //確認輸入正確帳號 + 密碼
       if (this.account && this.password) {
+
         if (this.account == "a789521" && this.password == "789521") {
+          axios({
+            url: "http://localhost:8080/api/login",
+            method: "POST",
+            withCredentials: true,
+            headers: {
+              "Contect-Type": "applicatoin/json",
+            },
+            data: {
+              account: "a789521",
+              password: "789521",
+            },
+          }).then(res => {
+            console.log(res.rtnCode);
+          })
           Swal.fire({
             icon: "success",
             text: "後台登入成功",
@@ -76,7 +91,21 @@ export default {
                 text: "登入成功",
                 showConfirmButton: true,
               })
-              console.log(res.userList);
+              axios({
+                url: "http://localhost:8080/api/login",
+                method: "POST",
+                withCredentials: true,
+                headers: {
+                  "Contect-Type": "applicatoin/json",
+                },
+                data: {
+                  account: this.account,
+                  password: this.password,
+                },
+              }).then(res => {
+                console.log(res.rtnCode);
+              }),
+                console.log(res.userList);
               this.userDate.uuu = res.userList,
                 console.log(this.userDate);
               console.log(this.userDate.uuu);
@@ -98,13 +127,13 @@ export default {
           text: "帳號或密碼未輸入",
         })
       }
-      account = "";
-      password = "";
+      this.account = "";
+      this.password = "";
     },
     show() {
       this.showPassword = !this.showPassword
     },
-    goSubmit(){
+    goSubmit() {
       this.$router.push('/Submit');
     }
     // search() {
@@ -242,8 +271,8 @@ export default {
   // position: absolute;
   // left: 67%;
   // top: 75%;
-  
-  margin:0 2.1rem 0 2.1rem;
+
+  margin: 0 2.1rem 0 2.1rem;
   background-color: rgb(49, 48, 77);
   color: white;
   box-shadow: none;
@@ -253,7 +282,7 @@ export default {
   border: none;
 }
 
-.submit{
+.submit {
   position: absolute;
   left: 13%;
   top: 75%;

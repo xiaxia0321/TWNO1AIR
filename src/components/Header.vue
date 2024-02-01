@@ -108,6 +108,13 @@ export default {
                             text: "將回到首頁",
                             icon: "success"
                         });
+                        fetch('http://localhost:8080/api/logout', {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            credentials: 'include'
+                        })
                         //放登出logout的api
                         this.$router.push('/')
                         this.logingDesuga.backStage = false;
@@ -179,17 +186,17 @@ export default {
                                 <br>
                                 <button @click="goSFO()">前往舊金山</button>
                             </div>
-                            <div class="seat">
+                            <!-- <div class="seat">
                                 <br>
                                 <h5>預選座位</h5>
                                 <img src="/sabrina/機艙座位.jpeg" alt="">
-                            </div>
+                            </div> -->
                         </div>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 20pt;" @click="AirTimeSearch">班機時刻</a>
+                <a href="#" style="color: white;font-size: 20pt;" @click="AirTimeSearch">搜尋航班</a>
             </li>
             <li>
                 <a href="#" style="color: white;font-size: 20pt;">準備啟程</a>
@@ -216,7 +223,7 @@ export default {
                 </ul>
             </li>
             <li>
-                <a href="#" style="color: white;font-size: 20pt;" v-if="!this.logingDesuga.loginIng">樂GO會員</a>
+                <a href="#" style="color: white;font-size: 20pt;" v-if="this.logingDesuga.loginIng">樂GO會員</a>
                 <ul>
                     <li>
                         <div class="happyDogMember">
@@ -346,28 +353,28 @@ export default {
             }
 
             .booking {
-                width: 15vw;
+                width: 30%;
                 height: 40vh;
             }
 
             .hot {
-                width: 15vw;
+                width: 30%;
                 height: 40vh;
                 border-left: 2px solid rgb(118, 69, 59);
-                border-right: 2px solid rgb(118, 69, 59);
+                // border-right: 2px solid rgb(118, 69, 59);
 
             }
 
-            .seat {
-                width: 30vw;
-                height: 40vh;
+            // .seat {
+            //     width: 30vw;
+            //     height: 40vh;
 
-                img {
-                    width: 300px;
-                    height: 200px;
-                    border-radius: 10px;
-                }
-            }
+            //     img {
+            //         width: 300px;
+            //         height: 200px;
+            //         border-radius: 10px;
+            //     }
+            // }
         }
 
         .prepare {

@@ -5,9 +5,9 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      plane:[],
-      order:[],
-      user:[],
+      plane: [],
+      order: [],
+      user: [],
     }
   },
   methods: {
@@ -94,12 +94,12 @@ export default {
       <span>首頁</span>
     </div>
     <div class="content">
-      <div class="block member" @click="goMember">
+      <!-- <div class="block member" @click="goMember">
         <div class="icon" style="background-image: url(/user.png);">
         </div>
         <p>會員管理</p>
         <p>目前會員數 : {{ this.user.length }} </p>
-      </div>
+      </div> -->
       <div class="block plane" @click="goPlane">
         <div class="icon" style="background-image: url(/planestart.png);">
         </div>
@@ -131,7 +131,6 @@ export default {
   }
 
   .content {
-    border: 1px solid black;
     width: 82%;
     height: 90vh;
     text-align: center;
@@ -141,12 +140,14 @@ export default {
     background-color: rgb(240, 240, 240);
 
     :hover {
-      transition: .5s;
+      transition: .25s;
+      transform: scale(1.1) translate(0%, 0%);
       background-color: rgb(211, 215, 223);
     }
 
     :active {
       background-color: rgb(182, 187, 196);
+      box-shadow: 0px 0px 5px black;
     }
 
     .block {
@@ -169,6 +170,8 @@ export default {
         height: 5rem;
         background-size: contain;
         background-repeat: no-repeat;
+
+        &:active {}
       }
 
     }
