@@ -239,7 +239,7 @@ export default {
 
   .mid {
     width: 95vw;
-    height: 27vh;
+    height: 29vh;
     background-color: #ffeeda;
     margin: 15px auto;
     display: flex;

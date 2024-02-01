@@ -14,7 +14,7 @@ export default {
       movieInfo: {},
       userLoggedIn: false,
       account: "",
-      lockedSeats: ["1A", "3C"], // 鎖定的座位
+      lockedSeats: ["1A", "3C", "8E", "7C", "25A", "6E", "6F", "12E", "9B", "10A", "10B"], // 鎖定的座位
     };
   },
   computed: {
