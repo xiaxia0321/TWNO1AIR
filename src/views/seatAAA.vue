@@ -205,15 +205,8 @@ if (existingSeatIndex !== -1) {
                 alt="Checkbox Image"
                 class="picCheckbox"
               />
-              <!-- <img v-if="!isSeatLocked(i, j)" :src="getCheckboxImage(i, j)" alt="Checkbox Image"
-                                class="picCheckbox"> -->
             </label>
           </label>
-          <!-- <div class="colTitle">
-                        <ul v-for=" j in col" :key="j">
-                            <ol>{{ j }}</ol>
-                        </ul>
-                    </div> -->
           <div class="colTitle">
             <ul v-for="j in col" :key="j">
               <ol>

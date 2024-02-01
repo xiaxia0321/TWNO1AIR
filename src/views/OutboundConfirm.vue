@@ -2,6 +2,8 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import counter from "../stores/counter";
+import Swal from 'sweetalert2'
+
 export default {
   data() {
     return {
@@ -37,10 +39,24 @@ export default {
     back() {
       this.$router.push("/AirTime"); //推送至下一頁的路徑
     },
+    // gogo() {
+    //   this.Order.getPrice = this.selectedPrice;
+    //   this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
+    // },
     gogo() {
-      this.Order.getPrice = this.selectedPrice;
-      this.$router.push("/PassengerInformation"); //推送至下一頁的路徑
-    },
+  if (this.selectedPrice === 0) {
+    // 使用者未選擇價格的處理邏輯，例如顯示錯誤提示或其他處理方式
+    console.error("請選擇票價");
+    Swal.fire({
+            icon: "error",
+            text: "尚未選擇艙等",
+          });
+    return;
+  }
+
+  this.Order.getPrice = this.selectedPrice;
+  this.$router.push("/PassengerInformation"); // 推送至下一頁的路徑
+},
     consslog() {
       console.log(this.planeSearchCheack);
     },
@@ -107,10 +123,10 @@ export default {
         <button type="" @click="chooseSeat(planeSearchCheack.ccc.price)">選擇</button>
         <p>訂位艙等</p>
         <p class="p1">
-          {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: {{ planeSearchCheack.ccc.classType }}經濟艙
+          {{ planeSearchCheack.ccc.da }}-{{ planeSearchCheack.ccc.aa }}: 經濟艙
         </p>
         <p>預選座位</p>
-        <p class="p1">收費選位</p>
+        <p class="p1">免費選位</p>
         <p>托運行李</p>
         <p class="p1">1件(每件23公斤)</p>
       </div>

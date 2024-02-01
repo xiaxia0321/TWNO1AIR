@@ -186,7 +186,8 @@ export default {
   justify-content: center;
   align-items: center;
   color: black;
-  border: 0px;
+  border: 0px; 
+  background-color: #eedfcd;
 
 }
 .aa {

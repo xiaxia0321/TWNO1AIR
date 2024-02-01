@@ -57,7 +57,7 @@ export default {
     // 抓航班當天是否有飛，有的話就顯示圖案
     isFlightAvailable(dateString, daysOffset) {
       // 實現你的邏輯，判斷該日期是否有航班
-      const targetDate = addDays(dateString, daysOffset);
+      const targetDate = this.addDays(dateString, daysOffset);
       // 假設航班數據存儲在 planeArr 中
       return this.planeArr.some(item => item.departureDate === targetDate);
     },
@@ -177,7 +177,8 @@ export default {
           <span>{{ addDays(item.departureDate, -1) }}</span><span>{{ calculateDay(item.departureDate, -1) }}</span>
         </div>
         <div class="a6 aa">
-          <span>{{ addDays(item.departureDate, 0) }}</span><span>{{ calculateDay(item.departureDate, 0) }}</span>
+          <span>{{ addDays(item.departureDate, 0) }}</span>
+          <span>{{ calculateDay(item.departureDate, 0) }}</span>
         </div>
         <div class="a7 aa">
           <span>{{ addDays(item.departureDate, 1) }}</span><span>{{ calculateDay(item.departureDate, 1) }}</span>
@@ -191,8 +192,8 @@ export default {
       </div>
       <div class="mid2 mm">
         <div class="b1">
-          <h3>JX0840</h3>
-          <span>由HAPPYDOG</span><span>Airlines</span> <span>執飛</span><span><i class="fa-solid fa-plane"></i>A321neo</span>
+          <h3>HG0{{ item.airplainId }}</h3>
+          <span>由HAPPYGO</span><span>Airlines</span> <span>執飛</span><span><i class="fa-solid fa-plane"></i>A321neo</span>
         </div>
         <div class="b2">
           <div class="b21">
@@ -210,26 +211,26 @@ export default {
           </div>
         </div>
         <div class="b3 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+          <span v-if="isFlightAvailable(item.departureDate, -3)"><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b4 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+          <span v-if="isFlightAvailable(item.departureDate, -2)"><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b5 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+          <span v-if="isFlightAvailable(item.departureDate, -1)"><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b6 bb">
           <!-- 當天 -->
-          <span><i class="fa-solid fa-plane"></i></span>
+          <span v-if="isFlightAvailable(item.departureDate, 0)"><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b7 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+          <span v-if="isFlightAvailable(item.departureDate, 1)"><i class="fa-solid fa-plane"></i></span>
         </div>
         <div class="b8 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+          <span v-if="isFlightAvailable(item.departureDate, 2)"><i class="fa-solid fa-plane"></i></span>
         </div>
-        <div class="b9 bb">
-          <!-- <span><i class="fa-solid fa-plane"></i></span> -->
+        <div class="b9 bb" >
+          <span v-if="isFlightAvailable(item.departureDate, 3)"><i class="fa-solid fa-plane"></i></span>
         </div>
       </div>
       <button @click="bookFlight(index)">預定行程</button>
@@ -294,16 +295,17 @@ export default {
     }
 
     .mid1 {
-      width: 95%;
+      width: 90%;
       height: 12vh;
       margin: 0 auto;
       background-color: #f0ece5;
       display: flex;
 
       .a1 {
-        width: 15%;
+        width: 10%;
         height: 100%;
         background-color: #ffeeda;
+        text-align: justify;
       }
 
       .a2 {
@@ -313,12 +315,23 @@ export default {
         color: rgb(60, 60, 60);
         display: flex;
         justify-content: space-between;
-        text-align: justify;
-        padding: 0px 10px 0px 0px;
+        // text-align: justify;
+        
+        .a21{
+          text-align: justify;
+          padding: 5px 0px 0px 10px;
+
+        }
+        .a22{
+          text-align: right;
+          padding: 5px 10px 0px 0px;
+
+
+        }
       }
 
       .aa {
-        width: 8%;
+        width: 8.71%;
         height: 100%;
         background-color: #eedfcd;
         color: rgb(60, 60, 60);
@@ -335,14 +348,14 @@ export default {
     }
 
     .mid2 {
-      width: 95%;
+      width: 90%;
       height: 22vh;
       margin: 0 auto;
       background-color: #ffeeda;
       display: flex;
 
       .b1 {
-        width: 15%;
+        width: 10%;
         height: 100%;
         padding: 20px;
         background-color: #ffeeda;
@@ -362,13 +375,17 @@ export default {
         background-color: #ffeeda;
         color: rgb(60, 60, 60);
         display: flex;
-
+        // background-color: red;
         .b21 {
           width: 33%;
           height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          // font-size: 20px;
+          text-align: justify;
+          padding: 0px 0px 0px 10px;
+
         }
 
         .b22 {
@@ -385,11 +402,14 @@ export default {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          text-align: right;
+          padding: 0px 10px 0px 0px;
+
         }
       }
 
       .bb {
-        width: 8%;
+        width: 8.71%;
         height: 100%;
         background-color: #eedfcd;
         color: rgb(60, 60, 60);

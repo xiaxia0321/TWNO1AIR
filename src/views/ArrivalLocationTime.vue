@@ -179,6 +179,7 @@ export default {
   justify-content: center;
   align-items: center;
   color: black;
+  background-color: #eedfcd;
   border: 0px;
 
 }
