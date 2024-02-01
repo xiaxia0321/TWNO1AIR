@@ -55,6 +55,9 @@ export default {
   }
 
   this.Order.getPrice = this.selectedPrice;
+  this.$nextTick(() => {
+        window.scrollTo(0, 0);
+      });
   this.$router.push("/PassengerInformation"); // 推送至下一頁的路徑
 },
     consslog() {

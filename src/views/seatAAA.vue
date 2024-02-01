@@ -6,6 +6,8 @@ import counter from "../stores/counter";
 export default {
   data() {
     return {
+      rowStart: 4, // 修改为从第 4 行开始
+      rowEnd: 33, // 修改为第 33 行
       row: 30,
       col: 6,
       selectedSeats: [], //你用来保存已选座位信息的数组，要帶到每筆訂單資料庫

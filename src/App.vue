@@ -16,6 +16,7 @@ import Header from './components/Header.vue';
 .header {
   width: fill;
   height: 15vh;
+  overflow-x: hidden;
 }
 
 .content {
@@ -24,5 +25,6 @@ import Header from './components/Header.vue';
   overflow-y: auto;
   text-align: center;
   background-color: #161a30;
+  overflow-x: hidden;
 }
 </style>

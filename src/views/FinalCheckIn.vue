@@ -160,8 +160,9 @@ export default {
             <img src="../../public/01.png" alt="">
             <span style="color: gray;font-size: 14pt;">HappyGo Airline</span>
             <img src="../../public/sabrina/登機證.png" alt="" style="width: 280px;height: 260px;" class="scan">
-            <p>YO/YO MR</p>
+            <p>楊右檸 MR</p>
             <h3>A321</h3>
+            <p style="font-size: 2rem;">SEAT :　　2C</p>
             <p>2024-01-27　　TPE-BKK</p>
             <p v-for="(item, index) in userArr" :key="index">{{ item.account }}</p>
             <h3 v-for="(item, index) in planeArr" :key="index">{{ item.airplain_Id }}</h3>
@@ -184,7 +185,7 @@ export default {
         <div class="right">
             <img src="../../public/01.png" alt="">
             <span style="color: gray;font-size: 14pt;">HappyGo Airline</span>
-            <p>YO/YO MR</p>
+            <p>楊右檸 MR</p>
             <p>A321　　2024-01-27</p>
             <div class="seat">
                 <p>SEAT</p>

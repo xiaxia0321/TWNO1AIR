@@ -142,7 +142,7 @@ export default defineComponent({
         </div>
         <div class="ticket">
             <h1>大阪 歡樂、華麗，又熱鬧有趣</h1>
-            <button type="button" @click="data()">快速搜索東京機票</button>
+            <button type="button" @click="data()">快速搜索大阪機票</button>
         </div>
         <div class="intro">
             <br>

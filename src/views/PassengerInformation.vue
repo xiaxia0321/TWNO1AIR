@@ -93,11 +93,13 @@ export default {
         this.members.splice(index, 1);
       }
     },
+    //同會員資料
     sameDate() {
+      console.log(this.userDate.uuu[0].birthday);
       this.members[0].name = this.userDate.uuu[0].name;
       this.members[0].birthday = this.userDate.uuu[0].birthday;
       this.members[0].phone = this.userDate.uuu[0].phone;
-      this.members[0].name = this.userDate.uuu[0].name;
+      this.members[0].contact = this.userDate.uuu[0].name ;
     }
 
   },
@@ -149,12 +151,12 @@ export default {
             <label>生日</label>
           </div>
           <div class="form-floating mb-3 bb">
-            <input type="text" class="form-control" id="phoneInput" placeholder="" v-model="member.phone" />
-            <label>手機</label>
-          </div>
-          <div class="form-floating mb-3 bb">
             <input type="text" class="form-control" id="contactInput" placeholder="" v-model="member.contact" />
             <label>聯絡人</label>
+          </div>
+          <div class="form-floating mb-3 bb">
+            <input type="text" class="form-control" id="phoneInput" placeholder="" v-model="member.phone" />
+            <label>聯絡人手機</label>
           </div>
           <br />
         </div>

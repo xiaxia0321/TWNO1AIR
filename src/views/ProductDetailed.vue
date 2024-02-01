@@ -3,6 +3,7 @@
 import { mapState, mapActions } from "pinia";
 import counter from "../stores/counter";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -28,7 +29,7 @@ export default {
   },
   methods: {
     test() {
-      console.log(this.userDate.uuu[0]);
+      console.log(this.depatureTime);
 
     },
     loginDD() {
@@ -72,6 +73,23 @@ export default {
     },
 
     Ordergogo() {
+
+      console.log("測試:", {
+    oneway: this.planeSearchCheack.ccc.isOneway,
+    numberOfPeople: this.Order.getAddPeople[0].enteredPeople,
+    departureDate: this.planeSearchCheack.ccc.departureDate,
+    arrivalDate: this.planeSearchCheack.ccc.arriveDate,
+    departureLocation: this.planeSearchCheack.ccc.departureLocation,
+    arrivalLocation: this.planeSearchCheack.ccc.arrivalLocation,
+    classType: this.planeSearchCheack.ccc.classType,
+    price: this.Order.getPrice * this.Order.getAddPeople[0].enteredPeople,
+    account: this.userDate.uuu[0].account,
+    depatureTime: this.planeSearchCheack.ccc.depatureTime,
+    arriveTime: this.planeSearchCheack.ccc.arriveTime,
+    addPeople: this.Order.getAddPeople,
+    seat: this.planeSearchCheack.seat,
+    airplainId: this.Order.getAddPeople[0].enteredPeople,
+  });
         axios({
           url: 'http://localhost:8080/order/create',
           method: "POST",
@@ -79,7 +97,7 @@ export default {
             "Content-Type": "application/json",
           },
           data: {
-            is_oneway: this.planeSearchCheack.ccc.isOneway, //單程
+            oneway: this.planeSearchCheack.ccc.isOneway, //單程
             numberOfPeople: this.Order.getAddPeople[0].enteredPeople, //人數
             departureDate: this.planeSearchCheack.ccc.departureDate, //出發日期
             arrivalDate: this.planeSearchCheack.ccc.arriveDate, //抵達日期
@@ -87,43 +105,51 @@ export default {
             arrivalLocation: this.planeSearchCheack.ccc.arrivalLocation, //抵達地
             classType: this.planeSearchCheack.ccc.classType, //艙等
             price: this.Order.getPrice * this.Order.getAddPeople[0].enteredPeople, //價錢
-            account: this.userDate.uuu[0].name, //帳戶名稱有問題
+            account: this.userDate.uuu[0].account, //帳戶名稱有問題
             depatureTime: this.planeSearchCheack.ccc.depatureTime, //出發時間
             arriveTime: this.planeSearchCheack.ccc.arriveTime, //抵達時間
-            add_people: this.Order.getAddPeople, //打包人數資料
+            addPeople: JSON.stringify(this.Order.getAddPeople),
             seat: this.planeSearchCheack.seat, //座位編號
+            airplainId: this.Order.getAddPeople[0].enteredPeople,
           },
         })
           .then(res => {
-            if (res.status === 200 && res.data.code === 200) {
-              console.log("Order created successfully");
-            } else if (res.status === 200 && res.data.code === 400) {
-              console.error("Order creation failed:", res.data.message);
-              // 在这里处理用户未登录的情况，例如跳转到登录页面
-              // this.$router.push("/login");
-            } else {
-              console.error("Unexpected response:", res);
-            }
-          })
-      
-      console.log(this.Order);
-      this.Order = {
-        is_oneway: "",
-        numberOfPeople: 0,
-        departureDate: "",
-        arrivalDate: "",
-        departureLocation: "",
-        arrivalLocation: "",
-        classType: "",
-        price: false,
-        account: "",
-        depatureTime: "",
-        arriveTime: "",
-        add_people: "",
+            console.log("成功");
+            Swal.fire({
+                    title: "創建成功",
+                    icon: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    cancelButtonText: "返回個人主頁",
+                    confirmButtonText: "返回主頁"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+            this.$router.push("/");
+          }else{
+            
+            this.$router.push("/User");
+          }
+        })
+      })
+      // console.log(this.Order);
+      // this.Order = {
+      //   is_oneway: "",
+      //   numberOfPeople: 0,
+      //   departureDate: "",
+      //   arrivalDate: "",
+      //   departureLocation: "",
+      //   arrivalLocation: "",
+      //   classType: "",
+      //   price: false,
+      //   account: "",
+      //   depatureTime: "",
+      //   arriveTime: "",
+      //   add_people: "",
 
-      }
+      // }
     },
-    // this.$router.push('/Backstage/BackPlane')
+   
 
 
     calculateDuration(depatureTime, arriveTime) {
@@ -164,8 +190,8 @@ export default {
       <h2>產品明細</h2>
       <h3>航班資訊</h3>
       <!-- <button @click="loginDD">登入</button>
-      <button @click="logoutDD">登出</button>
-      <button @click="test">測試</button> -->
+      <button @click="logoutDD">登出</button> -->
+      <!-- <button @click="test">測試</button> -->
     </div>
     <div class="mt1"><span>經濟艙</span></div>
     <div class="mid1">
@@ -242,7 +268,7 @@ export default {
   </div>
   <div class="bottom1">
     <span>TWD {{ this.Order.getPrice * this.Order.getAddPeople[0].enteredPeople }}</span>
-    <button @click="Ordergogo">前往付款</button>
+    <button @click="Ordergogo">送出訂單</button>
   </div>
 </template>
 

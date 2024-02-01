@@ -327,7 +327,7 @@ export default {
         list-style: none;
 
         .reservation {
-            width: 60vw;
+            width: 40vw;
             height: 40vh;
             display: flex;
             background-color: rgb(240, 240, 240);
