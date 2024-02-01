@@ -656,4 +656,9 @@ input[type="checkbox"] {
 .lo {
     margin-top: 5px;
 }
+
+.choice{
+    margin-left: 5px;
+    margin-right: 5px;
+}
 </style>
