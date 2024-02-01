@@ -3,6 +3,7 @@
 import { mapState, mapActions } from "pinia";
 import counter from "../stores/counter";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -47,7 +48,6 @@ export default {
         // 登录成功后的处理逻辑
         console.log(res);
         console.log(res.data.rtnCode);
-
       }).catch(error => {
         // 登录失败后的处理逻辑
         console.error("Login failed:", error);
@@ -115,8 +115,23 @@ export default {
         })
           .then(res => {
             console.log("成功");
+            Swal.fire({
+                    title: "創建成功",
+                    icon: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    cancelButtonText: "返回個人主頁",
+                    confirmButtonText: "返回主頁"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+            this.$router.push("/");
+          }else{
+            
             this.$router.push("/User");
-          })
+          }
+        })
+      })
       // console.log(this.Order);
       // this.Order = {
       //   is_oneway: "",

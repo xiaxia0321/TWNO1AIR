@@ -135,60 +135,10 @@ export default {
     },
     goSubmit() {
       this.$router.push('/Submit');
+    },
+    forget(){
+      this.$router.push('/ForgetPassword');
     }
-    // search() {
-    //   console.log(this.userData);
-    //   fetch('http://localhost:8080/user/search', {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       account: this.userData.account,
-    //       password: this.userData.password,
-    //     })
-    //   })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.userList = data.userList
-    //       console.log(this.userList)
-    //     })
-    //     .catch(error => console.log(error))
-    // },
-    // toLogin() {
-    //   this.search();
-    //   axios({
-    //     url: 'http://localhost:8080/api/login',
-    //     method: 'POST',
-    //     withCredentials: true,
-    //     headers: {
-    //       'Contect-Type': 'applicatoin/json'
-    //     },
-    //     data: {
-    //       account: this.account,
-    //       password: this.password,
-    //     },
-    //   }).then(res => {
-    //     // console.log(this.data);
-    //     let account = document.getElementById("account")
-    //     let password = document.getElementById("password")
-    //     if (account.value == "" || password.value == "") {
-    //       Swal.fire({
-    //         icon: "error",
-    //         text: "你有資料尚未填寫"
-    //       })
-    //       return
-    //     }
-    //     else {
-    //       Swal.fire({
-    //         icon: "success",
-    //         text: "登入成功",
-    //         showConfirmButton: true,
-    //       })
-    //       this.$router.push('/User')
-    //     }
-    //   })
-    // },
   }
 }
 </script>
@@ -212,8 +162,10 @@ export default {
         <input class="input" :type="showPassword ? 'text' : 'password'" v-model="password">
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"></i>
-        <button type="button" class="login" @click="goSubmit()">註冊</button>
+        <button type="button" class="submit" @click="goSubmit()">註冊</button>
         <button type="button" class="login" @click="loginOrder()">登入</button>
+        <p @click="forget()">忘記密碼</p>
+        <!-- <button type="button" class="forget" @click="loginOrder()">忘記密碼</button> -->
       </div>
     </div>
   </div>
@@ -268,11 +220,9 @@ export default {
 }
 
 .login {
-  // position: absolute;
-  // left: 67%;
-  // top: 75%;
-
-  margin: 0 2.1rem 0 2.1rem;
+  position: absolute;
+  left: 67%;
+  top: 70%;
   background-color: rgb(49, 48, 77);
   color: white;
   box-shadow: none;
@@ -285,7 +235,7 @@ export default {
 .submit {
   position: absolute;
   left: 13%;
-  top: 75%;
+  top: 70%;
   background-color: rgb(49, 48, 77);
   color: white;
   box-shadow: none;
@@ -293,6 +243,12 @@ export default {
   width: 80px;
   height: 40px;
   border: none;
+}
+
+p{
+  margin-left: 225px;
+  margin-top: 80px;
+  font-size: 14pt;
 }
 
 .fa-eye {

@@ -224,6 +224,16 @@ const router = createRouter({
       name:"Test",
       component:() => import('../views/Test.vue')
     },
+    {
+      path:"/ForgetPassword",
+      name:"ForgetPassword",
+      component:() => import('../views/ForgetPassword.vue')
+    },
+    {
+      path:"/RevisePassword",
+      name:"RevisePassword",
+      component:() => import('../views/RevisePassword.vue')
+    },
     // {
     //   path:"/dynamicQuestionnaireBack",
     //   name:"dynamicQuestionnaireBack",

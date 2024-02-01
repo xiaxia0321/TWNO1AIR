@@ -1,0 +1,224 @@
+<script>
+import axios from "axios";
+import counter from "../stores/counter"
+import { mapState, mapActions } from "pinia"
+import Swal from 'sweetalert2'
+export default {
+    data() {
+        return {
+            account: "",
+            password: "",
+            isEntityAccount: true,
+            isEntityPassword: true,
+            showPassword: false,
+            user: [],
+        }
+    },
+    computed: {
+        ...mapState(counter, ['user', 'userDate', 'OrderArr', 'logingDesuga'])
+    },
+    methods: {
+        loginOrder() {
+            axios({
+                url: 'http://localhost:8080/order/search',
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    order_id: "",
+                    arrival_date: "",
+                    departure_date: "",
+                    arrival_location: "",
+                    departure_location: "",
+                    account: this.account,
+                },
+            })
+                .then(res => this.OrderArr.ccc = res.data.orderList)
+            console.log(this.OrderArr.ccc);
+            this.login()
+        },
+        login() {
+            //確認輸入帳號 + 密碼
+            this.isEntityAccount = !!this.account
+            this.isEntityPassword = !!this.password
+            //確認輸入正確帳號 + 密碼
+            if (this.account && this.password) {
+
+                if (this.account == "a789521" && this.password == "789521") {
+                    axios({
+                        url: "http://localhost:8080/api/login",
+                        method: "POST",
+                        withCredentials: true,
+                        headers: {
+                            "Contect-Type": "applicatoin/json",
+                        },
+                        data: {
+                            account: "a789521",
+                            password: "789521",
+                        },
+                    }).then(res => {
+                        console.log(res.rtnCode);
+                    })
+                    Swal.fire({
+                        icon: "success",
+                        text: "後台登入成功",
+                        showConfirmButton: true,
+                    })
+                    this.logingDesuga.backStage = true;
+                    this.$router.push('/Backstage');
+                    return;
+                }
+                fetch('http://localhost:8080/user/search',
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify({
+                            account: this.account,
+                            password: this.password,
+                        })
+                    }).then(response => response.json())
+                    .then(res => {
+                        console.log(res)
+                        if (res.code == "200") {
+                            this.logingDesuga.loginIng = true;
+                            console.log("登入成功");
+                            Swal.fire({
+                                icon: "success",
+                                text: "登入成功",
+                                showConfirmButton: true,
+                            })
+                            axios({
+                                url: "http://localhost:8080/api/login",
+                                method: "POST",
+                                withCredentials: true,
+                                headers: {
+                                    "Contect-Type": "applicatoin/json",
+                                },
+                                data: {
+                                    account: this.account,
+                                    password: this.password,
+                                },
+                            }).then(res => {
+                                console.log(res.rtnCode);
+                            }),
+                                console.log(res.userList);
+                            this.userDate.uuu = res.userList,
+                                console.log(this.userDate);
+                            console.log(this.userDate.uuu);
+                            // $cookies.set("account", this.account)
+                            console.log('loginIng = ' + this.logingDesuga.loginIng);
+                            this.$router.push('/User');
+                        }
+                        else {
+                            Swal.fire({
+                                icon: "error",
+                                text: "帳號或密碼有誤",
+                            })
+                        }
+                    })
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    text: "帳號或密碼未輸入",
+                })
+            }
+            this.account = "";
+            this.password = "";
+        },
+        show() {
+            this.showPassword = !this.showPassword
+        },
+        goSubmit() {
+            this.$router.push('/Submit');
+        },
+        revise() {
+            this.$router.push('/RevisePassword');
+        }
+    }
+}
+</script>
+<template>
+    <div class="screen">
+        <div class="main">
+            <div class="left">
+                <h4>登機吧！世界就在你的眼前！</h4>
+                <img src="./圖片/Lovepik_com-610599676-Cartoon hand drawn air travel around the world.png" class="img">
+            </div>
+            <div class="right">
+                <h2><b>忘記密碼</b></h2>
+                <br>
+                <span><b>會員帳號：</b></span><br>
+                <input type="text" class="input" id="account" v-model="this.account"><br>
+                <span><b>會員信箱：</b></span><br>
+                <input type="email" class="input" v-model="password">
+                <button type="button" class="login" @click="revise()">確認</button>
+            </div>
+        </div>
+    </div>
+</template>
+<style scoped lang="scss">
+.screen {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(22, 26, 48);
+    box-sizing: border-box;
+    padding-top: 90px;
+}
+
+.main {
+    width: 100%;
+    height: 500px;
+    background-color: rgb(240, 236, 229);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    width: 500px;
+    height: 500px;
+    padding: 50px;
+}
+
+.img {
+    width: 400px;
+}
+
+.right {
+    width: 400px;
+    height: 400px;
+    padding: 50px;
+    background-color: rgb(182, 187, 196);
+    border-radius: 5%;
+    color: white;
+    text-align: left;
+    position: relative;
+}
+
+.input {
+    width: 300px;
+    height: 30px;
+    border: 0px;
+    background-color: rgb(240, 236, 229);
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.login {
+    position: absolute;
+    left: 67%;
+    top: 70%;
+    background-color: rgb(49, 48, 77);
+    color: white;
+    box-shadow: none;
+    border-radius: 15px;
+    width: 80px;
+    height: 40px;
+    border: none;
+}
+</style>

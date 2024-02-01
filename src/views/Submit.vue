@@ -90,7 +90,7 @@ export default {
         if (res.data.rtnCode === "SUCCESSFUL") {
           Swal.fire({
             icon: "success",
-            text: "你已經註冊成功",
+            text: "你已經註冊成功,已發送測試信件",
             showConfirmButton: true,
           });
           console.log(res.data.rtnCode);
@@ -146,17 +146,17 @@ export default {
         <input :type="showPassword ? 'text' : 'password'" placeholder="請輸入密碼" id="inputPassword" class="password"
           style="margin-left: 5px; width: 298px" v-model="user.password" />
         <i class="fa-solid fa-eye-slash eye" v-show="!showPassword" @click="show()"
-          style="position: absolute; left: 43%; top: 14%"></i>
+          style="position: absolute; left: 43%; top: 16%"></i>
         <i class="fa-solid fa-eye eye" v-show="showPassword" @click="show()"
-          style="position: absolute; left: 43%; top: 14%"></i>
+          style="position: absolute; left: 43%; top: 16%"></i>
         <br /><br />
         <label for="" style="font-size: 14pt">確認密碼：</label>　
         <input :type="showPasswordTwo ? 'text' : 'password'" placeholder="請再次輸入密碼" id="inputRepeatPassword"
           class="repeatPassword" style="width: 298px;" />
         <i class="fa-solid fa-eye-slash eye" v-show="!showPasswordTwo" @click="showTwo()"
-          style="position: absolute; left: 43%; top: 26%"></i>
+          style="position: absolute; left: 43%; top: 30%"></i>
         <i class="fa-solid fa-eye eye" v-show="showPasswordTwo" @click="showTwo()"
-          style="position: absolute; left: 43%; top: 26%"></i>
+          style="position: absolute; left: 43%; top: 30%"></i>
         <!-- <i class="fa-solid fa-eye" @click="show()" style="position: absolute;left: 51%;top: 56.5%;"></i>
                 <input type="password" placeholder="請再次輸入密碼" id="inputRepeatPassword" class="repeatPassword"
                     style="width: 298px;"> -->

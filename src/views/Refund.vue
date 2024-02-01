@@ -89,7 +89,7 @@ export default {
             <h2>線上退票</h2>
             <span style="font-size: 14pt;">訂單編號：</span><input id="orderId" v-model="this.orderId" type="number"
                 class="input"><br>
-            <span style="font-size: 14pt;">會員名稱：</span><input id="account" v-model="this.account" type="text" class="input">
+            <span style="font-size: 14pt;">會員帳號：</span><input id="account" v-model="this.account" type="text" class="input">
             <input type="checkbox" id="checkbox">
             <!-- <span class="sure">本人已詳閱樂GO航空相關退票規定</span> -->
             <!-- Button trigger modal -->
