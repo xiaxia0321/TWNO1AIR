@@ -90,7 +90,7 @@ export default {
         if (res.data.rtnCode === "SUCCESSFUL") {
           Swal.fire({
             icon: "success",
-            text: "你已經註冊成功",
+            text: "你已經註冊成功,已發送測試信件",
             showConfirmButton: true,
           });
           console.log(res.data.rtnCode);
