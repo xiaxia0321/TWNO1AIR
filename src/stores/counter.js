@@ -23,6 +23,7 @@ export default defineStore("counter", {
                 getDepatureTime: '',
                 getArriveTime: '',
                 getAddPeople: '',
+                getAirplainId:'',
             },
             OrderArr: {
                 ccc: [],
@@ -39,6 +40,7 @@ export default defineStore("counter", {
                 getArriveTime: '',
                 getDepatureTime: '',
                 getAddPeople: '',
+                getAirplainId:'',
             },
             OrderSearchArrCheck: {
                 ccc: [],

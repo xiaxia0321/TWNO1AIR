@@ -5,9 +5,14 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            userArr: [],
-            planeArr: [],
-            ticket: []
+            userArr: {},
+            planeArr: {},
+            airplain_Id: "",
+            departureDate: "",
+            da: "",
+            aa: "",
+            depatureTime: "",
+            depatureTerminal: "",
         }
     },
     computed: {
@@ -15,59 +20,88 @@ export default {
     },
     methods: {
         ...mapActions(counter, ['setPP',]),
-        combinedSearch() {
-            // User search
+        search() {
             axios({
-                url: 'http://localhost:8080/user/search',
+                url: 'http://localhost:8080/airplainInfo/search',
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 data: {
-                    account: this.user.account,
+                    departureDate: this.plane.departureDate,
+                    arrivalDate: this.plane.arrivalDate,
+                    departureLocation: this.plane.departureLocation,
+                    arrivalLocation: this.plane.arrivalLocation, //抵達地
+                    departureAirport: this.plane.departureAirport, //出發機場
+                    arrivalAirport: this.plane.arrivalAirport, //抵達機場
+                    da: this.plane.da, //出發機場縮寫
+                    aa: this.plane.aa, //抵達機場縮寫
+                    classType: "經濟艙;商務艙;頭等艙",
+                    isOneway: false, //單程
+                    depatureTerminal: this.plane.depatureTerminal, //出發航廈
+                    arriveTerminal: this.plane.arriveTerminal,  //抵達航廈
+                    depatureTime: this.plane.depatureTime, //出發時間
+                    arriveTime: this.plane.arriveTime, //抵達時間
+                    price: this.plane.price, //價錢
+                    seat: this.plane.seat, //座位
+                    airplain_Id: this.plane.airplain_Id
                 },
             })
-                .then(res => {
-                    this.userArr = res.data.userList;
-                    console.log("User search result:", this.userArr);
-                    // Plain search
-                    return axios({
-                        url: 'http://localhost:8080/airplainInfo/search',
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        data: {
-                            departureDate: this.plane.departureDate,
-                            arrivalDate: this.plane.arrivalDate,
-                            departureLocation: this.plane.departureLocation,
-                            arrivalLocation: this.plane.arrivalLocation, //抵達地
-                            departureAirport: this.plane.departureAirport, //出發機場
-                            arrivalAirport: this.plane.arrivalAirport, //抵達機場
-                            da: this.plane.da, //出發機場縮寫
-                            aa: this.plane.aa, //抵達機場縮寫
-                            classType: "經濟艙;商務艙;頭等艙",
-                            isOneway: false, //單程
-                            depatureTerminal: this.plane.depatureTerminal, //出發航廈
-                            arriveTerminal: this.plane.arriveTerminal,  //抵達航廈
-                            depatureTime: this.plane.depatureTime, //出發時間
-                            arriveTime: this.plane.arriveTime, //抵達時間
-                            price: this.plane.price, //價錢
-                            seat: this.plane.seat, //座位
-                            airplain_Id: this.plane.airplain_Id
-                            // userId: this.user.userId,
-                        },
-                    });
-                })
-                .then(res => {
-                    this.planeArr = res.data.planeList;
-                    console.log("Plane search result:", this.planeArr);
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                });
-        }
-
+                .then(res => this.planeArr = res.data.planeList)
+            console.log(this.planeArr);
+        },
+        // combinedSearch() {
+        //     // User search
+        //     axios({
+        //         url: 'http://localhost:8080/user/search',
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         data: {
+        //             account: this.user.account,
+        //         },
+        //     })
+        //         .then(res => {
+        //             this.userArr = res.data.userList;
+        //             console.log("User search result:", this.userArr);
+        //             // Plain search
+        //             return axios({
+        //                 url: 'http://localhost:8080/airplainInfo/search',
+        //                 method: "POST",
+        //                 headers: {
+        //                     "Content-Type": "application/json"
+        //                 },
+        //                 data: {
+        //                     departureDate: this.plane.departureDate,
+        //                     arrivalDate: this.plane.arrivalDate,
+        //                     departureLocation: this.plane.departureLocation,
+        //                     arrivalLocation: this.plane.arrivalLocation, //抵達地
+        //                     departureAirport: this.plane.departureAirport, //出發機場
+        //                     arrivalAirport: this.plane.arrivalAirport, //抵達機場
+        //                     da: this.plane.da, //出發機場縮寫
+        //                     aa: this.plane.aa, //抵達機場縮寫
+        //                     classType: "經濟艙;商務艙;頭等艙",
+        //                     isOneway: false, //單程
+        //                     depatureTerminal: this.plane.depatureTerminal, //出發航廈
+        //                     arriveTerminal: this.plane.arriveTerminal,  //抵達航廈
+        //                     depatureTime: this.plane.depatureTime, //出發時間
+        //                     arriveTime: this.plane.arriveTime, //抵達時間
+        //                     price: this.plane.price, //價錢
+        //                     seat: this.plane.seat, //座位
+        //                     airplain_Id: this.plane.airplain_Id
+        //                     // userId: this.user.userId,
+        //                 },
+        //             });
+        //         })
+        //         .then(res => {
+        //             this.planeArr = res.data.planeList;
+        //             console.log("Plane search result:", this.planeArr);
+        //         })
+        //         .catch(error => {
+        //             console.error("Error:", error);
+        //         });
+        // }
         // searchUser() {
         //     axios({
         //         url: 'http://localhost:8080/user/search',
@@ -114,7 +148,8 @@ export default {
         // }
     },
     mounted() {
-        this.searchUser()
+        // this.searchUser()
+        this.search()
     }
 }
 </script>

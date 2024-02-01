@@ -47,8 +47,6 @@ export default {
         // 登录成功后的处理逻辑
         console.log(res);
         console.log(res.data.rtnCode);
-        localStorage.setItem('authToken', res.data.authToken);
-
       }).catch(error => {
         // 登录失败后的处理逻辑
         console.error("Login failed:", error);
@@ -74,14 +72,11 @@ export default {
     },
 
     Ordergogo() {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken) {
         axios({
           url: 'http://localhost:8080/order/create',
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${authToken}`,
           },
           data: {
             is_oneway: this.planeSearchCheack.ccc.isOneway, //單程
@@ -110,9 +105,7 @@ export default {
               console.error("Unexpected response:", res);
             }
           })
-      } else {
-        console.error("No authToken available. Please log in first.");
-      }
+      
       console.log(this.Order);
       this.Order = {
         is_oneway: "",

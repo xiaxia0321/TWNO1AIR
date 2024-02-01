@@ -42,10 +42,11 @@ export default {
                     account: this.OrderSearchArr.getAccount,
                     arrive_time: this.OrderSearchArr.getArriveTime,
                     depature_time: this.OrderSearchArr.getDepatureTime,
+                    airplain_id: this.OrderSearchArr.getAirplainId,
                 },
             })
                 .then(res => this.OrderArr = res.data.orderList)
-            console.log(this.OrderArr);
+            console.log(this.OrderSearchArr);
         },
         // searchPlane(){
         //     axios({
@@ -74,9 +75,9 @@ export default {
             <table>
                 <tr>
                     <th>訂單編號</th>
-                    <th>姓名</th>
+                    <th>帳號</th>
                     <!-- <th>報到地點</th> -->
-                    <!-- <th>班機編號</th> -->
+                    <th>班機編號</th>
                     <th>出發日期</th>
                     <th>出發時間</th>
                     <th>出發地</th>
@@ -87,8 +88,8 @@ export default {
                 <tr v-for="(item, index) in OrderArr" :key="index">
                     <td>{{ item.orderId }}</td>
                     <td>{{ item.account }}</td>
-                    <!-- <td>TPE-臺北(桃園)</td>
-                    <td>{{ item.airplain_Id }}</td> -->
+                    <!-- <td>TPE-臺北(桃園)</td> -->
+                    <td>{{ item.airplainId }}</td>
                     <td>{{ item.departureDate }}</td>
                     <td>{{ item.depatureTime }}</td>
                     <td>{{ item.departureLocation }}</td>
