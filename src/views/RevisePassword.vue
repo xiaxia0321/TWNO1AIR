@@ -150,12 +150,12 @@ export default {
                 <img src="./圖片/Lovepik_com-610599676-Cartoon hand drawn air travel around the world.png" class="img">
             </div>
             <div class="right">
-                <h2><b>忘記密碼</b></h2>
+                <h2><b>修改密碼</b></h2>
                 <br>
                 <span><b>會員帳號：</b></span><br>
                 <input type="text" class="input" id="account" v-model="this.account"><br>
-                <span><b>會員信箱：</b></span><br>
-                <input type="email" class="input" v-model="password">
+                <span><b>修改密碼：</b></span><br>
+                <input type="password" class="input" v-model="password">
                 <button type="button" class="login" @click="revise()">確認</button>
             </div>
         </div>

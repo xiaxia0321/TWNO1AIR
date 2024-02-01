@@ -13,6 +13,9 @@ import Header from './components/Header.vue';
 </template>
 
 <style scoped lang="scss">
+.body{
+  overflow-x: hidden;
+}
 .header {
   width: fill;
   height: 15vh;

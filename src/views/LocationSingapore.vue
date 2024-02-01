@@ -128,7 +128,7 @@ export default defineComponent({
         NDatePicker,
     },
     mounted() {
-        this.setLocation("東京,日本")
+        this.setLocation("新加坡,新加坡")
         console.log(this.planeSearchArr.departureLocation);
     },
 });
