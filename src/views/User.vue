@@ -384,9 +384,9 @@ export default {
                         src="./圖片/jikan_tobu_man.png" class="forget"></h1><br>
 
                 <input v-model="newItem" placeholder="Add new item">
-                <button @click="addItem">增加選項</button>
-                <button @click="toggleEditMode">修改選項</button>
-                <button @click="clearChecked">清除勾選</button><br>
+                <button @click="addItem"  class="choice">增加選項</button>
+                <button @click="toggleEditMode"  class="choice">修改選項</button>
+                <button @click="clearChecked"  class="choice">清除勾選</button><br>
                 <select v-model="selectedCity" @change="updateSuggestedItems" class="lo">
                     <!-- <i class="fa-solid fa-plus fa-2xl"></i> -->
                     <option value="">請選擇您的目的地</option>
