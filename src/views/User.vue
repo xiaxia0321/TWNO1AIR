@@ -284,7 +284,8 @@ export default {
 <template>
     <div class="screen">
         <div class="user">
-            <p @click="logininin">旅途愉快</p>
+            <p>{{ userDate.uuu[0].name }},您好</p>
+            <p @click="logininin">樂GO航空祝您旅途愉快</p>
             <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="userblock('旅客資料')">旅客資料</button><br>
             <button type="button" class="record" @click="userblock('旅行紀錄'), searchOrder">行程管理</button><br>
@@ -343,7 +344,7 @@ export default {
                         <th>抵達日期、時間</th>
                         <th>抵達地點</th>
                         <th>人數</th>
-                        <th>旅程</th>
+                        <!-- <th>旅程</th> -->
                     </tr>
                     <tr v-for="(item, index) in OrderArr.ccc" :key="index">
                         <td>{{ item.orderId }}</td>
@@ -353,8 +354,8 @@ export default {
                         <td>{{ item.arrivalDate }} - Time_{{ item.arriveTime }}</td>
                         <td>{{ item.arrivalLocation }}</td>
                         <td>{{ item.numberOfPeople }}</td>
-                        <td v-show="!item.oneway">來回</td>
-                        <td v-show="item.oneway">單程</td>
+                        <!-- <td v-show="!item.oneway">來回</td>
+                        <td v-show="item.oneway">單程</td> -->
                     </tr>
                 </thead>
                 <!-- <tbody>

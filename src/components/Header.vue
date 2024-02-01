@@ -155,7 +155,8 @@ export default {
     <div class="headerShow">
         <div class="happydog" @click="home"></div>
         <div class="icon">
-            <i class="fa-solid fa-power-off ii" ii @click="goLogin"></i>
+            <i class="fa-solid fa-power-off ii"  @click="goLogin"></i>
+            <i class="fa-solid fa-power-off ii" v-if="!this.logingDesuga.loginIng"  @click="goLogin">訪客</i>
             <i class="fa-solid fa-user ii" v-if="this.logingDesuga.backStage" @click="goBackStage">後臺管理</i>
             <i class="fa-solid fa-user ii" v-if="this.logingDesuga.loginIng" @click="goUser">{{ userDate.uuu[0].name }}</i>
         </div>
