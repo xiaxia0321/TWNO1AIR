@@ -284,7 +284,8 @@ export default {
 <template>
     <div class="screen">
         <div class="user">
-            <p @click="logininin">旅途愉快</p>
+            <p>{{ userDate.uuu[0].name }},您好</p>
+            <p @click="logininin">樂GO航空祝您旅途愉快</p>
             <h2>{{ userInfo.name }}</h2><br>
             <button type="button" class="record" @click="userblock('旅客資料')">旅客資料</button><br>
             <button type="button" class="record" @click="userblock('旅行紀錄'), searchOrder">行程管理</button><br>
